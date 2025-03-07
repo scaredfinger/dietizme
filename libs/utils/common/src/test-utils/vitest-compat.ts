@@ -19,20 +19,21 @@ export {
   vi 
 };
 
-// Export Jest compatibility layer
+// Export Jest compatibility layer with proper types
 export const jest = {
   mock: vi.mock,
   fn: vi.fn,
   spyOn: vi.spyOn,
   clearAllMocks: vi.clearAllMocks,
   resetAllMocks: vi.resetAllMocks,
-  // Add other Jest APIs as needed
-};
+} as const;
 
 // For convenient global usage in tests
+// @ts-ignore - Adding jest to global for compatibility
 globalThis.jest = jest;
 
 // Export a cleanup function to restore original globals
 export function cleanupMocks() {
+  // @ts-ignore - Removing global jest
   delete globalThis.jest;
 }
