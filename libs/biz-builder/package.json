@@ -2,20 +2,20 @@
   "name": "@dietizme/biz-builder",
   "version": "0.0.1",
   "dependencies": {
-    "@swan-io/boxed": "^1.2.0",
-    "change-case": "^4.1.2",
-    "lodash": "^4.14.202"
+    "@swan-io/boxed": "^3.2.0",
+    "lodash-es": "^4.17.0"
   },
   "type": "commonjs",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "devDependencies": {
-    "@types/lodash": "^4.14.202",
-    "vitest": "^1.2.1"
+    "@types/lodash-es": "^4.17.0",
+    "@dietizme/base": "workspace:*"
   },
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest run --coverage"
+    "test": "vitest --run",
+    "coverage": "vitest --coverage"
   }
 }

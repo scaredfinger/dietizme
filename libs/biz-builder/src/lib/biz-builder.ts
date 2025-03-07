@@ -1,5 +1,4 @@
-import { constantCase } from 'change-case'
-import _ from 'lodash'
+import * as _ from 'lodash-es'
 import { Result } from '@swan-io/boxed'
 
 import {
@@ -8,6 +7,7 @@ import {
   OperationResponse,
   ValidatorFunction,
 } from './interfaces'
+import { constantCase } from './constantCase'
 
 interface LogEvent {
   eventId: string
@@ -410,3 +410,4 @@ class BuildLoadContextVariables<Body, Sdk> {
 export function using<Body, Sdk>(sdk: Sdk, logger: Logger) {
   return new BuildLoadContextVariables<Body, Sdk>(sdk, logger)
 }
+
