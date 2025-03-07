@@ -7,14 +7,13 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest run --passWithNoTests --coverage"
+    "test": "vitest --run"
   },
   "dependencies": {
     "lodash-es": "^4.17.0",
     "short-unique-id": "^5.0.3"
   },
   "devDependencies": {
-    "vitest": "^1.2.1",
     "@types/lodash-es": "^4.17.0",
     "@dietizme/base": "workspace:*"
   }
