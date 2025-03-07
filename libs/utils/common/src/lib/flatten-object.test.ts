@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 
-import { flattenObject, FlattenedObject } from './flatten-object'
+import { flattenObject } from './flatten-object'
 
 describe('flattenObject', () => {
   test('should return empty object when input is empty', () => {

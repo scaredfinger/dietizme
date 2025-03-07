@@ -1,3 +1,3 @@
-export * from './unknown-error'
-export * from './execute-query'
-export * from './replace-language'
+export * from './lib/unknown-error'
+export * from './lib/execute-query'
+export * from './lib/replace-language'

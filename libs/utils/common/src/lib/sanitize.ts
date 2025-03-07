@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function removeTypename(obj: any): any {
   if (Array.isArray(obj)) {
     return obj.map(removeTypename)

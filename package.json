@@ -31,6 +31,8 @@
     "dev-all": "nx run-many --target=dev --all",
     "nx": "nx",
     "test": "nx test",
-    "test-all": "nx run-many --target=test --all"
+    "test-all": "nx run-many --target=test --all",
+    "lint": "nx lint",
+    "lint-all": "nx run-many --target=lint --all"
   }
 }

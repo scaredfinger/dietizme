@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, Mock } from 'vitest'
-import { createLogger, logger, Logger, Level } from './logging'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { createLogger } from './logging'
 
 // Mock pino library
 vi.mock('pino', () => {
@@ -32,13 +32,12 @@ vi.mock('pino', () => {
 })
 
 describe('Logger', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let pinoMock: any
-  let mockLoggerInstance: any
 
   beforeEach(async () => {
     vi.resetAllMocks()
     pinoMock = vi.mocked(await import('pino')).pino
-    mockLoggerInstance = (await import('pino')).pino()
   })
 
   describe('createLogger', () => {
@@ -47,13 +46,14 @@ describe('Logger', () => {
     it('should create a logger with specified level', async () => {
       const testLogger = createLogger('error')
 
-      // Expect pino to be called with the correct level
+      expect(testLogger).toBeDefined()
       expect(pinoMock).toHaveBeenCalledWith({ level: 'error' })
     })
-
+    
     it('should create a logger with default info level when not specified', () => {
       const testLogger = createLogger()
-
+      
+      expect(testLogger).toBeDefined()
       expect(pinoMock).toHaveBeenCalledWith({ level: 'info' })
     })
   })

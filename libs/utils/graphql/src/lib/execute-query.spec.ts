@@ -13,7 +13,7 @@ import { executeQuery } from './execute-query'
 
 // Mock the module before importing
 vi.mock('./replace-language', () => ({
-  replaceLanguage: vi.fn().mockImplementation((query, lang, als) => query),
+  replaceLanguage: vi.fn().mockImplementation((query) => query),
 }))
 
 describe('executeQuery function', () => {
@@ -97,6 +97,7 @@ describe('executeQuery function', () => {
 
   it('should handle GraphQL errors correctly', async () => {
     vi.spyOn(mockClient, 'query').mockResolvedValue({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       errors: [{ message: 'An error occurred' } as any],
       data: {},
       loading: false,
