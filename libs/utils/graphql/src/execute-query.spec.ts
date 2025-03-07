@@ -1,7 +1,13 @@
 import { ApolloClient, ApolloError, DocumentNode, InMemoryCache, NormalizedCacheObject, gql } from '@apollo/client'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 
 import { UnknownError } from './unknown-error'
 import { executeQuery } from './execute-query'
+
+// Mock the module before importing
+vi.mock('./replace-language', () => ({
+  replaceLanguage: vi.fn().mockImplementation((query, lang, als) => query),
+}))
 
 describe('executeQuery function', () => {
   let mockClient: ApolloClient<NormalizedCacheObject>
@@ -30,13 +36,12 @@ describe('executeQuery function', () => {
     language = 'en'
     alias = 'text'
 
-    jest.mock('./replace-language', () => ({
-      replaceLanguage: jest.fn().mockImplementation((query, lang, als) => query),
-    }))
+    // Reset mocks
+    vi.clearAllMocks()
   })
 
   it('works with default arguments too', async () => {
-    jest.spyOn(mockClient, 'query').mockResolvedValue({
+    vi.spyOn(mockClient, 'query').mockResolvedValue({
       data: { test: { id: '1', name: 'Test Name' } },
       loading: false,
       networkStatus: 7,
@@ -52,13 +57,13 @@ describe('executeQuery function', () => {
       Ok: data => {
         expect(data).toEqual({ test: { id: '1', name: 'Test Name' } })
       },
-      Error: fail
+      Error: () => { expect.fail('Should not have failed') }
     })
   
   })
 
   it('should execute a query and return data on success', async () => {
-    jest.spyOn(mockClient, 'query').mockResolvedValue({
+    vi.spyOn(mockClient, 'query').mockResolvedValue({
       data: { test: { id: '1', name: 'Test Name' } },
       loading: false,
       networkStatus: 7,
@@ -76,12 +81,12 @@ describe('executeQuery function', () => {
       Ok: data => {
         expect(data).toEqual({ test: { id: '1', name: 'Test Name' } })
       },
-      Error: fail
+      Error: () => { expect.fail('Should not have failed') }
     })
   })
 
   it('should handle GraphQL errors correctly', async () => {
-    jest.spyOn(mockClient, 'query').mockResolvedValue({
+    vi.spyOn(mockClient, 'query').mockResolvedValue({
       errors: [{ message: 'An error occurred' } as any],
       data: {},
       loading: false,
@@ -97,7 +102,7 @@ describe('executeQuery function', () => {
     })
 
     result.match({
-      Ok: fail,
+      Ok: () => { expect.fail('Should have failed') },
       Error: error => {
         expect(error).toBeInstanceOf(ApolloError)
       }
@@ -105,7 +110,7 @@ describe('executeQuery function', () => {
   })
 
   it('should handle network or unknown errors correctly', async () => {
-    jest.spyOn(mockClient, 'query').mockRejectedValue(new Error('Network error'))
+    vi.spyOn(mockClient, 'query').mockRejectedValue(new Error('Network error'))
 
     const result = await executeQuery({
       query: mockQuery,
@@ -116,7 +121,7 @@ describe('executeQuery function', () => {
     })
 
     result.match({
-      Ok: fail,
+      Ok: () => { expect.fail('Should have failed') },
       Error: error => {
         expect(error).toBeInstanceOf(UnknownError)
       }
@@ -126,7 +131,7 @@ describe('executeQuery function', () => {
   describe('executeQuery function', () => {
   
     it('should handle non-standard result.error correctly', async () => {
-      jest.spyOn(mockClient, 'query').mockResolvedValue({
+      vi.spyOn(mockClient, 'query').mockResolvedValue({
         error: new ApolloError({ errorMessage: 'Non-standard error' }),
         data: {},
         loading: false,
@@ -142,7 +147,7 @@ describe('executeQuery function', () => {
       })
   
       result.match({
-        Ok: fail,
+        Ok: () => { expect.fail('Should have failed') },
         Error: error => {
           expect(error).toBeInstanceOf(ApolloError)
           expect(error.message).toContain('Non-standard error')
@@ -151,9 +156,9 @@ describe('executeQuery function', () => {
     })
   
     it('should handle query cancellation correctly', async () => {
-      const abort = jest.fn()
+      const abort = vi.fn()
 
-      jest.spyOn(mockClient, 'query').mockImplementation(({ context }) => {
+      vi.spyOn(mockClient, 'query').mockImplementation(({ context }) => {
         return new Promise((resolve) => {  
 
           function onAbort() {
