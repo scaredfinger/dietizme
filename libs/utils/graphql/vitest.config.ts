@@ -1,12 +1,13 @@
 import { defineConfig } from 'vitest/config'
 
+import packageJson from './package.json'
+
 export default defineConfig({
   test: {
-    name: 'utils-graphql',
+    name: packageJson.name,
     globals: true,
     environment: 'node',
     include: ['**/*.{test,spec}.{ts,js}'],
-    setupFiles: ['./test-setup.ts'],
     typecheck: {
       tsconfig: './tsconfig.spec.json',
     },
