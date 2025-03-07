@@ -1,0 +1,20 @@
+{
+  "name": "@dietizme/biz-builder",
+  "version": "0.0.1",
+  "dependencies": {
+    "@swan-io/boxed": "^1.2.0",
+    "change-case": "^4.1.2",
+    "lodash": "^4.14.202"
+  },
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "devDependencies": {
+    "@types/lodash": "^4.14.202"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "jest --coverage"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{projectRoot}/**/*.json",
+        "{projectRoot}/**/*.scss",
+        "{projectRoot}/**/*.css"
+      ],
+      "outputs": ["{projectRoot}/dist"],
+      "dependsOn": ["^build"],
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      }
+    },
+    "test": {
+      "dependsOn": ["build", "^build"],
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      }
+    },
+    "env": {
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      },
+      "dependsOn": ["^build"]
+    },
+    "next:start": {
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      }
+    },
+    "generate-sample-organizations": {
+      "cache": false,
+      "configurations": {
+        "development": {},
+        "staging": {}
+      }
+    }
+  }
+}

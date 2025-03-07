@@ -1,0 +1,34 @@
+{
+  "name": "Node 22 with Nhost and Docker",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+		"source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+  ],
+  
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+  
+  "postCreateCommand": "pnpm install",
+  
+  "remoteEnv": {
+    "HOST_WORKSPACE": "${localWorkspaceFolder}",
+    "NHOST_PROJECT_NAME": "omnidata",
+    "NHOST_PROJECT_DIR": "apps/omnidata",
+    "NHOST_EXECUTION_FOLDER": "apps/omnidata/dist",
+    "NHOST_EXECUTION_SOURCE": "apps/omnidata/nhost",
+    "NHOST_DATA_FOLDER": "apps/omnidata/dist/.nhost/data"
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "firsttris.vscode-jest-runner",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "security.workspace.trust.enabled": false
+      }
+    }
+  }
+}

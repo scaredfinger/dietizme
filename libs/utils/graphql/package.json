@@ -1,0 +1,19 @@
+{
+  "name": "@dietizme/utils-graphql",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "@swan-io/boxed": "^1.2.0",
+    "@apollo/client": "3.8.0",
+    "graphql": "16.6.0"
+  },
+  "devDependencies": {
+  }
+}

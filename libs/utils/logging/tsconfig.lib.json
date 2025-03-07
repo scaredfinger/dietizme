@@ -1,0 +1,8 @@
+{
+  "extends": "@dietizme/base/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+  },
+  "include": ["**/*.ts", "../graphql/vitest.config.ts"],
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+}

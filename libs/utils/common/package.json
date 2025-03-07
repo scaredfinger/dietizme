@@ -1,0 +1,20 @@
+{
+  "name": "@dietizme/utils-common",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "jest --passWithNoTests --coverage"
+  },
+  "dependencies": {
+    "@naveen-bharathi/remove-graphql-typename": "^1.0.5",
+    "lodash": "^4.14.202",
+    "short-unique-id": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.202"
+  }
+}

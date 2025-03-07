@@ -1,0 +1,11 @@
+.env*
+node_modules
+dist
+build
+tmp
+.nx
+.next
+.tmp
+.secrets
+.pnpm-store
+*.ignore

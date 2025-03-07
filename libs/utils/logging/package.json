@@ -1,0 +1,18 @@
+{
+  "name": "@dietizme/utils-logging",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "pino": "^8.16.2",
+    "vitest": "^3.0.8"
+  },
+  "devDependencies": {
+    "@dietizme/base": "workspace:*"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json"
+  }
+}
