@@ -4,12 +4,12 @@ import { createLogger, logger, Logger, Level } from './logging'
 // Mock pino library
 vi.mock('pino', () => {
   // Create mock functions to track calls
-  const mockTrace = vi.fn();
-  const mockDebug = vi.fn();
-  const mockInfo = vi.fn();
-  const mockWarn = vi.fn();
-  const mockError = vi.fn();
-  const mockFatal = vi.fn();
+  const mockTrace = vi.fn()
+  const mockDebug = vi.fn()
+  const mockInfo = vi.fn()
+  const mockWarn = vi.fn()
+  const mockError = vi.fn()
+  const mockFatal = vi.fn()
 
   const mockLoggerInstance = {
     trace: mockTrace,
@@ -18,47 +18,45 @@ vi.mock('pino', () => {
     warn: mockWarn,
     error: mockError,
     fatal: mockFatal,
-  };
+  }
 
   const pino = vi.fn()
   pino.mockImplementation(() => {
-    return mockLoggerInstance;
+    return mockLoggerInstance
   })
 
   // Define a mock logger instance that we can track
   return {
-    pino
-  };
-});
+    pino,
+  }
+})
 
 describe('Logger', () => {
-  let pinoMock: any;
-  let mockLoggerInstance: any;
+  let pinoMock: any
+  let mockLoggerInstance: any
 
   beforeEach(async () => {
-    vi.resetAllMocks();
-    pinoMock = vi.mocked(await import('pino')).pino;
-    mockLoggerInstance = (await import('pino')).pino();
-  });
+    vi.resetAllMocks()
+    pinoMock = vi.mocked(await import('pino')).pino
+    mockLoggerInstance = (await import('pino')).pino()
+  })
 
   describe('createLogger', () => {
-
-    beforeEach(async () => {
-    })
+    beforeEach(async () => {})
 
     it('should create a logger with specified level', async () => {
-      const testLogger = createLogger('error');
+      const testLogger = createLogger('error')
 
       // Expect pino to be called with the correct level
-      expect(pinoMock).toHaveBeenCalledWith({ level: 'error' });
-    });
+      expect(pinoMock).toHaveBeenCalledWith({ level: 'error' })
+    })
 
     it('should create a logger with default info level when not specified', () => {
-      const testLogger = createLogger();
+      const testLogger = createLogger()
 
-      expect(pinoMock).toHaveBeenCalledWith({ level: 'info' });
-    });
-  });
+      expect(pinoMock).toHaveBeenCalledWith({ level: 'info' })
+    })
+  })
 
   // describe('logger methods', () => {
   //   const testCases: { method: keyof Logger, level: Level }[] = [
@@ -100,4 +98,4 @@ describe('Logger', () => {
   //     );
   //   });
   // });
-});
+})

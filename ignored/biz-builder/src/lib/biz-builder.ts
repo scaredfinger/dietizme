@@ -195,7 +195,7 @@ class Execute<
 
       this.logger.debug({
         eventId: 'PERSIST_VARIABLES',
-        persistVariables: renderObject(persistVariables)
+        persistVariables: renderObject(persistVariables),
       })
     } catch (e) {
       return Result.Error({

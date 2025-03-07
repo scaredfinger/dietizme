@@ -83,16 +83,16 @@ In a package directory, extend the base configurations as follows:
 
 ```js
 // vitest.config.ts
-import { defineConfig } from 'vitest/config';
-import baseConfig from '../../../rigs/base/vitest.config';
+import { defineConfig } from 'vitest/config'
+import baseConfig from '../../../rigs/base/vitest.config'
 
 export default defineConfig({
   ...baseConfig.test,
   test: {
     ...baseConfig.test,
     // Add any package-specific overrides here
-  }
-});
+  },
+})
 ```
 
 ## Benefits

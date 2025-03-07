@@ -5,21 +5,11 @@
   "main": "index.js",
   "exports": {
     "./tsconfig": "./tsconfig.json",
-    "./eslint": "./.eslintrc.json",
-    "./prettier": "./.prettierrc.json",
-    "./editorconfig": "./.editorconfig",
-    "./vitest": "./vitest.config.ts",
-    "./vitest-setup": "./vitest.setup.ts",
-    "./vitest-workspace": "./vitest.workspace.js"
+    "./eslint": "./.eslintrc.json"
   },
   "files": [
     "tsconfig.json",
-    ".eslintrc.json",
-    ".prettierrc.json",
-    ".editorconfig",
-    "vitest.config.ts",
-    "vitest.setup.ts",
-    "vitest.workspace.js"
+    ".eslintrc.json"
   ],
   "keywords": [
     "config",

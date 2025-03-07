@@ -1,12 +1,11 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    name: 'utils-graphql',
+    name: 'biz-builder',
     globals: true,
     environment: 'node',
     include: ['**/*.{test,spec}.{ts,js}'],
-    setupFiles: ['./test-setup.ts'],
     typecheck: {
       tsconfig: './tsconfig.spec.json',
     },
@@ -16,4 +15,4 @@ export default defineConfig({
       reportsDirectory: './build/coverage',
     },
   },
-});
+})

@@ -1,11 +1,11 @@
 import { defineConfig } from 'vitest/config'
-
 export default defineConfig({
   test: {
-    name: 'utils-common',
+    name: 'utils-graphql',
     globals: true,
     environment: 'node',
     include: ['**/*.{test,spec}.{ts,js}'],
+    setupFiles: ['./test-setup.ts'],
     typecheck: {
       tsconfig: './tsconfig.spec.json',
     },
@@ -16,3 +16,4 @@ export default defineConfig({
     },
   },
 })
+//# sourceMappingURL=vitest.config.js.map
