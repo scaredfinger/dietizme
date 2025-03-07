@@ -5,16 +5,22 @@
   "main": "index.js",
   "exports": {
     "./tsconfig": "./tsconfig.json",
-    "./eslint": "./.eslintrc.json"
+    "./eslint": "./eslintrc.config.mjs"
   },
   "files": [
     "tsconfig.json",
-    ".eslintrc.json"
+    "eslintrc.config.mjs"
   ],
   "keywords": [
     "config",
     "base",
     "shared"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.26.0"
+  }
 }
