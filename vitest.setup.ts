@@ -1,18 +1,26 @@
 import '@testing-library/jest-dom/vitest';
 import { vi } from 'vitest';
 
-// Add Jest compatibility layer for imports
-// This allows 'jest.mock()' to work as 'vi.mock()'
-globalThis.jest = {
-  ...vi,
-  mock: vi.mock,
-  spyOn: vi.spyOn,
-  fn: vi.fn,
-  clearAllMocks: vi.clearAllMocks,
-  resetAllMocks: vi.resetAllMocks,
+// Vitest already has expect.extend, so no need to redefine it
+
+// Add a global fail function similar to Jest's
+(global as any).fail = (reason = 'fail was called in a test.') => {
+  throw new Error(reason);
 };
 
-// Make sure 'mock' function works as expected in auto-hoisting scenario
-const originalMock = vi.mock;
-
-// Add more Jest compatibility as needed
+// Important: don't try to reassign jest.mock since it won't work
+// Vitest automatically handles module mocking
+// Instead, provide a compatibility layer for existing tests
+(global as any).jest = {
+  fn: vi.fn,
+  spyOn: vi.spyOn,
+  mock: vi.mock,
+  clearAllMocks: vi.clearAllMocks,
+  resetAllMocks: vi.resetAllMocks,
+  restoreAllMocks: vi.restoreAllMocks,
+  useFakeTimers: vi.useFakeTimers,
+  useRealTimers: vi.useRealTimers,
+  runOnlyPendingTimers: vi.runOnlyPendingTimers,
+  runAllTimers: vi.runAllTimers,
+  advanceTimersByTime: vi.advanceTimersByTime,
+};
