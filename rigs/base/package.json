@@ -1,3 +1,30 @@
 {
-  "name": "@dietizme/base"
+  "name": "@dietizme/base",
+  "version": "0.0.1",
+  "description": "Base shared configurations and settings for dietizme",
+  "main": "index.js",
+  "exports": {
+    "./tsconfig": "./tsconfig.json",
+    "./eslint": "./.eslintrc.json",
+    "./prettier": "./.prettierrc.json",
+    "./editorconfig": "./.editorconfig",
+    "./vitest": "./vitest.config.ts",
+    "./vitest-setup": "./vitest.setup.ts",
+    "./vitest-workspace": "./vitest.workspace.js"
+  },
+  "files": [
+    "tsconfig.json",
+    ".eslintrc.json",
+    ".prettierrc.json",
+    ".editorconfig",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "vitest.workspace.js"
+  ],
+  "keywords": [
+    "config",
+    "base",
+    "shared"
+  ],
+  "license": "ISC"
 }
