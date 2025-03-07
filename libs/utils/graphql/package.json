@@ -7,7 +7,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "jest --coverage"
+    "test": "vitest run --coverage"
   },
   "dependencies": {
     "@swan-io/boxed": "^1.2.0",
@@ -15,5 +15,6 @@
     "graphql": "16.6.0"
   },
   "devDependencies": {
+    "vitest": "^1.2.1"
   }
 }
