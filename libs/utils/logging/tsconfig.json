@@ -1,5 +1,5 @@
 {
-  "extends": "../../../rigs/base/tsconfig.json",
+  "extends": "./node_modules/@dietizme/base/tsconfig.json",
   "files": [],
   "include": [],
   "references": [
