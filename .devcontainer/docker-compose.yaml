@@ -1,7 +1,6 @@
 services:
-
   dev:
-    build: 
+    build:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspace
