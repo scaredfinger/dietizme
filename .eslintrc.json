@@ -1,3 +1,0 @@
-{
-  "extends": ["./rigs/base/.eslintrc.json"]
-}

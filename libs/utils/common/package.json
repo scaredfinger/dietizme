@@ -1,7 +1,7 @@
 {
   "name": "@dietizme/utils-common",
   "version": "0.0.1",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
@@ -10,12 +10,12 @@
     "test": "vitest run --passWithNoTests --coverage"
   },
   "dependencies": {
-    "@naveen-bharathi/remove-graphql-typename": "^1.0.5",
-    "lodash": "^4.14.202",
+    "lodash-es": "^4.17.0",
     "short-unique-id": "^5.0.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.202",
-    "vitest": "^1.2.1"
+    "vitest": "^1.2.1",
+    "@types/lodash-es": "^4.17.0",
+    "@dietizme/base": "workspace:*"
   }
 }

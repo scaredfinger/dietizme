@@ -3,6 +3,10 @@
   "compilerOptions": {
     "outDir": "dist",
   },
-  "include": ["**/*.ts", "../graphql/vitest.config.ts"],
-  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
+  "include": ["**/*.ts"],
+  "exclude": [
+    "./vitest.config.ts",
+    "**/*.spec.ts", 
+    "**/*.test.ts"
+  ]
 }

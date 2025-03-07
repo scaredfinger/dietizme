@@ -1,15 +1,24 @@
-import removeTypenameDefault from '@naveen-bharathi/remove-graphql-typename'
-import * as removeTypenameAliased from '@naveen-bharathi/remove-graphql-typename'
-
-import { now } from 'lodash'
+import { now } from 'lodash-es'
 
 import ShortUniqueId from 'short-unique-id'
 
 export * from './flatten-object'
 
 export * from './sluggify'
-
-const removeTypename = removeTypenameDefault || removeTypenameAliased
+function removeTypename(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(removeTypename)
+  } else if (obj !== null && typeof obj === 'object') {
+    const newObj: any = {}
+    for (const key in obj) {
+      if (key !== '__typename') {
+        newObj[key] = removeTypename(obj[key])
+      }
+    }
+    return newObj
+  }
+  return obj
+}
 
 export type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never

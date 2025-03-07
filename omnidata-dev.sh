@@ -1,1 +1,0 @@
- pnpm nx dev omnidata
