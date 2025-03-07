@@ -19,7 +19,7 @@ jobs:
 
       NEXT_PUBLIC_NHOST_SUBDOMAIN: yxbnidvjuegzpjedensp
       NEXT_PUBLIC_NHOST_REGION: eu-central-1
-      
+
       NEXT_BACKEND_HEALTHZ: https://yxbnidvjuegzpjedensp.hasura.eu-central-1.nhost.run/api/rest/organizations
       NEXT_PUBLIC_GRAPHQL_SERVER: https://yxbnidvjuegzpjedensp.hasura.eu-central-1.nhost.run/v1/graphql
       NEXT_PUBLIC_FILES_URL: https://yxbnidvjuegzpjedensp.storage.eu-central-1.nhost.run/v1/files
@@ -34,7 +34,7 @@ jobs:
       NEXT_PUBLIC_MAPBOX_TOKEN: NO_TOKEN
       NEXT_PUBLIC_POSTHOG_KEY: NO_KEY
       NEXT_PUBLIC_POSTHOG_HOST: https://app.posthog.com
-      
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

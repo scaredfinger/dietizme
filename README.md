@@ -25,21 +25,25 @@ Add the following records to your host file.
 ## Main steps
 
 For building the whole project. Needed before you run any of the apps
+
 ```bash
 pnpm nx run-many --target build --all
 ```
 
 For running omnidata
+
 ```bash
 pnpm nx dev omnidata
 ```
 
 For stopping it omnidata
+
 ```bash
 pnpm nx stop omnidata
 ```
 
 For cleanning all data
+
 ```bash
 pnpm nx clean omnidata
 ```
@@ -59,11 +63,13 @@ Download `.secrets`, `.env.staging`, `.env` and copy to root directory.
 ```
 
 If you see errors, most of the times is due to permissions.
+
 ```bash
 ./fix-permissions.sh
 ```
 
 If you want to clean up
+
 ```bash
 ./clean-up.sh
 ```
@@ -112,7 +118,7 @@ The `_deps` folder. No better name yet, but the underscore ensures it's the firs
 
 ## Components structure
 
-There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the 
+There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the
 components or their folders. For simple components create a file, for components that have sub components, create folders.
 
 ```yaml

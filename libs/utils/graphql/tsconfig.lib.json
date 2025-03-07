@@ -1,12 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true,
-    "types": [],
-    "noPropertyAccessFromIndexSignature": false,
-    "noImplicitAny": false
+    "outDir": "dist"
   },
   "include": ["**/*.ts"],
-  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts", "test-setup.ts"]
+  "exclude": ["./vitest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

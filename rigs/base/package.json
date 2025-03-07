@@ -1,3 +1,26 @@
 {
-  "name": "@dietizme/base"
+  "name": "@dietizme/base",
+  "version": "0.0.1",
+  "description": "Base shared configurations and settings for dietizme",
+  "main": "index.js",
+  "exports": {
+    "./tsconfig": "./tsconfig.json",
+    "./eslint": "./eslintrc.config.mjs"
+  },
+  "files": [
+    "tsconfig.json",
+    "eslintrc.config.mjs"
+  ],
+  "keywords": [
+    "config",
+    "base",
+    "shared"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.26.0"
+  }
 }

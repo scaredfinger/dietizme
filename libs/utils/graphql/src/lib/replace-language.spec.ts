@@ -5,25 +5,24 @@ import { FieldNode, Kind, OperationTypeNode } from 'graphql'
 
 describe('change-document-language', () => {
   it('is defined', () => {
-    expect(replaceLanguage).toBeDefined();
+    expect(replaceLanguage).toBeDefined()
   })
 
   describe('when document has no translatable field', () => {
-
     let document: DocumentNode
 
     beforeEach(() => {
       document = gql`
-      query get_some_entity($id: ID!) {
-        someEntity(id: $id) {
-          ...some_entity_with_no_multilang
+        query get_some_entity($id: ID!) {
+          someEntity(id: $id) {
+            ...some_entity_with_no_multilang
+          }
         }
-      }
-      
-      fragment some_entity_with_no_multilang on SomeEntityNoMultLang {
-        id
-        name
-      }
+
+        fragment some_entity_with_no_multilang on SomeEntityNoMultLang {
+          id
+          name
+        }
       `
     })
 
@@ -37,26 +36,25 @@ describe('change-document-language', () => {
   })
 
   describe('when document has a translatable field', () => {
-
     let document: DocumentNode
 
     beforeEach(() => {
       document = gql`
-      query get_some_entity($id: ID!) {
-        someEntity(id: $id) {
-          ...some_entity_with_multilang
+        query get_some_entity($id: ID!) {
+          someEntity(id: $id) {
+            ...some_entity_with_multilang
+          }
         }
-      }
-      
-      fragment some_entity_with_multilang on SomeEntityWithMultiLang {
-        id
-        name {
-          value: en
+
+        fragment some_entity_with_multilang on SomeEntityWithMultiLang {
+          id
+          name {
+            value: en
+          }
+          description {
+            value: en
+          }
         }
-        description {
-          value: en
-        }
-      }
       `
     })
 
@@ -65,21 +63,22 @@ describe('change-document-language', () => {
 
       expect(changedDocument).not.toEqual(document)
     })
-
   })
 
   describe('when the document has a inlined multilanguage field', () => {
     let doc: DocumentNode
 
     beforeEach(() => {
-      doc = gql`query get_super_hero($id: ID!) {
-        super_hero_by_pk(id: $id) {
-          id
-          name {
-            value: en
+      doc = gql`
+        query get_super_hero($id: ID!) {
+          super_hero_by_pk(id: $id) {
+            id
+            name {
+              value: en
+            }
           }
         }
-      }`
+      `
     })
 
     describe('and replacement language is different', () => {
@@ -94,7 +93,9 @@ describe('change-document-language', () => {
       })
 
       it('keeps the same number of fields', () => {
-        const selections = eval('replaced.definitions[0].selectionSet.selections[0].selectionSet.selections')
+        const selections = eval(
+          'replaced.definitions[0].selectionSet.selections[0].selectionSet.selections',
+        )
         expect(selections.length).toEqual(2)
       })
 
@@ -102,7 +103,9 @@ describe('change-document-language', () => {
         let multilanguageFieldSelection: FieldNode
 
         beforeEach(() => {
-          multilanguageFieldSelection = eval('replaced.definitions[0].selectionSet.selections[0].selectionSet.selections[1].selectionSet.selections[0]')
+          multilanguageFieldSelection = eval(
+            'replaced.definitions[0].selectionSet.selections[0].selectionSet.selections[1].selectionSet.selections[0]',
+          )
         })
 
         it('changes the to replaced language', () => {
@@ -120,18 +123,20 @@ describe('change-document-language', () => {
     let doc: DocumentNode
 
     beforeEach(() => {
-      doc = gql`query get_super_hero($id: ID!) {
-        super_hero_by_pk(id: $id) {
-          id
-          name {
-            ...multilanguage_text
+      doc = gql`
+        query get_super_hero($id: ID!) {
+          super_hero_by_pk(id: $id) {
+            id
+            name {
+              ...multilanguage_text
+            }
           }
         }
-      }
-      
-      fragment multilanguage_text on MultilanguageText {
-        value: en
-      }`
+
+        fragment multilanguage_text on MultilanguageText {
+          value: en
+        }
+      `
     })
 
     describe('and the replacement langua', () => {
@@ -146,7 +151,9 @@ describe('change-document-language', () => {
       })
 
       it('keeps the same number of fields', () => {
-        const selections = eval('replaced.definitions[1].selectionSet.selections')
+        const selections = eval(
+          'replaced.definitions[1].selectionSet.selections',
+        )
         expect(selections.length).toEqual(1)
       })
 
@@ -154,7 +161,9 @@ describe('change-document-language', () => {
         let multilanguageFieldSelection: FieldNode
 
         beforeEach(() => {
-          multilanguageFieldSelection = eval('replaced.definitions[1].selectionSet.selections[0]')
+          multilanguageFieldSelection = eval(
+            'replaced.definitions[1].selectionSet.selections[0]',
+          )
         })
 
         it('changes the to replaced language', () => {
@@ -198,15 +207,15 @@ describe('change-document-language', () => {
                     selections: [
                       {
                         kind: Kind.FIELD,
-                        name: { kind: Kind.NAME, value: 'id' }
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          }
-        ]
+                        name: { kind: Kind.NAME, value: 'id' },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
       }
     })
 

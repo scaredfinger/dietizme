@@ -1,20 +1,21 @@
 {
   "name": "@dietizme/utils-graphql",
-  "version": "0.0.1",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest run --coverage"
+    "test": "vitest --run",
+    "coverage": "vitest --coverage",
+    "lint": "eslint"
   },
   "dependencies": {
-    "@swan-io/boxed": "^1.2.0",
-    "@apollo/client": "3.8.0",
-    "graphql": "16.6.0"
+    "@swan-io/boxed": "^3.2.0",
+    "@apollo/client": "3.13.3",
+    "graphql": "16.10.0"
   },
   "devDependencies": {
-    "vitest": "^1.2.1"
+    "@dietizme/base": "workspace:*"
   }
 }

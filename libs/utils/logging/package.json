@@ -6,14 +6,15 @@
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "pino": "^8.16.2"
+    "pino": "^9.6.0"
   },
   "devDependencies": {
-    "@dietizme/base": "workspace:*",
-    "vitest": "^1.2.1"
+    "@dietizme/base": "workspace:*"
   },
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest run --passWithNoTests --coverage"
+    "test": "vitest --run",
+    "coverage": "vitest --run --coverage",
+    "lint": "eslint"
   }
 }

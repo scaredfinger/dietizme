@@ -44,10 +44,10 @@ export function sluggifyObject(
   obj: Record<string, string>,
 ): Record<string, string> {
   const result = {
-    ...obj
+    ...obj,
   }
-  
-  for(const key in obj) {
+
+  for (const key in obj) {
     result[key] = sluggify(obj[key])
   }
 

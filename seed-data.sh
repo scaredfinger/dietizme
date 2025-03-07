@@ -1,1 +1,0 @@
- pnpm exec nx run integration-tests:generate-sample-organizations --configuration=development

@@ -1,4 +1,11 @@
-import { ApolloClient, ApolloError, DocumentNode, InMemoryCache, NormalizedCacheObject, gql } from '@apollo/client'
+import {
+  ApolloClient,
+  ApolloError,
+  DocumentNode,
+  InMemoryCache,
+  NormalizedCacheObject,
+  gql,
+} from '@apollo/client'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 
 import { UnknownError } from './unknown-error'
@@ -6,7 +13,7 @@ import { executeQuery } from './execute-query'
 
 // Mock the module before importing
 vi.mock('./replace-language', () => ({
-  replaceLanguage: vi.fn().mockImplementation((query, lang, als) => query),
+  replaceLanguage: vi.fn().mockImplementation((query) => query),
 }))
 
 describe('executeQuery function', () => {
@@ -54,12 +61,13 @@ describe('executeQuery function', () => {
     })
 
     result.match({
-      Ok: data => {
+      Ok: (data) => {
         expect(data).toEqual({ test: { id: '1', name: 'Test Name' } })
       },
-      Error: () => { expect.fail('Should not have failed') }
+      Error: () => {
+        expect.fail('Should not have failed')
+      },
     })
-  
   })
 
   it('should execute a query and return data on success', async () => {
@@ -74,19 +82,22 @@ describe('executeQuery function', () => {
       variables: mockVariables,
       client: mockClient,
       language,
-      alias
+      alias,
     })
 
     result.match({
-      Ok: data => {
+      Ok: (data) => {
         expect(data).toEqual({ test: { id: '1', name: 'Test Name' } })
       },
-      Error: () => { expect.fail('Should not have failed') }
+      Error: () => {
+        expect.fail('Should not have failed')
+      },
     })
   })
 
   it('should handle GraphQL errors correctly', async () => {
     vi.spyOn(mockClient, 'query').mockResolvedValue({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       errors: [{ message: 'An error occurred' } as any],
       data: {},
       loading: false,
@@ -98,14 +109,16 @@ describe('executeQuery function', () => {
       variables: mockVariables,
       client: mockClient,
       language,
-      alias
+      alias,
     })
 
     result.match({
-      Ok: () => { expect.fail('Should have failed') },
-      Error: error => {
+      Ok: () => {
+        expect.fail('Should have failed')
+      },
+      Error: (error) => {
         expect(error).toBeInstanceOf(ApolloError)
-      }
+      },
     })
   })
 
@@ -117,19 +130,20 @@ describe('executeQuery function', () => {
       variables: mockVariables,
       client: mockClient,
       language,
-      alias
+      alias,
     })
 
     result.match({
-      Ok: () => { expect.fail('Should have failed') },
-      Error: error => {
+      Ok: () => {
+        expect.fail('Should have failed')
+      },
+      Error: (error) => {
         expect(error).toBeInstanceOf(UnknownError)
-      }
+      },
     })
   })
 
   describe('executeQuery function', () => {
-  
     it('should handle non-standard result.error correctly', async () => {
       vi.spyOn(mockClient, 'query').mockResolvedValue({
         error: new ApolloError({ errorMessage: 'Non-standard error' }),
@@ -137,51 +151,50 @@ describe('executeQuery function', () => {
         loading: false,
         networkStatus: 7,
       })
-  
+
       const result = await executeQuery({
         query: mockQuery,
         variables: mockVariables,
         client: mockClient,
         language,
-        alias
+        alias,
       })
-  
+
       result.match({
-        Ok: () => { expect.fail('Should have failed') },
-        Error: error => {
+        Ok: () => {
+          expect.fail('Should have failed')
+        },
+        Error: (error) => {
           expect(error).toBeInstanceOf(ApolloError)
           expect(error.message).toContain('Non-standard error')
-        }
+        },
       })
     })
-  
+
     it('should handle query cancellation correctly', async () => {
       const abort = vi.fn()
 
       vi.spyOn(mockClient, 'query').mockImplementation(({ context }) => {
-        return new Promise((resolve) => {  
-
+        return new Promise((resolve) => {
           function onAbort() {
             abort()
             resolve({ data: {}, loading: false, networkStatus: 7 })
           }
-          
+
           context?.['fetchOptions']?.signal.addEventListener('abort', onAbort)
         })
       })
-  
+
       const future = executeQuery({
         query: mockQuery,
         variables: mockVariables,
         client: mockClient,
         language,
-        alias
+        alias,
       })
-  
+
       future.cancel()
       expect(abort).toHaveBeenCalled()
     })
-  
   })
-
 })
