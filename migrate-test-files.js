@@ -12,10 +12,6 @@ const path = require('path');
 // Default directory to scan if none provided
 const directoryToScan = process.argv[2] || '.';
 
-// Import statements to add at the top of each file
-const vitestImportStatement = `import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
-`;
-
 // Function to process a file
 async function processFile(filePath) {
   try {
@@ -35,16 +31,49 @@ async function processFile(filePath) {
       return;
     }
 
-    // Detect if file uses jest.mock
-    const hasJestMock = content.includes('jest.mock(');
+    // Create backup
+    fs.writeFileSync(`${filePath}.bak`, content);
+
+    // Detect used testing functions
+    const usedFunctions = new Set();
     
-    // Special handling for files with jest.mock
-    if (hasJestMock) {
-      console.log(`  File contains jest.mock - requires manual migration`);
+    // Check for common testing functions
+    if (content.includes('describe(')) usedFunctions.add('describe');
+    if (content.includes('it(')) usedFunctions.add('it');
+    if (content.includes('test(')) usedFunctions.add('test');
+    if (content.includes('expect(')) usedFunctions.add('expect');
+    if (content.includes('beforeEach(')) usedFunctions.add('beforeEach');
+    if (content.includes('afterEach(')) usedFunctions.add('afterEach');
+    if (content.includes('beforeAll(')) usedFunctions.add('beforeAll');
+    if (content.includes('afterAll(')) usedFunctions.add('afterAll');
+    
+    // Check for mocking functions
+    const hasMocking = content.includes('jest.mock(') || 
+                      content.includes('jest.fn(') || 
+                      content.includes('jest.spyOn(');
+    
+    if (hasMocking) {
+      usedFunctions.add('vi');
+    }
+    
+    // If we found testing functions, add the imports
+    if (usedFunctions.size > 0) {
+      const importList = Array.from(usedFunctions).join(', ');
+      const vitestImport = `import { ${importList} } from 'vitest';\n`;
       
-      // Save a backup of the original file
-      fs.writeFileSync(`${filePath}.bak`, content);
-      
+      // Add import at the top of the file, after any existing imports
+      const importRegex = /^(import .+;\n)+/;
+      if (importRegex.test(content)) {
+        content = content.replace(importRegex, (match) => {
+          return match + vitestImport;
+        });
+      } else {
+        content = vitestImport + content;
+      }
+    }
+    
+    // Process mocks
+    if (hasMocking) {
       // Extract all jest.mock statements
       const mockRegex = /jest\.mock\(['"]([^'"]+)['"](,\s*\(\)\s*=>\s*\{[^}]+\})?\)/g;
       let mockMatches = [];
@@ -58,7 +87,6 @@ async function processFile(filePath) {
         });
       }
       
-      // Move all jest.mock statements to the top, converting to vi.mock
       if (mockMatches.length > 0) {
         // Remove all jest.mock statements from the content
         mockMatches.forEach(({ fullMatch }) => {
@@ -72,8 +100,7 @@ async function processFile(filePath) {
         
         // Add comments explaining the change
         const mockComment = `
-// NOTE: These mocks were moved to the top because Vitest requires mocks to be
-// defined before the module imports (unlike Jest's hoisting behavior)
+// NOTE: Mocks need to be at the top in Vitest
 ${viMockStatements}
 `;
         
@@ -86,13 +113,9 @@ ${viMockStatements}
         } else {
           content = mockComment + content;
         }
-        
-        // Add Vitest import at the top
-        content = vitestImportStatement + content;
       }
-    } else {
-      // Normal replacement for files without jest.mock
-      // Replace Jest mocks with Vitest
+      
+      // Replace all other Jest API calls with Vitest
       content = content
         .replace(/jest\.fn/g, 'vi.fn')
         .replace(/jest\.spyOn/g, 'vi.spyOn')
@@ -101,20 +124,11 @@ ${viMockStatements}
         .replace(/jest\.useFakeTimers/g, 'vi.useFakeTimers')
         .replace(/jest\.useRealTimers/g, 'vi.useRealTimers')
         .replace(/jest\.advanceTimersByTime/g, 'vi.advanceTimersByTime')
-        .replace(/jest\.runAllTimers/g, 'vi.runAllTimers');
-        
-      // Add import at the top of the file, after any other imports
-      const importRegex = /^(import .+;\n)+/;
-      if (importRegex.test(content)) {
-        content = content.replace(importRegex, (match) => {
-          return match + vitestImportStatement;
-        });
-      } else {
-        content = vitestImportStatement + content;
-      }
+        .replace(/jest\.runAllTimers/g, 'vi.runAllTimers')
+        .replace(/jest\.mock/g, 'vi.mock');
     }
     
-    // Replace obsolete patterns
+    // Fix other test patterns
     content = content.replace(/fail\(/g, 'expect.fail(')
       .replace(/\.toBeTruthy\(\)/g, '.toBe(true)')
       .replace(/\.toBeFalsy\(\)/g, '.toBe(false)');
