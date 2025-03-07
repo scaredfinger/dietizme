@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest"
+    "test": "vitest --run",
+    "test:coverage": "vitest --run --coverage"
   }
 }
