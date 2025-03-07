@@ -1,0 +1,25 @@
+{
+  "extends": "./rigs/base/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@dietizme/*": ["libs/*"]
+    }
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./libs/biz-builder"
+    },
+    {
+      "path": "./libs/utils/common"
+    },
+    {
+      "path": "./libs/utils/graphql"
+    },
+    {
+      "path": "./libs/utils/logging"
+    }
+  ]
+}
