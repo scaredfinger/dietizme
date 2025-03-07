@@ -11,10 +11,11 @@
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "devDependencies": {
-    "@types/lodash": "^4.14.202"
+    "@types/lodash": "^4.14.202",
+    "vitest": "^1.2.1"
   },
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "jest --coverage"
+    "test": "vitest run --coverage"
   }
 }
