@@ -1,0 +1,128 @@
+# Dependabot configuration file
+# See documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    # Look for `package.json` and `lock` files in the root directory
+    directory: "/"
+    # Check for updates once a week
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # Set reviewers for pull requests
+    reviewers:
+      - "scaredfinger"
+    # Group all updates together
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    # Set the version requirement update strategy
+    versioning-strategy: increase
+    # Limit the number of open pull requests for npm dependencies
+    open-pull-requests-limit: 10
+    # Set the commit message prefix
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    # Labels for pull requests
+    labels:
+      - "dependencies"
+    
+  # Enable updates for individual packages in the monorepo
+  - package-ecosystem: "npm"
+    directory: "/libs/biz-builder"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "scaredfinger"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    versioning-strategy: increase
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "npm"
+    directory: "/libs/utils/common"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "scaredfinger"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    versioning-strategy: increase
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "npm"
+    directory: "/libs/utils/graphql"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "scaredfinger"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    versioning-strategy: increase
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "npm"
+    directory: "/libs/utils/logging"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "scaredfinger"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+    versioning-strategy: increase
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    # Look for `.github/workflows` files in the `/.github` directory
+    directory: "/"
+    # Check for updates once a week
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    reviewers:
+      - "scaredfinger"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "ci"
+      - "dependencies"
