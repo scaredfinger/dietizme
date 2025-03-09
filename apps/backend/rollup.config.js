@@ -31,6 +31,8 @@ export default {
       outputFolder: 'dist/functions',
       additionalDependencies: externalPackages,
       baseContents: ({ }) => ({
+        name: pkg.name,
+        type: 'module',
         dependencies: {},
       }),
     }),

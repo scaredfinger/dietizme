@@ -30,7 +30,7 @@
   "name": "backend",
   "scripts": {
     "link-nhost": "mkdir -p dist && cd dist && rm -rf nhost && ln -s ../nhost nhost",
-    "build": "pnpm clean-functions && pnpm build-functions && pnpm build-packagejson && pnpm build-packagelockjson && pnpm build-nhost-config && pnpm build-folders",
+    "build": "pnpm link-nhost  && pnpm generate-dot-files && pnpm clean-functions && pnpm build-functions  && pnpm build-packagelockjson && pnpm build-nhost-config && pnpm build-folders",
     "build-packagelockjson": "cd dist/functions && npm install --package-lock-only",
     "build-nhost-config": " mkdir -p dist/.nhost && cp -r nhost-config-template/data dist/.nhost/data && cp -r nhost-config-template/traefik dist/.nhost/traefik",
     "build-functions": "rollup -c --bundleConfigAsCjs",
@@ -39,18 +39,19 @@
     "clean-nhost": "rm -rf dist/.nhost && rm -rf dist/nhost",
     "clean-js": "rm -rf dist/*.js",
     "clean-functions": "rm -rf dist/functions",
-    "clean-data": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name omnidata down --volumes",
+    "clean-data": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} down --volumes",
     "clean-others": "rm -rf dist",
-    "dev": "pnpm link-nhost  && pnpm build && pnpm serve",
-    "serve": "cp .secrets dist && docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name omnidata up --detach",
-    "stop": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name omnidata down",
+    "dev": "pnpm build && pnpm serve",
+    "serve": "cp .secrets dist && docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} up --detach",
+    "stop": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} down",
     "export-schema": "gq https://local.hasura.nhost.run/v1/graphql -H 'X-Hasura-Admin-Secret: nhost-admin-secret' --introspect > graphql/schema.graphql",
     "generate-functions-graphql": "graphql-codegen --config graphql-codegen-config.yaml --verbose --debug",
     "test": "jest --coverage --passWithNoTests",
     "merge-workspace-deps": "merge-workspace-deps",
     "postinstall": "merge-workspace-deps",
-    "generate-env": "generate-env",
-    "generate-secrets": "generate-env .secrets"
+    "generate-dot-files": "pnpm generate-env && pnpm generate-secrets",
+    "generate-env": "rm -f .env && generate-env",
+    "generate-secrets": "rm -f .secrets && generate-env .secrets"
   },
   "version": "1.0.0"
 }

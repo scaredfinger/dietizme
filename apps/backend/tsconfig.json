@@ -1,9 +1,10 @@
 {
   "extends": "./node_modules/@dietizme/base/tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
+    "rootDir": "functions",
     "declaration": false,
     "sourceMap": false
   },
   "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

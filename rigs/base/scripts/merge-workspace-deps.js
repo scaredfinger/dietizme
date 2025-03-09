@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
+import process from 'process';
 
 // Main function that can be imported for testing
 const mergeWorkspaceDeps = () => {

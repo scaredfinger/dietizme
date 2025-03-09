@@ -43,7 +43,7 @@ function writeEnvFile() {
   // Get environment variables and sort them
   const envVars = Object.entries(process.env)
     .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
-    .map(([key, value]) => `${key}=${value}`)
+    .map(([key, value]) => `${key}='${value}'`)
     .join('\n');
 
   // Write to file
