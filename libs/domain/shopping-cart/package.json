@@ -1,0 +1,19 @@
+{
+  "name": "@dietizme/domain-shopping-cart",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "vitest --run",
+    "coverage": "vitest --coverage",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@dietizme/utils-logging": "workspace:*"
+  },
+  "devDependencies": {
+    "@dietizme/base": "workspace:*"
+  }
+}

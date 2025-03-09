@@ -8,7 +8,11 @@
     "@nhost/nhost-js": "^3.2.5",
     "cross-fetch": "^3.1.6",
     "graphql": "^16.10.0",
-    "graphql-request": "^5.1.0"
+    "graphql-request": "^5.1.0",
+
+    "lodash-es": "^4.17.0",
+    "short-unique-id": "^5.2.0",
+    "pino": "^9.6.0"
   },
   "description": "",
   "devDependencies": {
@@ -52,7 +56,9 @@
     "stop": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name omnidata down",
     "export-schema": "gq https://local.hasura.nhost.run/v1/graphql -H 'X-Hasura-Admin-Secret: nhost-admin-secret' --introspect > graphql/schema.graphql",
     "generate-functions-graphql": "graphql-codegen --config graphql-codegen-config.yaml --verbose --debug",
-    "test": "jest --coverage --passWithNoTests"
+    "test": "jest --coverage --passWithNoTests",
+    "merge-workspace-deps": "node scripts/merge-workspace-deps.js",
+    "postinstall": "npm run merge-workspace-deps"
   },
   "version": "1.0.0"
 }

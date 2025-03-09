@@ -68,6 +68,15 @@ importers:
       graphql-request:
         specifier: ^5.1.0
         version: 5.2.0(graphql@16.10.0)
+      lodash-es:
+        specifier: ^4.17.0
+        version: 4.17.21
+      pino:
+        specifier: ^9.6.0
+        version: 9.6.0
+      short-unique-id:
+        specifier: ^5.2.0
+        version: 5.2.0
     devDependencies:
       '@dietizme/base':
         specifier: workspace:*
@@ -109,6 +118,16 @@ importers:
       '@types/lodash-es':
         specifier: ^4.17.0
         version: 4.17.12
+
+  libs/domain/shopping-cart:
+    dependencies:
+      '@dietizme/utils-logging':
+        specifier: workspace:*
+        version: link:../../utils/logging
+    devDependencies:
+      '@dietizme/base':
+        specifier: workspace:*
+        version: link:../../../rigs/base
 
   libs/utils/common:
     dependencies:

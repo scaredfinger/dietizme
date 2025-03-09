@@ -2,7 +2,6 @@
   "extends": "./node_modules/@dietizme/base/tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
-    "target": "es2020",
     "declaration": false,
     "sourceMap": false
   },
