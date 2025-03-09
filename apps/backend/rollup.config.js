@@ -28,7 +28,7 @@ export default {
     nodeResolve(),
     typescript({ tsconfig: './tsconfig.json' }),
     generatePackageJson({
-      outputFolder: 'dist',
+      outputFolder: 'dist/functions',
       additionalDependencies: externalPackages,
       baseContents: ({ }) => ({
         dependencies: {},

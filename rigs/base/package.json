@@ -9,12 +9,14 @@
     "./eslint": "./eslintrc.config.mjs"
   },
   "bin": {
-    "merge-workspace-deps": "./scripts/merge-workspace-deps.js"
+    "merge-workspace-deps": "./scripts/merge-workspace-deps.js",
+    "generate-env": "./scripts/generate-env.js"
   },
   "files": [
     "tsconfig.json",
     "eslintrc.config.mjs",
-    "scripts/merge-workspace-deps.js"
+    "scripts/merge-workspace-deps.js",
+    "scripts/generate-env.js"
   ],
   "scripts": {
     

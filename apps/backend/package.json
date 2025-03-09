@@ -30,11 +30,10 @@
   "name": "backend",
   "scripts": {
     "link-nhost": "mkdir -p dist && cd dist && rm -rf nhost && ln -s ../nhost nhost",
-    "build": "pnpm clean-functions && pnpm build-rollup && pnpm build-packagejson && pnpm build-packagelockjson && pnpm build-nhost-config && pnpm build-folders",
-    "build-packagejson": "jq '{dependencies: .peerDependencies}' package.json > dist/package.json",
-    "build-packagelockjson": "cd dist && npm install --package-lock-only",
+    "build": "pnpm clean-functions && pnpm build-functions && pnpm build-packagejson && pnpm build-packagelockjson && pnpm build-nhost-config && pnpm build-folders",
+    "build-packagelockjson": "cd dist/functions && npm install --package-lock-only",
     "build-nhost-config": " mkdir -p dist/.nhost && cp -r nhost-config-template/data dist/.nhost/data && cp -r nhost-config-template/traefik dist/.nhost/traefik",
-    "build-rollup": "rollup -c --bundleConfigAsCjs",
+    "build-functions": "rollup -c --bundleConfigAsCjs",
     "build-folders": "mkdir -p dist/.nhost/data && cd dist/.nhost/data && mkdir -p mailhog && mkdir -p minio && mkdir -p console-config",
     "clean": "pnpm clean-nhost && pnpm clean-js && pnpm clean-functions && pnpm clean-data && pnpm clean-others",
     "clean-nhost": "rm -rf dist/.nhost && rm -rf dist/nhost",
@@ -49,7 +48,9 @@
     "generate-functions-graphql": "graphql-codegen --config graphql-codegen-config.yaml --verbose --debug",
     "test": "jest --coverage --passWithNoTests",
     "merge-workspace-deps": "merge-workspace-deps",
-    "postinstall": "merge-workspace-deps"
+    "postinstall": "merge-workspace-deps",
+    "generate-env": "generate-env",
+    "generate-secrets": "generate-env .secrets"
   },
   "version": "1.0.0"
 }
