@@ -28,13 +28,6 @@
   "license": "ISC",
   "main": "index.js",
   "name": "backend",
-  "peerDependencies": {
-    "@nhost/nhost-js": "^3.2.5",
-    "cross-fetch": "^3.1.6",
-    "graphql": "^16.10.0",
-    "graphql-request": "^5.1.0",
-    "@swan-io/boxed": "^3.2.0"
-  },
   "scripts": {
     "link-nhost": "mkdir -p dist && cd dist && rm -rf nhost && ln -s ../nhost nhost",
     "build": "pnpm clean-functions && pnpm build-rollup && pnpm build-packagejson && pnpm build-packagelockjson && pnpm build-nhost-config && pnpm build-folders",
