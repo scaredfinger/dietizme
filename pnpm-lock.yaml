@@ -81,7 +81,7 @@ importers:
     dependencies:
       '@apollo/client':
         specifier: 3.13.3
-        version: 3.13.3(graphql@16.10.0)
+        version: 3.13.3(graphql@16.10.0)(react@19.0.0)
       '@swan-io/boxed':
         specifier: ^3.2.0
         version: 3.2.0(typescript@5.4.5)
@@ -1837,6 +1837,10 @@ packages:
   react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
+  react@19.0.0:
+    resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
+    engines: {node: '>=0.10.0'}
+
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -2349,7 +2353,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@apollo/client@3.13.3(graphql@16.10.0)':
+  '@apollo/client@3.13.3(graphql@16.10.0)(react@19.0.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.10.0)
       '@wry/caches': 1.0.1
@@ -2360,11 +2364,13 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       optimism: 0.18.1
       prop-types: 15.8.1
-      rehackt: 0.1.0
+      rehackt: 0.1.0(react@19.0.0)
       symbol-observable: 4.0.0
       ts-invariant: 0.10.3
       tslib: 2.6.2
       zen-observable-ts: 1.2.5
+    optionalDependencies:
+      react: 19.0.0
     transitivePeerDependencies:
       - '@types/react'
 
@@ -4031,6 +4037,9 @@ snapshots:
 
   react-is@18.2.0: {}
 
+  react@19.0.0:
+    optional: true
+
   readable-stream@3.6.2:
     dependencies:
       inherits: 2.0.4
@@ -4044,7 +4053,9 @@ snapshots:
 
   real-require@0.2.0: {}
 
-  rehackt@0.1.0: {}
+  rehackt@0.1.0(react@19.0.0):
+    optionalDependencies:
+      react: 19.0.0
 
   require-directory@2.1.1: {}
 

@@ -4,8 +4,8 @@ import {
   DocumentNode,
   InMemoryCache,
   NormalizedCacheObject,
-  gql,
-} from '@apollo/client'
+  gql
+} from '@apollo/client/core'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 
 import { UnknownError } from './unknown-error'

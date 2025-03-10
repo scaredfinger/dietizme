@@ -1,4 +1,4 @@
-import { DocumentNode, gql } from '@apollo/client'
+import { DocumentNode, gql } from '@apollo/client/core'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { FieldNode, Kind, OperationTypeNode } from 'graphql'
 
