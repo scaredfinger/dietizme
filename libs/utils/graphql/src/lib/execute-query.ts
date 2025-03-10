@@ -4,7 +4,7 @@ import {
   NormalizedCacheObject,
   OperationVariables,
   ApolloError,
-} from '@apollo/client'
+} from '@apollo/client/core'
 import { Result, Future } from '@swan-io/boxed'
 
 import { UnknownError } from './unknown-error'

@@ -1,4 +1,4 @@
-import { DocumentNode } from '@apollo/client'
+import { DocumentNode } from '@apollo/client/core'
 import type { SelectionNode, SelectionSetNode } from 'graphql/language/ast'
 
 export function replaceLanguage(

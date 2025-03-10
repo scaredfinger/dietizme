@@ -25,28 +25,42 @@ Add the following records to your host file.
 ## Main steps
 
 For building the whole project. Needed before you run any of the apps
-
 ```bash
 pnpm nx run-many --target build --all
 ```
 
 For running omnidata
-
 ```bash
 pnpm nx dev omnidata
 ```
 
 For stopping it omnidata
-
 ```bash
 pnpm nx stop omnidata
 ```
 
 For cleanning all data
-
 ```bash
 pnpm nx clean omnidata
 ```
+
+## Dependency Management
+
+This project uses GitHub's Dependabot to keep dependencies up-to-date. Dependabot automatically creates pull requests for dependency updates on a weekly schedule (every Monday).
+
+### Dependabot Configuration
+
+- Root package.json and all library dependencies are monitored
+- Updates are grouped together to minimize PR noise
+- Minor and patch updates can be auto-merged
+- Configuration is in `.github/dependabot.yml`
+
+### Reviewing Dependency Updates
+
+When Dependabot creates a PR:
+1. CI will run to validate that the update doesn't break the build
+2. Minor and patch updates will auto-merge if tests pass
+3. Major updates require manual review and merge
 
 ## Sample data
 
@@ -63,13 +77,11 @@ Download `.secrets`, `.env.staging`, `.env` and copy to root directory.
 ```
 
 If you see errors, most of the times is due to permissions.
-
 ```bash
 ./fix-permissions.sh
 ```
 
 If you want to clean up
-
 ```bash
 ./clean-up.sh
 ```
@@ -118,7 +130,7 @@ The `_deps` folder. No better name yet, but the underscore ensures it's the firs
 
 ## Components structure
 
-There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the
+There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the 
 components or their folders. For simple components create a file, for components that have sub components, create folders.
 
 ```yaml

@@ -3029,7 +3029,7 @@ snapshots:
       hoist-non-react-statics: 3.3.2
       optimism: 0.18.1
       prop-types: 15.8.1
-      rehackt: 0.1.0
+      rehackt: 0.1.0(react@19.0.0)
       symbol-observable: 4.0.0
       ts-invariant: 0.10.3
       tslib: 2.6.2
@@ -5161,7 +5161,9 @@ snapshots:
 
   real-require@0.2.0: {}
 
-  rehackt@0.1.0: {}
+  rehackt@0.1.0(react@19.0.0):
+    optionalDependencies:
+      react: 19.0.0
 
   require-directory@2.1.1: {}
 
