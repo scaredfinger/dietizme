@@ -11,7 +11,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@apollo/client": "3.13.3",
+    "@apollo/client": "3.13.4",
     "@swan-io/boxed": "^3.2.0",
     "graphql": "16.10.0"
   },
