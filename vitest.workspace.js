@@ -5,4 +5,5 @@ export default defineWorkspace([
   './libs/utils/common/vitest.config.ts',
   './libs/utils/graphql/vitest.config.ts',
   './libs/biz-builder/vitest.config.ts',
+  './rigs/base/vitest.config.js',
 ])

@@ -1,0 +1,101 @@
+services:
+    auth:
+        user: "1000:1000"
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_EXECUTION_FOLDER}/nhost/emails
+              target: /app/email-templates
+              read_only: false
+    configserver:
+        user: "1000:1000"
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_EXECUTION_SOURCE}
+              target: /tmp/root/nhost
+              read_only: false
+            - type: bind
+              source: ${HOST_WORKSPACE}/apps/${NHOST_PROJECT_NAME}
+              target: /tmp/root
+              read_only: false
+    console:
+        user: "1000:1000"
+        environment:
+            HASURA_GRAPHQL_METADATA_DIR: /app/metadata
+            HASURA_GRAPHQL_MIGRATIONS_DIR: /app/migrations
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_EXECUTION_FOLDER}/nhost
+              target: /app
+              read_only: false
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_DATA_FOLDER}/console-config
+              target: /.hasura
+              read_only: false
+    dashboard:
+    functions:
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_EXECUTION_FOLDER}
+              target: /opt/project
+              read_only: false
+            - type: volume
+              source: root_node_modules
+              target: /opt/project/node_modules
+              read_only: false
+            - type: volume
+              source: functions_node_modules
+              target: /opt/project/functions/node_modules
+              read_only: false
+    graphql:
+    mailhog:
+        user: "1000:1000"
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_DATA_FOLDER}/mailhog
+              target: /maildir
+              read_only: false
+    minio:
+        user: "1000:1000"
+        volumes:
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_DATA_FOLDER}/minio
+              target: /data
+    postgres:
+        volumes:
+            - type: volume
+              source: pgdata
+              target: /var/lib/postgresql/data/pgdata
+              read_only: false
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_DATA_FOLDER}/db/pg_hba_local.conf
+              target: /etc/pg_hba_local.conf
+              read_only: false
+    storage:
+    traefik:
+        command:
+            - --api.insecure=true
+            - --providers.docker=true
+            - --providers.file.directory=/opt/traefik
+            - --providers.file.watch=true
+            - --providers.docker.exposedbydefault=false
+            - --providers.docker.constraints=Label(`com.docker.compose.project`,`${NHOST_PROJECT_NAME}`)
+            - --entrypoints.web.address=:443
+            - --api.dashboard=true 
+        ports:
+            - mode: ingress
+              target: 443
+              published: "443"
+              protocol: tcp
+
+            - 8080:8080
+        volumes:
+            - type: bind
+              source: /var/run/docker.sock
+              target: /var/run/docker.sock
+              read_only: true
+            - type: bind
+              source: ${HOST_WORKSPACE}/${NHOST_EXECUTION_FOLDER}/.nhost/traefik
+              target: /opt/traefik
+              read_only: true

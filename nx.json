@@ -70,6 +70,13 @@
         "development": {},
         "staging": {}
       }
+    },
+    "generate-dot-files": {
+      "configurations": {
+        "development": {},
+        "staging": {},
+        "production": {}
+      }
     }
   }
 }
