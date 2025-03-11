@@ -1,0 +1,16 @@
+{
+  "name": "@otiuming/domain-search",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "@otiuming/domain-data-types": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.3"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json"
+  }
+}

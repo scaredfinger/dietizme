@@ -3,9 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "declaration": true,
-    "esModuleInterop": true,
-    "types": ["node"]
+    "types": []
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "exclude": ["jest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

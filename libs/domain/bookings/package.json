@@ -1,0 +1,23 @@
+{
+  "name": "@otiuming/domain-bookings",
+  "version": "0.0.1",
+  "dependencies": {
+    "@otiuming/domain-data-types": "workspace:^",
+    "@otiuming/domain-omnidata-types": "workspace:^",
+    "@swan-io/boxed": "^1.2.0",
+    "luxon": "^3.1.1",
+    "lodash": "^4.14.202"
+  },
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.3.3",
+    "@faker-js/faker": "^7.6.0",
+    "@types/lodash": "^4.14.202"
+  }
+}

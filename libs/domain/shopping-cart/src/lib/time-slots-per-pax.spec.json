@@ -1,0 +1,50 @@
+[
+  {
+    "searchParams": {
+      "dateRange": {
+        "from": "2024-02-24T15:00:00",
+        "to": "2024-02-24T18:00:00"
+      },
+      "units": [
+        {
+          "people": [
+            {},
+            {},
+            {
+              "age": 5
+            },
+            {
+              "age": 5
+            }
+          ]
+        }
+      ]
+    },
+    "explainedSearchParams": {
+      "type": "time-slot-per-pax",
+      "dateTimeSelection": {
+        "type": "time-slot-selection",
+        "date": "2024-02-24T12:00:00",
+        "timeSlot": {
+          "start": "15:00",
+          "end": "18:00"
+        }
+      },
+      "units": [
+        {
+          "type": "per-pax",
+          "guests": {
+            "adults": 2,
+            "children": 2,
+            "infants": 0
+          }
+        }
+      ]
+    },
+    "price": 396,
+    "rateId": "f38ac698-ab67-4a6a-977d-cd310e2c910d",
+    "title": "Golf Excursion",
+    "description": "Golf Excursion",
+    "image": "/_next/image?url=https%3A%2F%2Flocal.storage.nhost.run%2Fv1%2Ffiles%2Fd59524b5-de14-4c90-8de4-a1c1a90ca0ac&w=320&q=50"
+  }
+]

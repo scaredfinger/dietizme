@@ -1,0 +1,31 @@
+[
+  {
+    "searchParams": {
+      "dateRange": {
+        "from": "2024-02-23T00:00:00",
+        "to": "2024-03-21T12:00:00"
+      },
+      "units": [
+        {},
+        {},
+        {}
+      ]
+    },
+    "explainedSearchParams": {
+      "type": "daily-per-resource",
+      "dateTimeSelection": {
+        "type": "daily-selection",
+        "dateRange": {
+          "from": "2024-02-23T00:00:00",
+          "to": "2024-03-21T12:00:00"
+        }
+      },
+      "quantity": 3
+    },
+    "price": 2700,
+    "rateId": "fa089970-47a4-4335-aa0e-5e5cde0bfdcf",
+    "title": "Rent - English",
+    "description": "Rent - English",
+    "image": "/_next/image?url=https%3A%2F%2Flocal.storage.nhost.run%2Fv1%2Ffiles%2Fundefined&w=320&q=50"
+  }
+]
