@@ -23,7 +23,7 @@ The root project extends these configurations like this:
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@dietizme/*": ["libs/*"]
+      "@otiuming/*": ["libs/*"]
     }
   }
 }

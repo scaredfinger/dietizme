@@ -1,5 +1,5 @@
 {
-  "name": "@dietizme/utils-graphql",
+  "name": "@otiuming/utils-graphql",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,6 +16,6 @@
     "graphql": "16.10.0"
   },
   "devDependencies": {
-    "@dietizme/base": "workspace:*"
+    "@otiuming/base": "workspace:*"
   }
 }

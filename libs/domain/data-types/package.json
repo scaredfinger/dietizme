@@ -1,18 +1,21 @@
 {
   "name": "@otiuming/domain-data-types",
   "version": "0.0.1",
-  "dependencies": {
-    "lodash": "^4.14.202",
-    "moment": "^2.29.4"
-  },
-  "type": "commonjs",
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc --project tsconfig.lib.json"
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "vitest --run",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "lodash": "^4.14.202",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.202"
+    "@types/lodash": "^4.14.202",
+    "@otiuming/base": "workspace:*"
   }
 }

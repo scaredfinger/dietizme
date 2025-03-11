@@ -2,8 +2,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "build/test",
-    "module": "commonjs",
-    "types": ["jest", "node"]
+    "types": ["node"]
   },
-  "include": ["jest.config.ts", "**/*.test.ts", "**/*.spec.ts", "**/*.d.ts"]
+  "include": [
+    "vitest.config.ts",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.json",
+    "**/*.d.ts"
+  ]
 }

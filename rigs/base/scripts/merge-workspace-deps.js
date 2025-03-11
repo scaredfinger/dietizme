@@ -18,9 +18,9 @@ const mergeWorkspaceDeps = () => {
   const originalContent = fs.readFileSync(packageJsonPath, 'utf8');
   const packageJson = JSON.parse(originalContent);
 
-  // Extract @dietizme/* workspace dependencies
+  // Extract @otiuming/* workspace dependencies
   const workspaceDependencies = Object.keys(packageJson.dependencies || {})
-    .filter(dep => dep.startsWith('@dietizme/'));
+    .filter(dep => dep.startsWith('@otiuming/'));
 
   console.log(`Found ${workspaceDependencies.length} workspace dependencies to analyze`);
 

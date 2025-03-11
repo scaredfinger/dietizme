@@ -67,7 +67,7 @@ describe('merge-workspace-deps', () => {
     // Set up mock for package.json
     const mockPackageJson = {
       dependencies: {
-        '@dietizme/utils-common': 'workspace:*'
+        '@otiuming/utils-common': 'workspace:*'
       }
     };
     
@@ -106,7 +106,7 @@ describe('merge-workspace-deps', () => {
     // Set up mock for package.json
     const mockPackageJson = {
       dependencies: {
-        '@dietizme/utils-common': 'workspace:*',
+        '@otiuming/utils-common': 'workspace:*',
         'lodash-es': '^4.17.21',
         'axios': '^1.3.4'
       }
@@ -147,7 +147,7 @@ describe('merge-workspace-deps', () => {
     // Set up mock for package.json
     const mockPackageJson = {
       dependencies: {
-        '@dietizme/utils-common': 'workspace:*'
+        '@otiuming/utils-common': 'workspace:*'
       }
     };
     
@@ -185,7 +185,7 @@ describe('merge-workspace-deps', () => {
     // Set up mock for package.json
     const mockPackageJson = {
       dependencies: {
-        '@dietizme/utils-common': 'workspace:*'
+        '@otiuming/utils-common': 'workspace:*'
       }
     };
     
@@ -221,7 +221,7 @@ describe('merge-workspace-deps', () => {
     // Set up mock for package.json
     const mockPackageJson = {
       dependencies: {
-        '@dietizme/missing-package': 'workspace:*'
+        '@otiuming/missing-package': 'workspace:*'
       }
     };
     

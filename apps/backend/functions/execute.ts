@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
-import { createLogger } from '@dietizme/utils-logging'
-import { createLength6Id } from '@dietizme/utils-common'
+import { createLogger } from '@otiuming/utils-logging'
+import { createLength6Id } from '@otiuming/utils-common'
 
 const logger = createLogger()
 

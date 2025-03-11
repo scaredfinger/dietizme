@@ -1,5 +1,5 @@
 {
-  "name": "@dietizme/utils-logging",
+  "name": "@otiuming/utils-logging",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
     "pino": "^9.6.0"
   },
   "devDependencies": {
-    "@dietizme/base": "workspace:*"
+    "@otiuming/base": "workspace:*"
   },
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",

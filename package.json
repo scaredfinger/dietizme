@@ -19,9 +19,7 @@
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.8",
-    "standard-version": "^9.5.0",
-    "sync-workspace-version": "^0.3.0"
+    "vitest": "^3.0.8"
   },
   
   "scripts": {
@@ -37,11 +35,6 @@
     "test": "nx test",
     "test-all": "nx run-many --target=test --all",
     "lint": "nx lint",
-    "lint-all": "nx run-many --target=lint --all",
-    "release": "standard-version && pnpm run sync-versions",
-    "release:minor": "standard-version --release-as minor && pnpm run sync-versions",
-    "release:major": "standard-version --release-as major && pnpm run sync-versions",
-    "release:patch": "standard-version --release-as patch && pnpm run sync-versions",
-    "sync-versions": "sync-workspace-version"
+    "lint-all": "nx run-many --target=lint --all"
   }
 }

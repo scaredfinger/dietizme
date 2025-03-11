@@ -1,9 +1,9 @@
 {
   "author": "",
   "dependencies": {
-    "@dietizme/biz-builder": "workspace:*",
-    "@dietizme/utils-common": "workspace:*",
-    "@dietizme/utils-logging": "workspace:*",
+    "@otiuming/biz-builder": "workspace:*",
+    "@otiuming/utils-common": "workspace:*",
+    "@otiuming/utils-logging": "workspace:*",
     "@nhost/nhost-js": "^3.2.5",
     "cross-fetch": "^4.1.0",
     "graphql": "^16.10.0",
@@ -15,7 +15,7 @@
   },
   "description": "",
   "devDependencies": {
-    "@dietizme/base": "workspace:*",
+    "@otiuming/base": "workspace:*",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",

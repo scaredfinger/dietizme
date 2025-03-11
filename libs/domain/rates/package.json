@@ -1,17 +1,21 @@
 {
   "name": "@otiuming/domain-rates",
   "version": "0.0.1",
+  "type": "module",
   "dependencies": {
     "@otiuming/domain-data-types": "workspace:^",
     "@otiuming/domain-omnidata-types": "workspace:^",
     "@swan-io/boxed": "^1.2.0"
   },
-  "type": "commonjs",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "jest"
+    "test": "vitest --run",
+    "lint": "eslint"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@otiuming/base": "workspace:*"
+  }
 }
