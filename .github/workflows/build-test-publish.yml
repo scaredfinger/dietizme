@@ -1,0 +1,77 @@
+name: Build, Test, Lint and Publish
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build
+        run: pnpm build-all
+      
+      - name: Lint
+        run: pnpm lint-all
+      
+      - name: Test
+        run: pnpm test-all
+
+  publish:
+    needs: build-test-lint
+    runs-on: ubuntu-latest
+    # Only publish on push to main
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@${{ github.repository_owner }}'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build packages
+        run: pnpm build-all
+      
+      - name: Publish packages
+        run: |
+          echo "Publishing packages to GitHub Packages"
+          find libs -maxdepth 2 -type f -name "package.json" | while read package; do
+            dir=$(dirname "$package")
+            echo "Publishing $dir"
+            cd "$dir"
+            pnpm publish --access restricted || echo "Failed to publish package. It might already exist."
+            cd - > /dev/null
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
