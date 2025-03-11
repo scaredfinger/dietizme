@@ -11,7 +11,7 @@ const pkg = require('./package.json');
 const allDependencies = Object.entries(pkg.dependencies);
 
 const externalPackagesEntries = allDependencies
-  .filter(([dep,]) => !dep.startsWith('@dietizme'))
+  .filter(([dep,]) => !dep.startsWith('@otiuming/'))
 
 const externalPackages = Object.fromEntries(externalPackagesEntries);
 const externalPackagesKeys = Object.keys(externalPackages);
