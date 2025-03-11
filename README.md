@@ -1,15 +1,38 @@
-# New instructions
+# Dietizme
 
-## Prereqs
+A comprehensive meal planning and nutrition system built with modern web technologies.
 
-Make sure you have a ssh configuration in your `~/.ssh`
-Make sure you have the Dev Containers extension in VsCode. Make sure you open the project in a Dev Container.
+## Project Structure
 
-## Actual steps
+This project is organized as a monorepo using NX and PNPM workspace, providing a scalable architecture for multiple apps and shared libraries.
 
-Download `.secrets` and `.env` and copy to root directory.
+```
+/
+├── apps/                  # Frontend and backend applications
+│   └── backend/           # Backend services
+├── libs/                  # Shared libraries used across apps
+│   ├── biz-builder/       # Business logic building utilities
+│   ├── domain/            # Core domain models and interfaces
+│   └── utils/             # General utilities and helpers
+├── .devcontainer/         # Dev container configuration for VSCode
+├── nx.json                # NX configuration
+├── package.json           # Root package.json with shared dependencies
+└── pnpm-workspace.yaml    # PNPM workspace configuration
+```
 
-Add the following records to your host file.
+## Development Setup
+
+### Prerequisites
+
+- [VSCode](https://code.visualstudio.com/) with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- SSH configuration in your `~/.ssh` directory
+- Docker and Docker Compose
+
+### Local Environment Setup
+
+1. Clone the repository and open it in VSCode
+2. Download `.secrets` and `.env` and copy to root directory
+3. Add the following entries to your hosts file:
 
 ```text
 127.0.0.1 host.docker.internal
@@ -22,161 +45,143 @@ Add the following records to your host file.
 127.0.0.1 local.storage.nhost.run
 ```
 
-## Main steps
+4. Open the project in a Dev Container using VSCode's "Reopen in Container" option
 
-For building the whole project. Needed before you run any of the apps
+### Common Commands
+
+Build all projects:
 ```bash
 pnpm nx run-many --target build --all
 ```
 
-For running omnidata
+Run development server:
 ```bash
-pnpm nx dev omnidata
+pnpm nx dev [app-name]  # e.g., pnpm nx dev backend
 ```
 
-For stopping it omnidata
+Stop services:
 ```bash
-pnpm nx stop omnidata
+pnpm nx stop [app-name]
 ```
 
-For cleanning all data
+Run tests:
 ```bash
-pnpm nx clean omnidata
+pnpm test-all  # Run tests for all projects
+pnpm test      # Run tests for the current project
 ```
 
-## Dependency Management
+## Workspace Package Management
 
-This project uses GitHub's Dependabot to keep dependencies up-to-date. Dependabot automatically creates pull requests for dependency updates on a weekly schedule (every Monday).
+### Structure
 
-### Dependabot Configuration
+This project uses PNPM workspaces to manage dependencies across multiple packages:
 
-- Root package.json and all library dependencies are monitored
-- Updates are grouped together to minimize PR noise
-- Minor and patch updates can be auto-merged
-- Configuration is in `.github/dependabot.yml`
+- **Root Dependencies**: Common dev tools and framework dependencies 
+- **Package-specific Dependencies**: Each app and library has its own `package.json`
 
-### Reviewing Dependency Updates
+### Dependency Management
 
-When Dependabot creates a PR:
-1. CI will run to validate that the update doesn't break the build
-2. Minor and patch updates will auto-merge if tests pass
-3. Major updates require manual review and merge
+#### Adding Dependencies
 
-## Sample data
-
-Open file `generate-sample-organizations.spec.ts` run the whole file.
-
-# We need to review all instructions from this point (Consider obsolete for the time being)
-
-## Quick start
-
-Download `.secrets`, `.env.staging`, `.env` and copy to root directory.
+To add a dependency to a specific package:
 
 ```bash
-./dev.sh
+cd path/to/package
+pnpm add [package-name]
 ```
 
-If you see errors, most of the times is due to permissions.
+To add a dependency to the root project:
+
+```bash
+pnpm add -w [package-name]
+```
+
+#### Workspace References
+
+To use one workspace package from another:
+
+1. Add the dependency in the package's `package.json`:
+
+```json
+"dependencies": {
+  "@dietizme/utils": "workspace:*"
+}
+```
+
+2. Import the package in your code:
+
+```typescript
+import { someFunction } from '@dietizme/utils';
+```
+
+### Dependency Updates
+
+This project uses GitHub's Dependabot to keep dependencies up-to-date:
+
+- Dependencies are checked weekly (every Monday)
+- Minor and patch updates are auto-merged if tests pass
+- Major updates require manual review
+
+## Project Conventions
+
+### Component Structure
+
+Components are organized following this pattern:
+
+```
+components/
+├── [category]/
+│   ├── SimpleComponent.tsx
+│   └── ComplexComponent/
+│       ├── components/
+│       │   ├── InnerPiece1.tsx
+│       │   └── InnerPiece2.tsx
+│       └── index.tsx
+```
+
+### Page Structure
+
+Pages follow this structure:
+
+```
+pages/
+├── some_page/
+│   ├── _deps/            # Dependencies specific to this page
+│   │   ├── components/
+│   │   ├── data-source/
+│   │   │   └── query.graphql
+│   │   ├── server.ts
+│   │   └── types.ts
+│   ├── some_nested_page/
+│   └── index.page.tsx
+```
+
+## Troubleshooting
+
+If you encounter permission issues:
 ```bash
 ./fix-permissions.sh
 ```
 
-If you want to clean up
+To clean up resources:
 ```bash
 ./clean-up.sh
 ```
 
-To manually run projects
+### Common Issues
 
-```bash
-pnpm dev omnidata
-pnpm dev owners
-pnpm dev white-labels-default
-```
+1. **'jsx' is not exported by node_modules**:  
+   Solution: Add commonjs import in rollup: `import commonjs from '@rollup/plugin-commonjs';`
 
-To build manually
+2. **'React' refers to a UMD global**:  
+   Solution: Use `"jsx": "react-jsx"` or explicitly import React: `import React from 'react'`
 
-```bash
-pnpm build omnidata
-pnpm build owners
-pnpm build white-labels-default
-```
+3. **Module not found: ESM packages need to be imported**:  
+   Solution: Use 'import' to reference the package instead of require.  
+   See: https://nextjs.org/docs/messages/import-esm-externals
 
-## Web sites structure
+## Additional Resources
 
-We are still moving in that direction.
-
-```yaml
-  pages:
-    some_page_yada_yada:
-      _deps: &this_is_where_all_deps_go
-      some_nested_page:
-        // ....
-      index.page.tsx
-```
-
-The `_deps` folder. No better name yet, but the underscore ensures it's the first one.
-
-```yaml
-  _deps:
-    components:
-      // ...
-    data-source:
-      query.graphql
-      // graphql files, hooks
-    server.ts
-    types.ts
-```
-
-## Components structure
-
-There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the 
-components or their folders. For simple components create a file, for components that have sub components, create folders.
-
-```yaml
-  components:
-    buttons:
-      - SimpleButton.tsx
-      - ComplexButton:
-        components:
-          - InnerPiece1.tsx
-          - InnerPiece2.tsx
-        index.tsx
-```
-
-## Check dependencies
-
-```
-npx depcheck
-```
-
-```
-npx syncpack list-mismatches
-```
-
-## Troubleshooting with
-
-Guide
-https://dev.to/siddharthvenkatesh/component-library-setup-with-react-typescript-and-rollup-onj
-
-Tools
-https://rollupjs.org/introduction/
-https://pnpm.io/pnpm-workspace_yaml
-https://typescript-eslint.io/getting-started/
-https://prettier.io/docs/en/install
-
-Errors
-
-### 1. 'jsx' is not exported by node_modules
-
-This is because of missing commonjs import in rollup
-import commonjs from '@rollup/plugin-commonjs';
-
-### 2. 'React' refers to a UMD global
-
-"jsx": "react-jsx" or import React from 'react'
-https://www.totaltypescript.com/react-refers-to-a-umd-global
-
-### 3. Module not found: ESM packages (X) need to be imported.
-
-Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
+- [NX Documentation](https://nx.dev/getting-started/intro)
+- [PNPM Workspace Guide](https://pnpm.io/pnpm-workspace_yaml)
+- [TypeScript ESLint Setup](https://typescript-eslint.io/getting-started/)
