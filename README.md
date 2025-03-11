@@ -1,17 +1,95 @@
-# New instructions
+# DietizMe
 
-## Prereqs
+A TypeScript-based monorepo application for diet and nutrition management.
 
-Make sure you have a ssh configuration in your `~/.ssh`
-Make sure you have the Dev Containers extension in VsCode. Make sure you open the project in a Dev Container.
+## Project Overview
 
-## Actual steps
+DietizMe is built using a modular architecture with a focus on maintainability and scalability. The project uses Nx for workspace management and follows domain-driven design principles with a clear separation of concerns.
 
-Download `.secrets` and `.env` and copy to root directory.
+## Project Structure
 
-Add the following records to your host file.
+```
+dietizme/
+├── .devcontainer/       # Development container configuration for VSCode
+├── .github/             # GitHub workflows and Dependabot configuration
+├── apps/                # Application modules
+│   └── backend/         # Backend services
+│       ├── functions/   # Serverless functions
+│       ├── nhost/       # Nhost configuration
+│       └── nhost-config-template/ # Templates for Nhost setup
+├── libs/                # Shared libraries
+│   ├── biz-builder/     # Business operation builder pattern utility
+│   ├── domain/          # Domain-specific modules
+│   │   └── shopping-cart/ # Shopping cart domain logic
+│   └── utils/           # Utility libraries
+│       ├── common/      # Common utilities
+│       ├── graphql/     # GraphQL-related utilities
+│       └── logging/     # Logging utilities
+├── rigs/                # Configuration templates
+└── ignored/             # Non-versioned files (excluded from Git)
+```
 
-```text
+## Technology Stack
+
+- **Build System**: [Nx](https://nx.dev/)
+- **Package Manager**: [pnpm](https://pnpm.io/)
+- **Language**: TypeScript
+- **Backend**: [Nhost](https://nhost.io/) (Hasura/GraphQL/PostgreSQL)
+- **Testing**: Vitest
+- **Containerization**: Docker
+
+## Package Dependency Management
+
+### Workspace Structure
+
+The project uses pnpm workspaces to manage the monorepo structure, as defined in `pnpm-workspace.yaml`:
+
+```yaml
+packages:
+  - 'apps/*'
+  - 'libs/**/*'
+```
+
+This allows each application and library to have its own dependencies while sharing common packages.
+
+### Dependency Management Strategy
+
+1. **Root Dependencies**: Core development tools and build system dependencies are defined in the root `package.json`
+
+2. **Local Package Dependencies**: Each app and library has its own `package.json` defining:
+   - Direct dependencies needed for that module
+   - Peer dependencies that should be provided by the consuming app
+
+3. **Dependency Updates**: Managed via GitHub's Dependabot with configuration in `.github/dependabot.yml`
+   - Updates are grouped to minimize PR noise
+   - Minor and patch updates can be auto-merged
+   - Major updates require manual review
+
+### Checking Dependency Health
+
+```bash
+# Find unused dependencies
+npx depcheck
+
+# Find version mismatches across packages
+npx syncpack list-mismatches
+```
+
+## Development Setup
+
+### Prerequisites
+
+1. Install pnpm: `npm install -g pnpm`
+2. Install Docker and Docker Compose
+3. VSCode with Dev Containers extension
+4. SSH configuration in `~/.ssh`
+
+### Environment Setup
+
+1. Download `.secrets` and `.env` files (not included in repo) to the root directory
+2. Add the following host entries to your host file:
+
+```
 127.0.0.1 host.docker.internal
 127.0.0.1 local.auth.nhost.run
 127.0.0.1 local.dashboard.nhost.run
@@ -22,161 +100,126 @@ Add the following records to your host file.
 127.0.0.1 local.storage.nhost.run
 ```
 
-## Main steps
+3. Open the project in a Dev Container in VSCode
 
-For building the whole project. Needed before you run any of the apps
+### Building and Running
+
+Build the entire project:
 ```bash
 pnpm nx run-many --target build --all
 ```
 
-For running omnidata
+Run the backend (omnidata):
 ```bash
 pnpm nx dev omnidata
 ```
 
-For stopping it omnidata
+Stop the backend:
 ```bash
 pnpm nx stop omnidata
 ```
 
-For cleanning all data
+Clean all data:
 ```bash
 pnpm nx clean omnidata
 ```
 
-## Dependency Management
+### Testing
 
-This project uses GitHub's Dependabot to keep dependencies up-to-date. Dependabot automatically creates pull requests for dependency updates on a weekly schedule (every Monday).
-
-### Dependabot Configuration
-
-- Root package.json and all library dependencies are monitored
-- Updates are grouped together to minimize PR noise
-- Minor and patch updates can be auto-merged
-- Configuration is in `.github/dependabot.yml`
-
-### Reviewing Dependency Updates
-
-When Dependabot creates a PR:
-1. CI will run to validate that the update doesn't break the build
-2. Minor and patch updates will auto-merge if tests pass
-3. Major updates require manual review and merge
-
-## Sample data
-
-Open file `generate-sample-organizations.spec.ts` run the whole file.
-
-# We need to review all instructions from this point (Consider obsolete for the time being)
-
-## Quick start
-
-Download `.secrets`, `.env.staging`, `.env` and copy to root directory.
-
+Run tests for a specific module:
 ```bash
-./dev.sh
+pnpm nx test [module-name]
 ```
 
-If you see errors, most of the times is due to permissions.
+Run all tests:
+```bash
+pnpm nx run-many --target=test --all
+```
+
+## Key Components
+
+### BizBuilder
+
+A fluent API for structuring business operations with validation, context loading, and persistence. It helps organize business logic into a clean, testable pipeline.
+
+Example usage:
+
+```typescript
+const result = await using<RequestType, SdkType>(sdk, logger)
+  .buildLoadContextVariablesWith(buildLoadContextVariables)
+  .loadContextWith(sdk => sdk.loadContext)
+  .validateWith(validateRule1, validateRule2)
+  .buildPersistVariablesWith(buildPersistVariables)
+  .persistWith(sdk => sdk.persistOperation)
+  .whenDone(afterPersistAction)
+  .execute(request);
+```
+
+### Domain Modules
+
+Domain modules encapsulate business logic for specific features such as the shopping cart. These are organized in the `libs/domain/` directory.
+
+### Backend
+
+The backend is built using Nhost, which provides:
+- Hasura GraphQL API
+- PostgreSQL database
+- Storage
+- Authentication
+- Serverless functions
+
+## Sample Data Generation
+
+Open file `generate-sample-organizations.spec.ts` and run the whole file to generate sample data.
+
+## Troubleshooting
+
+If you encounter permission issues:
 ```bash
 ./fix-permissions.sh
 ```
 
-If you want to clean up
+For cleaning up the environment:
 ```bash
 ./clean-up.sh
 ```
 
-To manually run projects
-
-```bash
-pnpm dev omnidata
-pnpm dev owners
-pnpm dev white-labels-default
-```
-
-To build manually
-
-```bash
-pnpm build omnidata
-pnpm build owners
-pnpm build white-labels-default
-```
-
-## Web sites structure
-
-We are still moving in that direction.
-
-```yaml
-  pages:
-    some_page_yada_yada:
-      _deps: &this_is_where_all_deps_go
-      some_nested_page:
-        // ....
-      index.page.tsx
-```
-
-The `_deps` folder. No better name yet, but the underscore ensures it's the first one.
-
-```yaml
-  _deps:
-    components:
-      // ...
-    data-source:
-      query.graphql
-      // graphql files, hooks
-    server.ts
-    types.ts
-```
-
-## Components structure
-
-There is always a top level components folder. There may be a optional category intermediate folder (e.g: buttons). Then there is the 
-components or their folders. For simple components create a file, for components that have sub components, create folders.
-
-```yaml
-  components:
-    buttons:
-      - SimpleButton.tsx
-      - ComplexButton:
-        components:
-          - InnerPiece1.tsx
-          - InnerPiece2.tsx
-        index.tsx
-```
-
-## Check dependencies
-
-```
-npx depcheck
-```
-
-```
-npx syncpack list-mismatches
-```
-
-## Troubleshooting with
-
-Guide
-https://dev.to/siddharthvenkatesh/component-library-setup-with-react-typescript-and-rollup-onj
-
-Tools
-https://rollupjs.org/introduction/
-https://pnpm.io/pnpm-workspace_yaml
-https://typescript-eslint.io/getting-started/
-https://prettier.io/docs/en/install
-
-Errors
+## Common Issues
 
 ### 1. 'jsx' is not exported by node_modules
-
-This is because of missing commonjs import in rollup
+This is because of missing commonjs import in rollup. Add:
+```javascript
 import commonjs from '@rollup/plugin-commonjs';
+```
 
 ### 2. 'React' refers to a UMD global
+Use `"jsx": "react-jsx"` in tsconfig or import React explicitly:
+```javascript
+import React from 'react'
+```
 
-"jsx": "react-jsx" or import React from 'react'
-https://www.totaltypescript.com/react-refers-to-a-umd-global
+### 3. Module not found: ESM packages need to be imported
+Use 'import' to reference the package instead. See the Next.js documentation: https://nextjs.org/docs/messages/import-esm-externals
 
-### 3. Module not found: ESM packages (X) need to be imported.
+## Web Components Structure
 
-Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
+For components that have sub-components, create folders with the following structure:
+
+```yaml
+components:
+  buttons:
+    - SimpleButton.tsx
+    - ComplexButton:
+      components:
+        - InnerPiece1.tsx
+        - InnerPiece2.tsx
+      index.tsx
+```
+
+## Additional Resources
+
+- [Rollup](https://rollupjs.org/introduction/)
+- [pnpm workspace](https://pnpm.io/pnpm-workspace_yaml)
+- [TypeScript ESLint](https://typescript-eslint.io/getting-started/)
+- [Prettier](https://prettier.io/docs/en/install)
+- [Component Library Setup Guide](https://dev.to/siddharthvenkatesh/component-library-setup-with-react-typescript-and-rollup-onj)
