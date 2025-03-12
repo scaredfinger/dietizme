@@ -1,0 +1,7 @@
+query noop {
+  __schema {
+    types {
+      name
+    }
+  }
+}

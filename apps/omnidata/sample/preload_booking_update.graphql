@@ -1,0 +1,36 @@
+query preload_booking_update(
+  $id: uuid!
+  $user_id: uuid!
+) {
+  booking(
+    where: {
+      _and: {
+        id: {
+          _eq: $id
+        }
+        organization: {
+          members: {
+            user_id: {
+              _eq: $user_id
+            }
+          }
+        }
+      }
+    }) {
+    id
+    version
+  }
+  
+  booking_events_version_by_pk(id: $id) {
+    current
+  }
+  
+  booking_events_main(
+    where: {
+      booking_id: {
+        _eq: $id
+      }
+    }) {
+    id
+  }
+}

@@ -3,17 +3,24 @@
   "dependencies": {
     "@nhost/nhost-js": "^3.2.5",
     "@otiuming/biz-builder": "workspace:*",
+    "@otiuming/domain-omnidata-types": "workspace:*",
     "@otiuming/utils-common": "workspace:*",
     "@otiuming/utils-logging": "workspace:*",
     "@swan-io/boxed": "^3.2.0",
     "cross-fetch": "^4.1.0",
     "graphql": "^16.10.0",
+    "graphql-request": "^6.1.0",
+    "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.0",
     "pino": "^9.6.0",
     "short-unique-id": "^5.2.0"
   },
   "description": "",
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-graphql-request": "^6.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@otiuming/base": "workspace:*",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",
@@ -47,6 +54,7 @@
     "test": "jest --coverage --passWithNoTests",
     "merge-workspace-deps": "merge-workspace-deps",
     "postinstall": "merge-workspace-deps",
+    "update-schema": "graphql-codegen --config graphql-codegen.yaml",
     "generate-dot-files": "pnpm generate-env && pnpm generate-secrets",
     "generate-env": "rm -f .env && generate-env",
     "generate-secrets": "rm -f .secrets && generate-env .secrets"
