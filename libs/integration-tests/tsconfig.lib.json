@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["**/*.ts", "src/test-connectivity.spec.ts.ignore", "src/sample-organizations/debug.spec.ts.ignore", "src/sample-organizations/preload-images.spec.ts.ignore"],
+  "include": ["**/*.ts", "src/test-connectivity.spec.ts", "src/sample-organizations/debug.spec.ts.ignore", "src/sample-organizations/preload-images.spec.ts.ignore"],
   "exclude": ["./vitest.config.ts", "**/*.spec.ts", "**/*.test.ts"]
 }

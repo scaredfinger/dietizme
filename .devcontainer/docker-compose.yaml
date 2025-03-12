@@ -9,6 +9,7 @@ services:
     command: /bin/bash -c "while sleep 10000; do :; done"
     extra_hosts:
       - host.docker.internal:host-gateway
+      
       - local.auth.nhost.run:host-gateway
       - local.dashboard.nhost.run:host-gateway
       - local.db.nhost.run:host-gateway
@@ -16,3 +17,11 @@ services:
       - local.graphql.nhost.run:host-gateway
       - local.hasura.nhost.run:host-gateway
       - local.storage.nhost.run:host-gateway
+      - local.auth.nhost.run:host-gateway
+
+      - local.dashboard.local.nhost.run:host-gateway
+      - local.db.local.nhost.run:host-gateway
+      - local.functions.local.nhost.run:host-gateway
+      - local.graphql.local.nhost.run:host-gateway
+      - local.hasura.local.nhost.run:host-gateway
+      - local.storage.local.nhost.run:host-gateway

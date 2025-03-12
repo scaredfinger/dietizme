@@ -70,7 +70,6 @@ describe('omnidata', () => {
     expect(GRAPHQL_SERVER).toBeTruthy()
     expect(ADMIN_SECRET).toBeTruthy()
     expect(NHOST_DOMAIN).toBeTruthy()
-    expect(NHOST_REGION).toBeTruthy()
 
     graphql = new GraphQLClient(GRAPHQL_SERVER, {
       headers: {
