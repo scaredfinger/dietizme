@@ -1,0 +1,37 @@
+mutation create_organization_full(
+  $organization: organization_insert_input!
+  $headline: organization_headline_insert_input!
+  $branding: organization_branding_insert_input!
+  $site: site_insert_input!
+  $meta_title: organization_branding_meta_title_insert_input!
+  $member: organization_member_insert_input!
+  $venue: venue_insert_input!
+) {
+  insert_organization_one(object: $organization) {
+    __typename
+  }
+
+  insert_organization_headline_one(object: $headline) {
+    __typename
+  }
+
+  insert_organization_branding_one(object: $branding) {
+    __typename
+  }
+
+  insert_organization_branding_meta_title_one(object: $meta_title) {
+    __typename
+  }
+
+  insert_site_one(object: $site) {
+    __typename
+  }
+
+  insert_organization_member_one(object: $member) {
+    __typename
+  }
+
+  insert_venue_one(object: $venue) {
+    __typename
+  }
+}

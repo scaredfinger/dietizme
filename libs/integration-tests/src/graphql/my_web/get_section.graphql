@@ -1,0 +1,11 @@
+query get_my_web_section(
+  $organization_id: uuid!
+  $section_id: String!
+) {
+  my_web_section_by_pk(
+    organization_id: $organization_id
+    section_id: $section_id
+  ) {
+    value
+  }
+}

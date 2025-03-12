@@ -1,0 +1,42 @@
+fragment organization_full on organization {
+  id
+  name
+  headline {
+    id
+    en
+    es
+    de
+    fr
+  }
+  sites {
+    id
+    url
+  }
+  branding {
+    id
+    favicon_id
+    logo_id
+    logo_light_id
+    meta_title {
+      id
+      en
+      es
+      de
+      fr
+    }
+    meta_description {
+      id
+      en
+      es
+      de
+      fr
+    }
+  }
+  socials {
+    id
+    facebook
+    twitter
+    instagram
+    youtube
+  }
+}

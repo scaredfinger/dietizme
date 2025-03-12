@@ -1,0 +1,14 @@
+{
+  "extends": "./node_modules/@otiuming/base/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "strict": false
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
+}

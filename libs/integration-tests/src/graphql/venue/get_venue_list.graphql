@@ -1,0 +1,13 @@
+query get_venue_list($organization_id: uuid!) {
+  venue(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    id
+    gallery_id
+    usps_id
+  }
+}

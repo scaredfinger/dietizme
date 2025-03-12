@@ -1,0 +1,3 @@
+mutation venue_gallery_save($arg: venue_gallery_save_input!) {
+  venue_gallery_save(arg: $arg)
+}

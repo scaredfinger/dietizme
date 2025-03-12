@@ -1,0 +1,5 @@
+mutation activate_organization_features(
+  $arg: activate_organization_features_input!
+) {
+  activate_organization_features(arg: $arg)
+}

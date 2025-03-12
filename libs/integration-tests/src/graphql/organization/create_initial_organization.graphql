@@ -1,0 +1,14 @@
+mutation create_initial_organization(
+  $organization: organization_insert_input!) {
+
+  insert_organization_one(object: $organization) {
+    __typename
+    products {
+      id
+      name {
+        value: en
+      }
+    }
+  }
+
+}

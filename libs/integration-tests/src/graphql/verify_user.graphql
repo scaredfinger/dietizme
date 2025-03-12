@@ -1,0 +1,5 @@
+mutation verify_user($user_id: uuid!) {
+  updateUser(_set: { emailVerified: true }, pk_columns: { id: $user_id }) {
+    emailVerified
+  }
+}

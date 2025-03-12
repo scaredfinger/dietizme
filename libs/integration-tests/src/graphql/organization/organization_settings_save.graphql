@@ -1,0 +1,5 @@
+mutation organization_settings_save(
+  $organization: organization_settings_save_input!
+) {
+  organization_settings_save(arg: $organization)
+}

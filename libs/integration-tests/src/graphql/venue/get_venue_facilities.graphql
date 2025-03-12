@@ -1,0 +1,28 @@
+query get_venue_facilities($venue_id: uuid!) {
+  venue_facility(
+    where: {
+      venue_id: {
+        _eq: $venue_id
+      }
+    }
+  ) {
+    id  
+    image_id
+    name_id
+    headline_id
+    name {
+      id
+      en
+      es
+      fr
+      de
+    }
+    headline {
+      id
+      en
+      es
+      fr
+      de
+    }
+  }
+}

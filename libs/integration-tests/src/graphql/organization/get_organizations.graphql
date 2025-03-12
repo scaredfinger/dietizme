@@ -1,0 +1,5 @@
+query get_organizations {
+  organization {
+    ...organization_full
+  }
+}

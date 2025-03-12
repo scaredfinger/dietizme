@@ -1,0 +1,5 @@
+mutation cleanup($organization_id: uuid!) {
+  cleanup(arg: {
+    organization_id: $organization_id
+  })
+}

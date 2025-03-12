@@ -1,0 +1,9 @@
+mutation upsert_products($products: [product_insert_input!]!) {
+
+  insert_product(
+    objects: $products
+  ) {
+    __typename
+  }
+
+}

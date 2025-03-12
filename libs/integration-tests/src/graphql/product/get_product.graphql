@@ -1,0 +1,26 @@
+query get_product($id: uuid!) {
+  product_by_pk(id: $id) {
+    id
+    organization_id
+    name {
+      id
+      en
+    }
+    headline {
+      id
+      en
+    }
+    description {
+      id
+      en
+    }
+    price_from
+    gallery {
+      id
+      items {
+        id
+        file_id
+      }
+    }
+  }
+}

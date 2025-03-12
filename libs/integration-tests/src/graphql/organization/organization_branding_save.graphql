@@ -1,0 +1,5 @@
+mutation organization_branding_save(
+  $branding: organization_branding_save_input!
+) {
+  organization_branding_save(arg: $branding)
+}

@@ -1,0 +1,23 @@
+query get_usps($id: uuid!) {
+  venue_usps_by_pk(id: $id) {
+    id
+    image_id
+    lines {
+      id
+      name_id
+      name {
+        en
+        es
+        fr
+        de
+      }
+      headline_id
+      headline {
+        en
+        es
+        fr
+        de
+      }
+    }
+  }
+}

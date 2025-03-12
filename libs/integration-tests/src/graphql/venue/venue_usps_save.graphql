@@ -1,0 +1,3 @@
+mutation venue_usps_save($arg: venue_usps_save_input!) {
+  venue_usps_save(arg: $arg)
+}

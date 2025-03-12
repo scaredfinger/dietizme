@@ -1,0 +1,15 @@
+query get_product_list($organization_id: uuid!) {
+  product(
+    where: {
+      organization: {
+        id: {
+          _eq: $organization_id
+        }
+      }
+    }
+  ) {
+    id
+    gallery_id
+    organization_id
+  }
+}

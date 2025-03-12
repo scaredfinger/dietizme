@@ -1,0 +1,14 @@
+query get_organization_features(
+  $organization_id: uuid!
+) {
+  feature(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    id
+    internal_name
+  }
+}

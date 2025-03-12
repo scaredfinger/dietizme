@@ -1,0 +1,6 @@
+mutation upsert_product_groups($product_groups: [product_group_insert_input!]!) {
+  insert_product_group(
+    objects: $product_groups) {
+    affected_rows
+  }
+}

@@ -1,0 +1,31 @@
+mutation create_intial_data(
+  $organization: organization_insert_input!
+  $branding: organization_branding_insert_input!
+  $meta_title: organization_branding_meta_title_insert_input!
+  $my_web_sections: [my_web_section_insert_input!]!) {
+
+  insert_organization_one(object: $organization) {
+    __typename
+  }
+
+  insert_my_web_section(
+    objects: $my_web_sections
+    on_conflict: {
+      constraint:my_web_section_pkey
+      update_columns:[value]
+    }) {
+    __typename
+  }
+
+  insert_organization_branding_one(
+    object: $branding
+  ) {
+    __typename
+  }
+
+  insert_organization_branding_meta_title_one(
+    object: $meta_title
+  ) {
+    __typename
+  }
+}

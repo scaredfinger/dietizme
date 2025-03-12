@@ -1,0 +1,77 @@
+query get_venue($id: uuid!) {
+  venue_by_pk(id: $id) {
+    id
+    description {
+      id
+      en
+      es
+      fr
+      de
+    }
+    good_to_know {
+      id
+      en
+      es
+      fr
+      de
+    }
+
+    gallery {
+      id
+      items(
+        order_by: {
+          position: asc
+        }
+      ) {
+        file_id
+        position
+      }
+    }
+
+    usps {
+      id
+      image_id
+      lines {
+        id
+        name {
+          id
+          en
+          es
+          fr
+          de
+        }
+        headline {    
+          id
+          en
+          es
+          fr
+          de
+        }
+      }
+    }
+
+    facilities {
+      id
+      image_id
+      name {
+        en
+        es
+        fr
+        de
+      }
+      headline {
+        en
+        es
+        fr
+        de
+      }
+    }
+
+    place {
+      id
+      name
+      latitude
+      longitude
+    }
+  }
+}

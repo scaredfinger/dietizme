@@ -1,0 +1,3 @@
+mutation venue_main_save($venue: venue_main_save_input!) {
+  venue_main_save(arg: $venue)
+}

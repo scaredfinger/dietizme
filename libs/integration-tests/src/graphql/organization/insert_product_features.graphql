@@ -1,0 +1,9 @@
+mutation insert_product_features(
+  $product_features: [product_feature_insert_input!]!
+) {
+	insert_product_feature(
+    objects: $product_features
+  ) {
+    affected_rows
+  }
+}
