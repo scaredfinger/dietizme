@@ -1,5 +1,4 @@
-import { GraphQLClient } from 'graphql-request';
-import { GraphQLClientRequestHeaders } from 'graphql-request/build/cjs/types';
+import { GraphQLClient, RequestOptions } from 'graphql-request';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -8,6 +7,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+type GraphQLClientRequestHeaders = RequestOptions['requestHeaders'];
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -1151,9 +1151,9 @@ export type AuthUserProviders_Bool_Exp = {
 export enum AuthUserProviders_Constraint {
   /** unique or primary key constraint on columns "id" */
   UserProvidersPkey = 'user_providers_pkey',
-  /** unique or primary key constraint on columns "provider_id", "provider_user_id" */
+  /** unique or primary key constraint on columns "provider_user_id", "provider_id" */
   UserProvidersProviderIdProviderUserIdKey = 'user_providers_provider_id_provider_user_id_key',
-  /** unique or primary key constraint on columns "provider_id", "user_id" */
+  /** unique or primary key constraint on columns "user_id", "provider_id" */
   UserProvidersUserIdProviderIdKey = 'user_providers_user_id_provider_id_key'
 }
 
@@ -15524,7 +15524,7 @@ export type Product_Feature_Bool_Exp = {
 
 /** unique or primary key constraints on table "product_feature" */
 export enum Product_Feature_Constraint {
-  /** unique or primary key constraint on columns "feature_id", "product_id" */
+  /** unique or primary key constraint on columns "product_id", "feature_id" */
   ProductFeaturePkey = 'product_feature_pkey'
 }
 
@@ -16102,7 +16102,7 @@ export type Product_Group_Product_Bool_Exp = {
 
 /** unique or primary key constraints on table "product_group_product" */
 export enum Product_Group_Product_Constraint {
-  /** unique or primary key constraint on columns "group_id", "product_id" */
+  /** unique or primary key constraint on columns "product_id", "group_id" */
   ProductGroupProductPkey = 'product_group_product_pkey'
 }
 
@@ -28680,108 +28680,108 @@ export const Verify_UserDocument = gql`
 }
     `;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
+export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
 
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
     cleanup(variables: CleanupMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CleanupMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<CleanupMutation>(CleanupDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'cleanup', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<CleanupMutation>(CleanupDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'cleanup', 'mutation', variables);
     },
     create_intial_data(variables: Create_Intial_DataMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Create_Intial_DataMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Create_Intial_DataMutation>(Create_Intial_DataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_intial_data', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Create_Intial_DataMutation>(Create_Intial_DataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_intial_data', 'mutation', variables);
     },
     get_user(variables: Get_UserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_UserQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_UserQuery>(Get_UserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_user', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_UserQuery>(Get_UserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_user', 'query', variables);
     },
     get_my_web_section(variables: Get_My_Web_SectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_My_Web_SectionQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_My_Web_SectionQuery>(Get_My_Web_SectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_my_web_section', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_My_Web_SectionQuery>(Get_My_Web_SectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_my_web_section', 'query', variables);
     },
     my_web_section_save(variables: My_Web_Section_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<My_Web_Section_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<My_Web_Section_SaveMutation>(My_Web_Section_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'my_web_section_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<My_Web_Section_SaveMutation>(My_Web_Section_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'my_web_section_save', 'mutation', variables);
     },
     activate_organization_features(variables: Activate_Organization_FeaturesMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Activate_Organization_FeaturesMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Activate_Organization_FeaturesMutation>(Activate_Organization_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'activate_organization_features', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Activate_Organization_FeaturesMutation>(Activate_Organization_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'activate_organization_features', 'mutation', variables);
     },
     create_initial_organization(variables: Create_Initial_OrganizationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Create_Initial_OrganizationMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Create_Initial_OrganizationMutation>(Create_Initial_OrganizationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_initial_organization', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Create_Initial_OrganizationMutation>(Create_Initial_OrganizationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_initial_organization', 'mutation', variables);
     },
     create_organization_full(variables: Create_Organization_FullMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Create_Organization_FullMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Create_Organization_FullMutation>(Create_Organization_FullDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_organization_full', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Create_Organization_FullMutation>(Create_Organization_FullDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_organization_full', 'mutation', variables);
     },
     get_organization(variables: Get_OrganizationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_OrganizationQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_OrganizationQuery>(Get_OrganizationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organization', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_OrganizationQuery>(Get_OrganizationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organization', 'query', variables);
     },
     get_organization_features(variables: Get_Organization_FeaturesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_Organization_FeaturesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_Organization_FeaturesQuery>(Get_Organization_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organization_features', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_Organization_FeaturesQuery>(Get_Organization_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organization_features', 'query', variables);
     },
     get_organizations(variables?: Get_OrganizationsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_OrganizationsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_OrganizationsQuery>(Get_OrganizationsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organizations', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_OrganizationsQuery>(Get_OrganizationsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_organizations', 'query', variables);
     },
     insert_product_features(variables: Insert_Product_FeaturesMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Insert_Product_FeaturesMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Insert_Product_FeaturesMutation>(Insert_Product_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insert_product_features', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Insert_Product_FeaturesMutation>(Insert_Product_FeaturesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'insert_product_features', 'mutation', variables);
     },
     organization_branding_save(variables: Organization_Branding_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Organization_Branding_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Organization_Branding_SaveMutation>(Organization_Branding_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'organization_branding_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Organization_Branding_SaveMutation>(Organization_Branding_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'organization_branding_save', 'mutation', variables);
     },
     organization_settings_save(variables: Organization_Settings_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Organization_Settings_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Organization_Settings_SaveMutation>(Organization_Settings_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'organization_settings_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Organization_Settings_SaveMutation>(Organization_Settings_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'organization_settings_save', 'mutation', variables);
     },
     get_product(variables: Get_ProductQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_ProductQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_ProductQuery>(Get_ProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_ProductQuery>(Get_ProductDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product', 'query', variables);
     },
     get_product_list(variables: Get_Product_ListQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_Product_ListQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_Product_ListQuery>(Get_Product_ListDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product_list', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_Product_ListQuery>(Get_Product_ListDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product_list', 'query', variables);
     },
     product_save(variables: Product_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Product_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Product_SaveMutation>(Product_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Product_SaveMutation>(Product_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product_save', 'mutation', variables);
     },
     get_product_group(variables: Get_Product_GroupQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_Product_GroupQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_Product_GroupQuery>(Get_Product_GroupDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product_group', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_Product_GroupQuery>(Get_Product_GroupDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_product_group', 'query', variables);
     },
     product_group_save(variables: Product_Group_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Product_Group_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Product_Group_SaveMutation>(Product_Group_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product_group_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Product_Group_SaveMutation>(Product_Group_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'product_group_save', 'mutation', variables);
     },
     create_rate(variables: Create_RateMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Create_RateMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Create_RateMutation>(Create_RateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_rate', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Create_RateMutation>(Create_RateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'create_rate', 'mutation', variables);
     },
     rate_save(variables: Rate_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Rate_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Rate_SaveMutation>(Rate_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'rate_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Rate_SaveMutation>(Rate_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'rate_save', 'mutation', variables);
     },
     upsert_product_groups(variables: Upsert_Product_GroupsMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Upsert_Product_GroupsMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Upsert_Product_GroupsMutation>(Upsert_Product_GroupsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsert_product_groups', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Upsert_Product_GroupsMutation>(Upsert_Product_GroupsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsert_product_groups', 'mutation', variables);
     },
     upsert_products(variables: Upsert_ProductsMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Upsert_ProductsMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Upsert_ProductsMutation>(Upsert_ProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsert_products', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Upsert_ProductsMutation>(Upsert_ProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'upsert_products', 'mutation', variables);
     },
     get_usps(variables: Get_UspsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_UspsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_UspsQuery>(Get_UspsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_usps', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_UspsQuery>(Get_UspsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_usps', 'query', variables);
     },
     get_venue(variables: Get_VenueQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_VenueQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_VenueQuery>(Get_VenueDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_VenueQuery>(Get_VenueDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue', 'query', variables);
     },
     get_venue_facilities(variables: Get_Venue_FacilitiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_Venue_FacilitiesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_Venue_FacilitiesQuery>(Get_Venue_FacilitiesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue_facilities', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_Venue_FacilitiesQuery>(Get_Venue_FacilitiesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue_facilities', 'query', variables);
     },
     get_venue_list(variables: Get_Venue_ListQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Get_Venue_ListQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Get_Venue_ListQuery>(Get_Venue_ListDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue_list', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<Get_Venue_ListQuery>(Get_Venue_ListDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'get_venue_list', 'query', variables);
     },
     venue_facilities_save(variables: Venue_Facilities_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Venue_Facilities_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Facilities_SaveMutation>(Venue_Facilities_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_facilities_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Facilities_SaveMutation>(Venue_Facilities_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_facilities_save', 'mutation', variables);
     },
     venue_gallery_save(variables: Venue_Gallery_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Venue_Gallery_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Gallery_SaveMutation>(Venue_Gallery_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_gallery_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Gallery_SaveMutation>(Venue_Gallery_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_gallery_save', 'mutation', variables);
     },
     venue_main_save(variables: Venue_Main_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Venue_Main_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Main_SaveMutation>(Venue_Main_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_main_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Main_SaveMutation>(Venue_Main_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_main_save', 'mutation', variables);
     },
     venue_usps_save(variables: Venue_Usps_SaveMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Venue_Usps_SaveMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Usps_SaveMutation>(Venue_Usps_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_usps_save', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Venue_Usps_SaveMutation>(Venue_Usps_SaveDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'venue_usps_save', 'mutation', variables);
     },
     verify_user(variables: Verify_UserMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<Verify_UserMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<Verify_UserMutation>(Verify_UserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'verify_user', 'mutation');
+      return withWrapper((wrappedRequestHeaders) => client.request<Verify_UserMutation>(Verify_UserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'verify_user', 'mutation', variables);
     }
   };
 }

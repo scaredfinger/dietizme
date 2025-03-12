@@ -1,4 +1,4 @@
-schema: ../../schema.graphql
+schema: ./node_modules/@otiuming/domain-omnidata-types/schema.graphql
 overwrite: true
 verbose: true
 documents:

@@ -5,5 +5,6 @@ export default [
   ...base,
   {
     files: ["*.ts"],
+    ignores: ["**/generated.ts"],
   }
 ]
