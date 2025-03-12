@@ -1,17 +1,16 @@
 {
   "author": "",
   "dependencies": {
+    "@nhost/nhost-js": "^3.2.5",
     "@otiuming/biz-builder": "workspace:*",
     "@otiuming/utils-common": "workspace:*",
     "@otiuming/utils-logging": "workspace:*",
-    "@nhost/nhost-js": "^3.2.5",
+    "@swan-io/boxed": "^3.2.0",
     "cross-fetch": "^4.1.0",
     "graphql": "^16.10.0",
-    "graphql-request": "^7.1.2",
     "lodash-es": "^4.17.0",
-    "short-unique-id": "^5.2.0",
     "pino": "^9.6.0",
-    "@swan-io/boxed": "^3.2.0"
+    "short-unique-id": "^5.2.0"
   },
   "description": "",
   "devDependencies": {
@@ -44,7 +43,6 @@
     "dev": "pnpm build && pnpm serve",
     "serve": "cp .secrets dist && docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} up --detach",
     "stop": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} down",
-    "export-schema": "gq https://local.hasura.nhost.run/v1/graphql -H 'X-Hasura-Admin-Secret: nhost-admin-secret' --introspect > graphql/schema.graphql",
     "generate-functions-graphql": "graphql-codegen --config graphql-codegen-config.yaml --verbose --debug",
     "test": "jest --coverage --passWithNoTests",
     "merge-workspace-deps": "merge-workspace-deps",

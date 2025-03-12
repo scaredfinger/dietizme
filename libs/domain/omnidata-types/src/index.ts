@@ -1148,9 +1148,9 @@ export type AuthUserProviders_Bool_Exp = {
 export enum AuthUserProviders_Constraint {
   /** unique or primary key constraint on columns "id" */
   UserProvidersPkey = 'user_providers_pkey',
-  /** unique or primary key constraint on columns "provider_id", "provider_user_id" */
+  /** unique or primary key constraint on columns "provider_user_id", "provider_id" */
   UserProvidersProviderIdProviderUserIdKey = 'user_providers_provider_id_provider_user_id_key',
-  /** unique or primary key constraint on columns "provider_id", "user_id" */
+  /** unique or primary key constraint on columns "user_id", "provider_id" */
   UserProvidersUserIdProviderIdKey = 'user_providers_user_id_provider_id_key'
 }
 
@@ -15521,7 +15521,7 @@ export type Product_Feature_Bool_Exp = {
 
 /** unique or primary key constraints on table "product_feature" */
 export enum Product_Feature_Constraint {
-  /** unique or primary key constraint on columns "feature_id", "product_id" */
+  /** unique or primary key constraint on columns "product_id", "feature_id" */
   ProductFeaturePkey = 'product_feature_pkey'
 }
 
@@ -16099,7 +16099,7 @@ export type Product_Group_Product_Bool_Exp = {
 
 /** unique or primary key constraints on table "product_group_product" */
 export enum Product_Group_Product_Constraint {
-  /** unique or primary key constraint on columns "group_id", "product_id" */
+  /** unique or primary key constraint on columns "product_id", "group_id" */
   ProductGroupProductPkey = 'product_group_product_pkey'
 }
 

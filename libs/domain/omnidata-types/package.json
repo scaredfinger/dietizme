@@ -9,25 +9,17 @@
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
     "test": "vitest --run",
     "lint": "eslint",
-    "update-schema": "graphql-codegen --config src/config.yaml",
+    "update-schema": "graphql-codegen --config config.yaml",
+    "export-schema": "gq https://local.hasura.nhost.run/v1/graphql -H 'X-Hasura-Admin-Secret: nhost-admin-secret' --introspect > schema.graphql",
     "env": "env"
   },
   "dependencies": {
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
-    "@graphql-codegen/fragment-matcher": "^5.0.0",
-    "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
-    "@graphql-codegen/typescript-generic-sdk": "^4.0.0",
-    "@graphql-codegen/typescript-graphql-request": "^6.0.1",
-    "@graphql-codegen/typescript-operations": "^4.0.1",
-    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
-    "@types/lodash": "^4.14.202",
-    "@types/uuid": "^9.0.7",
     "@otiuming/base": "workspace:*",
-    "graphql": "^16.8.1",
-    "graphql-codegen-hasura-core": "^4.10.0",
-    "graphql-request": "6.1.0"
+    "graphql": "^16.10.0",
+    "graphqurl": "^2.0.0"
   }
 }
