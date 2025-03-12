@@ -1,0 +1,44 @@
+table:
+  name: rate
+  schema: public
+object_relationships:
+  - name: headline
+    using:
+      foreign_key_constraint_on: headline_id
+  - name: name
+    using:
+      foreign_key_constraint_on: name_id
+  - name: product
+    using:
+      foreign_key_constraint_on: product_id
+array_relationships:
+  - name: price_calendar
+    using:
+      foreign_key_constraint_on:
+        column: rate_id
+        table:
+          name: rate_price_range
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - availability_rules
+        - configuration
+        - price_rules
+        - headline_id
+        - id
+        - name_id
+        - product_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - product_id
+        - name_id
+        - headline_id
+        - configuration
+        - availability_rules
+        - price_rules
+      filter: {}

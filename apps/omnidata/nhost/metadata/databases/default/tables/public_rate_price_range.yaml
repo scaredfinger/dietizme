@@ -1,0 +1,28 @@
+table:
+  name: rate_price_range
+  schema: public
+object_relationships:
+  - name: rate
+    using:
+      foreign_key_constraint_on: rate_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - daily
+        - hourly
+        - id
+        - rate_id
+        - from
+        - to
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - daily
+        - hourly
+        - id
+        - rate_id
+        - from
+        - to
+      filter: {}

@@ -1,0 +1,38 @@
+table:
+  name: venue_usps_line
+  schema: public
+object_relationships:
+  - name: headline
+    using:
+      manual_configuration:
+        column_mapping:
+          headline_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: name
+    using:
+      foreign_key_constraint_on: name_id
+  - name: venue_usps
+    using:
+      foreign_key_constraint_on: venue_usps_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - headline_id
+        - id
+        - name_id
+        - position
+        - venue_usps_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - headline_id
+        - id
+        - name_id
+        - position
+        - venue_usps_id
+      filter: {}

@@ -1,0 +1,1 @@
+CREATE TABLE "public"."featute_category" ("feature_id" uuid NOT NULL, "category_id" Text NOT NULL, PRIMARY KEY ("feature_id","category_id") , FOREIGN KEY ("category_id") REFERENCES "public"."category"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("feature_id") REFERENCES "public"."feature"("id") ON UPDATE restrict ON DELETE restrict);

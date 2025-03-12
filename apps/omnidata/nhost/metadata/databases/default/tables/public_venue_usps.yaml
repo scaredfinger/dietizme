@@ -1,0 +1,28 @@
+table:
+  name: venue_usps
+  schema: public
+object_relationships:
+  - name: image
+    using:
+      foreign_key_constraint_on: image_id
+array_relationships:
+  - name: lines
+    using:
+      foreign_key_constraint_on:
+        column: venue_usps_id
+        table:
+          name: venue_usps_line
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - id
+        - image_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - image_id
+      filter: {}

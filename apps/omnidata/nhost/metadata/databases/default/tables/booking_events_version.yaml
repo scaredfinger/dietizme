@@ -1,0 +1,3 @@
+table:
+  name: version
+  schema: booking_events

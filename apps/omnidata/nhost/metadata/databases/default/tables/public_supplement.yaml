@@ -1,0 +1,75 @@
+table:
+  name: supplement
+  schema: public
+object_relationships:
+  - name: description
+    using:
+      foreign_key_constraint_on: description_id
+  - name: headline
+    using:
+      manual_configuration:
+        column_mapping:
+          headline_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: image
+    using:
+      foreign_key_constraint_on: image_id
+  - name: name
+    using:
+      manual_configuration:
+        column_mapping:
+          name_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+array_relationships:
+  - name: prices
+    using:
+      manual_configuration:
+        column_mapping:
+          id: id
+        insertion_order: null
+        remote_table:
+          name: supplement_prices
+          schema: public
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: supplement_id
+        table:
+          name: product_supplement
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - is_optional
+        - price
+        - type
+        - description_id
+        - headline_id
+        - id
+        - image_id
+        - name_id
+        - organization_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - is_optional
+        - price
+        - type
+        - description_id
+        - headline_id
+        - id
+        - image_id
+        - name_id
+        - organization_id
+      filter: {}

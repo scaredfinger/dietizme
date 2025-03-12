@@ -1,0 +1,25 @@
+table:
+  name: booking_products
+  schema: public
+object_relationships:
+  - name: booking
+    using:
+      foreign_key_constraint_on: booking_id
+  - name: rate
+    using:
+      foreign_key_constraint_on: rate_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - search_params
+        - price
+        - booking_id
+        - id
+        - rate_id
+      filter:
+        booking:
+          organization:
+            members:
+              user_id:
+                _eq: X-Hasura-User-Id

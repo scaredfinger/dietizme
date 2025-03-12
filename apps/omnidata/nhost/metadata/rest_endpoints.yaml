@@ -1,0 +1,27 @@
+- comment: ""
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: Get organizations
+  methods:
+    - GET
+  name: Get organizations
+  url: organizations
+- comment: ""
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: Get product availability and rates
+  methods:
+    - GET
+  name: Get product availability and rates
+  url: products/:id/availability-and-rates
+- comment: ""
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: Get all products availability and rates
+  methods:
+    - GET
+  name: Get all products availability and rates
+  url: products/availability-and-rates

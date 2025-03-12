@@ -1,0 +1,563 @@
+type Mutation {
+  activate_organization_features(
+    arg: activate_organization_features_input!
+  ): json
+}
+
+type Mutation {
+  booking_accept(
+    arg: booking_accept_input!
+  ): json!
+}
+
+type Mutation {
+  booking_add_note(
+    arg: booking_add_note_input!
+  ): json!
+}
+
+type Mutation {
+  booking_cancel(
+    arg: booking_cancel_input!
+  ): json!
+}
+
+type Mutation {
+  booking_create(
+    arg: booking_create_input!
+  ): json!
+}
+
+type Mutation {
+  booking_reject(
+    arg: booking_reject_input!
+  ): json!
+}
+
+type Mutation {
+  cleanup(
+    arg: cleanup_input
+  ): json!
+}
+
+type Mutation {
+  contact(
+    arg: contact_input!
+  ): json!
+}
+
+type Mutation {
+  create_product(
+    arg: product_create_input!
+  ): json!
+}
+
+type Mutation {
+  create_rate(
+    arg: rate_create_input!
+  ): json!
+}
+
+type Query {
+  get_booking(
+    arg: get_booking_input!
+  ): json!
+}
+
+type Mutation {
+  my_web_section_save(
+    arg: my_web_section_save_input!
+  ): json!
+}
+
+type Mutation {
+  organization_booking_questions_save(
+    arg: organization_booking_questions_save_input!
+  ): json
+}
+
+type Mutation {
+  organization_branding_save(
+    arg: organization_branding_save_input!
+  ): json!
+}
+
+type Mutation {
+  organization_create(
+    arg: organization_create_input!
+  ): json!
+}
+
+type Mutation {
+  organization_settings_save(
+    arg: organization_settings_save_input!
+  ): json!
+}
+
+type Mutation {
+  product_group_save(
+    arg: product_group_save_input!
+  ): json
+}
+
+type Mutation {
+  product_save(
+    arg: product_save_input!
+  ): json!
+}
+
+type Mutation {
+  rate_save(
+    arg: rate_save_input!
+  ): json!
+}
+
+type Mutation {
+  save_product_features(
+    arg: save_product_features_input!
+  ): json
+}
+
+type Mutation {
+  supplement_create(
+    arg: supplement_create_input!
+  ): json!
+}
+
+type Mutation {
+  supplement_save(
+    arg: supplement_save_input!
+  ): json
+}
+
+type Mutation {
+  test(
+    arg: json!
+  ): json!
+}
+
+type Mutation {
+  test_error(
+    arg: json!
+  ): json!
+}
+
+type Mutation {
+  update_booking_version_with_optimistic_lock(
+    arg: update_booking_version_with_optimistic_lock_input!
+  ): json
+}
+
+type Mutation {
+  venue_facilities_save(
+    arg: venue_facilities_save_input!
+  ): json!
+}
+
+type Mutation {
+  venue_gallery_save(
+    arg: venue_gallery_save_input!
+  ): json!
+}
+
+type Mutation {
+  venue_main_save(
+    arg: venue_main_save_input!
+  ): json!
+}
+
+type Mutation {
+  venue_usps_save(
+    arg: venue_usps_save_input!
+  ): json!
+}
+
+input get_booking_input {
+  friendly_id: String!
+  contact_email: String!
+}
+
+input multilanguage_field_input {
+  id: uuid
+  en: String
+  es: String
+  fr: String
+  de: String
+}
+
+input product_save_input {
+  id: String!
+  price_from: numeric!
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+  description: multilanguage_field_input!
+  gallery: media_gallery_input!
+  business_model: business_model_input!
+  place: place_input
+  published: Boolean!
+}
+
+input organization_site_input {
+  id: uuid
+  url: String!
+}
+
+input date_range_with_value {
+  from: timestamptz!
+  to: timestamptz!
+  value: numeric!
+}
+
+input rate_save_input {
+  id: String!
+  product_id: String!
+  name: multilanguage_field_input
+  headline: multilanguage_field_input
+  price_calendar: [date_range_with_value!]!
+  configuration: json
+}
+
+input booking_create_input {
+  id: uuid
+  friendly_id: String!
+  organization_id: uuid!
+  items: [booking_item_input!]!
+  contact: booking_contact_input!
+  answers: booking_questions_answers_by_scope!
+  locale: String!
+}
+
+input booking_contact_input {
+  name: String!
+  email: String!
+}
+
+input price_range {
+  from: timestamptz!
+  to: timestamptz!
+  hourly: numeric!
+  daily: numeric!
+}
+
+input white_label_save_input {
+  organization_id: String!
+  configuration: json!
+}
+
+input organization_save_branding_input {
+  favicon_id: String
+  logo_id: String
+  logo_light_id: String
+  meta_title: multilanguage_field_input
+}
+
+input venue_save_input {
+  id: String!
+  organization_id: String!
+  address: String!
+  description: multilanguage_field_input!
+  good_to_know: multilanguage_field_input!
+}
+
+input my_web_section_save_input {
+  organization_id: uuid!
+  section_id: String!
+  value: json!
+}
+
+input media_gallery_save_input {
+  id: String!
+  organization_id: String!
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+  items: [media_gallery_item_input!]!
+}
+
+input media_gallery_item_input {
+  file_id: uuid!
+  name: multilanguage_field_input
+  headline: multilanguage_field_input
+}
+
+input venue_gallery_save_input {
+  id: String!
+  gallery: media_gallery_input!
+}
+
+input media_gallery_input {
+  id: String!
+  name: multilanguage_field_input
+  headline: multilanguage_field_input
+  items: [media_gallery_item_input!]!
+}
+
+input venue_usps_save_input {
+  id: uuid!
+  image_id: uuid!
+  lines: [venue_usps_line_input!]!
+}
+
+input venue_usp_input {
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+}
+
+input venue_usps_line_input {
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+}
+
+input venue_facilities_save_input {
+  id: String!
+  items: [venue_facility_input!]!
+}
+
+input venue_facility_input {
+  image_id: String!
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+}
+
+input organization_settings_save_input {
+  id: uuid!
+  name: String!
+  headline: multilanguage_field_input!
+  sites: [organization_site_input!]
+  email: String
+  phone_number: String
+  socials: organization_socials_input!
+}
+
+input organization_branding_save_input {
+  id: uuid!
+  favicon_id: uuid
+  logo_id: uuid
+  logo_light_id: uuid
+  meta_title: multilanguage_field_input
+  meta_description: multilanguage_field_input
+}
+
+input venue_main_save_input {
+  id: String!
+  description: multilanguage_field_input!
+  good_to_know: multilanguage_field_input!
+  place: place_input
+}
+
+input geocode_input {
+  address: String!
+}
+
+input place_input {
+  name: String
+  latitude: numeric
+  longitude: numeric
+}
+
+input contact_input {
+  organization_id: uuid!
+  name: String!
+  email: String!
+  message: String!
+}
+
+input organization_create_input {
+  owner_email: String!
+  name: String!
+}
+
+input product_create_input {
+  organization_id: uuid!
+  id: uuid!
+}
+
+input rate_create_input {
+  organization_id: uuid!
+  product_id: uuid!
+  id: uuid!
+}
+
+input organization_links_input {
+  facebook: String
+  twitter: String
+  instagram: String
+  youtube: String
+}
+
+input organization_socials_input {
+  id: uuid
+  facebook: String
+  twitter: String
+  instagram: String
+  youtube: String
+}
+
+input cleanup_input {
+  organization_id: uuid
+}
+
+input booking_item_input {
+  search_params: search_params_input!
+  explained_search_params: json!
+  rate_id: uuid!
+  expected_price: numeric!
+  units: [booking_item_unit_input!]!
+}
+
+input search_params_input {
+  date_range: date_range!
+  units: [search_unit_input!]!
+}
+
+input date_range {
+  from: timestamp!
+  to: timestamp!
+}
+
+input search_unit_input {
+  people: [person_input!]
+}
+
+input person_input {
+  age: numeric
+}
+
+input organization_booking_questions_save_input {
+  organization_id: uuid!
+  questions: [organization_booking_question_save_input!]!
+}
+
+input organization_booking_question_save_input {
+  id: uuid
+  scope: String!
+  type: String!
+  value: json!
+  text: multilanguage_field_input!
+}
+
+input booking_question_answer {
+  question_id: uuid!
+  value: json
+}
+
+input booking_questions_answers_by_scope {
+  booking: [booking_question_answer!]!
+  products: [product_and_pax_questions_answers!]!
+}
+
+input product_group_save_input {
+  id: uuid!
+  organization_id: uuid!
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+  description: multilanguage_field_input!
+  image_id: uuid!
+  products: [selected_item!]!
+}
+
+input selected_item {
+  value: uuid!
+}
+
+input product_and_pax_questions_answers {
+  product_anwers: [booking_question_answer!]!
+  adults: [[booking_question_answer!]!]!
+  children: [[booking_question_answer!]!]!
+}
+
+input update_booking_version_with_optimistic_lock_input {
+  booking_id: uuid!
+  expected_version: numeric!
+  new_version: numeric!
+}
+
+input booking_add_note_input {
+  id: uuid!
+  note: String!
+  expected_version: numeric!
+}
+
+input business_model_input {
+  time_management: String!
+  unit_management: String!
+}
+
+input booking_accepted_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input booking_rejected_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input booking_cancelled_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input supplement_create_input {
+  organization_id: uuid!
+  id: uuid!
+}
+
+input supplement_save_input {
+  id: uuid!
+  organization_id: uuid!
+  name: multilanguage_field_input!
+  headline: multilanguage_field_input!
+  description: multilanguage_field_input!
+  type: String!
+  price: numeric!
+  image_id: uuid!
+  products: [selected_item!]!
+}
+
+input booking_accept_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input booking_cancel_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input booking_reject_input {
+  id: uuid!
+  expected_version: numeric!
+}
+
+input booking_item_unit_input {
+  supplements: [booking_item_unit_supplements_input!]!
+}
+
+input booking_item_unit_supplements_input {
+  id: uuid!
+  quantity: numeric!
+  expected_unit_price: numeric!
+}
+
+input activate_organization_features_input {
+  organization_id: uuid!
+  category_ids: [String!]!
+}
+
+input save_product_features_input {
+  organization_id: uuid!
+  product_id: uuid!
+  features: [feature_with_value_input!]!
+}
+
+input feature_with_value_input {
+  feature_id: uuid!
+  value: json
+}
+
+type geocode_response {
+  latitude: numeric!
+  longitude: numeric!
+  name: String!
+}
+

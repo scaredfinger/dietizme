@@ -1,0 +1,11 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- insert into translated_text
+-- 	(
+-- 		select * from venue_usps_line_name
+-- 	);
+-- 	
+-- insert into translated_text
+-- 	(
+-- 		select * from venue_usps_line_headline
+-- 	);

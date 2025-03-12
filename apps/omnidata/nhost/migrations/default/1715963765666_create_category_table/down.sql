@@ -1,0 +1,7 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- create table category(
+--     id varchar(255) primary key,
+--     parent_id varchar(255) references category(id),
+--     path ltree
+-- );

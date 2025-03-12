@@ -1,0 +1,10 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- create or replace view supplement_prices
+--     as
+--         select
+-- 	        id,
+-- 	        '2000-01-01T00:00' as "from",
+-- 	        '2999-01-01T00:00' as "to",
+-- 	        price as "value"
+-- 	        from supplement;

@@ -1,0 +1,123 @@
+table:
+  name: organization
+  schema: public
+object_relationships:
+  - name: branding
+    using:
+      foreign_key_constraint_on: branding_id
+  - name: business_model
+    using:
+      foreign_key_constraint_on: business_model_id
+  - name: headline
+    using:
+      foreign_key_constraint_on: headline_id
+  - name: socials
+    using:
+      foreign_key_constraint_on: socials_id
+array_relationships:
+  - name: booking_questions
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: organization_booking_question
+          schema: public
+  - name: bookings
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: booking
+          schema: public
+  - name: contacts
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: contact
+          schema: public
+  - name: features
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: feature
+          schema: public
+  - name: members
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: organization_member
+          schema: public
+  - name: product_groups
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: product_group
+          schema: public
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: product
+          schema: public
+  - name: sections
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: my_web_section
+          schema: public
+  - name: sites
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: site
+          schema: public
+  - name: supplements
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: supplement
+          schema: public
+  - name: venues
+    using:
+      foreign_key_constraint_on:
+        column: organization_id
+        table:
+          name: venue
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - currency
+        - email
+        - language
+        - name
+        - phone_number
+        - branding_id
+        - business_model_id
+        - headline_id
+        - id
+        - socials_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - currency
+        - email
+        - language
+        - name
+        - phone_number
+        - branding_id
+        - business_model_id
+        - headline_id
+        - id
+        - socials_id
+      filter: {}

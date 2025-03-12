@@ -1,0 +1,46 @@
+table:
+  name: booking
+  schema: public
+object_relationships:
+  - name: contact
+    using:
+      foreign_key_constraint_on: contact_id
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+array_relationships:
+  - name: history_entries
+    using:
+      foreign_key_constraint_on:
+        column: booking_id
+        table:
+          name: booking_history_entry
+          schema: public
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: booking_id
+        table:
+          name: booking_product
+          schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - organization_id
+        - state
+        - created_on
+        - last_modified_on
+        - contact_id
+        - amount
+        - friendly_id
+        - questions_by_scope_by_id
+        - booking_answers_by_id
+        - version
+        - locale
+      filter:
+        organization:
+          members:
+            user_id:
+              _eq: X-Hasura-User-Id

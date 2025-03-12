@@ -1,0 +1,4 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- alter table "public"."booking_product" add column "pax_answers_by_pax_type_by_index_by_id" json
+--  not null default '{}';

@@ -1,0 +1,26 @@
+table:
+  name: product_allotment_range
+  schema: public
+object_relationships:
+  - name: product
+    using:
+      foreign_key_constraint_on: product_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - value
+        - id
+        - product_id
+        - from
+        - to
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - value
+        - id
+        - product_id
+        - from
+        - to
+      filter: {}

@@ -1,0 +1,17 @@
+table:
+  name: role
+  schema: public
+is_enum: true
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - description
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - description
+      filter: {}

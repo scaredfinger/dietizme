@@ -1,0 +1,22 @@
+table:
+  name: organization_socials
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - facebook
+        - instagram
+        - twitter
+        - youtube
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - facebook
+        - instagram
+        - twitter
+        - youtube
+        - id
+      filter: {}

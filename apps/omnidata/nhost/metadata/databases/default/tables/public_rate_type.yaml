@@ -1,0 +1,4 @@
+table:
+  name: rate_type
+  schema: public
+is_enum: true

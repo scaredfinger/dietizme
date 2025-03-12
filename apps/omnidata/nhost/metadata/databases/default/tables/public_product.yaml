@@ -1,0 +1,90 @@
+table:
+  name: product
+  schema: public
+object_relationships:
+  - name: business_model
+    using:
+      foreign_key_constraint_on: business_model_id
+  - name: description
+    using:
+      foreign_key_constraint_on: description_id
+  - name: gallery
+    using:
+      foreign_key_constraint_on: gallery_id
+  - name: headline
+    using:
+      foreign_key_constraint_on: headline_id
+  - name: name
+    using:
+      foreign_key_constraint_on: name_id
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+  - name: place
+    using:
+      foreign_key_constraint_on: place_id
+  - name: slug
+    using:
+      foreign_key_constraint_on: slug_id
+array_relationships:
+  - name: allotment_calendar
+    using:
+      foreign_key_constraint_on:
+        column: product_id
+        table:
+          name: product_allotment_range
+          schema: public
+  - name: features
+    using:
+      foreign_key_constraint_on:
+        column: product_id
+        table:
+          name: product_feature
+          schema: public
+  - name: rates
+    using:
+      foreign_key_constraint_on:
+        column: product_id
+        table:
+          name: rate
+          schema: public
+  - name: supplements
+    using:
+      foreign_key_constraint_on:
+        column: product_id
+        table:
+          name: product_supplement
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - business_model_id
+        - description_id
+        - gallery_id
+        - headline_id
+        - id
+        - name_id
+        - organization_id
+        - place_id
+        - price_from
+        - published
+        - slug_id
+      filter:
+        published:
+          _eq: true
+  - role: user
+    permission:
+      columns:
+        - business_model_id
+        - description_id
+        - gallery_id
+        - headline_id
+        - id
+        - name_id
+        - organization_id
+        - place_id
+        - price_from
+        - published
+        - slug_id
+      filter: {}

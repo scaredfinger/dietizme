@@ -1,0 +1,20 @@
+table:
+  name: place
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - id
+        - name
+        - latitude
+        - longitude
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - latitude
+        - longitude
+        - name
+        - id
+      filter: {}

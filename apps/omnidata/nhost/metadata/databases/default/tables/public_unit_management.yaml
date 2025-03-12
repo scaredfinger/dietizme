@@ -1,0 +1,4 @@
+table:
+  name: unit_management
+  schema: public
+is_enum: true

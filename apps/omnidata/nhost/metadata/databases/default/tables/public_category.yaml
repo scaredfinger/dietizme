@@ -1,0 +1,18 @@
+table:
+  name: category
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - id
+        - parent_id
+        - path
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - parent_id
+        - path
+      filter: {}

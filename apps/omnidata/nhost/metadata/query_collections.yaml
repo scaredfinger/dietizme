@@ -1,0 +1,103 @@
+- name: allowed-queries
+  definition:
+    queries:
+      - name: Get organizations
+        query: |
+          query MyQuery {
+            organizations: organization {
+              id
+              name
+            }
+          }
+      - name: Get product availability and rates
+        query: |
+          query get_product_availability_and_rates ($id: uuid!) {
+            product: product_by_pk(id: $id) {
+              id
+              allotmentCalendar: allotment_calendar {
+                from
+                to
+                value
+              }
+              rates {
+                id
+                configuration
+                availabilityRules: availability_rules
+                priceRules: price_rules
+                priceCalendar: price_calendar {
+                  from
+                  to
+                  daily
+                  hourly
+                }
+              }
+              optionalSupplements: supplements(where: {supplement:{is_optional:{_eq:true}}}) {
+                supplement {
+                  id
+                  type
+                  prices {
+                    from
+                    to
+                    value
+                  }
+                }
+              }
+              mandatorySupplements: supplements(where: {supplement:{is_optional:{_eq:false}}}) {
+                supplement {
+                  id
+                  type
+                  prices {
+                    from
+                    to
+                    value
+                  }
+                }
+              }
+            }
+          }
+      - name: Get all products availability and rates
+        query: |
+          query get_all_products_availability_and_rates {
+            products: product {
+              id
+              allotmentCalendar: allotment_calendar {
+                from
+                to
+                value
+              }
+              rates {
+                id
+                configuration
+                availabilityRules: availability_rules
+                priceRules: price_rules
+                priceCalendar: price_calendar {
+                  from
+                  to
+                  daily
+                  hourly
+                }
+              }
+              optionalSupplements: supplements(where: {supplement:{is_optional:{_eq:true}}}) {
+                supplement {
+                  id
+                  type
+                  prices {
+                    from
+                    to
+                    value
+                  }
+                }
+              }
+              mandatorySupplements: supplements(where: {supplement:{is_optional:{_eq:false}}}) {
+                supplement {
+                  id
+                  type
+                  prices {
+                    from
+                    to
+                    value
+                  }
+                }
+              }
+            }
+          }

@@ -1,0 +1,1 @@
+INSERT INTO "public"."category"("id", "parent_id", "path") VALUES (E'GENERIC_PRODUCTS', E'PRODUCT_TYPES', E'PRODUCT_TYPES.GENERIC_PRODUCTS');

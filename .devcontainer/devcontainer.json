@@ -13,11 +13,11 @@
 
   "remoteEnv": {
     "HOST_WORKSPACE": "${localWorkspaceFolder}",
-    "NHOST_PROJECT_NAME": "backend",
-    "NHOST_PROJECT_DIR": "apps/backend",
-    "NHOST_EXECUTION_FOLDER": "apps/backend/dist",
-    "NHOST_EXECUTION_SOURCE": "apps/backend/nhost",
-    "NHOST_DATA_FOLDER": "apps/backend/dist/.nhost/data"
+    "NHOST_PROJECT_NAME": "omnidata",
+    "NHOST_PROJECT_DIR": "apps/omnidata",
+    "NHOST_EXECUTION_FOLDER": "apps/omnidata/dist",
+    "NHOST_EXECUTION_SOURCE": "apps/omnidata/nhost",
+    "NHOST_DATA_FOLDER": "apps/omnidata/dist/.nhost/data"
   },
 
   "customizations": {

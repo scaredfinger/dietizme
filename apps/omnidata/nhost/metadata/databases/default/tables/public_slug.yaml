@@ -1,0 +1,22 @@
+table:
+  name: slug
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - de
+        - en
+        - es
+        - fr
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - en
+        - es
+        - de
+        - fr
+      filter: {}

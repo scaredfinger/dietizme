@@ -1,0 +1,3 @@
+table:
+  name: venue_facility_item_name
+  schema: public

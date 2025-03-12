@@ -1,0 +1,18 @@
+table:
+  name: product_business_model
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - id
+        - time_management
+        - unit_management
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - time_management
+        - unit_management
+      filter: {}

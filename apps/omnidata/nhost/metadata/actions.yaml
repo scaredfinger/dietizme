@@ -1,0 +1,485 @@
+actions:
+  - name: activate_organization_features
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+    comment: activate_organization_features
+  - name: booking_accept
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: booking_add_note
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: booking_cancel
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: booking_create
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": \"user\",\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+      - role: public
+  - name: booking_reject
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: cleanup
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": "admin",
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+  - name: contact
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": \"user\",\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+      - role: public
+  - name: create_product
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: create_rate
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: get_booking
+    definition:
+      kind: ""
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": "admin",
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: public
+      - role: user
+  - name: my_web_section_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: organization_booking_questions_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: organization_branding_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: organization_create
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": \"user\",\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+      - role: public
+  - name: organization_settings_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: product_group_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: product_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+    comment: product_save
+  - name: rate_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: save_product_features
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: supplement_create
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: supplement_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": {{ $session_variables['x-hasura-user-id'] }},\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: test
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": "unknown",
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+  - name: test_error
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": "admin",
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+  - name: update_booking_version_with_optimistic_lock
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: "{\n  \"action\": {{ $body.action.name }},\n  \"user\": \"admin\",\n  \"body\": {{ $body.input.arg }}\n} "
+        template_engine: Kriti
+        version: 2
+  - name: venue_facilities_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: venue_gallery_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: venue_main_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+  - name: venue_usps_save
+    definition:
+      kind: synchronous
+      handler: '{{NHOST_FUNCTIONS_URL}}/execute'
+      request_transform:
+        body:
+          action: transform
+          template: |-
+            {
+              "action": {{ $body.action.name }},
+              "user": {{ $session_variables['x-hasura-user-id'] }},
+              "body": {{ $body.input.arg }}
+            }
+        template_engine: Kriti
+        version: 2
+    permissions:
+      - role: user
+custom_types:
+  enums: []
+  input_objects:
+    - name: get_booking_input
+    - name: multilanguage_field_input
+    - name: product_save_input
+    - name: organization_site_input
+    - name: date_range_with_value
+    - name: rate_save_input
+    - name: booking_create_input
+    - name: booking_contact_input
+    - name: price_range
+    - name: white_label_save_input
+    - name: organization_save_branding_input
+    - name: venue_save_input
+    - name: my_web_section_save_input
+    - name: media_gallery_save_input
+    - name: media_gallery_item_input
+    - name: venue_gallery_save_input
+    - name: media_gallery_input
+    - name: venue_usps_save_input
+    - name: venue_usp_input
+    - name: venue_usps_line_input
+    - name: venue_facilities_save_input
+    - name: venue_facility_input
+    - name: organization_settings_save_input
+    - name: organization_branding_save_input
+    - name: venue_main_save_input
+    - name: geocode_input
+    - name: place_input
+    - name: contact_input
+    - name: organization_create_input
+    - name: product_create_input
+    - name: rate_create_input
+    - name: organization_links_input
+    - name: organization_socials_input
+    - name: cleanup_input
+    - name: booking_item_input
+    - name: search_params_input
+    - name: date_range
+    - name: search_unit_input
+    - name: person_input
+    - name: organization_booking_questions_save_input
+    - name: organization_booking_question_save_input
+    - name: booking_question_answer
+    - name: booking_questions_answers_by_scope
+    - name: product_group_save_input
+    - name: selected_item
+    - name: product_and_pax_questions_answers
+    - name: update_booking_version_with_optimistic_lock_input
+    - name: booking_add_note_input
+    - name: business_model_input
+    - name: booking_accepted_input
+    - name: booking_rejected_input
+    - name: booking_cancelled_input
+    - name: supplement_create_input
+    - name: supplement_save_input
+    - name: booking_accept_input
+    - name: booking_cancel_input
+    - name: booking_reject_input
+    - name: booking_item_unit_input
+    - name: booking_item_unit_supplements_input
+    - name: activate_organization_features_input
+    - name: save_product_features_input
+    - name: feature_with_value_input
+  objects:
+    - name: geocode_response
+  scalars: []

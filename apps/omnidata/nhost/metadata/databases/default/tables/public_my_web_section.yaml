@@ -1,0 +1,18 @@
+table:
+  name: my_web_section
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - organization_id
+        - section_id
+        - value
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - value
+        - organization_id
+        - section_id
+      filter: {}

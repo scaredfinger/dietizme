@@ -1,0 +1,67 @@
+table:
+  name: product_group
+  schema: public
+object_relationships:
+  - name: description
+    using:
+      manual_configuration:
+        column_mapping:
+          description_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: headline
+    using:
+      manual_configuration:
+        column_mapping:
+          headline_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: image
+    using:
+      foreign_key_constraint_on: image_id
+  - name: name
+    using:
+      foreign_key_constraint_on: name_id
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+  - name: slug
+    using:
+      foreign_key_constraint_on: slug_id
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: group_id
+        table:
+          name: product_group_product
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - description_id
+        - headline_id
+        - id
+        - image_id
+        - name_id
+        - organization_id
+        - slug_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - id
+        - name_id
+        - headline_id
+        - description_id
+        - image_id
+        - organization_id
+        - slug_id
+      filter: {}
+      allow_aggregations: true

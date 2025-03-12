@@ -1,0 +1,53 @@
+table:
+  name: venue
+  schema: public
+object_relationships:
+  - name: description
+    using:
+      foreign_key_constraint_on: description_id
+  - name: gallery
+    using:
+      foreign_key_constraint_on: gallery_id
+  - name: good_to_know
+    using:
+      foreign_key_constraint_on: good_to_know_id
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+  - name: place
+    using:
+      foreign_key_constraint_on: place_id
+  - name: usps
+    using:
+      foreign_key_constraint_on: usps_id
+array_relationships:
+  - name: facilities
+    using:
+      foreign_key_constraint_on:
+        column: venue_id
+        table:
+          name: venue_facility
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - description_id
+        - gallery_id
+        - good_to_know_id
+        - id
+        - organization_id
+        - place_id
+        - usps_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - description_id
+        - gallery_id
+        - good_to_know_id
+        - id
+        - organization_id
+        - place_id
+        - usps_id
+      filter: {}

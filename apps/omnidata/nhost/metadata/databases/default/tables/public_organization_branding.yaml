@@ -1,0 +1,38 @@
+table:
+  name: organization_branding
+  schema: public
+object_relationships:
+  - name: meta_description
+    using:
+      foreign_key_constraint_on: meta_description_id
+  - name: meta_title
+    using:
+      foreign_key_constraint_on: meta_title_id
+  - name: organization
+    using:
+      foreign_key_constraint_on:
+        column: branding_id
+        table:
+          name: organization
+          schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - favicon_id
+        - id
+        - logo_id
+        - logo_light_id
+        - meta_description_id
+        - meta_title_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - favicon_id
+        - id
+        - logo_id
+        - logo_light_id
+        - meta_description_id
+        - meta_title_id
+      filter: {}

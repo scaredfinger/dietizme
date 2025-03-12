@@ -1,0 +1,27 @@
+table:
+  name: product_group_product
+  schema: public
+object_relationships:
+  - name: group
+    using:
+      foreign_key_constraint_on: group_id
+  - name: product
+    using:
+      foreign_key_constraint_on: product_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - position
+        - group_id
+        - product_id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - group_id
+        - product_id
+        - position
+      filter: {}
+      allow_aggregations: true

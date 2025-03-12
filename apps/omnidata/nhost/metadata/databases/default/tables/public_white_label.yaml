@@ -1,0 +1,20 @@
+table:
+  name: white_label
+  schema: public
+object_relationships:
+  - name: organization
+    using:
+      foreign_key_constraint_on: organization_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - configuration
+        - organization_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - configuration
+        - organization_id
+      filter: {}

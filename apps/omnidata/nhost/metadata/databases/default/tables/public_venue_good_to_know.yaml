@@ -1,0 +1,22 @@
+table:
+  name: venue_good_to_know
+  schema: public
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - de
+        - en
+        - es
+        - fr
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - de
+        - en
+        - es
+        - fr
+        - id
+      filter: {}

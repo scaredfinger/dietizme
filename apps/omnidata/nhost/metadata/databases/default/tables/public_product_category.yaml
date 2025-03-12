@@ -1,0 +1,47 @@
+table:
+  name: product_category
+  schema: public
+object_relationships:
+  - name: description
+    using:
+      manual_configuration:
+        column_mapping:
+          description_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: headline
+    using:
+      manual_configuration:
+        column_mapping:
+          headline_id: id
+        insertion_order: null
+        remote_table:
+          name: translated_text
+          schema: public
+  - name: image
+    using:
+      foreign_key_constraint_on: image_id
+  - name: name
+    using:
+      foreign_key_constraint_on: name_id
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - description_id
+        - headline_id
+        - id
+        - image_id
+        - name_id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - name_id
+        - headline_id
+        - description_id
+        - image_id
+      filter: {}
