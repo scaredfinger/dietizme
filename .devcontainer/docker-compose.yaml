@@ -17,8 +17,8 @@ services:
       - local.graphql.nhost.run:host-gateway
       - local.hasura.nhost.run:host-gateway
       - local.storage.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-
+      
+      - local.auth.local.nhost.run:host-gateway
       - local.dashboard.local.nhost.run:host-gateway
       - local.db.local.nhost.run:host-gateway
       - local.functions.local.nhost.run:host-gateway
