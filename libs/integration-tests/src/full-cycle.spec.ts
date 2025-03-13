@@ -55,8 +55,6 @@ if (!env.ADMIN_SECRET) {
 
 const { GRAPHQL_SERVER, ADMIN_SECRET, NHOST_DOMAIN, NHOST_REGION } = getValidatedEnv()
 
-// jest.setTimeout(240_000)
-
 describe('omnidata', () => {
   let graphql: GraphQLClient
   let sdk: Sdk
