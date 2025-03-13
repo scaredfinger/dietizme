@@ -11,11 +11,13 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "lodash": "^4.14.202",
+    "lodash-es": "^4.17.0",
+    "luxon": "^3.1.1",
     "moment": "^2.29.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.202",
+    "@types/lodash-es": "^4.17.0",
+    "@types/luxon": "^3.1.1",
     "@otiuming/base": "workspace:*"
   }
 }

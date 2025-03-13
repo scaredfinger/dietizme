@@ -6,10 +6,10 @@
     "@otiuming/domain-data-types": "workspace:^",
     "@otiuming/domain-rates": "workspace:^",
     "@otiuming/domain-search": "workspace:^",
-    "lodash-es": "^4.14.202"
+    "lodash-es": "^4.17.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.14.202",
+    "@types/lodash-es": "^4.17.0",
     "@otiuming/base": "workspace:*"
   },
   "main": "./dist/index.js",

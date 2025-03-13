@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { createTimeSlotsRule } from './time-slots'
 
 describe('TimeSlots', () => {

@@ -1,19 +1,19 @@
-import moment, { Moment } from 'moment'
-import _ from 'lodash'
+import { DateTime } from 'luxon'
+import * as _ from 'lodash-es'
 
 import { ALL_EXACT_HOURS, ExactHour } from './hours'
 
-type DateValueInner = Moment
+type DateValueInner = DateTime
 
 export class DateValue {
   constructor(private inner: DateValueInner) {}
 
   addDays(days: number): DateValue {
-    return new DateValue(this.inner.clone().add(days, 'days'))
+    return new DateValue(this.inner.plus({ days }))
   }
 
   toJSON(): string {
-    return this.inner.format('YYYY-MM-DDTHH:mm:ss')
+    return this.inner.toFormat("yyyy-MM-dd'T'HH:mm:ss")
   }
 
   setExactHour(hour: ExactHour): DateValue {
@@ -21,17 +21,24 @@ export class DateValue {
   }
 
   format(format: string): string {
-    return this.inner.format(format)
+    // Convert common moment formats to luxon formats
+    // This is a simple conversion and might need to be extended
+    const luxonFormat = format
+      .replace('YYYY', 'yyyy')
+      .replace('MM', 'MM')
+      .replace('DD', 'dd')
+    
+    return this.inner.toFormat(luxonFormat)
   }
 }
 
 export function dateValue(value?: string | DateValueInner): DateValue {
   if (!value) {
-    return new DateValue(moment())
+    return new DateValue(DateTime.now())
   }
 
   if (_.isString(value)) {
-    return new DateValue(moment(value))
+    return new DateValue(DateTime.fromISO(value))
   }
 
   return new DateValue(value)
@@ -47,7 +54,7 @@ export function addDays(date: DateValue, days: number): DateValue {
 }
 
 function format(date: DateValueInner, hour: ExactHour): string {
-  return date.format('YYYY-MM-DD') + 'T' + hour
+  return date.toFormat('yyyy-MM-dd') + 'T' + hour
 }
 
 function getExactHour(hour: number | ExactHour): ExactHour {
@@ -62,7 +69,7 @@ function buildDatePrivate(
   date: DateValueInner,
   hour: number | ExactHour,
 ): DateValueInner {
-  return moment(format(date, getExactHour(hour)))
+  return DateTime.fromISO(format(date, getExactHour(hour)))
 }
 
 export function buildDate(

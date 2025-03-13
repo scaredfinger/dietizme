@@ -11,11 +11,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "lodash-es": "^4.14.202",
+    "lodash-es": "^4.17.0",
     "@otiuming/domain-omnidata-types": "workspace:^"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.14.202",
+    "@types/lodash-es": "^4.17.0",
     "@faker-js/faker": "^7.6.0",
     "@otiuming/base": "workspace:*"
   }
