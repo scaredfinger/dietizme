@@ -3,7 +3,11 @@
   "compilerOptions": {
     "rootDir": "functions",
     "declaration": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["functions/_utils/*"]
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist"]

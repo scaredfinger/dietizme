@@ -1,8 +1,9 @@
-import * as _ from 'lodash'
-import { camelCase } from 'change-case'
+import * as _ from 'lodash-es'
 import { Result } from '@swan-io/boxed'
 
-import { Error, ErrorType, OperationResponse, OperationResult } from '@otiuming/biz-builder'
+import { camelCase } from '@otiuming/utils-common'
+
+import { Error, ErrorType, OperationResult } from '@otiuming/biz-builder'
 
 import { logger } from './logger'
 

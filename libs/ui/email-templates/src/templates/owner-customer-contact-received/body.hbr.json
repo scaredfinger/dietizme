@@ -1,0 +1,21 @@
+{
+  "organization": {
+    "logo": "",
+    "name": "Obi-Wan"
+  },
+  "i18n": {
+    "hello": "",
+    "description": "",
+    "from": "",
+    "message": ""
+  },
+  "customer": {
+    "name": "Rey",
+    "email": "rey@example.net",
+    "message": ""
+  },
+  "company": {
+    "poweredBy": "",
+    "logo": ""
+  }
+}

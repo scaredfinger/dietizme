@@ -53,9 +53,18 @@ importers:
       '@otiuming/biz-builder':
         specifier: workspace:*
         version: link:../../libs/biz-builder
+      '@otiuming/domain-bookings':
+        specifier: workspace:*
+        version: link:../../libs/domain/bookings
       '@otiuming/domain-omnidata-types':
         specifier: workspace:*
         version: link:../../libs/domain/omnidata-types
+      '@otiuming/domain-rates':
+        specifier: workspace:*
+        version: link:../../libs/domain/rates
+      '@otiuming/email-templates':
+        specifier: workspace:*
+        version: link:../../libs/ui/email-templates
       '@otiuming/utils-common':
         specifier: workspace:*
         version: link:../../libs/utils/common
@@ -117,6 +126,9 @@ importers:
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.0
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       rollup:
         specifier: ^4.35.0
         version: 4.35.0
@@ -363,6 +375,25 @@ importers:
       fs-extra:
         specifier: ^11.2.0
         version: 11.3.0
+
+  libs/ui/email-templates:
+    dependencies:
+      '@otiuming/domain-omnidata-types':
+        specifier: workspace:^
+        version: link:../../domain/omnidata-types
+      lodash-es:
+        specifier: ^4.14.202
+        version: 4.17.21
+    devDependencies:
+      '@faker-js/faker':
+        specifier: ^7.6.0
+        version: 7.6.0
+      '@otiuming/base':
+        specifier: workspace:*
+        version: link:../../../rigs/base
+      '@types/lodash-es':
+        specifier: ^4.14.202
+        version: 4.17.12
 
   libs/utils/common:
     dependencies:

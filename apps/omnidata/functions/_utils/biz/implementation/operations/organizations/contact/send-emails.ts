@@ -10,7 +10,7 @@ import { sendEmail } from '../../../connectors/email'
 
 import { Renderer as ownerCustomerContactReceived } from '@otiuming/email-templates/dist/templates/owner-customer-contact-received'
 
-import { MediaItemResolver, IntlFormatter, Otiuming } from '../../../formatting-and-resolving-to-be-refactored'
+import { MediaItemResolver, Otiuming } from '../../../formatting-and-resolving-to-be-refactored'
 
 const NOREPLY_EMAIL = 'noreply@otiuming.com'
 

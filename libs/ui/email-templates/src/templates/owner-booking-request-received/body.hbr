@@ -1,0 +1,49 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Email Template</title>
+    <link
+      rel='stylesheet'
+      href='https://my.otiuming.com/styles/owners-emails.css'
+    />
+  </head>
+  <body>
+    <div class='body'>
+      <div class='header'>
+        <img
+          src='{{organization.logo}}'
+          alt='Company Logo'
+          style='max-width: 200px;'
+        />
+      </div>
+      <div class='content'>
+        <h1>{{i18n.hello}} {{organization.name}}</h1>
+        <p>{{i18n.description}}</p>
+        <p>
+          {{i18n.from}}:
+          {{customer.name}}(
+          <a href=''>{{customer.email}}</a>
+          )
+        </p>
+        <p>{{i18n.total}}: {{booking.total}}</p>
+        <a href='{{booking.url}}'>{{i18n.openBooking}}</a>
+        {{#if organization.settings.on_request}}
+          <p>
+            {{i18n.mustConfirm}}
+          </p>
+        {{/if}}
+      </div>
+      <div class='footer'>
+        {{company.poweredBy}}
+        <div class='powered-by'>
+          <img
+            src='{{company.logo}}'
+            alt='Otiuming Logo'
+            class='powered-logo'
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

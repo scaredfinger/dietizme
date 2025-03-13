@@ -4,6 +4,9 @@
     "@nhost/nhost-js": "^3.2.5",
     "@otiuming/biz-builder": "workspace:*",
     "@otiuming/domain-omnidata-types": "workspace:*",
+    "@otiuming/domain-bookings": "workspace:*",
+    "@otiuming/domain-rates": "workspace:*",
+    "@otiuming/email-templates": "workspace:*",
     "@otiuming/utils-common": "workspace:*",
     "@otiuming/utils-logging": "workspace:*",
     "@sentry/node": "^9.5.0",
@@ -27,6 +30,7 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/express": "^5.0.0",
+    "@types/lodash-es": "^4.17.12",
     "rollup": "^4.35.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "^5.8.2"

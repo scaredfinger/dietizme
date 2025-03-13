@@ -1,5 +1,3 @@
-import { NhostClient } from '@nhost/nhost-js'
-
 import { OperationRequest } from '@otiuming/biz-builder'
 
 import { Cleanup_Input, Preload_CleanupQuery } from '../../../../generated'

@@ -10,14 +10,13 @@ import {
   Rate_Save_Input,
   Rate_Type_Enum,
   Rate_UpsertMutationVariables,
-} from '@otiuming/domain-omnidata-types'
-
+} from '@/generated'
 
 import { OperationRequest } from '@otiuming/biz-builder'
 import { createModifiedRate, DailyPrice, HourlyPrice } from '@otiuming/domain-rates'
 
 import { logger } from '@/logger'
-import { sanitizeInput } from '../../../../../common'
+import { sanitizeInput } from '@otiuming/utils-common'
 
 export function buildSaveRateInput(
   request: OperationRequest<Rate_Save_Input>,

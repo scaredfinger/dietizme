@@ -1,0 +1,47 @@
+{
+  "customer": {
+    "name": "John Doe",
+    "email": "john.doe@grr.la",
+    "bookingFriendlyId": "123456",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempor ut nulla a fringilla. Proin libero sem, dignissim ut eros et, dignissim rhoncus ligula. Morbi euismod ut diam vel scelerisque. Nullam commodo tincidunt aliquet. Cras non finibus massa. Nulla vitae ante in velit consectetur egestas id vel elit. Nullam eget diam est. Aliquam eros mi, suscipit quis ligula eu, volutpat vestibulum nisi. Ut feugiat tortor tellus, eget consectetur sapien mollis ultrices. Donec consequat, dolor nec pulvinar dictum, est turpis viverra libero, vitae mattis tortor nulla non quam. Nulla elementum venenatis nisl sit amet tristique. Nulla at mi ut magna porta finibus."
+  },
+  "booking": {
+    "url": "https://www.otiuming.com/booking/123456",
+    "total": "€1243"
+  },
+  "organization": {
+    "id": "daf2a973-a0a9-4a26-8346-cc34be517fcd",
+    "email": "lorem-ipsumia@grr.la",
+    "logo": "https://sailero.com/wp-content/uploads/2021/04/logo-white.jpg",
+    "name": "Organization Lorem Ipsumia",
+    "phone_number": "+666 999 999 999",
+    "instagram": "https://www.instagram.com/otiuming/",
+    "facebook": "https://www.facebook.com/otiuming",
+    "twitter": "https://twitter.com/otiuming",
+    "signature": "Thank you for using Otiuming",
+    "currency": "EUR",
+    "settings": {
+      "on_request": true
+    }
+  },
+  "company": {
+    "name": "Otiuming",
+    "website": "www.otiuming.com",
+    "logo": "https://my.otiuming.com/_next/image?url=%2Fimg%2Flogo_dark.png&w=160&q=75",
+    "email": "support@otiuming.com",
+    "instagram": "https://www.instagram.com/otiuming/",
+    "facebook": "https://www.facebook.com/otiuming",
+    "twitter": "https://twitter.com/otiuming",
+    "signature": "Thank you for using Otiuming",
+    "poweredBy": "Powered by Otiuming, © 2024"
+  },
+  "i18n": {
+    "title": "Lorem ipsum",
+    "from": "From",
+    "hello": "Hello",
+    "description": "You have received a message from your website contact form",
+    "customer": "Customer",
+    "message": "Message",
+    "subject": "Customer has contacted you"
+  }
+}
