@@ -24,11 +24,11 @@ export default async function (req: Request, res: Response) {
 
   const actionRequest: ActionRequest<unknown> = req.body
 
-  const transaction = Sentry.startTransaction({
-    op: 'request',
-    name: actionRequest.action,
-    traceId: requestId
-  })
+  // const transaction = Sentry.startTransaction({
+  //   op: 'request',
+  //   name: actionRequest.action,
+  //   traceId: requestId
+  // })
   const biz = new BizImplementation(logger, defaultSdk)
   const result = await executeAction(actionRequest, biz as any)
 
@@ -57,7 +57,7 @@ export default async function (req: Request, res: Response) {
     },
   })
 
-  transaction.finish()
+  // transaction.finish()
 }
 
 interface GraphQLError {
