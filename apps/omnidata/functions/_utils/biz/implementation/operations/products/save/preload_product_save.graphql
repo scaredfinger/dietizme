@@ -1,0 +1,46 @@
+query preload_product_save(
+  $id: uuid!
+  $user_id: uuid!
+) {
+  organization(
+    where: {
+      products: {
+        id: {
+          _eq: $id
+        }
+      }
+    }
+  ) {
+    id
+    members(
+      where: { 
+        user_id: { 
+          _eq: $user_id 
+        } 
+      }
+    ) {
+      role
+    }
+  }
+
+  product_by_pk(id: $id) {
+    id
+    organization_id
+    name_id
+    headline_id
+    description_id
+    gallery {
+      id
+      name_id
+      headline_id
+      items {
+        id
+        file_id
+      }
+    }
+    place_id
+    business_model_id
+    slug_id
+    published
+  }
+}

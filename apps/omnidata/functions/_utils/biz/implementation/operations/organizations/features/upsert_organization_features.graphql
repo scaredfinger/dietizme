@@ -1,0 +1,9 @@
+mutation upsert_organization_features(
+  $features: [feature_insert_input!]!
+) {
+  insert_feature(
+    objects: $features
+  ) {
+    affected_rows
+  }
+}

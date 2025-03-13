@@ -1,0 +1,31 @@
+mutation rate_upsert(
+  $rate: rate_insert_input!
+  $rate_price_ranges_to_delete: [uuid!]!
+) {
+  delete_rate_price_range(
+    where: {
+      id: {
+        _in: $rate_price_ranges_to_delete
+      }
+    }) {
+    __typename
+  }
+  
+  insert_rate_one(
+    object: $rate
+  	on_conflict: {
+      constraint:rate_pkey
+      update_columns:[
+        id
+        product_id
+        configuration
+        availability_rules
+        price_rules
+      ]
+    }
+  ) {
+    id
+  	__typename  
+  }
+  
+}

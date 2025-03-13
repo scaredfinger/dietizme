@@ -3,14 +3,15 @@ overwrite: true
 skipDocumentsValidation: true
 verbose: true
 documents:
-  - ./sample/**/*.graphql
+  - ./functions/**/*.graphql
+  - '!**/*.ignore/**'
 config:
   scalars:
     DateTime: Date
     JSON: '{ [key: string]: any }'
     numeric: number
 generates:
-  sample/generated.ts:
+  functions/_utils/generated.ts:
     plugins:
       - typescript
       - typescript-operations

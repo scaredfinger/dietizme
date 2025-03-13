@@ -1,0 +1,25 @@
+query preload_get_booking(
+  $friendly_id: String!
+  $contact_email: String!
+) {
+
+  booking(where: {
+    _and: [
+      {
+        friendly_id: {
+          _eq: $friendly_id
+        }
+      },
+      {
+        contact: {
+          email: {
+            _eq: $contact_email
+          }
+        }
+      }
+    ]
+  }) {
+    id
+  }
+
+}

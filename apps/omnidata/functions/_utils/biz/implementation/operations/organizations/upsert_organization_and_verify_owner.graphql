@@ -1,0 +1,42 @@
+mutation upsert_organization_and_verify_owner(
+  $organization_id: uuid!
+  $organization: organization_insert_input!
+  $owner_id: uuid!) {
+
+  updateUser(
+    _set: {
+      emailVerified: true
+    }
+  	pk_columns: {
+      id: $owner_id
+    }
+  ) {
+    __typename
+  }
+
+  delete_site(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }) {
+    affected_rows
+  }
+
+  insert_organization_one(
+    object: $organization
+  	on_conflict: {
+      constraint: organization_branding_id_key
+      update_columns: [
+        name,
+        headline_id,
+        branding_id,
+        phone_number,
+        email,
+        business_model_id
+      ]
+    }
+  ) {
+  	id
+  }
+}

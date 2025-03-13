@@ -1,0 +1,18 @@
+query preload_contact($organization_id: uuid!) {
+  organization_by_pk(id: $organization_id) {
+    id
+    email
+    name
+    phone_number
+    language
+    branding {
+      logo_id
+      meta_description {
+    		value: en
+      }
+      meta_title {
+        value: en
+      }
+    }
+  }
+}

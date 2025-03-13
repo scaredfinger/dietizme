@@ -1,0 +1,21 @@
+query preload_organization_settings_save(
+  $id: uuid!
+  $user_id: uuid!
+) {
+  organization_by_pk(id: $id) {
+    id
+    name
+    headline_id
+    branding_id    
+    members(
+      where: {
+        user_id: {
+          _eq: $user_id
+        }
+      }
+    ) {
+      user_id
+      role
+    }
+  }
+}

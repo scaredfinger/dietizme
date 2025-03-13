@@ -1,0 +1,49 @@
+mutation supplement_upsert(
+  $id: uuid!
+  $supplement: supplement_insert_input!
+  $texts_to_delete: [uuid!]!
+  $files_to_delete: [uuid!]!
+) {
+  delete_product_supplement(
+    where: {
+      supplement_id: {
+        _eq: $id
+      }
+    }) {
+    affected_rows
+  }
+
+  insert_supplement_one(
+    object: $supplement
+    on_conflict: {
+      constraint: supplement_pkey
+      update_columns: [
+        name_id
+        headline_id
+        description_id
+        price
+        image_id
+      ]
+    }
+  ) {
+    id
+  }
+
+  deleteFiles(
+    where: {
+      id: {
+      	_in: $files_to_delete
+      }
+    }) {
+    affected_rows
+  }
+
+	delete_translated_text(
+    where: {
+      id: {
+      	_in: $texts_to_delete
+      }
+    }) {
+    affected_rows
+  }
+}

@@ -1,0 +1,38 @@
+query preload_organization_create(
+  $name: String!
+  $owner_email: citext!
+) {
+  organizations_for_that_user: organization(
+    where: {
+      members: {
+        user: {
+          email: {
+            _eq: $owner_email
+          }
+        }
+      }
+    }
+  ) {
+    id
+  }
+  
+  organizations_with_same_name: organization(
+    where: {
+    	name: {
+        _eq: $name
+      }
+    }
+  ) {
+    id
+  }
+  
+  users(where: {
+    email: {
+      _eq: $owner_email
+    }
+  }) {
+    id
+    email
+  }
+
+}

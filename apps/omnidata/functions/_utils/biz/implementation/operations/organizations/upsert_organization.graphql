@@ -1,0 +1,29 @@
+mutation upsert_organization(
+  $organization_id: uuid!
+  $organization: organization_insert_input!) {
+
+  delete_site(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }) {
+    affected_rows
+  }
+
+  insert_organization_one(
+    object: $organization
+  	on_conflict: {
+      constraint: organization_branding_id_key
+      update_columns: [
+        name,
+        headline_id,
+        branding_id,
+        phone_number,
+        email
+      ]
+    }
+  ) {
+  	id
+  }
+}

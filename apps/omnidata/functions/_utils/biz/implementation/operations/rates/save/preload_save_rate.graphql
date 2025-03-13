@@ -1,0 +1,57 @@
+query preload_save_rate(
+  $id: uuid!
+  $user_id: uuid!
+) {
+  organization(
+    where: {
+      products: {
+        rates: {
+          id: {
+            _eq: $id
+          }
+        }
+      }
+    }
+  ) {
+    id
+    members(
+      where: { 
+        user_id: { 
+          _eq: $user_id 
+        } 
+      }
+    ) {
+      role
+    }
+    business_model {
+      time_management: rate_type
+      unit_management
+    }
+  }
+
+  rate_by_pk(id: $id) {
+    id
+    product_id
+    name_id
+    headline_id
+    configuration
+    price_calendar {
+      id
+    }
+  }
+
+  product(
+    where: {
+      rates: {
+        id: {
+          _eq: $id
+        }
+      }
+    }
+  ) {
+    business_model {
+      time_management
+      unit_management
+    }
+  }
+}

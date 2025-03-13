@@ -1,0 +1,35 @@
+query preload_venue_save(
+  $user_id: uuid!
+  $id: uuid!
+) {
+  organization(
+    limit: 1
+    where: {
+      venues: {
+        id: {
+          _eq: $id
+        }
+      }
+    }
+  ) {
+    id
+    members(
+      where: {
+        user_id: {
+          _eq: $user_id
+        }
+      }) {
+        role
+      }
+  }
+
+  venue_by_pk(id: $id) {
+    id
+    organization_id
+    description_id
+    good_to_know_id
+    gallery_id
+    usps_id
+    place_id
+  }
+}

@@ -1,0 +1,36 @@
+mutation venue_usps_upsert(
+	$usps: [venue_usps_insert_input!]!
+  $venue_usp_lines_to_delete: [uuid!]!
+  $texts_to_be_cleaned_up: [uuid!]!
+) {
+
+  delete_venue_usps_line(
+    where: {
+      id: {
+        _in: $venue_usp_lines_to_delete
+      }
+    }
+  ) {
+    __typename
+  }
+
+  insert_venue_usps(
+    objects: $usps
+    on_conflict: {
+      constraint: venue_usps_pkey
+      update_columns: [image_id]
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_translated_text(
+    where: {
+      id: {
+        _in: $texts_to_be_cleaned_up
+      }
+    }
+  ) {
+    affected_rows
+  }
+}

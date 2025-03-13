@@ -1,0 +1,19 @@
+mutation upsert_organization_branding(
+  $branding: organization_branding_insert_input!) {
+
+  insert_organization_branding_one(
+    object: $branding
+  	on_conflict: {
+      constraint: organization_branding_pkey
+      update_columns: [
+        logo_id
+        logo_light_id
+        favicon_id
+        meta_title_id
+        meta_description_id
+      ]
+    }
+  ) {
+  	id
+  }
+}

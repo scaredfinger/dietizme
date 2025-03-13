@@ -1,0 +1,42 @@
+mutation upsert_booking_questions(
+  $booking_questions_to_be_deleted: [uuid!]!
+  $texts_to_be_deleted: [uuid!]!
+  $booking_questions: [organization_booking_question_insert_input!]!
+) {
+  delete_organization_booking_question(
+    where: {
+      id: {
+        _in: $booking_questions_to_be_deleted
+      }
+    }) {
+    __typename
+    affected_rows
+  }
+  
+  insert_organization_booking_question(
+    objects: $booking_questions
+    on_conflict: {
+      constraint: organization_booking_question_pkey
+      update_columns: [
+        scope
+        type
+        value
+        position
+        text_id
+      ]
+    }
+  ) {
+    __typename
+    affected_rows
+  }
+
+  delete_translated_text(
+    where: {
+      id: {
+        _in: $texts_to_be_deleted
+      }
+    }) {
+    __typename
+    affected_rows
+  }
+}

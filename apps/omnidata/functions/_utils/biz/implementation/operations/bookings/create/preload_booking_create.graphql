@@ -1,0 +1,87 @@
+query preload_booking_create(
+  $id: uuid!
+  $friendly_id: String!
+	$organization_id: uuid!
+  $rate_ids: [uuid!]!
+) {
+	booking(
+    where: {
+      _or: [
+        {
+          id: {
+            _eq: $id
+          }
+        },
+        {
+          _and: [
+            {
+              organization_id: {
+                _eq: $organization_id 
+              },
+              friendly_id: {
+                _eq: $friendly_id
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ) {
+    id
+  }
+  
+  organization: organization_by_pk(id: $organization_id) {
+    id
+    email
+    name
+    phone_number
+    currency
+    language
+    booking_questions {
+      id
+      type
+      scope
+      value
+      text {
+        ...translated_text
+      }
+    }
+    branding {
+      logo_id
+      meta_description {
+    		value: en
+      }
+      meta_title {
+        value: en
+      }
+    }
+    socials {
+      facebook
+      instagram
+      twitter
+      youtube
+    }
+    sites(
+      limit: 1
+    ) {
+      url
+    }
+  }
+  
+  rates: rate(
+    where: {
+			id: {
+        _in: $rate_ids
+      }
+  	}
+  ) {
+    id
+    price_calendar {
+      from
+      to
+      daily
+      hourly
+    }
+    price_rules
+  }
+}

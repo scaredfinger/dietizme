@@ -1,0 +1,22 @@
+mutation preload_booking_update_version(
+  $booking_id: uuid!
+  $expected_version: numeric!
+  $new_version: numeric!
+) {
+  update_booking_events_version(
+    _set: {
+      current: $new_version
+    }
+  	where: {
+      _and: {
+        id: {
+          _eq: $booking_id
+        }
+        current: {
+          _eq: $expected_version
+        }
+      }
+    }) {
+    affected_rows
+  }
+}

@@ -1,0 +1,47 @@
+mutation booking_upsert(
+  $booking_id: uuid!
+  $booking_events: [booking_events_main_insert_input!]!
+	$booking: booking_insert_input!
+  $booking_history_entries: [booking_history_entry_insert_input!]!
+) {
+  insert_booking_events_main(
+    objects: $booking_events
+  ) {
+  	__typename
+  }
+  
+  insert_booking_one(
+    object: $booking
+  	on_conflict: {
+      constraint: booking_pkey
+      update_columns: [
+        organization_id
+        amount
+        locale
+        contact_id
+        created_on
+        last_modified_on
+        state
+      ]
+    }
+  )  {
+    __typename
+  }
+
+  insert_booking_events_version_one(
+    object: {
+      id: $booking_id
+      current: 1
+    }
+  ) {
+    __typename
+    id
+    current
+  }
+
+  insert_booking_history_entry(
+    objects: $booking_history_entries) {
+    __typename
+  }
+  
+}

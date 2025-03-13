@@ -1,0 +1,294 @@
+
+mutation delete_organization(
+  $organization_id: uuid!
+  $branding_id: uuid!
+  $socials_id: uuid!
+  $venueFacilities: [uuid!]!  
+  $galleryItems: [uuid!]!
+  $galleries: [uuid!]!
+  $venueUspsLines: [uuid!]!
+  $venueUsps: [uuid!]!
+  $venues: [uuid!]!	
+  $places: [uuid!]!
+  $products: [uuid!]!
+  $product_business_models: [uuid!]!
+  $productGalleryItems: [uuid!]!
+  $productGalleries: [uuid!]!
+  $sites: [uuid!]!
+  $my_web_sections: [String!]!
+  $texts: [uuid!]!
+  $business_model_id: uuid!
+  $rates: [uuid!]!
+  $price_ranges: [uuid!]!
+  $slugs: [uuid!]!
+) {
+  delete_venue_facility(
+    where: {
+      id: {
+        _in: $venueFacilities
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_venue_usps_line(
+    where: {
+      id: {
+        _in: $venueUspsLines
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_venue(
+    where: {
+      id: {
+        _in: $venues
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_place(
+    where: {
+      id: {
+        _in: $places
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_venue_usps(
+    where: {
+      id: {
+        _in: $venueUsps
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_media_gallery_item(
+    where: {
+      id: {
+        _in: $galleryItems
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_media_gallery(
+    where: {
+      id: {
+        _in: $galleries
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_rate_price_range(where: {
+    id: {
+      _in: $price_ranges
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_rate(where: {
+    id: {
+      _in: $rates
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_product_group_product(
+    where: {
+      product: {
+        organization_id: {
+          _eq: $organization_id
+        }
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_product_group(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_product(
+    where: {
+      id: {
+        _in: $products
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_product_business_model(
+    where: {
+      id: {
+        _in: $product_business_models        
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_feature_category(
+    where: {
+      feature: {
+        organization_id: {
+          _eq: $organization_id
+        }
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_feature (
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_organization_booking_question(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }) {
+    affected_rows    
+  }
+  
+  delete_product_gallery_item: delete_media_gallery_item(
+    where: {
+      id: {
+        _in: $productGalleryItems
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_product_gallery: delete_media_gallery(
+    where: {
+      id: {
+        _in: $productGalleries
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_site(where: {
+    id: {
+      _in: $sites
+    }
+  }) {
+    affected_rows
+  }
+  
+  delete_my_web_section(
+    where: {
+      _and: [
+        {
+          organization_id: {
+            _eq: $organization_id
+          }
+        },
+        {
+          section_id: {
+            _in: $my_web_sections
+          }
+        }
+      ]     
+    }
+  ) {
+    affected_rows
+  }
+
+  delete_organization_member(where: {
+    organization_id: {
+      _eq: $organization_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_contact(where: {
+    organization_id: {
+      _eq: $organization_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_organization(where: {
+    id: {
+      _eq: $organization_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_organization_business_model(where: {
+    id: {
+      _eq: $business_model_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_organization_branding(where: {
+    id: {
+      _eq: $branding_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_organization_socials(where: {
+    id: {
+      _eq: $socials_id
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_translated_text(where: {
+    id: {
+      _in: $texts
+    }
+  }) {
+    affected_rows
+  }
+
+  delete_slug(where: {
+    id: {
+      _in: $slugs
+    }
+  }) {
+    affected_rows
+  }
+}

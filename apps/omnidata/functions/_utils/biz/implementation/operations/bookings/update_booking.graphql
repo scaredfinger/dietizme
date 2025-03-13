@@ -1,0 +1,36 @@
+mutation update_booking(
+  $booking_id: uuid!
+  $expected_version: numeric!
+  $new_version: numeric!
+  $booking_events: [booking_events_main_insert_input!]!
+  $booking_set_input: booking_set_input!
+  $history_entries: [booking_history_entry_insert_input!]!
+) {
+  
+  update_booking_version_with_optimistic_lock(arg: {
+    booking_id: $booking_id
+    expected_version: $expected_version
+    new_version: $new_version
+  })
+  
+  insert_booking_events_main(
+    objects: $booking_events) {
+    affected_rows
+  }
+  
+  update_booking(
+    _set: $booking_set_input
+    where: {
+      id: {
+        _eq: $booking_id
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  insert_booking_history_entry(
+    objects: $history_entries) {
+    affected_rows
+  }
+}

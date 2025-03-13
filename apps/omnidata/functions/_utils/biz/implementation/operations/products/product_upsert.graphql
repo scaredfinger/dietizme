@@ -1,0 +1,54 @@
+mutation product_upsert(
+  $product: product_insert_input!
+  $gallery_items_to_delete: [uuid!]
+  $places_to_delete: [uuid!]!
+  $product_updates: [product_updates!]!
+) {
+	delete_media_gallery_item(
+    where: {
+      id: {
+        _in: $gallery_items_to_delete
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  update_product_many(
+    updates: $product_updates) {
+    __typename
+    affected_rows
+  }
+  
+  insert_product_one(
+    object: $product
+  	on_conflict: {
+      constraint:product_content_pkey
+      update_columns:[
+        price_from
+        name_id
+        description_id
+        gallery_id
+        headline_id
+        place_id
+        business_model_id
+        slug_id
+        published
+      ]
+    }
+  ) {
+    id
+  	__typename
+  }
+
+  delete_place(
+    where: {
+      id: {
+        _in: $places_to_delete
+      }
+    }
+  ) {
+    affected_rows
+  }
+
+}

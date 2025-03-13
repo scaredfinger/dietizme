@@ -1,0 +1,113 @@
+query preload_cleanup($organization_id: uuid!) {
+	organization_by_pk(id: $organization_id) {
+    branding_id
+    headline_id
+    business_model_id
+    venues {
+      id
+      description_id
+      good_to_know_id
+      place_id
+      facilities {
+        id
+        name_id
+        headline_id
+        image_id
+        slug_id
+      }
+      gallery {
+        id
+        name_id
+        headline_id
+        items {
+          id
+          file_id
+          name_id
+          headline_id
+        }
+      }
+      usps {
+        id
+        image_id
+        lines {
+          id
+          name_id
+          headline_id
+        }
+      }
+    }
+    sites {
+      id
+      url
+    }
+    socials {
+      id
+    }
+    branding {
+      id
+      logo_id
+      logo_light_id
+      favicon_id
+      meta_title_id
+      meta_description_id
+    }
+    contacts {
+      id
+    }
+    products {
+      id
+      name_id
+      headline_id
+      description_id
+      slug_id
+      business_model_id
+      gallery {
+        id
+        name_id
+        headline_id
+        items {
+          id
+          name_id
+          headline_id
+          file_id
+        }
+      }
+      rates {
+        id
+        name_id
+        headline_id
+        price_calendar {
+          id
+        }
+      }
+    }
+
+    product_groups {
+      id
+      image_id
+      name_id
+      description_id
+      headline_id
+      slug_id
+    }
+
+    features {
+      id
+      name_id
+      headline_id
+    }
+
+    booking_questions {
+      id
+      text_id
+    }
+  }
+
+  my_web_section(where: {
+    organization_id: {
+      _eq: $organization_id
+    }
+  }) {
+    section_id
+  }
+}

@@ -6,6 +6,7 @@
     "@otiuming/domain-omnidata-types": "workspace:*",
     "@otiuming/utils-common": "workspace:*",
     "@otiuming/utils-logging": "workspace:*",
+    "@sentry/node": "^9.5.0",
     "@swan-io/boxed": "^3.2.0",
     "cross-fetch": "^4.1.0",
     "graphql": "^16.10.0",

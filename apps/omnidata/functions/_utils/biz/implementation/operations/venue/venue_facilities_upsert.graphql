@@ -1,0 +1,52 @@
+mutation venue_facilities_upsert(
+  $facility_to_delete:[uuid!]!
+  $names_to_delete:[uuid!]!
+  $headlines_to_delete:[uuid!]!
+  $slugs_to_delete:[uuid!]!
+  $facilities: [venue_facility_insert_input!]!
+) {
+  
+  delete_venue_facility(
+    where: {
+  		id: {
+        _in: $facility_to_delete
+      }    
+    }
+  ) {
+    affected_rows
+  }
+  
+  delete_venue_facility_name(
+    where: {
+      id: {
+        _in: $names_to_delete
+      }
+    }) {
+    affected_rows    
+  }
+  
+  delete_venue_facility_headline(
+    where: {
+      id: {
+        _in: $headlines_to_delete
+      }
+    }) {
+    affected_rows    
+  }
+
+  delete_slug(
+    where: {
+      id: {
+        _in: $slugs_to_delete
+      }
+    }
+  ) {
+    affected_rows
+  }
+  
+  insert_venue_facility(
+    objects: $facilities
+  ) {
+    __typename
+  }
+}

@@ -1,0 +1,33 @@
+mutation venue_gallery_upsert(
+  $gallery_id: uuid!
+  $gallery: media_gallery_insert_input!
+  $texts_to_be_cleaned_up: [uuid!]!
+) {
+  delete_media_gallery_item(
+    where: {
+      gallery_id: {
+        _eq: $gallery_id
+      }
+    }) {
+    __typename
+  }
+
+  insert_media_gallery_one(
+    object: $gallery
+    on_conflict: {
+      constraint: media_gallery_pkey
+      update_columns: [name_id, headline_id]
+    }
+  ) {
+    __typename
+  }
+
+  delete_translated_text(
+    where: {
+      id: {
+        _in: $texts_to_be_cleaned_up
+      }
+    }) {
+    __typename
+  }
+}

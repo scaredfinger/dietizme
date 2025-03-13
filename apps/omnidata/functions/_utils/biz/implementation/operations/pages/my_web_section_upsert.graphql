@@ -1,0 +1,10 @@
+mutation my_web_section_upsert($section:my_web_section_insert_input!) {
+  insert_my_web_section_one(
+  object: $section
+  on_conflict:{
+    constraint:my_web_section_pkey
+    update_columns:value
+  }) {
+    __typename
+  }
+}

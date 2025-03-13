@@ -1,0 +1,27 @@
+query preload_product_group_save(
+  $id: uuid!
+  $organization_id: uuid!
+  $user_id: uuid!
+) {
+  organization_by_pk(id: $organization_id) {
+    id
+    members(
+      where: { 
+        user_id: { 
+          _eq: $user_id 
+        } 
+      }
+    ) {
+      role
+    }
+  }
+
+  product_group_by_pk(id: $id) {
+    id
+    name_id
+    headline_id
+    description_id
+    image_id
+    slug_id
+  }
+}

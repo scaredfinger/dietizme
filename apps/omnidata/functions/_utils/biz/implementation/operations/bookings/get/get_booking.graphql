@@ -1,0 +1,43 @@
+query get_booking($id: uuid!) {
+  booking_by_pk(id: $id) {
+    id
+    amount
+    contact {
+      id
+      name
+      email
+    }
+    created_on
+    last_modified_on
+    friendly_id
+    state
+    products {
+      price
+      quantity
+      explained_search_params
+      starts_on
+      ends_on
+      rate {
+        product {
+          name {
+            en
+            es
+            fr
+            de
+          }
+          headline {
+            en
+            es
+            fr
+            de
+          }
+          gallery {
+            items(limit: 1) {
+              file_id
+            }
+          }
+        }
+      }
+    }
+  }
+}

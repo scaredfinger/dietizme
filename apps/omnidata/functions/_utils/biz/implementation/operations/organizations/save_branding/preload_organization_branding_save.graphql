@@ -1,0 +1,26 @@
+query preload_organization_branding_save(
+  $id: uuid!
+  $user_id: uuid!
+) {
+  organization_by_pk(id: $id) {
+    id    
+    members(
+      where: {
+        user_id: {
+          _eq: $user_id
+        }
+      }
+    ) {
+      user_id
+      role
+    }
+    branding {
+      id
+      logo_id
+      logo_light_id
+      favicon_id
+      meta_title_id
+      meta_description_id
+    }
+  }
+}

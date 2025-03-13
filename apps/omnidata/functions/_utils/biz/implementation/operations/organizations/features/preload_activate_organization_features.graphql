@@ -1,0 +1,41 @@
+query preload_activate_organization_features(
+  $user_id: uuid!
+  $organization_id: uuid!
+  $category_ids: [String!]!
+) {
+  organization_by_pk(id: $organization_id) {
+    id    
+    members(
+      where: {
+        user_id: {
+          _eq: $user_id
+        }
+      }
+    ) {
+      user_id
+      role
+    }
+  }
+
+  feature(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    id
+    categories {
+      category_id
+    }
+  }
+
+  category(
+    where: {
+      id: {
+        _in: $category_ids
+      }
+    }) {
+    id
+  }
+}

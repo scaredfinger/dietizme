@@ -1,0 +1,16 @@
+mutation save_product_features(
+  $product_features: [product_feature_insert_input!]!
+) {
+  insert_product_feature(
+    objects: $product_features
+    on_conflict: {
+      constraint: product_feature_pkey
+      update_columns: [
+        value
+        position
+      ]
+    }
+  ) {
+    affected_rows
+  }
+}

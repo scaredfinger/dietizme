@@ -1,0 +1,14 @@
+mutation venue_upsert(
+  $venue: venue_insert_input!
+) {
+  insert_venue_one(
+    object: $venue
+    on_conflict: { 
+      constraint: venue_pkey, 
+      update_columns: id
+    }
+  ) {
+    id
+    __typename
+  }
+}

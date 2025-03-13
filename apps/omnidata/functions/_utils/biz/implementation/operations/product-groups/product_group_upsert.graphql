@@ -1,0 +1,49 @@
+mutation product_group_upsert(
+  $id: uuid!
+  $group: product_group_insert_input!
+  $texts_to_delete: [uuid!]!
+  $files_to_delete: [uuid!]!
+) {
+  delete_product_group_product(
+    where: {
+      group_id: {
+      	_eq: $id
+      }
+    }) {
+    affected_rows
+  }
+
+  insert_product_group_one(
+    object: $group
+    on_conflict: {
+      constraint: product_group_pkey
+      update_columns: [
+        name_id
+        headline_id
+        description_id
+        image_id
+        slug_id
+      ]
+    }
+  ) {
+    id
+  }
+
+  deleteFiles(
+    where: {
+      id: {
+      	_in: $files_to_delete
+      }
+    }) {
+    affected_rows
+  }
+
+	delete_translated_text(
+    where: {
+      id: {
+      	_in: $texts_to_delete
+      }
+    }) {
+    affected_rows
+  }
+}

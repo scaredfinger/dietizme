@@ -1,0 +1,7 @@
+fragment translated_text on translated_text {
+  id
+  en
+  es
+  de
+  fr
+}
