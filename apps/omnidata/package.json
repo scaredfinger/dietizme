@@ -3,8 +3,8 @@
   "dependencies": {
     "@nhost/nhost-js": "^3.2.5",
     "@otiuming/biz-builder": "workspace:*",
-    "@otiuming/domain-omnidata-types": "workspace:*",
     "@otiuming/domain-bookings": "workspace:*",
+    "@otiuming/domain-omnidata-types": "workspace:*",
     "@otiuming/domain-rates": "workspace:*",
     "@otiuming/email-templates": "workspace:*",
     "@otiuming/utils-common": "workspace:*",
@@ -16,8 +16,8 @@
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.0",
-    "pino": "^9.6.0",
-    "short-unique-id": "^5.2.0"
+    "node-mailjet": "^6.0.8",
+    "pino": "^9.6.0"
   },
   "description": "",
   "devDependencies": {

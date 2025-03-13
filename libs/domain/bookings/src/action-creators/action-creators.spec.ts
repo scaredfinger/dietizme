@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { Booking_Events_Event_Type_Enum } from '@otiuming/domain-omnidata-types'
+import { describe, expect, it } from 'vitest'
 
 import { create } from './create'
 import { createUniqueId } from '../utils'

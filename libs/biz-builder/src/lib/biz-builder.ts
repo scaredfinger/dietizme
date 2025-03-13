@@ -7,7 +7,7 @@ import {
   OperationResponse,
   ValidatorFunction,
 } from './interfaces'
-import { constantCase } from './constantCase'
+import { constantCase } from '@otiuming/utils-common'
 
 interface LogEvent {
   eventId: string

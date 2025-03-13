@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto'
 import { DateTime } from 'luxon'
-import _ from 'lodash'
+import * as _ from 'lodash-es'
 
 import {
   Booking_Question_Answer,
@@ -21,11 +21,11 @@ export function createUniqueId() {
 }
 
 
-export function toQuestionsById(questions: ReducedOrganizationBookingQuestion[]) {
+export function toQuestionsById(questions: ReducedOrganizationBookingQuestion[]): { [key: string]: ReducedOrganizationBookingQuestion } {
   return _.keyBy(questions, 'id')
 }
 
-export function toAnswersById(anwers: Booking_Question_Answer[]) {
+export function toAnswersById(anwers: Booking_Question_Answer[]): { [key: string]: Booking_Question_Answer } {
   if (!anwers) {
     return {}
   }

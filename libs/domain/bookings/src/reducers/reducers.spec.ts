@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import _ from 'lodash'
+import * as _ from 'lodash-es'
 import { randomInt } from 'crypto'
 
 import {
@@ -16,6 +16,7 @@ import {
 import { reduceAcceptedWithUpdates, reduceCreated, reduceNoteAdded } from '../reducers'
 
 import { BookingInsert } from './types'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 describe('reducers', () => {
   const bookindId = faker.random.alphaNumeric()

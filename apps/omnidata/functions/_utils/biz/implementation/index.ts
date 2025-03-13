@@ -1,4 +1,4 @@
-import _ from 'lodash-es'
+import * as _ from 'lodash-es'
 
 import { using as buildingUsing, OperationRequest, OperationResponse } from '@otiuming/biz-builder'
 import { Activate_Organization_Features_Input } from '@otiuming/domain-omnidata-types'

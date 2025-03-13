@@ -26,7 +26,6 @@ import {
 
 import { OperationRequest } from '@otiuming/biz-builder'
 import { Translated_Text_Update_Column } from '@otiuming/domain-omnidata-types'
-import { text } from 'stream/consumers'
 
 export function buildVenueSaveInput(
   request: OperationRequest<Venue_Main_Save_Input>,
