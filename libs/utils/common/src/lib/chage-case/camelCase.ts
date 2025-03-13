@@ -12,7 +12,7 @@ export function camelCase(input: string): string {
   }
   
   // Split the input into words
-  let words: string[] = [];
+  const words: string[] = [];
   
   // First split by non-alphanumeric characters
   const parts = input.split(/[^a-zA-Z0-9]+/).filter(part => part.length > 0);
