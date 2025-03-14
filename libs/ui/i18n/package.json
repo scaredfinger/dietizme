@@ -6,6 +6,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@rollup/plugin-url": "^7.0.0",
     "@types/react": "^18.2.42",
+    "@types/lodash-es": "^4.17.0",
     "rollup": "^4.35.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
@@ -16,7 +17,7 @@
   "module": "dist/esm/index.js",
   "name": "@otiuming/ui-i18n",
   "peerDependencies": {
-    "lodash": "^4.14.202",
+    "lodash-es": "^4.17.0",
     "next": "13.5.4",
     "react": "18.2.0",
     "react-intl": "^6.5.4"

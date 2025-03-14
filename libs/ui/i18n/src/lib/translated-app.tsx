@@ -2,7 +2,7 @@ import React from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { IntlProvider } from 'react-intl'
-import _ from 'lodash'
+import * as _ from 'lodash-es'
 
 import { FlattenedObject, NotObject } from './domain'
 import { Messages } from './constants'
