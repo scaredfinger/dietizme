@@ -92,6 +92,9 @@ importers:
       lodash-es:
         specifier: ^4.17.0
         version: 4.17.21
+      luxon:
+        specifier: ^3.5.0
+        version: 3.5.0
       node-mailjet:
         specifier: ^6.0.8
         version: 6.0.8
@@ -129,6 +132,9 @@ importers:
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
+      '@types/luxon':
+        specifier: ^3.4.2
+        version: 3.4.2
       rollup:
         specifier: ^4.35.0
         version: 4.35.0
@@ -192,7 +198,7 @@ importers:
         specifier: ^4.17.0
         version: 4.17.21
       luxon:
-        specifier: ^3.1.1
+        specifier: ^3.5.0
         version: 3.5.0
     devDependencies:
       '@faker-js/faker':
@@ -205,7 +211,7 @@ importers:
         specifier: ^4.17.0
         version: 4.17.12
       '@types/luxon':
-        specifier: ^3.3.3
+        specifier: ^3.4.2
         version: 3.4.2
 
   libs/domain/data-types:
@@ -214,7 +220,7 @@ importers:
         specifier: ^4.17.0
         version: 4.17.21
       luxon:
-        specifier: ^3.1.1
+        specifier: ^3.5.0
         version: 3.5.0
       moment:
         specifier: ^2.29.4
@@ -227,7 +233,7 @@ importers:
         specifier: ^4.17.0
         version: 4.17.12
       '@types/luxon':
-        specifier: ^3.1.1
+        specifier: ^3.4.2
         version: 3.4.2
 
   libs/domain/omnidata-types:
@@ -329,9 +335,6 @@ importers:
       '@types/joi':
         specifier: ^17.2.3
         version: 17.2.3
-      change-case:
-        specifier: ^5.3.0
-        version: 5.4.4
       crypto:
         specifier: ^1.0.1
         version: 1.0.1
@@ -369,9 +372,6 @@ importers:
       '@graphql-codegen/cli':
         specifier: ^5.0.0
         version: 5.0.5(@types/node@22.13.10)(enquirer@2.3.6)(graphql@16.10.0)(typescript@5.8.2)
-      '@types/change-case':
-        specifier: ^2.3.1
-        version: 2.3.5
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
@@ -2114,10 +2114,6 @@ packages:
   '@types/body-parser@1.19.5':
     resolution: {integrity: sha512-fB3Zu92ucau0iQ0JMCFQE7b/dv8Ot07NI3KaZIkIUNXq82k4eBAqUaneXfleGY9JWskeS9y+u0nXMyspcuQrCg==}
 
-  '@types/change-case@2.3.5':
-    resolution: {integrity: sha512-JvctDvBuY3MVSEisGbSgaAdJTcs+2JjBKO60W1Isr3GnX2YZCyJYLDY96bV4eWensEUrQLRGEL+egAkIXYrW1Q==}
-    deprecated: This is a stub types definition. change-case provides its own type definitions, so you do not need this installed.
-
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
 
@@ -2602,9 +2598,6 @@ packages:
 
   change-case@4.1.2:
     resolution: {integrity: sha512-bSxY2ws9OtviILG1EiY5K7NNxkqg/JnRnFxLtKQ96JaviiIxi7djMrSd0ECT9AC+lttClmYwKw53BWpOMblo7A==}
-
-  change-case@5.4.4:
-    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
   chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
@@ -7192,10 +7185,6 @@ snapshots:
       '@types/connect': 3.4.38
       '@types/node': 22.13.10
 
-  '@types/change-case@2.3.5':
-    dependencies:
-      change-case: 5.4.4
-
   '@types/connect@3.4.38':
     dependencies:
       '@types/node': 22.13.10
@@ -7815,8 +7804,6 @@ snapshots:
       sentence-case: 3.0.4
       snake-case: 3.0.4
       tslib: 2.8.1
-
-  change-case@5.4.4: {}
 
   chardet@0.7.0: {}
 

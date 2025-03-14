@@ -19,7 +19,7 @@
     "scripts/generate-env.js"
   ],
   "scripts": {
-    
+    "test": "vitest run"
   },
   "keywords": [
     "config",

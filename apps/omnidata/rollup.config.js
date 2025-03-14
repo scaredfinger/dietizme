@@ -4,6 +4,7 @@
 import typescript from '@rollup/plugin-typescript';
 // import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const pkg = require('./package.json');
@@ -26,6 +27,7 @@ export default {
   external: externalPackagesKeys,
   plugins: [
     nodeResolve(),
+    commonjs(),
     typescript({ tsconfig: './tsconfig.json' }),
     generatePackageJson({
       outputFolder: 'dist/functions',

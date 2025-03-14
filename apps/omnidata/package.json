@@ -17,6 +17,7 @@
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.0",
     "node-mailjet": "^6.0.8",
+    "luxon": "^3.5.0",
     "pino": "^9.6.0"
   },
   "description": "",
@@ -31,6 +32,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/express": "^5.0.0",
     "@types/lodash-es": "^4.17.12",
+    "@types/luxon": "^3.4.2",
     "rollup": "^4.35.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "^5.8.2"
@@ -56,7 +58,6 @@
     "serve": "cp .secrets dist && docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} up --detach",
     "stop": "docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} down",
     "generate-functions-graphql": "graphql-codegen --config graphql-codegen-config.yaml --verbose --debug",
-    "test": "jest --coverage --passWithNoTests",
     "merge-workspace-deps": "merge-workspace-deps",
     "postinstall": "merge-workspace-deps",
     "update-schema": "graphql-codegen --config graphql-codegen.yaml",

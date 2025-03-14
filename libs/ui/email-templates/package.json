@@ -11,7 +11,6 @@
   "scripts": {
     "compile-templates": "node ./scripts/compile-templates.mjs",
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
-    "test": "vitest --run",
     "lint": "eslint"
   },
   "dependencies": {

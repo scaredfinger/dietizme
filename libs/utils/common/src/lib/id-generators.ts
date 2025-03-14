@@ -1,5 +1,5 @@
 import { now } from 'lodash-es'
-import { default as ShortUniqueId } from 'short-unique-id'
+import ShortUniqueId from 'short-unique-id'
 
 const numberId = new ShortUniqueId({
   dictionary: 'number',
