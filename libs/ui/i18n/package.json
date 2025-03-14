@@ -1,0 +1,30 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@rollup/plugin-url": "^7.0.0",
+    "@types/react": "^18.2.42",
+    "rollup": "^4.35.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "@otiuming/base": "workspace:*"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "name": "@otiuming/ui-i18n",
+  "peerDependencies": {
+    "lodash": "^4.14.202",
+    "next": "13.5.4",
+    "react": "18.2.0",
+    "react-intl": "^6.5.4"
+  },
+  "scripts": {
+    "build": "rm -rf dist &&  tsc --project tsconfig.lib.json --emitDeclarationOnly && rollup -c --bundleConfigAsCjs"
+  },
+  "type": "commonjs",
+  "types": "dist/index.d.ts",
+  "version": "0.0.1"
+}
