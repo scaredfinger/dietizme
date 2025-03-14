@@ -6,7 +6,7 @@ interface EnvVariables {
   ADMIN_SECRET: string
   NHOST_DOMAIN: string
   NHOST_REGION: string
-
+  VITEST_VSCODE: boolean
 }
 
 const objectSchema = {
@@ -16,6 +16,8 @@ const objectSchema = {
   NHOST_REGION: joi.string()
     .allow('')
     .default(''),
+  VITEST_VSCODE: joi.boolean()
+    .default(false)
 }
 
 const validationSchema = joi

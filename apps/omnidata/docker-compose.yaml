@@ -20,7 +20,7 @@ services:
             AUTH_DISABLE_NEW_USERS: "false"
             AUTH_DISABLE_SIGNUP: "false"
             AUTH_EMAIL_PASSWORDLESS_ENABLED: "false"
-            AUTH_EMAIL_SIGNIN_EMAIL_VERIFIED_REQUIRED: "true"
+            AUTH_EMAIL_SIGNIN_EMAIL_VERIFIED_REQUIRED: "false"
             AUTH_GRAVATAR_DEFAULT: blank
             AUTH_GRAVATAR_ENABLED: "true"
             AUTH_GRAVATAR_RATING: g
@@ -46,7 +46,7 @@ services:
             AUTH_RATE_LIMIT_SIGNUPS_INTERVAL: 5m
             AUTH_RATE_LIMIT_SMS_BURST: "10"
             AUTH_RATE_LIMIT_SMS_INTERVAL: 1h
-            AUTH_REFRESH_TOKEN_EXPIRES_IN: "2592000"
+            AUTH_REFRESH_TOKEN_EXPIRES_IN: "43200"
             AUTH_REQUIRE_ELEVATED_CLAIM: disabled
             AUTH_SERVER_URL: https://local.auth.local.nhost.run/v1
             AUTH_SMTP_AUTH_METHOD: LOGIN
@@ -59,11 +59,18 @@ services:
             AUTH_TURNSTILE_SECRET: ""
             AUTH_USER_DEFAULT_ALLOWED_ROLES: user,me
             AUTH_USER_DEFAULT_ROLE: user
+            ENVIRONMENT: local
             HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
             HASURA_GRAPHQL_DATABASE_URL: postgres://nhost_hasura@postgres:5432/local
             HASURA_GRAPHQL_GRAPHQL_URL: http://graphql:8080/v1/graphql
             HASURA_GRAPHQL_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
+            MAILJET_API_KEY: 2cb0d44c72c2acab4b2c61a7b6be6e81
+            MAILJET_API_SECRET: 91389dec98ba572e42f8176d180b337b
             POSTGRES_MIGRATIONS_CONNECTION: postgres://nhost_auth_admin@postgres:5432/local
+            SENTRY_OMNIDATA_DSN: https://e1e4680ac69461831c304d1a45f60f95@o4506163896385536.ingest.sentry.io/4506263479386112
+            VERCEL_API_TOKEN: Y6hB5tVzzYsq5Yyn9i57x1tx
+            VERCEL_PROJECT_ID: prj_KuumwTz81maz11btymlsYTCrG9HS
+            WORK_AROUND_HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
         extra_hosts:
             - host.docker.internal:host-gateway
             - local.auth.local.nhost.run:host-gateway
@@ -144,6 +151,7 @@ services:
                                   --api-host https://local.hasura.local.nhost.run \
                                   --console-hge-endpoint https://local.hasura.local.nhost.run
         environment:
+            ENVIRONMENT: local
             GRAPHITE_WEBHOOK_SECRET: ""
             HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS: "true"
             HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
@@ -171,6 +179,8 @@ services:
             HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public
             HASURA_GRAPHQL_USE_PREPARED_STATEMENTS: "true"
             HASURA_GRAPHQL_WS_READ_COOKIE: "false"
+            MAILJET_API_KEY: 2cb0d44c72c2acab4b2c61a7b6be6e81
+            MAILJET_API_SECRET: 91389dec98ba572e42f8176d180b337b
             NHOST_ADMIN_SECRET: nhost-admin-secret
             NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
             NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
@@ -181,6 +191,10 @@ services:
             NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
             NHOST_SUBDOMAIN: local
             NHOST_WEBHOOK_SECRET: nhost-webhook-secret
+            SENTRY_OMNIDATA_DSN: https://e1e4680ac69461831c304d1a45f60f95@o4506163896385536.ingest.sentry.io/4506263479386112
+            VERCEL_API_TOKEN: Y6hB5tVzzYsq5Yyn9i57x1tx
+            VERCEL_PROJECT_ID: prj_KuumwTz81maz11btymlsYTCrG9HS
+            WORK_AROUND_HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
         extra_hosts:
             - host.docker.internal:host-gateway
             - local.auth.local.nhost.run:host-gateway
@@ -261,11 +275,14 @@ services:
     functions:
         image: nhost/functions:22-1.4.0
         environment:
+            ENVIRONMENT: local
             GRAPHITE_WEBHOOK_SECRET: ""
             HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
             HASURA_GRAPHQL_DATABASE_URL: postgres://nhost_auth_admin@local.db.nhost.run:5432/local
             HASURA_GRAPHQL_GRAPHQL_URL: http://graphql:8080/v1/graphql
             HASURA_GRAPHQL_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
+            MAILJET_API_KEY: 2cb0d44c72c2acab4b2c61a7b6be6e81
+            MAILJET_API_SECRET: 91389dec98ba572e42f8176d180b337b
             NHOST_ADMIN_SECRET: nhost-admin-secret
             NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
             NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
@@ -276,6 +293,10 @@ services:
             NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
             NHOST_SUBDOMAIN: local
             NHOST_WEBHOOK_SECRET: nhost-webhook-secret
+            SENTRY_OMNIDATA_DSN: https://e1e4680ac69461831c304d1a45f60f95@o4506163896385536.ingest.sentry.io/4506263479386112
+            VERCEL_API_TOKEN: Y6hB5tVzzYsq5Yyn9i57x1tx
+            VERCEL_PROJECT_ID: prj_KuumwTz81maz11btymlsYTCrG9HS
+            WORK_AROUND_HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
         extra_hosts:
             - host.docker.internal:host-gateway
             - local.auth.local.nhost.run:host-gateway
@@ -330,6 +351,7 @@ services:
             postgres:
                 condition: service_healthy
         environment:
+            ENVIRONMENT: local
             GRAPHITE_WEBHOOK_SECRET: ""
             HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS: "true"
             HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
@@ -357,6 +379,8 @@ services:
             HASURA_GRAPHQL_UNAUTHORIZED_ROLE: public
             HASURA_GRAPHQL_USE_PREPARED_STATEMENTS: "true"
             HASURA_GRAPHQL_WS_READ_COOKIE: "false"
+            MAILJET_API_KEY: 2cb0d44c72c2acab4b2c61a7b6be6e81
+            MAILJET_API_SECRET: 91389dec98ba572e42f8176d180b337b
             NHOST_ADMIN_SECRET: nhost-admin-secret
             NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
             NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
@@ -367,6 +391,10 @@ services:
             NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
             NHOST_SUBDOMAIN: local
             NHOST_WEBHOOK_SECRET: nhost-webhook-secret
+            SENTRY_OMNIDATA_DSN: https://e1e4680ac69461831c304d1a45f60f95@o4506163896385536.ingest.sentry.io/4506263479386112
+            VERCEL_API_TOKEN: Y6hB5tVzzYsq5Yyn9i57x1tx
+            VERCEL_PROJECT_ID: prj_KuumwTz81maz11btymlsYTCrG9HS
+            WORK_AROUND_HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
         extra_hosts:
             - host.docker.internal:host-gateway
             - local.auth.local.nhost.run:host-gateway

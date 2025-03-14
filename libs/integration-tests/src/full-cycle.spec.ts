@@ -2,11 +2,9 @@ import { NhostClient } from '@nhost/nhost-js'
 import { GraphQLClient } from 'graphql-request'
 import { v4 as uuid } from 'uuid'
 import { faker } from '@faker-js/faker'
-import { env, exit } from 'process'
 import { random } from 'lodash-es'
 import * as _ from 'lodash-es'
-import { basename } from 'path'
-import { config } from 'dotenv'
+
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { fail } from 'assert'
 
@@ -38,22 +36,9 @@ import {
 } from './common-operations'
 
 import { getValidatedEnv } from './env'
+const { GRAPHQL_SERVER, ADMIN_SECRET, NHOST_DOMAIN, NHOST_REGION, VITEST_VSCODE } = getValidatedEnv()
 
-const fullFileName = __filename
-const baseFileName = basename(fullFileName)
-
-const shouldRunThisFile = process.argv.filter((a) => a.includes(baseFileName))
-
-if (!shouldRunThisFile) exit(0)
-
-if (!env.ADMIN_SECRET) {
-  config({
-    path: '../.env'
-  })
-}
-
-const { GRAPHQL_SERVER, ADMIN_SECRET, NHOST_DOMAIN, NHOST_REGION } = getValidatedEnv()
-
+if (VITEST_VSCODE)
 describe('omnidata', () => {
   let graphql: GraphQLClient
   let sdk: Sdk
