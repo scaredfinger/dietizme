@@ -4,7 +4,7 @@ import {
   Organization_Booking_Question
 } from '@otiuming/domain-omnidata-types'
 import { faker } from '@faker-js/faker'
-import _ from 'lodash'
+import * as _ from 'lodash-es'
 
 import { buildAnswers } from './build-answers'
 import { AnswersByScope } from './types'

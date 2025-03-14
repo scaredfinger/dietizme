@@ -1,0 +1,27 @@
+{
+  "name": "@otiuming/ui-white-labels-view-models",
+  "version": "0.0.1",
+  "dependencies": {
+    "@otiuming/domain-data-types": "workspace:^",
+    "@otiuming/domain-rates": "workspace:^",
+    "@otiuming/domain-search": "workspace:^",
+    "@otiuming/domain-shopping-cart": "workspace:^",
+    "@swan-io/boxed": "^1.2.0",
+    "lodash-es": "^4.17.0",
+    "rxjs": "^7.8.1"
+  },
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.0",
+    "@otiuming/base": "workspace:*"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.lib.json",
+    "test": "vitest --run",
+    "coverage": "vitest --coverage",
+    "lint": "eslint"
+  }
+}

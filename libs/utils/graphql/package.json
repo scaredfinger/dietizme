@@ -16,6 +16,7 @@
     "graphql": "16.10.0"
   },
   "devDependencies": {
-    "@otiuming/base": "workspace:*"
+    "@otiuming/base": "workspace:*",
+    "vitest": "^3.0.8"
   }
 }

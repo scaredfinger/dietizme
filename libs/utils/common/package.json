@@ -15,7 +15,8 @@
     "short-unique-id": "^5.2.0"
   },
   "devDependencies": {
+    "@otiuming/base": "workspace:*",
     "@types/lodash-es": "^4.17.0",
-    "@otiuming/base": "workspace:*"
+    "vitest": "^3.0.8"
   }
 }

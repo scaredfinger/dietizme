@@ -2,7 +2,7 @@
   "name": "@otiuming/ui-text-formatting",
   "version": "0.0.1",
   "dependencies": {
-    "lodash-es": "^4.17.12",
+    "lodash-es": "^4.17.0",
     "luxon": "3.5.0"
   },
   "type": "commonjs",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@otiuming/base": "workspace:^",
-    "@types/lodash-es": "^4.17.12",
+    "@types/lodash-es": "^4.17.0",
     "@types/luxon": "^3.4.2",
     "moment": "^2.29.4",
     "vitest": "^3.0.8"

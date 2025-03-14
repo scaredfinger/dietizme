@@ -13,5 +13,8 @@ export default defineWorkspace([
   './libs/utils/common/vitest.config.ts',
   './libs/utils/graphql/vitest.config.ts',
 
+  './libs/ui/text-formatting/vitest.config.ts',
+  './libs/ui/white-labels-view-models/vitest.config.ts',
+
   './libs/integration-tests/vitest.config.ts',
 ])

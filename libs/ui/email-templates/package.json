@@ -1,5 +1,5 @@
 {
-  "name": "@otiuming/email-templates",
+  "name": "@otiuming/ui-email-templates",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
@@ -14,12 +14,13 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "lodash-es": "^4.17.0",
-    "@otiuming/domain-omnidata-types": "workspace:^"
+    "@otiuming/domain-omnidata-types": "workspace:^",
+    "handlebars": "^4.7.8",
+    "lodash-es": "^4.17.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.0",
     "@faker-js/faker": "^7.6.0",
-    "@otiuming/base": "workspace:*"
+    "@otiuming/base": "workspace:*",
+    "@types/lodash-es": "^4.17.0"
   }
 }

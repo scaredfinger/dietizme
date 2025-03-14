@@ -8,7 +8,7 @@ import {
 import { logger } from '../../../../../logger'
 import { sendEmail } from '../../../connectors/email'
 
-import { Renderer as ownerCustomerContactReceived } from '@otiuming/email-templates/dist/templates/owner-customer-contact-received'
+import { Renderer as ownerCustomerContactReceived } from '@otiuming/ui-email-templates/dist/templates/owner-customer-contact-received'
 
 import { MediaItemResolver, Otiuming } from '../../../formatting-and-resolving-to-be-refactored'
 

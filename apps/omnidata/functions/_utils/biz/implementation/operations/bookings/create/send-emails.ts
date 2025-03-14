@@ -1,7 +1,7 @@
 import { OperationRequest } from '@otiuming/biz-builder'
 
-import { Renderer as customerBookingRequestReceivedRenderer } from '@otiuming/email-templates/dist/templates/customer-booking-request-received'
-import { Renderer as ownerBookingRequestReceivedRenderer } from '@otiuming/email-templates/dist/templates/owner-booking-request-received'
+import { Renderer as customerBookingRequestReceivedRenderer } from '@otiuming/ui-email-templates/dist/templates/customer-booking-request-received'
+import { Renderer as ownerBookingRequestReceivedRenderer } from '@otiuming/ui-email-templates/dist/templates/owner-booking-request-received'
 
 import { Booking_Create_Input, Booking_UpsertMutationVariables, Preload_Booking_CreateQuery } from '../../../../../generated'
 import { logger } from '../../../../../logger'
