@@ -8,4 +8,4 @@ Run `nx build utils-common` to build the library.
 
 ## Running unit tests
 
-Run `nx test utils-common` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test utils-common` to execute the unit tests via [vitest](https://vitestjs.io).
