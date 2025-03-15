@@ -18,8 +18,6 @@ const shouldRunThisFile = process.argv.filter((a) => a.includes(baseFileName))
 
 if (!shouldRunThisFile) exit(0)
 
-// jest.setTimeout(1_000_000)
-
 describe('generate sample organizations', () => {
   let graphql: GraphQLClient
   let sdk: ReturnType<typeof getSdk>

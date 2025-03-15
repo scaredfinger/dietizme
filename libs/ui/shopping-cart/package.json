@@ -3,7 +3,6 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
-    "@types/jest": "^29.5.10",
     "@types/node": "^20.10.3",
     "@types/react": "^18.2.42",
     "rollup": "^4.6.1",

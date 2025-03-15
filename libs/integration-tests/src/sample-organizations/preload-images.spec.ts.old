@@ -23,8 +23,6 @@ const shouldRunThisFile = process.argv.filter((a) => a.includes(baseFileName))
 
 if (!shouldRunThisFile) exit(0)
 
-jest.setTimeout(1_000_000)
-
 describe('preload all images', () => {
   it('can preload all images', async () => {
     const images = [

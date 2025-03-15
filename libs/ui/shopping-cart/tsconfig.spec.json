@@ -3,10 +3,10 @@
   "compilerOptions": {
     "outDir": "build/test",
     "module": "commonjs",
-    "types": ["jest", "node"]
+    "types": ["node"]
   },
   "include": [
-    "jest.config.ts",
+    "vitest.config.ts",
     "**/*.test.ts",
     "**/*.spec.ts",
     "**/*.test.tsx",

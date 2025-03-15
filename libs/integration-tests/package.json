@@ -23,8 +23,8 @@
   "scripts": {
     "build": "rm -rf dist && tsc --project tsconfig.lib.json",
     "lint": "eslint",
-    "generate-sample-organizations": "jest --testPathPattern=generate-sample-organizations.spec.ts",
-    "integrations": "jest --testPathPattern=full-cycle.spec.ts",
+    "generate-sample-organizations": "vitest --testPathPattern=generate-sample-organizations.spec.ts",
+    "integrations": "vitest --testPathPattern=full-cycle.spec.ts",
     "update-schema": "graphql-codegen --config graphql-codegen.yaml"
   },
   "type": "module",
