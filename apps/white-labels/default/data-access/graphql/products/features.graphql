@@ -1,0 +1,16 @@
+fragment product_features_minimal on product {
+  features (
+    order_by: {
+      position: asc
+    }
+  ) {
+    feature {
+      name {
+        value: en
+      }
+      symbol
+      type
+    }
+    value
+  }
+}

@@ -1,11 +1,11 @@
 {
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@types/node": "^20.10.3",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.13.10",
     "@types/react": "^18.2.42",
-    "rollup": "^4.6.1",
+    "rollup": "^4.35.0",
     "@otiuming/base": "workspace:^",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2"

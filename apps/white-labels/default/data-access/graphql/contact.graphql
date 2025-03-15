@@ -1,0 +1,3 @@
+mutation contact($arg: contact_input!) {
+  contact(arg: $arg)
+}

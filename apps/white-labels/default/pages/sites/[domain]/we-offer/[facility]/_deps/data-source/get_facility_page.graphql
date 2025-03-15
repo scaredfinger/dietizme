@@ -1,0 +1,31 @@
+query get_facility_page(
+  $slug: String!
+  $domain: String!
+) {
+  facilities: venue_facility(
+    where: {
+      slug: {
+        _or: [
+          { en: { _eq: $slug } },
+          { es: { _eq: $slug } },
+          { fr: { _eq: $slug } },
+          { de: { _eq: $slug } },
+        ]
+      }
+    }
+  ) {
+    ...facility_full
+  }
+
+  matching_organizations: organization(
+    where: {sites: {url: {_eq: $domain}}}
+    limit: 1
+  ) {
+    ...organization_minimal
+
+    venues {
+      ...venue_full
+    }
+  }
+
+}

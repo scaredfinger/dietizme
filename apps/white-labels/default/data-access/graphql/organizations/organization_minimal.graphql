@@ -1,0 +1,28 @@
+fragment organization_minimal on organization {
+  id
+  name
+  headline {
+    value: en
+  }
+
+  business_model {
+    time_management: rate_type
+    unit_management
+  }
+
+  socials {
+    ...socials
+  }
+
+  branding {
+    favicon_id
+    logo_id
+    logo_light_id
+    meta_title {
+      value: en
+    }
+    meta_description {
+      value: en
+    }
+  }
+}

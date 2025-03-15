@@ -5,7 +5,7 @@
   "dependencies": {
     "@otiuming/domain-data-types": "workspace:^",
     "@otiuming/domain-omnidata-types": "workspace:^",
-    "@swan-io/boxed": "^1.2.0"
+    "@swan-io/boxed": "^3.2.0"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

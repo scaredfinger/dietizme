@@ -1,0 +1,26 @@
+query get_product_page(
+  $slug: String!
+  $domain: String!
+) {
+  products: product(
+    where: {
+      slug: {
+        _or: [
+          { en: { _eq: $slug } },
+          { es: { _eq: $slug } },
+          { fr: { _eq: $slug } },
+          { de: { _eq: $slug } },
+        ]
+      }
+    }
+  ) {
+    ...product_full
+  }
+
+  matching_organizations: organization(
+    where: {sites: {url: {_eq: $domain}}}
+    limit: 1
+  ) {
+    ...organization_minimal
+  }
+}

@@ -1,0 +1,3 @@
+mutation booking_create($arg: booking_create_input!) {
+  booking_create(arg: $arg)
+}

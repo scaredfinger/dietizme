@@ -1,0 +1,3 @@
+query get_booking($contact_email: String!, $friendly_id: String!) {
+  get_booking(arg: { contact_email: $contact_email, friendly_id: $friendly_id })
+}

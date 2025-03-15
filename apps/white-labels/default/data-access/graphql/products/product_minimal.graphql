@@ -1,0 +1,13 @@
+fragment product_minimal on product {
+  id
+  price_from
+  name {
+    value: en
+  }
+  headline {
+    value: en
+  }
+  slug {
+    value: en
+  }
+}

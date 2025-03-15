@@ -1,0 +1,6 @@
+fragment socials on organization_socials {
+  facebook
+  twitter
+  instagram
+  youtube
+}

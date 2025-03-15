@@ -15,7 +15,7 @@
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
     "isomorphic-fetch": "^3.0.0",
-    "joi": "^17.13.3",
+    "joi": "^17.13.4",
     "lodash-es": "^4.17.0",
     "sharp": "^0.33.2",
     "uuid": "^9.0.1"

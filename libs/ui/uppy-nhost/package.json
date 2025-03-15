@@ -3,7 +3,7 @@
     "@nhost/nextjs": "^1.13.40",
     "@uppy/core": "2.3.2",
     "form-data": "4.0.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.14.202"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.202",

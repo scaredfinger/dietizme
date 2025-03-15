@@ -1,0 +1,7 @@
+query get_all_sites {
+  organization {
+    sites {
+      domain: url
+    }
+  }
+}

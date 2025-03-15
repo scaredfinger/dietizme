@@ -6,7 +6,7 @@
     "@otiuming/domain-rates": "workspace:^",
     "@otiuming/domain-search": "workspace:^",
     "@otiuming/domain-shopping-cart": "workspace:^",
-    "@swan-io/boxed": "^1.2.0",
+    "@swan-io/boxed": "^3.2.0",
     "lodash-es": "^4.17.0",
     "rxjs": "^7.8.1"
   },

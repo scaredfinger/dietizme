@@ -1,0 +1,35 @@
+query get_product_group_page(
+  $domain: String!
+  $slug: String!
+) {
+  matching_organizations: organization(
+    where: { sites: { url: { _eq: $domain } } }
+    limit: 1
+  ) {
+    ...organization_minimal
+  }
+
+  product_group: product_group(
+    where: {
+      slug: {
+        _or: [
+          { en: { _eq: $slug } },
+          { es: { _eq: $slug } },
+          { fr: { _eq: $slug } },
+          { de: { _eq: $slug } },
+        ]
+      }
+    }
+  ) {
+    ...product_group_minimal
+    description {
+      value: en
+    }
+    ...product_group_with_stats
+    products {
+      product {
+        ...product_full
+      }
+    }
+  }
+}

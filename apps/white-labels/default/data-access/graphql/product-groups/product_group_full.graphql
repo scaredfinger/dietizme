@@ -1,0 +1,8 @@
+fragment product_group_full on product_group {
+  ...product_group_minimal
+  description {
+    value: en
+  }
+  ...product_group_with_product_ids
+  ...product_group_with_stats
+}

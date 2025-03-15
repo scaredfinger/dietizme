@@ -1,0 +1,20 @@
+query get_confirm_page(
+  $domain: String!
+) {
+  matching_organizations: organization(
+    where: { sites: { url: { _eq: $domain } } }
+    limit: 1
+  ) {
+    ...organization_minimal
+
+    booking_questions(order_by: {position: asc}) {
+      id
+      type
+      scope
+      value
+      text {
+        ...translated_text
+      }
+    }
+  }
+}

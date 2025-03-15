@@ -1,0 +1,41 @@
+fragment product_full on product {
+  ...product_minimal
+  ...product_features_minimal
+  description {
+    value: en
+  }
+  price_from
+  
+  gallery {
+    ...gallery
+  }
+
+  rates {
+    ...rate_minimal
+  }
+
+  place {
+    ...place
+  }
+
+  business_model {
+    ...business_model
+  }
+
+  supplements {
+    supplement {
+      id
+      name {
+        value: en
+      }
+      headline {
+        value: en
+      }
+      image_id
+    }
+  }
+
+  slug {
+    value: en
+  }
+}

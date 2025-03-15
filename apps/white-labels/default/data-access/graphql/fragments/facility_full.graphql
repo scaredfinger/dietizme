@@ -1,0 +1,13 @@
+fragment facility_full on venue_facility {
+  id
+  name {
+    value:en
+  }
+  headline {
+    value:en
+  }
+  slug {
+    value:en
+  }
+  image_id
+}

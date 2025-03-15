@@ -1,0 +1,20 @@
+query get_home_page($domain: String!) {
+  matching_organizations: organization(
+    where: { sites: { url: { _eq: $domain } } }
+    limit: 1
+  ) {
+    ...organization_full
+
+    products {
+      ...product_full
+    }
+
+    product_groups {
+      ...product_group_minimal_with_product_ids_and_stats
+    }
+
+    home: sections(where: { section_id: { _eq: "home" } }) {
+      value
+    }
+  }
+}

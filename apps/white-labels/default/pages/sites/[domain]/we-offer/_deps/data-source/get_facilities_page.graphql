@@ -1,0 +1,14 @@
+query get_facilities_page(
+  $domain: String!
+) {
+  matching_organizations: organization(
+    where: {sites: {url: {_eq: $domain}}}
+    limit: 1
+  ) {
+    ...organization_minimal
+
+    venues {
+      ...venue_full
+    }
+  }
+}

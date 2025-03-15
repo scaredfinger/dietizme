@@ -1,0 +1,6 @@
+fragment product_with_rates_minimal on product {
+  id
+  rates {
+    ...rate_minimal
+  }
+}

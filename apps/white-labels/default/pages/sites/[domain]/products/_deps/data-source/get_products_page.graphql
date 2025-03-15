@@ -1,0 +1,17 @@
+query get_products_page($domain: String!) {
+  matching_organizations: organization(
+    where: { sites: { url: { _eq: $domain } } }
+    limit: 1
+  ) {
+    ...organization_minimal
+  }
+
+  products: product(where: { organization: { sites: { url: { _eq: $domain } } } }) {
+    ...product_list_item
+    ...product_with_rates_minimal
+  }
+
+  groups: product_group(where: { organization: { sites: { url: { _eq: $domain } } } }) {
+    ...product_group_full
+  }
+}

@@ -1,0 +1,13 @@
+fragment product_group_minimal on product_group {
+  id
+  image_id
+  name {
+    value: en
+  }
+  headline {
+    value: en
+  }
+  slug {
+    value: en
+  }
+}

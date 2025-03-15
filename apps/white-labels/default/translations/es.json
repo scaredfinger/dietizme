@@ -1,0 +1,278 @@
+{
+  "actions": {
+    "add-pax": {
+      "title": "Agregar Pax"
+    },
+    "confirm": {
+      "title": "Confirmar"
+    },
+    "contact-us": {
+      "title": "Contáctenos"
+    },
+    "explore-more": {
+      "title": "Explorar más"
+    },
+    "please-select": {
+      "title": "Por favor seleccione"
+    },
+    "reserve": {
+      "title": "Reservar"
+    },
+    "select": {
+      "format": "Seleccionar {value}"
+    },
+    "select-time": {
+      "title": "Seleccionar Hora"
+    },
+    "send-message": {
+      "title": "Enviar Mensaje"
+    },
+    "start-your-search-now": {
+      "title": "Comience su búsqueda ahora"
+    },
+    "view-options": {
+      "title": "Ver Opciones"
+    }
+  },
+  "entities": {
+    "adult": {
+      "title": "Adulto"
+    },
+    "adults": {
+      "format": "{value} adultos",
+      "one": "1 Adulto",
+      "other": "{{count}} Adultos",
+      "title": "Adultos",
+      "zero": "Sin adultos"
+    },
+    "child": {
+      "title": "Niño"
+    },
+    "children": {
+      "format": "{value} niños",
+      "title": "Niños"
+    },
+    "infant": {
+      "title": "Infante",
+      "value": "{value} infantes"
+    },
+    "infants": {
+      "title": "Infantes"
+    },
+    "product": {
+      "title": "Producto"
+    },
+    "product.one": "{{count}} Producto",
+    "product.other": "{{count}} Productos",
+    "product.zero": "Sin productos",
+    "products": {
+      "title": "Productos"
+    },
+    "supplement": {
+      "title": "Suplemento"
+    },
+    "supplements": {
+      "title": "Suplementos"
+    },
+    "unit.ith": {
+      "format": "Unidad {i}"
+    },
+    "units": {
+      "title": "Unidades"
+    }
+  },
+  "fields": {
+    "address": {
+      "title": "Dirección"
+    },
+    "adults": {
+      "description": "Edad 13+",
+      "title": "Adultos"
+    },
+    "booking-code": {
+      "title": "Código de reserva"
+    },
+    "booking-contact": {
+      "title": "Contacto de reserva"
+    },
+    "booking-details": {
+      "title": "Detalles de la reserva"
+    },
+    "children": {
+      "description": "Edad 2-12",
+      "title": "Niños"
+    },
+    "contact": {
+      "title": "Contacto"
+    },
+    "date": {
+      "title": "Fecha"
+    },
+    "date-range": {
+      "title": "Rango de fechas",
+      "from": {
+        "title": "Desde"
+      },
+      "to": {
+        "title": "Hasta"
+      }
+    },
+    "email": {
+      "title": "Correo electrónico"
+    },
+    "fellows": {
+      "title": "Colegas"
+    },
+    "from": {
+      "title": "Desde",
+      "format": "Desde {value}"
+    },
+    "full-name": {
+      "title": "Nombre completo"
+    },
+    "infants": {
+      "description": "Menores de 2",
+      "title": "Infantes"
+    },
+    "message": {
+      "title": "Mensaje"
+    },
+    "name": {
+      "title": "Nombre"
+    },
+    "pax": {
+      "title": "Pax"
+    },
+    "phone": {
+      "title": "Teléfono"
+    },
+    "quantity": {
+      "title": "Cantidad"
+    },
+    "questions": {
+      "adult": {
+        "title": "Complete los detalles del pasajero adulto {ordinal}"
+      },
+      "child": {
+        "title": "Complete los detalles del pasajero niño {ordinal}"
+      },
+      "product": {
+        "title": "Complete los detalles de [{product}]"
+      },
+      "subtitle": "Por favor, proporcione algunos detalles más para ayudarnos a personalizar su experiencia.",
+      "title": "Preguntas"
+    },
+    "search-pax": {
+      "format": "{adults} adultos, {children} niños, {infants} infantes"
+    },
+    "total": {
+      "title": "Total"
+    },
+    "total-pax": {
+      "format": "{value} Pax"
+    },
+    "your-booking": {
+      "title": "Su reserva"
+    }
+  },
+  "pages": {
+    "about": {
+      "description": "Esta es la página de información",
+      "title": "Acerca de"
+    },
+    "confirm": {
+      "description": "Confirmar",
+      "title": "Confirmar"
+    },
+    "contact": {
+      "description": "Esta es la página de contacto",
+      "title": "Contacto"
+    },
+    "home": {
+      "description": "Esta es la página de inicio",
+      "title": "Inicio"
+    },
+    "product": {
+      "description": "Esta es la página del producto",
+      "title": "Nuestro Producto"
+    },
+    "products": {
+      "description": "Esta es la página de productos",
+      "title": "Productos"
+    },
+    "thank-you": {
+      "description": "Esta es la página de agradecimiento",
+      "title": "Gracias"
+    },
+    "we-offer": {
+      "description": "Esta es la página de lo que ofrecemos",
+      "title": "Ofrecemos"
+    }
+  },
+  "sections": {
+    "congratulations": {
+      "title": "Felicidades"
+    },
+    "contact": {
+      "description": "Aquí puede contactarnos",
+      "title": "Contacto"
+    },
+    "description": {
+      "title": "Descripción"
+    },
+    "good-to-know": {
+      "title": "Bueno saber"
+    },
+    "highlights": {
+      "description": "Lo que nos hace únicos",
+      "title": "Destacados"
+    },
+    "location": {
+      "description": "Aquí puede encontrar nuestras oficinas",
+      "title": "Ubicación"
+    },
+    "our-products": {
+      "subtitle": "Explore nuestro completo catálogo para encontrar la opción perfecta para usted.",
+      "title": "Nuestros Productos"
+    },
+    "our-selection": {
+      "subtitle": "Explore productos seleccionados especialmente para mejorar su experiencia.",
+      "title": "Descubra Nuestros Mejores"
+    },
+    "price-details": {
+      "title": "Detalles del Precio"
+    },
+    "we-offer": {
+      "subtitle": "Explore una lista curada de comodidades y servicios diseñados para hacer su experiencia inolvidable.",
+      "title": "Qué ofrecemos"
+    },
+    "footer": {
+      "title": "Pie de página",
+      "columns": {
+        "our-company": {
+          "title": "Nuestra Empresa"
+        }
+      }
+    }
+  },
+  "status": {
+    "cancelled": {
+      "title": "Cancelado"
+    },
+    "confirmed": {
+      "title": "Confirmado"
+    },
+    "error": {
+      "title": "Error"
+    },
+    "loading": {
+      "title": "Cargando"
+    },
+    "pending": {
+      "title": "Pendiente"
+    },
+    "no-results-contact-us": {
+      "title": "No se encontraron resultados. Por favor contáctenos."
+    }
+  }
+}

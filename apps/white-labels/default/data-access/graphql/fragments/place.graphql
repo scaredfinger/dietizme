@@ -1,0 +1,6 @@
+fragment place on place {
+  id
+  name
+  longitude
+  latitude
+}

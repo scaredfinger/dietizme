@@ -1,0 +1,4 @@
+fragment business_model on product_business_model {
+  time_management
+  unit_management
+}

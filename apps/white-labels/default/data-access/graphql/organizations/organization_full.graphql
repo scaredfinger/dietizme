@@ -1,0 +1,8 @@
+fragment organization_full on organization {
+  ...organization_minimal
+
+  venues {
+    ...venue_full
+  }
+
+}

@@ -1,0 +1,10 @@
+fragment product_group_with_product_ids on product_group {
+  products {
+    product_id
+  }
+  stats: products_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

@@ -1,0 +1,50 @@
+fragment venue_full on venue {
+  gallery {
+    id
+    headline {
+      value: en
+    }
+    name {
+      value: en
+    }
+    items {
+      id
+      file_id
+    }
+  }
+
+  usps {
+    id
+    image_id
+    lines(order_by: { position: asc }) {
+      id
+      name {
+        value: en
+      }
+      headline {
+        value: en
+      }
+    }
+  }
+
+  facilities(order_by: { position: asc }) {
+    ...facility_full
+  }
+
+  description {
+    id
+    value: en
+  }
+
+  good_to_know {
+    id
+    value: en
+  }
+
+  place {
+    id
+    name
+    latitude
+    longitude
+  }
+}

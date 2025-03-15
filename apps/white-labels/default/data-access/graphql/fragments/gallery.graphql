@@ -1,0 +1,5 @@
+fragment gallery on media_gallery {
+  items {
+    file_id
+  }
+}

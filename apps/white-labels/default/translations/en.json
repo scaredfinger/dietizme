@@ -1,0 +1,278 @@
+{
+  "actions": {
+    "add-pax": {
+      "title": "Add Pax"
+    },
+    "confirm": {
+      "title": "Confirm"
+    },
+    "contact-us": {
+      "title": "Contact Us"
+    },
+    "explore-more": {
+      "title": "Explore More"
+    },
+    "please-select": {
+      "title": "Please Select"
+    },
+    "reserve": {
+      "title": "Reserve"
+    },
+    "select": {
+      "format": "Select {value}"
+    },
+    "select-time": {
+      "title": "Select Time"
+    },
+    "send-message": {
+      "title": "Send Message"
+    },
+    "start-your-search-now": {
+      "title": "Start your search now"
+    },
+    "view-options": {
+      "title": "View Options"
+    }
+  },
+  "entities": {
+    "adult": {
+      "title": "Adult"
+    },
+    "adults": {
+      "format": "{value} adults",
+      "one": "1 Adult",
+      "other": "{{count}} Adults",
+      "title": "Adults",
+      "zero": "No Adults"
+    },
+    "child": {
+      "title": "Child"
+    },
+    "children": {
+      "format": "{value} children",
+      "title": "Children"
+    },
+    "infant": {
+      "title": "Infant",
+      "value": "{value} infants"
+    },
+    "infants": {
+      "title": "Infants"
+    },
+    "product": {
+      "title": "Product"
+    },
+    "product.one": "{{count}} Product",
+    "product.other": "{{count}} Products",
+    "product.zero": "No Products",
+    "products": {
+      "title": "Products"
+    },
+    "supplement": {
+      "title": "Supplement"
+    },
+    "supplements": {
+      "title": "Supplements"
+    },
+    "unit.ith": {
+      "format": "Unit {i}"
+    },
+    "units": {
+      "title": "Units"
+    }
+  },
+  "fields": {
+    "address": {
+      "title": "Address"
+    },
+    "adults": {
+      "description": "Age 13+",
+      "title": "Adults"
+    },
+    "booking-code": {
+      "title": "Booking Code"
+    },
+    "booking-contact": {
+      "title": "Booking Contact"
+    },
+    "booking-details": {
+      "title": "Booking Details"
+    },
+    "children": {
+      "description": "Age 2-12",
+      "title": "Children"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "date": {
+      "title": "Date"
+    },
+    "date-range": {
+      "from": {
+        "title": "From"
+      },
+      "title": "Date range",
+      "to": {
+        "title": "To"
+      }
+    },
+    "email": {
+      "title": "Email"
+    },
+    "fellows": {
+      "title": "Fellows"
+    },
+    "from": {
+      "format": "From {value}",
+      "title": "From"
+    },
+    "full-name": {
+      "title": "Full Name"
+    },
+    "infants": {
+      "description": "Under 2",
+      "title": "Infants"
+    },
+    "message": {
+      "title": "Message"
+    },
+    "name": {
+      "title": "Name"
+    },
+    "pax": {
+      "title": "Pax"
+    },
+    "phone": {
+      "title": "Phone"
+    },
+    "quantity": {
+      "title": "Quantity"
+    },
+    "questions": {
+      "adult": {
+        "title": "Complete adult {ordinal} passenger details"
+      },
+      "child": {
+        "title": "Complete child {ordinal} passenger details"
+      },
+      "product": {
+        "title": "Complete [{product}] details"
+      },
+      "subtitle": "Please provide a few more details to help us tailor your experience.",
+      "title": "Questions"
+    },
+    "search-pax": {
+      "format": "{adults} adults, {children} children, {infants} infants"
+    },
+    "total": {
+      "title": "Total"
+    },
+    "total-pax": {
+      "format": "{value} Pax"
+    },
+    "your-booking": {
+      "title": "Your Booking"
+    }
+  },
+  "pages": {
+    "about": {
+      "description": "This is the about page",
+      "title": "About"
+    },
+    "confirm": {
+      "description": "Confirm",
+      "title": "Confirm"
+    },
+    "contact": {
+      "description": "This is the contact page",
+      "title": "Contact"
+    },
+    "home": {
+      "description": "This is the home page",
+      "title": "Home"
+    },
+    "product": {
+      "description": "This is the product page",
+      "title": "Nuestros Product"
+    },
+    "products": {
+      "description": "This is the products page",
+      "title": "Products"
+    },
+    "thank-you": {
+      "description": "This is the thank you page",
+      "title": "Thank You"
+    },
+    "we-offer": {
+      "description": "This is the we offer page",
+      "title": "We Offer"
+    }
+  },
+  "sections": {
+    "congratulations": {
+      "title": "Congratulations"
+    },
+    "contact": {
+      "description": "Here you can contact us",
+      "title": "Contact"
+    },
+    "description": {
+      "title": "Description"
+    },
+    "footer": {
+      "columns": {
+        "our-company": {
+          "title": "Our Company"
+        }
+      },
+      "title": "Footer"
+    },
+    "good-to-know": {
+      "title": "Good to Know"
+    },
+    "highlights": {
+      "description": "What makes us unique",
+      "title": "Highlights"
+    },
+    "location": {
+      "description": "Here you can find our offices",
+      "title": "Location"
+    },
+    "our-products": {
+      "subtitle": "Explore our comprehensive catalog to find the perfect option for you.",
+      "title": "Our Products"
+    },
+    "our-selection": {
+      "subtitle": "Explore hand-selected products tailored to enhance your experience.",
+      "title": "Discover Our Best"
+    },
+    "price-details": {
+      "title": "Price Details"
+    },
+    "we-offer": {
+      "subtitle": "Explore a curated list of amenities and services designed to make your experience unforgettable.",
+      "title": "What we offer"
+    }
+  },
+  "status": {
+    "cancelled": {
+      "title": "Cancelled"
+    },
+    "confirmed": {
+      "title": "Confirmed"
+    },
+    "error": {
+      "title": "Error"
+    },
+    "loading": {
+      "title": "Loading"
+    },
+    "no-results-contact-us": {
+      "title": "No results found. Please contact us."
+    },
+    "pending": {
+      "title": "Pending"
+    }
+  }
+}

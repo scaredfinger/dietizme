@@ -1,0 +1,10 @@
+fragment product_list_item on product {
+  ...product_minimal
+  ...product_features_minimal
+  gallery {
+    ...gallery
+  }
+  business_model {
+    ...business_model
+  }
+}

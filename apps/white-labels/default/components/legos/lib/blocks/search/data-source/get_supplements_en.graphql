@@ -1,0 +1,16 @@
+query get_supplements_en($supplement_ids: [uuid!]!) {
+  supplement(
+    where: {
+      id: {
+        _in: $supplement_ids
+      }
+    }) {
+    id
+    name {
+      text: en
+    }
+    headline {
+      text: en
+    }
+  }
+}

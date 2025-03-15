@@ -1,0 +1,10 @@
+query get_organization_by_domain_full(
+  $domain: String!
+) {
+  matching_organizations: organization(
+    where: {sites: {url: {_eq: $domain}}}
+    limit: 1
+  ) {
+    ...organization_full
+  }
+}

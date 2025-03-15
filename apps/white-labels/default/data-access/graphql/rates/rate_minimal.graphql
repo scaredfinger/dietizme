@@ -1,0 +1,5 @@
+fragment rate_minimal on rate {
+    configuration
+    availability_rules
+    price_rules
+}
