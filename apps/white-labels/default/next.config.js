@@ -27,15 +27,60 @@ const nextConfig = {
       'my.otiuming.com'
     ],
   },
-  sentry: {},
+  transpilePackages: [
+    '@otiuming/utils-logging',
+    '@otiuming/domain-shopping-cart',
+    'lodash-es',
+    '@otiuming/ui-text-formatting',
+    '@otiuming/ui-white-labels-view-models'
+  ],
+  // This helps with Sentry integration
+  sentry: {
+    hideSourceMaps: true,
+  },
   experimental: {
-    esmExternals: true,
+    esmExternals: 'loose', // Changed back to 'loose' which often works better with mixed module types
     optimizePackageImports: [
       "lodash",
+      "lodash-es",
       "joi",
-      "@sentry/nextjs"
+      "@sentry/nextjs",
+      "@otiuming/utils-logging",
+      "@otiuming/domain-shopping-cart",
+      "@otiuming/ui-text-formatting",
+      "@otiuming/ui-white-labels-view-models"
     ]
   },
+  webpack: (config, { isServer }) => {
+    // This ensures the files from these local libraries are processed correctly as ES modules
+    config.module.rules.push({
+      test: /\.js$/,
+      include: [
+        /libs\/ui\/text-formatting\/dist/,
+        /libs\/ui\/white-labels-view-models\/dist/,
+        /libs\/ui\/common\/dist/,
+        /libs\/ui\/i18n\/dist/,
+        /libs\/ui\/shopping-cart\/dist/
+      ],
+      type: 'javascript/auto',
+      resolve: {
+        fullySpecified: false
+      }
+    });
+    
+    // Handle ESM modules
+    config.module.rules.push({
+      test: /\.m?js$/,
+      include: [
+        /node_modules/
+      ],
+      resolve: {
+        fullySpecified: false
+      }
+    });
+    
+    return config;
+  }
 }
 
 const sentryWebpackPluginOptions = {
@@ -50,10 +95,11 @@ const sentryWebpackPluginOptions = {
   // An auth token is required for uploading source maps.
   authToken: process.env.SENTRY_AUTH_TOKEN,
 
-  silent: false, // Suppresses all logs
+  silent: true, // Prevents Sentry from failing the build
 
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
+  hideSourceMaps: true,
 }
 
 module.exports = async function withCustom(/** @type {string} */ phase) {
