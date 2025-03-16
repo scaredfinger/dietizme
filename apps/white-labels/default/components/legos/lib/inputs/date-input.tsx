@@ -7,6 +7,8 @@ import { DateValue, dateValue } from '@otiuming/domain-data-types'
 import { useWindowSize, useNcId } from '../hooks'
 import { Calendar } from '../atoms'
 import { toDateTime } from './transformation'
+import { Moment } from 'moment'
+import moment from 'moment'
 
 interface Props {
   value: DateValue
@@ -53,12 +55,12 @@ export const DateInput: FC<Props> = ({
 
   const handleDateChange = useMemo(
     () =>
-      function (date: DateTime | null) {
+      function (date: Moment | null) {
         if (!date) {
           return
         }
 
-        const value = dateValue(date.toJSDate())
+        const value = dateValue(date.toISOString())
         setStartDate(value)
         onChange && onChange(value)
       },
@@ -79,7 +81,7 @@ export const DateInput: FC<Props> = ({
         <div className="flex-grow">
           <span className="block xl:text-lg font-semibold">
             {currentValue 
-              ? DateTime.fromISO(currentValue.toString()).toFormat('dd LLL') 
+              ? currentValue.format('dd LLL') 
               : texts.date}
           </span>
           <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
@@ -98,7 +100,7 @@ export const DateInput: FC<Props> = ({
     >
       <div className="absolute inset-0 flex">
         <SingleDatePicker
-          date={toDateTime(currentValue).toJSDate()}
+          date={moment(currentValue.toJSON())}
           onDateChange={handleDateChange}
           id={startDateId}
           focused={focusedInput}
