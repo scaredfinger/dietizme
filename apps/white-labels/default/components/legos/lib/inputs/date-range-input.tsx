@@ -11,6 +11,7 @@ import { DateRange, DateValue, dateValue } from '@otiuming/domain-data-types'
 import { useWindowSize, useNcId } from '../hooks'
 import { Calendar } from '../atoms'
 import { toDateTime } from './transformation'
+import moment, { Moment } from 'moment'
 
 interface Props {
   value: DateRange
@@ -69,16 +70,16 @@ export const DatesRangeInput: FC<Props> = ({
   }
 
   const handleDatesChange = (newDateRange: {
-    startDate: DateTime | null
-    endDate: DateTime | null
+    startDate: Moment | null
+    endDate: Moment | null
   }) => {
     if (!newDateRange.startDate || !newDateRange.endDate) {
       return
     }
 
     const dateRange = {
-      from: dateValue(newDateRange.startDate.toJSDate()),
-      to: dateValue(newDateRange.endDate.toJSDate()),
+      from: dateValue(newDateRange.startDate.toJSON()),
+      to: dateValue(newDateRange.endDate.toJSON()),
     }
 
     setCurrentValue(dateRange)
@@ -99,7 +100,7 @@ export const DatesRangeInput: FC<Props> = ({
         <div className="flex-1">
           <span className="block xl:text-lg font-semibold">
             {currentValue.from
-              ? DateTime.fromISO(currentValue.from.toString()).toFormat('dd LLL')
+              ? currentValue.from.format('dd LLL')
               : startDateText}
           </span>
           <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
@@ -124,7 +125,7 @@ export const DatesRangeInput: FC<Props> = ({
         <div className="flex-1">
           <span className="block xl:text-lg font-semibold">
             {currentValue.to 
-              ? DateTime.fromISO(currentValue.to.toString()).toFormat('dd LLL') 
+              ? currentValue.to.format('dd LLL') 
               : endDateText}
           </span>
           <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
@@ -145,8 +146,8 @@ export const DatesRangeInput: FC<Props> = ({
     >
       <div className="absolute inset-0 flex">
         <DateRangePicker
-          startDate={toDateTime(currentValue.from).toJSDate()}
-          endDate={toDateTime(currentValue.to).toJSDate()}
+          startDate={moment(currentValue.from.toJSON())}
+          endDate={moment(currentValue.to.toJSON())}
           focusedInput={currentFocusedInput}
           onDatesChange={handleDatesChange}
           onFocusChange={handleDateFocusChange}
