@@ -11,6 +11,7 @@ DietizMe is built using a modular architecture with a focus on maintainability a
 ```
 dietizme/
 ├── apps/                # Application modules
+│   └── omnidata/        # Backend service (Nhost, GraphQL, Serverless functions)
 ├── libs/                # Shared libraries
 │   ├── biz-builder/     # Business operation builder pattern utility
 │   ├── domain/          # Domain-specific modules
@@ -41,6 +42,9 @@ dietizme/
 - **Containerization**: Docker
 
 ## Library Documentation
+
+### Applications
+- [Omnidata Backend](/apps/omnidata/README.md) - Core backend service with all business logic
 
 ### Business Logic
 - [Biz Builder](/libs/biz-builder/README.md) - Fluent API for structuring business operations
