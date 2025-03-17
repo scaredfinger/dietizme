@@ -4,7 +4,7 @@
     "@dietizme/biz-builder": "workspace:*",
     "@dietizme/utils-common": "workspace:*",
     "@dietizme/utils-logging": "workspace:*",
-    "@nhost/nhost-js": "^3.2.5",
+    "@nhost/nhost-js": "^3.2.6",
     "cross-fetch": "^4.1.0",
     "graphql": "^16.10.0",
     "graphql-request": "^7.1.2",
@@ -17,10 +17,10 @@
   "devDependencies": {
     "@dietizme/base": "workspace:*",
     "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/express": "^5.0.0",
-    "rollup": "^4.35.0",
+    "rollup": "^4.36.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "^5.8.2"
   },
