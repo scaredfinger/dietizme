@@ -1,7 +1,7 @@
 # AI Analysis - Omnidata Backend
 
 ## Service Overview
-Omnidata is the core backend service for the DietizMe application, providing the business logic layer, data access, and API endpoints through a containerized environment using Nhost, Hasura, and PostgreSQL.
+Omnidata is the core backend service for the Otiuming application, providing the business logic layer, data access, and API endpoints through a containerized environment using Nhost, Hasura, and PostgreSQL.
 
 ## Architecture
 - **Type**: Containerized microservice

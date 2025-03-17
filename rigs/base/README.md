@@ -1,6 +1,6 @@
 # Base Configuration Package
 
-This package contains shared configuration files for the dietizme monorepo.
+This package contains shared configuration files for the otiuming monorepo.
 
 ## Available Configurations
 

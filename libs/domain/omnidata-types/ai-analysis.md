@@ -4,7 +4,7 @@
 The omnidata-types library contains TypeScript type definitions generated from the Omnidata GraphQL schema. It provides strongly-typed interfaces for interacting with Omnidata services.
 
 ## Package Details
-- **Name**: @dietizme/domain-omnidata-types
+- **Name**: @otiuming/domain-omnidata-types
 - **Type**: TypeScript library
 - **Generated**: Yes - types are generated from GraphQL schema
 
@@ -31,8 +31,8 @@ The omnidata-types library contains TypeScript type definitions generated from t
 
 ## Usage Example
 ```typescript
-import { MyQueryQuery, MyQueryQueryVariables } from '@dietizme/domain-omnidata-types';
-import { gqlRequest } from '@dietizme/utils-graphql';
+import { MyQueryQuery, MyQueryQueryVariables } from '@otiuming/domain-omnidata-types';
+import { gqlRequest } from '@otiuming/utils-graphql';
 
 // Strongly-typed request and response
 const result = await gqlRequest<MyQueryQuery, MyQueryQueryVariables>(

@@ -1,6 +1,6 @@
 # Integration Tests Library
 
-A collection of testing utilities and infrastructure for performing integration tests across the DietizMe application. This library provides tools for testing end-to-end workflows, API integration, and interactions between different application components.
+A collection of testing utilities and infrastructure for performing integration tests across the Otiuming application. This library provides tools for testing end-to-end workflows, API integration, and interactions between different application components.
 
 ## Features
 
@@ -14,12 +14,12 @@ A collection of testing utilities and infrastructure for performing integration 
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/integration-tests": "workspace:*"
+    "@otiuming/integration-tests": "workspace:*"
   }
 }
 ```
@@ -33,7 +33,7 @@ import {
   initializeTestEnvironment,
   cleanupTestEnvironment,
   createTestUser
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('Cart API Integration', () => {
   // Setup test environment before all tests
@@ -71,7 +71,7 @@ import {
   createApiClient,
   expectSuccessResponse,
   expectErrorResponse
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('Recipe API', () => {
   // Create an authenticated API client
@@ -122,7 +122,7 @@ import {
   getTestDatabase,
   seedTestData,
   clearTestData 
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('User Repository', () => {
   let db;
@@ -162,7 +162,7 @@ describe('User Repository', () => {
 ### Test Fixtures
 
 ```typescript
-import { fixtures } from '@dietizme/integration-tests';
+import { fixtures } from '@otiuming/integration-tests';
 
 // Use pre-defined fixtures
 const { users, recipes, mealPlans } = fixtures;
@@ -187,7 +187,7 @@ import {
   mockPaymentProvider,
   mockEmailService,
   mockStorageService
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('Checkout Process', () => {
   let paymentMock, emailMock, storageMock;
@@ -225,7 +225,7 @@ describe('Checkout Process', () => {
 import { 
   createGraphQLClient,
   gql
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('GraphQL API', () => {
   let graphql;
@@ -266,7 +266,7 @@ describe('GraphQL API', () => {
 import { 
   createWebhookServer,
   waitForWebhook
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 describe('Payment Webhook', () => {
   let webhookServer;
@@ -309,7 +309,7 @@ import {
   getTestConfig,
   setTestEnv,
   resetTestEnv
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 // Get configuration for current test environment
 const config = getTestConfig();
@@ -335,7 +335,7 @@ import {
   generateTestData,
   getFakeUser,
   getFakeRecipe
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 // Generate a batch of test data
 const testData = generateTestData({
@@ -357,7 +357,7 @@ const recipe = getFakeRecipe({
 import { 
   captureTestMetrics,
   TestReport
-} from '@dietizme/integration-tests';
+} from '@otiuming/integration-tests';
 
 // Capture test metrics
 afterAll(async () => {

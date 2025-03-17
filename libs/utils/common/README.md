@@ -1,6 +1,6 @@
 # Common Utilities
 
-A collection of general-purpose utility functions and helpers used throughout the DietizMe application. This library provides commonly needed functionality that extends beyond what is available in standard libraries like lodash.
+A collection of general-purpose utility functions and helpers used throughout the Otiuming application. This library provides commonly needed functionality that extends beyond what is available in standard libraries like lodash.
 
 ## Features
 
@@ -14,12 +14,12 @@ A collection of general-purpose utility functions and helpers used throughout th
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/utils-common": "workspace:*"
+    "@otiuming/utils-common": "workspace:*"
   }
 }
 ```
@@ -35,7 +35,7 @@ import {
   truncate,
   slugify,
   capitalize
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Format strings with named placeholders
 formatString('Hello, {name}!', { name: 'World' }); // "Hello, World!"
@@ -62,7 +62,7 @@ import {
   dateRange,
   isDateBetween,
   addBusinessDays
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Format dates
 formatDate(new Date(), 'yyyy-MM-dd'); // "2025-03-17"
@@ -88,7 +88,7 @@ import {
   roundToDecimalPlaces,
   clamp,
   convertUnits
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Format as currency
 formatCurrency(19.99, 'USD'); // "$19.99"
@@ -111,7 +111,7 @@ import {
   isValidPhoneNumber,
   isPostalCode,
   isStrongPassword
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Email validation
 isEmail('user@example.com'); // true
@@ -135,7 +135,7 @@ import {
   retry,
   debounceAsync,
   throttleAsync
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Retry a function with exponential backoff
 await retry(fetchData, { retries: 3, initialDelay: 500 });
@@ -157,7 +157,7 @@ import {
   isProduction,
   isDevelopment,
   getRequiredEnv
-} from '@dietizme/utils-common';
+} from '@otiuming/utils-common';
 
 // Get configuration value with fallback
 getConfig('API_TIMEOUT', 30000);

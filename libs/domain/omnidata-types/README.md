@@ -4,7 +4,7 @@ A TypeScript library providing strongly-typed interfaces for Omnidata GraphQL AP
 
 ## Overview
 
-This library contains automatically generated TypeScript types derived from the Omnidata GraphQL schema. It enables type-safe interaction with the Omnidata API throughout the DietizMe application.
+This library contains automatically generated TypeScript types derived from the Omnidata GraphQL schema. It enables type-safe interaction with the Omnidata API throughout the Otiuming application.
 
 ## Usage
 
@@ -15,7 +15,7 @@ import {
   MyQueryQuery, 
   MyQueryQueryVariables, 
   SomeEntityFragment 
-} from '@dietizme/domain-omnidata-types';
+} from '@otiuming/domain-omnidata-types';
 
 // Use with GraphQL client
 const result = await client.query<MyQueryQuery, MyQueryQueryVariables>({

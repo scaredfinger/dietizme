@@ -1,10 +1,10 @@
 # AI Analysis - utils/graphql
 
 ## Library Overview
-The utils/graphql library provides utilities and helpers specifically for working with GraphQL in the Dietizme project, particularly for interactions with the Nhost backend.
+The utils/graphql library provides utilities and helpers specifically for working with GraphQL in the Otiuming project, particularly for interactions with the Nhost backend.
 
 ## Package Details
-- **Name**: @dietizme/utils-graphql
+- **Name**: @otiuming/utils-graphql
 - **Type**: CommonJS module
 - **Main Entry**: dist/index.js
 
@@ -37,7 +37,7 @@ The utils/graphql library provides utilities and helpers specifically for workin
 ## Usage Example
 This library is used for making GraphQL queries to the backend:
 ```typescript
-import { executeQuery } from '@dietizme/utils-graphql';
+import { executeQuery } from '@otiuming/utils-graphql';
 
 const result = await executeQuery({
   query: GET_RECIPES_QUERY,

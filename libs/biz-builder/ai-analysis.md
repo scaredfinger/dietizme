@@ -4,7 +4,7 @@
 The biz-builder library contains business logic components for the meal planning system, particularly focused on constructing business entities and operations.
 
 ## Package Details
-- **Name**: @dietizme/biz-builder
+- **Name**: @otiuming/biz-builder
 - **Type**: CommonJS module
 - **Main Entry**: ./dist/index.js
 
@@ -34,4 +34,4 @@ This library is used for implementing core business logic related to meal planni
 
 ## Integration Points
 - Used by various application modules
-- Depends on domain models from @dietizme/domain
+- Depends on domain models from @otiuming/domain

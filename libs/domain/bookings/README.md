@@ -1,6 +1,6 @@
 # Bookings Domain Module
 
-Core domain model and business logic for managing bookings and appointments in the DietizMe application. This module handles the creation, management, and scheduling of nutrition consultation appointments and related services.
+Core domain model and business logic for managing bookings and appointments in the Otiuming application. This module handles the creation, management, and scheduling of nutrition consultation appointments and related services.
 
 ## Features
 
@@ -13,12 +13,12 @@ Core domain model and business logic for managing bookings and appointments in t
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-bookings": "workspace:*"
+    "@otiuming/domain-bookings": "workspace:*"
   }
 }
 ```
@@ -77,7 +77,7 @@ export interface TimeSlot {
 ### Checking Availability
 
 ```typescript
-import { BookingService } from '@dietizme/domain-bookings';
+import { BookingService } from '@otiuming/domain-bookings';
 
 // Initialize the service
 const bookingService = new BookingService({
@@ -173,7 +173,7 @@ const responses = await bookingService.getQuestionnaireResponses(booking.id);
 ### Recurrent Bookings
 
 ```typescript
-import { RecurrencePattern, RecurrenceFrequency } from '@dietizme/domain-bookings';
+import { RecurrencePattern, RecurrenceFrequency } from '@otiuming/domain-bookings';
 
 // Create a recurring booking pattern
 const recurringBookings = await bookingService.createRecurringBookings({
@@ -196,7 +196,7 @@ console.log(`Created ${recurringBookings.length} recurring bookings`);
 ### Practitioner Availability Management
 
 ```typescript
-import { AvailabilityService } from '@dietizme/domain-bookings';
+import { AvailabilityService } from '@otiuming/domain-bookings';
 
 const availabilityService = new AvailabilityService({
   timeSlotRepository,
@@ -242,7 +242,7 @@ await availabilityService.generateTimeSlotsForPeriod(
 ### Booking Analytics
 
 ```typescript
-import { BookingAnalyticsService } from '@dietizme/domain-bookings';
+import { BookingAnalyticsService } from '@otiuming/domain-bookings';
 
 const analyticsService = new BookingAnalyticsService({
   bookingRepository,
@@ -267,8 +267,8 @@ console.log(`Average booking duration: ${stats.averageDuration} minutes`);
 The bookings domain model integrates with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { BookingValidator } from '@dietizme/domain-bookings';
+import { using } from '@otiuming/biz-builder';
+import { BookingValidator } from '@otiuming/domain-bookings';
 
 const createBookingOperation = (deps, request) => using(deps)
   .buildLoadContextVariablesWith((req) => ({
@@ -341,6 +341,6 @@ nx test domain-bookings
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/domain-booking-questions` - For questionnaire functionality
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/domain-booking-questions` - For questionnaire functionality
+- `@otiuming/utils-common` - For utility functions

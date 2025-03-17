@@ -1,10 +1,10 @@
 # Omnidata Backend Service
 
-The core backend service for the DietizMe application, providing all business logic, data access, and API endpoints through a containerized Nhost environment.
+The core backend service for the Otiuming application, providing all business logic, data access, and API endpoints through a containerized Nhost environment.
 
 ## Overview
 
-Omnidata serves as the central data and business logic layer for DietizMe, leveraging:
+Omnidata serves as the central data and business logic layer for Otiuming, leveraging:
 
 - **GraphQL API**: Hasura-powered GraphQL interface for flexible data queries and mutations
 - **PostgreSQL Database**: Robust data storage with hierarchical structure support

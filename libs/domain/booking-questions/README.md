@@ -1,6 +1,6 @@
 # Booking Questions Domain Module
 
-Core domain model and business logic for managing questionnaires and forms used in the booking process of the DietizMe application. This module handles the creation, validation, and processing of questions that collect important nutrition and health information during the consultation booking process.
+Core domain model and business logic for managing questionnaires and forms used in the booking process of the Otiuming application. This module handles the creation, validation, and processing of questions that collect important nutrition and health information during the consultation booking process.
 
 ## Features
 
@@ -13,12 +13,12 @@ Core domain model and business logic for managing questionnaires and forms used 
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-booking-questions": "workspace:*"
+    "@otiuming/domain-booking-questions": "workspace:*"
   }
 }
 ```
@@ -108,7 +108,7 @@ export enum ValidationType {
 ### Creating a Questionnaire
 
 ```typescript
-import { QuestionnaireService } from '@dietizme/domain-booking-questions';
+import { QuestionnaireService } from '@otiuming/domain-booking-questions';
 
 // Initialize the service
 const questionnaireService = new QuestionnaireService({
@@ -251,7 +251,7 @@ const specificVersion = await questionnaireService.getQuestionnaireVersion('ques
 ### Dynamic Form Rendering
 
 ```typescript
-import { FormRenderer } from '@dietizme/domain-booking-questions';
+import { FormRenderer } from '@otiuming/domain-booking-questions';
 
 const formRenderer = new FormRenderer({
   questionnaire,
@@ -278,7 +278,7 @@ if (!validationResults.valid) {
 ### Response Analysis
 
 ```typescript
-import { ResponseAnalyzer } from '@dietizme/domain-booking-questions';
+import { ResponseAnalyzer } from '@otiuming/domain-booking-questions';
 
 const responseAnalyzer = new ResponseAnalyzer({
   questionnaire,
@@ -301,7 +301,7 @@ const exportedData = responseAnalyzer.exportResponses('json');
 ### Questionnaire Templates
 
 ```typescript
-import { QuestionnaireTemplateService } from '@dietizme/domain-booking-questions';
+import { QuestionnaireTemplateService } from '@otiuming/domain-booking-questions';
 
 const templateService = new QuestionnaireTemplateService({
   questionnaireRepository,
@@ -328,8 +328,8 @@ const template = await templateService.saveAsTemplate('questionnaire-123', {
 The booking-questions domain model integrates with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { QuestionnaireValidator } from '@dietizme/domain-booking-questions';
+import { using } from '@otiuming/biz-builder';
+import { QuestionnaireValidator } from '@otiuming/domain-booking-questions';
 
 const submitQuestionnaireResponse = (deps, request) => using(deps)
   .buildLoadContextVariablesWith((req) => ({
@@ -391,6 +391,6 @@ nx test domain-booking-questions
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/domain-bookings` - For booking-related functionality
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/domain-bookings` - For booking-related functionality
+- `@otiuming/utils-common` - For utility functions

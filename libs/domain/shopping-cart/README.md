@@ -1,6 +1,6 @@
 # Shopping Cart Domain Module
 
-Core domain model and business logic for the shopping cart functionality in the DietizMe application. This module handles the creation, management, and validation of shopping carts and their items.
+Core domain model and business logic for the shopping cart functionality in the Otiuming application. This module handles the creation, management, and validation of shopping carts and their items.
 
 ## Features
 
@@ -13,12 +13,12 @@ Core domain model and business logic for the shopping cart functionality in the 
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-shopping-cart": "workspace:*"
+    "@otiuming/domain-shopping-cart": "workspace:*"
   }
 }
 ```
@@ -78,7 +78,7 @@ export interface CartSummary {
 ### Creating a Cart
 
 ```typescript
-import { ShoppingCartService } from '@dietizme/domain-shopping-cart';
+import { ShoppingCartService } from '@otiuming/domain-shopping-cart';
 
 // Inject dependencies
 const cartService = new ShoppingCartService({
@@ -167,7 +167,7 @@ console.log(`Items: ${summary.itemCount}`);
 ### Cart Transformations
 
 ```typescript
-import { CartTransformer } from '@dietizme/domain-shopping-cart';
+import { CartTransformer } from '@otiuming/domain-shopping-cart';
 
 // Transform cart to order creation request
 const orderRequest = CartTransformer.toOrderRequest(cart, {
@@ -183,7 +183,7 @@ const checkoutFormValues = CartTransformer.toCheckoutFormValues(cart);
 ### Cart Validation
 
 ```typescript
-import { CartValidator } from '@dietizme/domain-shopping-cart';
+import { CartValidator } from '@otiuming/domain-shopping-cart';
 
 // Validate the entire cart
 try {
@@ -201,7 +201,7 @@ await CartValidator.validateCouponEligibility(cart, couponCode);
 ### Cart Persistence
 
 ```typescript
-import { CartPersistenceService } from '@dietizme/domain-shopping-cart';
+import { CartPersistenceService } from '@otiuming/domain-shopping-cart';
 
 // Save cart changes
 await CartPersistenceService.saveCart(cart);
@@ -213,7 +213,7 @@ const mergedCart = await CartPersistenceService.mergeCarts(guestCart, userCart);
 ### Cart Expiration and Cleanup
 
 ```typescript
-import { CartExpirationService } from '@dietizme/domain-shopping-cart';
+import { CartExpirationService } from '@otiuming/domain-shopping-cart';
 
 // Check if cart is expired
 const isExpired = CartExpirationService.isCartExpired(cart);
@@ -230,8 +230,8 @@ await CartExpirationService.cleanupExpiredCarts();
 The shopping cart domain model integrates well with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { CartValidator, CartPersistenceService } from '@dietizme/domain-shopping-cart';
+import { using } from '@otiuming/biz-builder';
+import { CartValidator, CartPersistenceService } from '@otiuming/domain-shopping-cart';
 
 // Add item to cart operation
 const addToCart = (deps, request) => using(deps)
@@ -289,5 +289,5 @@ nx test domain-shopping-cart
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/utils-common` - For utility functions

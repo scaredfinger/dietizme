@@ -1,6 +1,6 @@
 # Logging Utilities
 
-A structured logging system for the DietizMe application that provides consistent, context-aware logging across all parts of the application. This library makes debugging, monitoring, and auditing easier with a unified logging approach.
+A structured logging system for the Otiuming application that provides consistent, context-aware logging across all parts of the application. This library makes debugging, monitoring, and auditing easier with a unified logging approach.
 
 ## Features
 
@@ -15,12 +15,12 @@ A structured logging system for the DietizMe application that provides consisten
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/utils-logging": "workspace:*"
+    "@otiuming/utils-logging": "workspace:*"
   }
 }
 ```
@@ -30,7 +30,7 @@ This library is part of the DietizMe monorepo and should be referenced as:
 ### Creating a Logger
 
 ```typescript
-import { createLogger } from '@dietizme/utils-logging';
+import { createLogger } from '@otiuming/utils-logging';
 
 // Create a logger with module name
 const logger = createLogger({
@@ -47,7 +47,7 @@ logger.debug('Processing item', { itemId: '789' });
 ### Setting Context
 
 ```typescript
-import { createLogger, setLogContext } from '@dietizme/utils-logging';
+import { createLogger, setLogContext } from '@otiuming/utils-logging';
 
 const logger = createLogger({ module: 'auth' });
 
@@ -81,7 +81,7 @@ function processRequest(req) {
 ### Performance Tracking
 
 ```typescript
-import { createLogger, withTiming } from '@dietizme/utils-logging';
+import { createLogger, withTiming } from '@otiuming/utils-logging';
 
 const logger = createLogger({ module: 'database' });
 
@@ -110,7 +110,7 @@ class DataService {
 ### Custom Transports
 
 ```typescript
-import { createLogger, createConsoleTransport, createFileTransport } from '@dietizme/utils-logging';
+import { createLogger, createConsoleTransport, createFileTransport } from '@otiuming/utils-logging';
 
 const logger = createLogger({
   module: 'api',
@@ -145,7 +145,7 @@ const logger = createLogger({
 ### Request Tracing
 
 ```typescript
-import { createLogger, createTracer } from '@dietizme/utils-logging';
+import { createLogger, createTracer } from '@otiuming/utils-logging';
 
 // Create a tracer
 const tracer = createTracer();
@@ -198,7 +198,7 @@ function handleRequest(req, res) {
 ### Environment Adaptation
 
 ```typescript
-import { createLogger, getEnvironment } from '@dietizme/utils-logging';
+import { createLogger, getEnvironment } from '@otiuming/utils-logging';
 
 const env = getEnvironment();
 const isProd = env === 'production';
@@ -219,7 +219,7 @@ const logger = createLogger({
 To facilitate testing, the library includes a mock logger:
 
 ```typescript
-import { createMockLogger } from '@dietizme/utils-logging/testing';
+import { createMockLogger } from '@otiuming/utils-logging/testing';
 
 describe('ShoppingCart', () => {
   it('logs cart updates', () => {
@@ -264,7 +264,7 @@ To create custom logging functionality:
 Example of a custom logger extension:
 
 ```typescript
-import { BaseLogger, createLogger } from '@dietizme/utils-logging';
+import { BaseLogger, createLogger } from '@otiuming/utils-logging';
 
 class ApiLogger extends BaseLogger {
   // Add specialized methods

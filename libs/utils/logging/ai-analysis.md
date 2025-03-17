@@ -1,16 +1,16 @@
 # AI Analysis - utils/logging
 
 ## Library Overview
-The utils/logging library provides logging utilities and services for the Dietizme project, enabling consistent logging across all applications and libraries.
+The utils/logging library provides logging utilities and services for the Otiuming project, enabling consistent logging across all applications and libraries.
 
 ## Package Details
-- **Name**: @dietizme/utils-logging
+- **Name**: @otiuming/utils-logging
 - **Type**: ES module
 - **Main Entry**: dist/index.js
 
 ## Key Dependencies
 - pino: Logging library
-- @dietizme/base: Internal base utilities (workspace dependency)
+- @otiuming/base: Internal base utilities (workspace dependency)
 
 ## Key Functionality
 - Centralized logging configuration
@@ -38,7 +38,7 @@ The library likely provides configurable logging with:
 ## Usage Example
 This library would be used like:
 ```typescript
-import { logger } from '@dietizme/utils-logging';
+import { logger } from '@otiuming/utils-logging';
 
 logger.info('Operation successful', { operationId: '123', duration: 500 });
 logger.error('Failed to fetch data', { error: err, requestId: req.id });

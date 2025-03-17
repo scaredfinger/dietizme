@@ -1,6 +1,6 @@
 # Domain Libraries
 
-This directory contains the core domain models and business logic for the DietizMe application. These libraries provide the foundation for the entire application, encapsulating the essential business rules and data structures.
+This directory contains the core domain models and business logic for the Otiuming application. These libraries provide the foundation for the entire application, encapsulating the essential business rules and data structures.
 
 ## Architecture
 
@@ -29,7 +29,7 @@ domain/
 
 ### Food Categorization
 
-DietizMe uses a hierarchical categorization system for foods and recipes, implemented using PostgreSQL's ltree extension. Categories are expressed in a path-like structure:
+Otiuming uses a hierarchical categorization system for foods and recipes, implemented using PostgreSQL's ltree extension. Categories are expressed in a path-like structure:
 
 ```
 CUISINE.MEDITERRANEAN.SPANISH
@@ -97,8 +97,8 @@ Domain libraries are typically used by:
 Example:
 
 ```typescript
-import { ShoppingCart } from '@dietizme/domain/shopping-cart';
-import { using } from '@dietizme/biz-builder';
+import { ShoppingCart } from '@otiuming/domain/shopping-cart';
+import { using } from '@otiuming/biz-builder';
 
 // Use the domain model with the biz-builder
 const result = await using(dependencies)

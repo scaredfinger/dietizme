@@ -1,6 +1,6 @@
 # Rates Domain Module
 
-Core domain model and business logic for pricing, rates, and discount management in the DietizMe application. This module handles the definition, calculation, and application of pricing rules for services and products.
+Core domain model and business logic for pricing, rates, and discount management in the Otiuming application. This module handles the definition, calculation, and application of pricing rules for services and products.
 
 ## Features
 
@@ -14,12 +14,12 @@ Core domain model and business logic for pricing, rates, and discount management
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-rates": "workspace:*"
+    "@otiuming/domain-rates": "workspace:*"
   }
 }
 ```
@@ -96,7 +96,7 @@ export interface AppliedDiscount {
 ### Managing Rates
 
 ```typescript
-import { RateService } from '@dietizme/domain-rates';
+import { RateService } from '@otiuming/domain-rates';
 
 // Initialize the service
 const rateService = new RateService({
@@ -139,7 +139,7 @@ const rates = await rateService.getActiveRatesForService('service-nutrition-cons
 ### Price Calculation
 
 ```typescript
-import { PricingEngine } from '@dietizme/domain-rates';
+import { PricingEngine } from '@otiuming/domain-rates';
 
 // Initialize the pricing engine
 const pricingEngine = new PricingEngine({
@@ -220,7 +220,7 @@ const applicableRates = await rateService.getApplicableRates(
 ### Subscription Pricing
 
 ```typescript
-import { SubscriptionPricingService } from '@dietizme/domain-rates';
+import { SubscriptionPricingService } from '@otiuming/domain-rates';
 
 const subscriptionService = new SubscriptionPricingService({
   rateRepository,
@@ -256,7 +256,7 @@ const subscriptionPrice = await subscriptionService.calculateSubscriptionPrice({
 ### Coupon Management
 
 ```typescript
-import { CouponService } from '@dietizme/domain-rates';
+import { CouponService } from '@otiuming/domain-rates';
 
 const couponService = new CouponService({
   couponRepository,
@@ -297,7 +297,7 @@ await couponService.trackCouponUsage('WELCOME25', 'user-123', 'order-456');
 ### Dynamic Pricing Rules
 
 ```typescript
-import { PricingRuleEngine } from '@dietizme/domain-rates';
+import { PricingRuleEngine } from '@otiuming/domain-rates';
 
 // Initialize the rule engine
 const ruleEngine = new PricingRuleEngine({
@@ -341,8 +341,8 @@ const dynamicPrice = await ruleEngine.applyRules({
 The rates domain model integrates with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { RateValidator } from '@dietizme/domain-rates';
+import { using } from '@otiuming/biz-builder';
+import { RateValidator } from '@otiuming/domain-rates';
 
 const calculateServicePrice = (deps, request) => using(deps)
   .buildLoadContextVariablesWith((req) => ({
@@ -404,5 +404,5 @@ nx test domain-rates
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/utils-common` - For utility functions

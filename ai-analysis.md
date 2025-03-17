@@ -1,7 +1,7 @@
-# AI Analysis - DietizMe Project
+# AI Analysis - Otiuming Project
 
 ## Project Overview
-DietizMe is a comprehensive meal planning and nutrition management system using TypeScript, Nx monorepo architecture, and a modern tech stack. The application helps users create nutritionally balanced meal plans based on dietary preferences, restrictions, and nutritional goals.
+Otiuming is a comprehensive meal planning and nutrition management system using TypeScript, Nx monorepo architecture, and a modern tech stack. The application helps users create nutritionally balanced meal plans based on dietary preferences, restrictions, and nutritional goals.
 
 ## Repository Architecture
 - **Type**: Nx monorepo with pnpm workspaces

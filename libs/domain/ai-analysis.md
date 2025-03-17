@@ -4,7 +4,7 @@
 The domain library contains the core domain models and types for the meal planning system. It defines the foundation upon which other libraries and applications are built.
 
 ## Package Details
-- **Name**: @dietizme/domain
+- **Name**: @otiuming/domain
 - **Type**: Library package
 - **Status**: Active development
 

@@ -1,6 +1,6 @@
 # GraphQL Utilities
 
-A comprehensive set of utilities for working with GraphQL in the DietizMe application. This library provides a type-safe, efficient, and flexible approach to GraphQL communication, particularly with the Omnidata backend.
+A comprehensive set of utilities for working with GraphQL in the Otiuming application. This library provides a type-safe, efficient, and flexible approach to GraphQL communication, particularly with the Omnidata backend.
 
 ## Features
 
@@ -13,12 +13,12 @@ A comprehensive set of utilities for working with GraphQL in the DietizMe applic
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/utils-graphql": "workspace:*"
+    "@otiuming/utils-graphql": "workspace:*"
   }
 }
 ```
@@ -28,8 +28,8 @@ This library is part of the DietizMe monorepo and should be referenced as:
 ### GraphQL Client
 
 ```typescript
-import { createClient, gql } from '@dietizme/utils-graphql';
-import type { MyQueryQuery, MyQueryQueryVariables } from '@dietizme/domain-omnidata-types';
+import { createClient, gql } from '@otiuming/utils-graphql';
+import type { MyQueryQuery, MyQueryQueryVariables } from '@otiuming/domain-omnidata-types';
 
 // Create a client
 const client = createClient({
@@ -60,7 +60,7 @@ const { data, error, loading } = await client.query<MyQueryQuery, MyQueryQueryVa
 ### Hooks and Utilities
 
 ```typescript
-import { useMutation, useQuery } from '@dietizme/utils-graphql';
+import { useMutation, useQuery } from '@otiuming/utils-graphql';
 
 // React hook for queries
 function MyComponent() {
@@ -99,7 +99,7 @@ function EditForm() {
 #### Normalized Caching
 
 ```typescript
-import { createNormalizedClient } from '@dietizme/utils-graphql';
+import { createNormalizedClient } from '@otiuming/utils-graphql';
 
 const client = createNormalizedClient({
   url: 'https://api.omnidata.example/graphql',
@@ -132,7 +132,7 @@ await client.mutate(UPDATE_RECIPE, {
 #### Batching and Deduplication
 
 ```typescript
-import { createBatchedClient } from '@dietizme/utils-graphql';
+import { createBatchedClient } from '@otiuming/utils-graphql';
 
 const client = createBatchedClient({
   url: 'https://api.omnidata.example/graphql',
@@ -155,7 +155,7 @@ import {
   handleGraphQLErrors, 
   isNetworkError,
   getErrorMessage
-} from '@dietizme/utils-graphql';
+} from '@otiuming/utils-graphql';
 
 try {
   const result = await client.query(MY_QUERY, { id: 'item-123' });
@@ -185,7 +185,7 @@ try {
 #### Omnidata Integration
 
 ```typescript
-import { createOmnidataClient } from '@dietizme/utils-graphql';
+import { createOmnidataClient } from '@otiuming/utils-graphql';
 
 // Client specifically configured for Omnidata
 const client = createOmnidataClient({
@@ -194,7 +194,7 @@ const client = createOmnidataClient({
 });
 
 // Use generated operations from omnidata-types
-import { GetRecipeDocument } from '@dietizme/domain-omnidata-types';
+import { GetRecipeDocument } from '@otiuming/domain-omnidata-types';
 
 const { data } = await client.query(GetRecipeDocument, { id: 'recipe-123' });
 ```
@@ -204,7 +204,7 @@ const { data } = await client.query(GetRecipeDocument, { id: 'recipe-123' });
 ### Mock Client
 
 ```typescript
-import { createMockClient } from '@dietizme/utils-graphql/testing';
+import { createMockClient } from '@otiuming/utils-graphql/testing';
 
 // Create a client with predefined responses
 const mockClient = createMockClient({

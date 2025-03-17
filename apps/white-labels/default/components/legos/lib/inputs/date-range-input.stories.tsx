@@ -29,8 +29,8 @@ type Story = StoryObj<typeof DatesRangeInput>
 export const Primary: Story = {
   args: {
     value: {
-      from: dateValue(DateTime.utc().plus({ days: 4 }).toJSDate()),
-      to: dateValue(DateTime.utc().plus({ days: 5 }).toJSDate()),
+      from: dateValue(DateTime.utc().plus({ days: 4 })),
+      to: dateValue(DateTime.utc().plus({ days: 5 })),
     },
   },
 }

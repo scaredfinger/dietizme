@@ -1,6 +1,6 @@
 # Templates Domain Module
 
-Core domain model and business logic for meal templates in the DietizMe application. This module handles the creation, management, and application of templates for generating nutritionally balanced meal plans.
+Core domain model and business logic for meal templates in the Otiuming application. This module handles the creation, management, and application of templates for generating nutritionally balanced meal plans.
 
 ## Features
 
@@ -13,12 +13,12 @@ Core domain model and business logic for meal templates in the DietizMe applicat
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-templates": "workspace:*"
+    "@otiuming/domain-templates": "workspace:*"
   }
 }
 ```
@@ -116,7 +116,7 @@ export enum NutrientUnit {
 ### Creating Templates
 
 ```typescript
-import { TemplateService } from '@dietizme/domain-templates';
+import { TemplateService } from '@otiuming/domain-templates';
 
 // Initialize the service
 const templateService = new TemplateService({
@@ -315,7 +315,7 @@ await templateService.deleteTemplate('template-123');
 ### Template Versioning
 
 ```typescript
-import { TemplateVersioningService } from '@dietizme/domain-templates';
+import { TemplateVersioningService } from '@otiuming/domain-templates';
 
 const versioningService = new TemplateVersioningService({
   templateRepository,
@@ -347,7 +347,7 @@ console.log('Changes between versions:', diff);
 ### Template Matching
 
 ```typescript
-import { TemplateMatchingService } from '@dietizme/domain-templates';
+import { TemplateMatchingService } from '@otiuming/domain-templates';
 
 const matchingService = new TemplateMatchingService({
   templateRepository,
@@ -384,7 +384,7 @@ const matchedTemplates = await matchingService.findTemplatesForNutritionalGoals(
 ### Template Customization
 
 ```typescript
-import { TemplateCustomizationService } from '@dietizme/domain-templates';
+import { TemplateCustomizationService } from '@otiuming/domain-templates';
 
 const customizationService = new TemplateCustomizationService({
   templateRepository,
@@ -416,7 +416,7 @@ const scaledTemplate = await customizationService.scaleTemplate('template-123', 
 ### Nutritional Analysis
 
 ```typescript
-import { NutritionalAnalysisService } from '@dietizme/domain-templates';
+import { NutritionalAnalysisService } from '@otiuming/domain-templates';
 
 const analysisService = new NutritionalAnalysisService({
   recipeRepository,
@@ -449,8 +449,8 @@ const balancedTemplate = await analysisService.balanceTemplate('template-123', {
 The templates domain model integrates with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { TemplateValidator } from '@dietizme/domain-templates';
+import { using } from '@otiuming/biz-builder';
+import { TemplateValidator } from '@otiuming/domain-templates';
 
 const createCustomTemplate = (deps, request) => using(deps)
   .buildLoadContextVariablesWith((req) => ({
@@ -530,6 +530,6 @@ nx test domain-templates
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/utils-common` - For utility functions
 - Omnidata GraphQL API for template data storage and retrieval

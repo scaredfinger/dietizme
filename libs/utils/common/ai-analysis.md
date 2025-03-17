@@ -4,7 +4,7 @@
 The utils/common library provides general-purpose utility functions and helpers used across the Dietizme project.
 
 ## Package Details
-- **Name**: @dietizme/utils-common
+- **Name**: @otiuming/utils-common
 - **Type**: CommonJS module
 - **Main Entry**: dist/index.js
 

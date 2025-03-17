@@ -1,15 +1,15 @@
-# DietizMe
+# Omnidata
 
 A TypeScript-based monorepo application for diet and nutrition management.
 
 ## Project Overview
 
-DietizMe is built using a modular architecture with a focus on maintainability and scalability. The project uses Nx for workspace management and follows domain-driven design principles with a clear separation of concerns.
+Otiuming is built using a modular architecture with a focus on maintainability and scalability. The project uses Nx for workspace management and follows domain-driven design principles with a clear separation of concerns.
 
 ## Directory Structure
 
 ```
-dietizme/
+otiuming/
 ├── apps/                # Application modules
 │   └── omnidata/        # Backend service (Nhost, GraphQL, Serverless functions)
 ├── libs/                # Shared libraries
@@ -80,8 +80,8 @@ dietizme/
 
 ```bash
 # Clone the repository
-git clone https://github.com/scaredfinger/dietizme.git
-cd dietizme
+git clone https://github.com/scaredfinger/otiuming.git
+cd otiuming
 
 # Install dependencies
 pnpm install

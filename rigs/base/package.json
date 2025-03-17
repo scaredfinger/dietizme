@@ -1,7 +1,7 @@
 {
   "name": "@otiuming/base",
   "version": "0.0.1",
-  "description": "Base shared configurations and settings for dietizme",
+  "description": "Base shared configurations and settings for otiuming",
   "main": "index.js",
   "type": "module",
   "exports": {

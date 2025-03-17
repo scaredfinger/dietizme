@@ -1,6 +1,6 @@
 # Utility Libraries
 
-This directory contains utility libraries that provide common functionality used across the DietizMe application. These utilities are designed to be reusable, well-tested, and focused on specific concerns.
+This directory contains utility libraries that provide common functionality used across the Otiuming application. These utilities are designed to be reusable, well-tested, and focused on specific concerns.
 
 ## Directory Structure
 
@@ -90,8 +90,8 @@ nx run-many --target=test --projects=utils-*
 ### Using GraphQL utilities
 
 ```typescript
-import { createClient } from '@dietizme/utils/graphql';
-import { MyQuery } from '@dietizme/domain-omnidata-types';
+import { createClient } from '@otiuming/utils/graphql';
+import { MyQuery } from '@otiuming/domain-omnidata-types';
 
 const client = createClient({
   url: 'https://api.omnidata.example',
@@ -104,7 +104,7 @@ const { data, error } = await client.query(MyQuery, { id: 'some-id' });
 ### Using logging utilities
 
 ```typescript
-import { createLogger } from '@dietizme/utils/logging';
+import { createLogger } from '@otiuming/utils/logging';
 
 const logger = createLogger({
   module: 'shopping-cart',
@@ -117,7 +117,7 @@ logger.info('Cart updated', { cartId: 'cart-123', itemCount: 5 });
 ### Using common utilities
 
 ```typescript
-import { formatCurrency, parseDate } from '@dietizme/utils/common';
+import { formatCurrency, parseDate } from '@otiuming/utils/common';
 
 const price = formatCurrency(19.99, 'USD');  // "$19.99"
 const date = parseDate('2025-03-15', 'yyyy-MM-dd');

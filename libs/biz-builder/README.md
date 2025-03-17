@@ -1,6 +1,6 @@
 # BizBuilder
 
-A fluent API for structuring business operations in the DietizMe application. BizBuilder provides a clean, consistent way to implement complex business logic with validation, context loading, and persistence in a pipeline-like structure.
+A fluent API for structuring business operations in the Otiuming application. BizBuilder provides a clean, consistent way to implement complex business logic with validation, context loading, and persistence in a pipeline-like structure.
 
 ## Key Features
 
@@ -15,12 +15,12 @@ A fluent API for structuring business operations in the DietizMe application. Bi
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/biz-builder": "workspace:*"
+    "@otiuming/biz-builder": "workspace:*"
   }
 }
 ```
@@ -28,8 +28,8 @@ This library is part of the DietizMe monorepo and should be referenced as:
 ## Basic Usage
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { Logger } from '@dietizme/utils-logging';
+import { using } from '@otiuming/biz-builder';
+import { Logger } from '@otiuming/utils-logging';
 
 // Define dependencies
 interface Dependencies {

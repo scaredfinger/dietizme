@@ -1,6 +1,6 @@
 # Search Domain Module
 
-Core domain model and business logic for search functionality across the DietizMe application. This module provides a robust and flexible search system for recipes, meal plans, nutritional data, and other related content.
+Core domain model and business logic for search functionality across the Otiuming application. This module provides a robust and flexible search system for recipes, meal plans, nutritional data, and other related content.
 
 ## Features
 
@@ -14,12 +14,12 @@ Core domain model and business logic for search functionality across the DietizM
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-search": "workspace:*"
+    "@otiuming/domain-search": "workspace:*"
   }
 }
 ```
@@ -93,7 +93,7 @@ export interface FacetValue {
 ### Simple Search
 
 ```typescript
-import { SearchService } from '@dietizme/domain-search';
+import { SearchService } from '@otiuming/domain-search';
 
 // Initialize the search service
 const searchService = new SearchService({
@@ -213,7 +213,7 @@ const mealPlanResults = await searchService.searchMealPlans({
 ### Auto-complete and Suggestions
 
 ```typescript
-import { SuggestionService } from '@dietizme/domain-search';
+import { SuggestionService } from '@otiuming/domain-search';
 
 const suggestionService = new SuggestionService({
   searchRepository,
@@ -241,7 +241,7 @@ const popularSearches = await suggestionService.getPopularSearches({
 ### Natural Language Query Processing
 
 ```typescript
-import { NaturalLanguageQueryProcessor } from '@dietizme/domain-search';
+import { NaturalLanguageQueryProcessor } from '@otiuming/domain-search';
 
 const nlpProcessor = new NaturalLanguageQueryProcessor({
   logger
@@ -264,7 +264,7 @@ const results = await searchService.search(structuredQuery);
 ### Search Analytics
 
 ```typescript
-import { SearchAnalyticsService } from '@dietizme/domain-search';
+import { SearchAnalyticsService } from '@otiuming/domain-search';
 
 const analyticsService = new SearchAnalyticsService({
   searchRepository,
@@ -298,7 +298,7 @@ console.log(`Search conversion rate: ${conversionRate}%`);
 ### Personalized Search
 
 ```typescript
-import { PersonalizedSearchService } from '@dietizme/domain-search';
+import { PersonalizedSearchService } from '@otiuming/domain-search';
 
 const personalizedSearch = new PersonalizedSearchService({
   searchRepository,
@@ -328,8 +328,8 @@ const personalResults = await personalizedSearch.searchWithUserContext({
 The search domain model integrates with the BizBuilder pattern:
 
 ```typescript
-import { using } from '@dietizme/biz-builder';
-import { SearchQueryBuilder } from '@dietizme/domain-search';
+import { using } from '@otiuming/biz-builder';
+import { SearchQueryBuilder } from '@otiuming/domain-search';
 
 const performAdvancedSearch = (deps, request) => using(deps)
   .buildLoadContextVariablesWith((req) => ({
@@ -413,6 +413,6 @@ nx test domain-search
 
 This domain module depends on:
 
-- `@dietizme/domain-data-types` - For shared data types
-- `@dietizme/utils-common` - For utility functions
+- `@otiuming/domain-data-types` - For shared data types
+- `@otiuming/utils-common` - For utility functions
 - Omnidata GraphQL API for search functionality

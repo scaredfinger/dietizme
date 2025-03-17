@@ -1,6 +1,6 @@
 # Data Types Domain Module
 
-Common data type definitions and type utilities used across the DietizMe application. This module provides a shared foundation of type definitions that ensure consistency across different parts of the system.
+Common data type definitions and type utilities used across the Otiuming application. This module provides a shared foundation of type definitions that ensure consistency across different parts of the system.
 
 ## Features
 
@@ -12,12 +12,12 @@ Common data type definitions and type utilities used across the DietizMe applica
 
 ## Installation
 
-This library is part of the DietizMe monorepo and should be referenced as:
+This library is part of the Otiuming monorepo and should be referenced as:
 
 ```json
 {
   "dependencies": {
-    "@dietizme/domain-data-types": "workspace:*"
+    "@otiuming/domain-data-types": "workspace:*"
   }
 }
 ```
@@ -182,7 +182,7 @@ import {
   isValidDateRange,
   isValidNutritionInfo,
   isValidAddress
-} from '@dietizme/domain-data-types';
+} from '@otiuming/domain-data-types';
 
 // Check if a value is a valid money object
 if (isValidMoney(value)) {
@@ -218,7 +218,7 @@ import {
   Pick,
   Omit,
   DeepPartial
-} from '@dietizme/domain-data-types';
+} from '@otiuming/domain-data-types';
 
 // Make all properties optional
 type PartialAddress = Partial<Address>;
@@ -248,7 +248,7 @@ import {
   Nullable,
   NonNullable,
   RecordOf
-} from '@dietizme/domain-data-types';
+} from '@otiuming/domain-data-types';
 
 // Add timestamp fields to a type
 type TimestampedAddress = WithTimestamps<Address>;
@@ -279,7 +279,7 @@ import {
   fromJSON,
   serialize,
   deserialize
-} from '@dietizme/domain-data-types';
+} from '@otiuming/domain-data-types';
 
 // Convert to JSON-safe representation (handles dates, etc.)
 const json = toJSON(myObject);
@@ -303,7 +303,7 @@ import {
   US_STATES,
   SUPPORTED_LANGUAGES,
   TIME_ZONES
-} from '@dietizme/domain-data-types';
+} from '@otiuming/domain-data-types';
 
 // Use standard currency codes
 const usd = CURRENCY_CODES.USD;
@@ -324,7 +324,7 @@ const timeZones = TIME_ZONES;
 ## Runtime Validation
 
 ```typescript
-import { validate, createSchema } from '@dietizme/domain-data-types';
+import { validate, createSchema } from '@otiuming/domain-data-types';
 
 // Define a schema
 const AddressSchema = createSchema({
