@@ -47,12 +47,22 @@ dietizme/
 
 ### Domain Modules
 - [Domain Overview](/libs/domain/README.md) - Core domain models and types
-- [Omnidata Types](/libs/domain/omnidata-types/README.md) - Generated GraphQL types for Omnidata
+- [Booking Questions](/libs/domain/booking-questions/README.md) - Questionnaire management
+- [Bookings](/libs/domain/bookings/README.md) - Appointment scheduling and management
+- [Data Types](/libs/domain/data-types/README.md) - Common data type definitions
+- [Omnidata Types](/libs/domain/omnidata-types/README.md) - Generated GraphQL types
+- [Rates](/libs/domain/rates/README.md) - Pricing and discounts
+- [Search](/libs/domain/search/README.md) - Search functionality
+- [Shopping Cart](/libs/domain/shopping-cart/README.md) - Cart and checkout
+- [Templates](/libs/domain/templates/README.md) - Meal templates
 
 ### Utilities
 - [Common Utils](/libs/utils/common/README.md) - Shared utility functions
 - [GraphQL Utils](/libs/utils/graphql/README.md) - GraphQL client and helpers
 - [Logging Utils](/libs/utils/logging/README.md) - Logging utilities
+
+### Testing
+- [Integration Tests](/libs/integration-tests/README.md) - Test utilities and infrastructure
 
 ## Getting Started
 
