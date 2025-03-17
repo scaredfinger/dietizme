@@ -1,147 +1,343 @@
 # BizBuilder
 
-A fluent API for structuring business operations with validation, context loading, and persistence.
+A fluent API for structuring business operations in the DietizMe application. BizBuilder provides a clean, consistent way to implement complex business logic with validation, context loading, and persistence in a pipeline-like structure.
 
-## Overview
+## Key Features
 
-BizBuilder helps organize business logic into a clean, testable pipeline with clear separation of concerns. It manages the flow of:
-
-1. Loading context data
-2. Validating business rules
-3. Persisting changes
-4. Executing post-operation actions
+- **Fluent API**: Chain operations for readability and maintainability
+- **Separation of Concerns**: Clearly separate different aspects of business operations
+- **Validation**: Built-in validation with error handling
+- **Context Loading**: Standardized data loading pattern
+- **Persistence**: Clean approach to saving changes
+- **Testability**: Easy to mock dependencies for testing
+- **Type Safety**: Full TypeScript type support
+- **Error Handling**: Consistent error management
 
 ## Installation
 
-```bash
-npm install biz-builder
+This library is part of the DietizMe monorepo and should be referenced as:
+
+```json
+{
+  "dependencies": {
+    "@dietizme/biz-builder": "workspace:*"
+  }
+}
 ```
 
-## Usage
-
-BizBuilder uses a fluent API pattern to organize your business operations:
+## Basic Usage
 
 ```typescript
-const result = await using<RequestType, SdkType>(sdk, logger)
-  .buildLoadContextVariablesWith(buildLoadContextVariables)
-  .loadContextWith(sdk => sdk.loadContext)
-  .validateWith(validateRule1, validateRule2)
-  .buildPersistVariablesWith(buildPersistVariables)
-  .persistWith(sdk => sdk.persistOperation)
-  .whenDone(afterPersistAction)
-  .execute(request);
+import { using } from '@dietizme/biz-builder';
+import { Logger } from '@dietizme/utils-logging';
 
-// Handle the result
-result.match({
-  Ok: (result) => handleSuccess(result),
-  Error: (error) => handleError(error)
-});
+// Define dependencies
+interface Dependencies {
+  logger: Logger;
+  dataService: DataService;
+}
+
+// Define request type
+interface CreateUserRequest {
+  email: string;
+  name: string;
+  password: string;
+}
+
+// Create a business operation
+async function createUser(
+  deps: Dependencies, 
+  request: CreateUserRequest
+) {
+  return using(deps)
+    // Validate input
+    .validateWith(
+      validateEmailFormat,
+      validatePasswordStrength,
+      checkEmailNotTaken
+    )
+    // Perform the operation
+    .executeWith(async (deps, req) => {
+      const user = await deps.dataService.createUser({
+        email: req.email,
+        name: req.name,
+        hashedPassword: await hashPassword(req.password)
+      });
+      
+      deps.logger.info('User created', { userId: user.id });
+      
+      return { userId: user.id };
+    })
+    // Execute the operation
+    .execute(request);
+}
+
+// Use the operation
+const result = await createUser(
+  { logger, dataService }, 
+  { email: 'user@example.com', name: 'John Doe', password: 'secure123' }
+);
 ```
 
-## API Reference
+## Advanced Features
 
-### Core Flow
+### Context Loading
 
-1. **`using<RequestBody, Sdk>(sdk, logger)`**
-   - Starting point for the builder pattern
-   - Requires your SDK and a logger implementation
+Load necessary context before executing operations:
 
-2. **`.buildLoadContextVariablesWith(buildFn)`**
-   - Define how to extract variables needed to load context from the request
+```typescript
+const updateRecipe = (deps, request) => using(deps)
+  // Define variables needed for context loading
+  .buildLoadContextVariablesWith((req) => ({
+    recipeId: req.id
+  }))
+  // Load context using variables
+  .loadContextWith(async (deps, vars) => {
+    const recipe = await deps.recipeRepo.findById(vars.recipeId);
+    if (!recipe) {
+      throw new NotFoundError(`Recipe ${vars.recipeId} not found`);
+    }
+    return { recipe };
+  })
+  // Validate with loaded context
+  .validateWith(
+    (deps, req, ctx) => validateUserCanEditRecipe(deps, req.userId, ctx.recipe),
+    (deps, req, ctx) => validateRecipeInput(deps, req, ctx.recipe)
+  )
+  // Build variables for persistence
+  .buildPersistVariablesWith((req, ctx) => ({
+    recipe: {
+      ...ctx.recipe,
+      name: req.name,
+      ingredients: req.ingredients,
+      instructions: req.instructions
+    }
+  }))
+  // Persist the updated entity
+  .persistWith(async (deps, vars) => {
+    await deps.recipeRepo.update(vars.recipe);
+    return { recipeId: vars.recipe.id };
+  })
+  // Execute with the request
+  .execute(request);
+```
 
-3. **`.loadContextWith(loadContextFn)`**
-   - Define how to load operation context using your SDK
+### Composable Operations
 
-4. **`.validateWith(...validators)`**
-   - Add one or more validation functions to enforce business rules
-   - Each validator should return `{ ok: true }` or `{ ok: false, errorMessage: string }`
+Create reusable operation components:
 
-5. **`.buildPersistVariablesWith(buildFn)`**
-   - Define how to create variables needed for persistence based on request and context
+```typescript
+// Create a reusable validation step
+const validateRecipeRequest = (builder) => builder
+  .validateWith(
+    validateRecipeName,
+    validateIngredients,
+    validateInstructions
+  );
 
-6. **`.persistWith(persistFn)`**
-   - Define the persistence operation from your SDK
+// Create a reusable persistence step
+const persistRecipe = (builder) => builder
+  .buildPersistVariablesWith((req, ctx) => ({
+    recipe: buildRecipeEntity(req, ctx)
+  }))
+  .persistWith(async (deps, vars) => {
+    const id = await deps.recipeRepo.save(vars.recipe);
+    return { recipeId: id };
+  });
 
-7. **`.whenDone(...actions)`**
-   - Optional post-operation actions that run after successful persistence
-   - Won't affect the operation result if they fail
+// Combine them in different operations
+const createRecipe = (deps, request) => using(deps)
+  .pipe(validateRecipeRequest)
+  .pipe(persistRecipe)
+  .execute(request);
 
-8. **`.execute(request)`**
-   - Execute the operation with the provided request
-   - Returns a `Result` type (from @swan-io/boxed)
+const updateRecipe = (deps, request) => using(deps)
+  .loadContextWith(loadRecipeContext)
+  .pipe(validateRecipeRequest)
+  .validateWith(validateUserCanEdit)
+  .pipe(persistRecipe)
+  .execute(request);
+```
 
 ### Error Handling
 
-BizBuilder provides comprehensive error handling at each step of the operation:
-- Technical errors (context loading, persistence failures)
-- Business validation errors
-- Post-operation error logging
-
-The final result is returned as a boxed `Result` type with either:
-- `Ok` containing the operation result
-- `Error` containing error details with type, code, and message
-
-## Complete Example
+Handle errors in a consistent way:
 
 ```typescript
-interface CreateUserRequest {
-  name: string;
-  email: string;
-}
-
-// Define your contextual data loaders
-function buildLoadContextVariables(request: OperationRequest<CreateUserRequest>) {
-  return {
-    email: request.body.email,
-    organizationId: request.organization
-  };
-}
-
-// Define validation rules
-function validateUniqueEmail(context, request) {
-  return context.isEmailUnique 
-    ? { ok: true } 
-    : { ok: false, errorMessage: "Email already in use" };
-}
-
-// Define persistence variables builder
-function buildPersistVariables(request, context) {
-  return {
-    user: {
-      name: request.body.name,
-      email: request.body.email,
-      organizationId: context.organizationId
+const processMealPlan = (deps, request) => using(deps)
+  .validateWith(
+    validateMealPlanRequest,
+    validateNutritionRequirements
+  )
+  .executeWith(generateMealPlan)
+  .handleErrorWith((error, deps, request) => {
+    if (error instanceof ValidationError) {
+      deps.logger.warn('Validation failed', { 
+        request, 
+        errors: error.details 
+      });
+      return { 
+        success: false, 
+        errors: error.details 
+      };
     }
-  };
-}
-
-// Execute the operation
-const result = await using<CreateUserRequest, UserSdk>(userSdk, logger)
-  .buildLoadContextVariablesWith(buildLoadContextVariables)
-  .loadContextWith(sdk => sdk.checkEmailAvailability)
-  .validateWith(validateUniqueEmail)
-  .buildPersistVariablesWith(buildPersistVariables)
-  .persistWith(sdk => sdk.createUser)
-  .whenDone(sendWelcomeEmail)
+    
+    deps.logger.error('Failed to generate meal plan', {
+      request,
+      error: error.message
+    });
+    
+    throw error;
+  })
   .execute(request);
 ```
 
-## Benefits
+### Cleanup Actions
 
-- **Clean separation of concerns** - Each aspect of the operation is isolated
-- **Easy testability** - Each component can be unit tested independently
-- **Comprehensive error handling** - All errors are properly caught and categorized
-- **Standardized logging** - Consistent logging of each operation stage
-- **Type safety** - Full TypeScript support with generics
+Perform cleanup after operations:
 
-## Development
+```typescript
+const processPayment = (deps, request) => using(deps)
+  .validateWith(validatePaymentRequest)
+  .executeWith(async (deps, req) => {
+    const paymentSession = await deps.paymentService.createSession(req);
+    return { sessionId: paymentSession.id };
+  })
+  .whenDone(async (result, deps) => {
+    // Record payment attempt regardless of outcome
+    await deps.analyticsService.recordPaymentAttempt({
+      sessionId: result.sessionId,
+      amount: request.amount,
+      successful: true
+    });
+  })
+  .whenError(async (error, deps) => {
+    // Handle cleanup after errors
+    await deps.analyticsService.recordPaymentAttempt({
+      amount: request.amount,
+      successful: false,
+      errorMessage: error.message
+    });
+  })
+  .execute(request);
+```
 
-This library was generated with [Nx](https://nx.dev).
+## Validation Functions
 
-### Building
+Validation functions follow a standardized pattern:
 
-Run `nx build biz-builder` to build the library.
+```typescript
+type Validator<D, R, C = undefined> = 
+  (deps: D, request: R, context?: C) => Promise<void> | void;
 
-### Running unit tests
+// Simple validator
+function validateRecipeName(deps, request) {
+  if (!request.name || request.name.length < 3) {
+    throw new ValidationError('Recipe name must be at least 3 characters');
+  }
+}
 
-Run `nx test biz-builder` to execute the unit tests.
+// Validator with dependencies
+function validateUserCanEdit(deps, request, context) {
+  const { user, recipe } = context;
+  
+  if (recipe.ownerId !== user.id && !user.isAdmin) {
+    throw new AuthorizationError('User cannot edit this recipe');
+  }
+}
+
+// Async validator
+async function checkEmailNotTaken(deps, request) {
+  const existing = await deps.userRepo.findByEmail(request.email);
+  
+  if (existing) {
+    throw new ValidationError('Email is already taken');
+  }
+}
+```
+
+## Testing
+
+BizBuilder makes testing business operations straightforward:
+
+```typescript
+describe('createUser', () => {
+  it('creates a user successfully', async () => {
+    // Mock dependencies
+    const deps = {
+      logger: createMockLogger(),
+      dataService: {
+        createUser: jest.fn().mockResolvedValue({ id: 'user-123' })
+      }
+    };
+    
+    // Test the operation
+    const result = await createUser(deps, {
+      email: 'test@example.com',
+      name: 'Test User',
+      password: 'secure123'
+    });
+    
+    // Assertions
+    expect(result).toEqual({ userId: 'user-123' });
+    expect(deps.dataService.createUser).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: 'test@example.com',
+        name: 'Test User'
+      })
+    );
+  });
+  
+  it('validates email format', async () => {
+    const deps = {/* mock dependencies */};
+    
+    // Test validation failure
+    await expect(
+      createUser(deps, {
+        email: 'invalid-email',
+        name: 'Test User',
+        password: 'secure123'
+      })
+    ).rejects.toThrow('Invalid email format');
+  });
+});
+```
+
+## Best Practices
+
+1. **Keep Validators Simple**: Each validator should check one specific aspect
+2. **Error Messages**: Include descriptive error messages for validation failures
+3. **Context Loading**: Use context loading for retrieving existing entities
+4. **Persistence**: Isolate database operations in persist steps
+5. **Error Handling**: Add specific error handling for expected failure cases
+6. **Logging**: Log key events at appropriate levels
+7. **Reuse**: Create shared validators and operation components
+8. **Testing**: Test happy paths and validation failures
+
+## Type Definitions
+
+```typescript
+// Core types in the BizBuilder library
+interface BizBuilder<D, R, C = undefined, V = undefined, O = void> {
+  validateWith(...validators: Validator<D, R, C>[]): BizBuilder<D, R, C, V, O>;
+  loadContextWith<NC>(loader: ContextLoader<D, R, NC>): BizBuilder<D, R, NC, V, O>;
+  buildLoadContextVariablesWith<NV>(builder: VariableBuilder<R, NV>): BizBuilder<D, R, C, NV, O>;
+  buildPersistVariablesWith<NV>(builder: VariableBuilder<R, C, NV>): BizBuilder<D, R, C, V, NV>;
+  persistWith<NO>(persister: Persister<D, V, NO>): BizBuilder<D, R, C, V, NO>;
+  executeWith<NO>(executor: Executor<D, R, C, NO>): BizBuilder<D, R, C, V, NO>;
+  whenDone(handler: DoneHandler<O, D>): BizBuilder<D, R, C, V, O>;
+  whenError(handler: ErrorHandler<D, R>): BizBuilder<D, R, C, V, O>;
+  handleErrorWith<NO>(handler: ErrorTransformer<D, R, NO>): BizBuilder<D, R, C, V, NO>;
+  pipe<NO>(transformer: (builder: BizBuilder<D, R, C, V, O>) => BizBuilder<D, R, C, V, NO>): BizBuilder<D, R, C, V, NO>;
+  execute(request: R): Promise<O>;
+}
+
+type Validator<D, R, C = undefined> = (deps: D, request: R, context?: C) => Promise<void> | void;
+type ContextLoader<D, R, C> = (deps: D, request: R) => Promise<C> | C;
+type VariableBuilder<R, C = undefined, V = undefined> = (request: R, context?: C) => V;
+type Persister<D, V, O> = (deps: D, variables: V) => Promise<O> | O;
+type Executor<D, R, C, O> = (deps: D, request: R, context?: C) => Promise<O> | O;
+type DoneHandler<O, D> = (result: O, deps: D) => Promise<void> | void;
+type ErrorHandler<D, R> = (error: Error, deps: D, request: R) => Promise<void> | void;
+type ErrorTransformer<D, R, O> = (error: Error, deps: D, request: R) => Promise<O> | O;
+```
