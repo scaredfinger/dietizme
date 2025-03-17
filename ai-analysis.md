@@ -1,7 +1,7 @@
 # AI Analysis - Dietizme Root
 
 ## Project Overview
-Dietizme is a meal planning system using hierarchical food categories, recipes, and meal templates to generate nutritionally balanced meal plans.
+Dietizme is a meal planning system using hierarchical food categories, recipes, and meal templates to generate nutritionally balanced meal plans. It integrates with Omnidata for data access and management.
 
 ## Repository Structure
 - **Type**: Monorepo using NX
@@ -11,8 +11,17 @@ Dietizme is a meal planning system using hierarchical food categories, recipes, 
 ## Key Directories
 - `/apps` - Application projects
 - `/libs` - Shared libraries
-  - `/libs/biz-builder` - Business logic components
+  - `/libs/biz-builder` - Business logic components using a fluent API pattern
   - `/libs/domain` - Core domain models
+    - `/libs/domain/bookings` - Booking-related domain models
+    - `/libs/domain/booking-questions` - Booking question domain models
+    - `/libs/domain/data-types` - Common data type definitions
+    - `/libs/domain/omnidata-types` - Types generated from Omnidata GraphQL schema
+    - `/libs/domain/rates` - Rate and pricing domain models
+    - `/libs/domain/search` - Search functionality domain models
+    - `/libs/domain/shopping-cart` - Shopping cart domain models
+    - `/libs/domain/templates` - Template domain models
+  - `/libs/integration-tests` - Integration test utilities
   - `/libs/utils` - Various utilities
     - `/libs/utils/common` - Common utilities
     - `/libs/utils/graphql` - GraphQL utilities
@@ -22,6 +31,7 @@ Dietizme is a meal planning system using hierarchical food categories, recipes, 
 - NX: Monorepo build system
 - TypeScript: Programming language
 - Vitest: Testing framework (replaced Jest)
+- GraphQL: For API communication with Omnidata
 - Various other utilities
 
 ## Build System
@@ -37,10 +47,16 @@ The system uses PostgreSQL with:
 - pgcrypto for UUID generation
 - Core tables: categories, recipes, meal_templates, meal_plans
 
+## Omnidata Integration
+- The project integrates with Omnidata as a data source
+- GraphQL schema from Omnidata is used to generate TypeScript types
+- Located in `libs/domain/omnidata-types`
+
 ## Development Workflow
 1. Run `pnpm nx run-many --target build --all` to build all projects
 2. For specific projects, use `pnpm nx build [project-name]`
 3. For testing, use `pnpm nx test [project-name]`
+4. For Omnidata backend: `pnpm nx dev omnidata` (to start) and `pnpm nx stop omnidata` (to stop)
 
 ## Notes for AI Assistants
 - Check individual project ai-analysis.md files for specific details
