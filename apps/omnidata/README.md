@@ -1,117 +1,108 @@
-# DietizMe Backend
+# Omnidata Backend Service
 
-This is the backend service for the DietizMe application, built using Nhost, GraphQL, and serverless functions.
+The core backend service for the DietizMe application, providing all business logic, data access, and API endpoints through a containerized Nhost environment.
 
 ## Overview
 
-The backend is structured as a containerized application using Docker and Nhost, which provides:
+Omnidata serves as the central data and business logic layer for DietizMe, leveraging:
 
-- GraphQL API (Hasura)
-- PostgreSQL database
-- Auth service
-- Storage service
-- Serverless functions
+- **GraphQL API**: Hasura-powered GraphQL interface for flexible data queries and mutations
+- **PostgreSQL Database**: Robust data storage with hierarchical structure support
+- **Serverless Functions**: Business logic implementation using TypeScript
+- **Authentication**: User authentication and authorization
+- **Storage**: File storage capabilities
+- **BizBuilder Integration**: Structured business operations using the fluent API pattern
+
+## Architecture
+
+Omnidata follows a clean architecture approach with:
+
+1. **Domain Models**: Type definitions shared with frontend applications
+2. **Business Logic**: Implemented using BizBuilder pattern in serverless functions
+3. **Data Access**: GraphQL and REST APIs for flexible data manipulation
+4. **Integration Points**: Webhooks, events, and API endpoints for external integration
 
 ## Directory Structure
 
 ```
-backend/
-├── functions/              # Serverless functions
-│   └── execute.ts          # Main entry point for serverless functions
-├── nhost/                  # Nhost configuration (symlinked to dist)
-├── nhost-config-template/  # Templates for Nhost setup
-│   ├── data/               # Data configuration templates
-│   └── traefik/            # Traefik routing configuration
-├── docker-compose.yaml             # Main Docker Compose configuration
-├── docker-compose.overrides.yaml   # Environment-specific overrides
-├── rollup.config.js                # Rollup bundling configuration
-├── package.json                    # Project dependencies and scripts
-└── tsconfig.json                   # TypeScript configuration
+omnidata/
+├── functions/                # Serverless functions
+│   ├── _utils/               # Shared utilities
+│   │   ├── biz/              # Business logic implementation
+│   │   │   ├── implementation/ # Core business operations
+│   │   │   └── validation/     # Validation rules
+│   │   ├── action-execution.ts # Action dispatcher
+│   │   ├── config.ts         # Configuration settings
+│   │   ├── generated.ts      # Auto-generated GraphQL types
+│   │   ├── logger.ts         # Logging utilities
+│   │   └── sdk.ts            # SDK for external services
+│   └── execute.ts            # Main function entry point
+├── nhost/                    # Nhost configuration (symlinked to dist)
+├── nhost-config-template/    # Templates for Nhost setup
+│   ├── data/                 # Data configuration templates
+│   └── traefik/              # Traefik routing configuration
+├── docker-compose.yaml       # Main Docker Compose configuration
+├── package.json              # Dependencies and scripts
+└── tsconfig.json             # TypeScript configuration
 ```
 
-## Build Process
+## Key Features
 
-The backend build process involves several steps to prepare the application for deployment:
+### GraphQL API
 
-1. **Link Nhost Configuration**: Creates symbolic links for Nhost configuration
-2. **Generate Environment Files**: Creates necessary `.env` and `.secrets` files
-3. **Clean Functions**: Removes previous function builds
-4. **Build Functions**: Compiles TypeScript functions using Rollup
-5. **Generate Package Lock**: Creates `package-lock.json` for functions
-6. **Build Nhost Config**: Copies Nhost configuration templates
-7. **Create Required Folders**: Ensures all necessary folders exist in the output
+The GraphQL API provides a flexible interface for querying and manipulating data:
 
-### Build Script Flow
+- **Strongly Typed**: All operations are fully typed using generated TypeScript definitions
+- **Relation-Aware**: Supports complex data relationships and nested queries
+- **Permission System**: Role-based access control built into the API
+- **Performance Optimized**: Efficient query resolution with pagination support
 
-```
-1. pnpm link-nhost
-2. pnpm generate-dot-files 
-3. pnpm clean-functions
-4. pnpm build-functions
-5. pnpm build-packagelockjson
-6. pnpm build-nhost-config
-7. pnpm build-folders
-```
+### Business Logic Execution
 
-## Function Bundling
+Business operations are implemented using a structured approach:
 
-Functions are bundled using Rollup with the following configuration:
+1. **Request Validation**: Input validation with detailed error messages
+2. **Context Loading**: Loading necessary data from the database
+3. **Business Rules**: Application of business rules and validations
+4. **Persistence**: Database operations with transaction support
+5. **Response Formatting**: Consistent response structure
 
-1. The entry point is `functions/execute.ts`
-2. TypeScript is transpiled using `@rollup/plugin-typescript`
-3. Node modules are resolved using `@rollup/plugin-node-resolve`
-4. External dependencies are excluded from the bundle:
-   - All non-workspace dependencies are marked as external
-   - Workspace dependencies (starting with `@dietizme`) are included in the bundle
-5. A `package.json` is generated for the functions folder with the correct dependencies
+### PostgreSQL Database
 
-## Environment Configuration
+The PostgreSQL database uses several advanced features:
 
-The backend requires several environment files to run:
-
-1. `.env`: Contains environment variables for configuration
-2. `.secrets`: Contains sensitive credentials and secrets
-
-These files are generated during the build process but require templates to be available.
+- **ltree Extension**: For hierarchical data (like food categories)
+- **JSON Storage**: For flexible schema evolution
+- **Row-Level Security**: For data isolation and multi-tenancy
+- **Full-Text Search**: For efficient text search capabilities
 
 ## Development Workflow
 
 ### Prerequisites
 
-- Docker and Docker Compose installed
-- Node.js and pnpm installed
-- Nhost CLI (optional, for advanced usage)
+- Docker and Docker Compose
+- Node.js 18+ and pnpm
+- Nhost CLI (optional)
 
 ### Building and Running
 
-1. **Build the backend**:
-   ```bash
-   pnpm nx build backend
-   ```
-   
-   Or from the project root:
-   ```bash
-   pnpm nx build apps/backend
-   ```
+```bash
+# Build the Omnidata service
+pnpm nx build omnidata
 
-2. **Start the backend services**:
-   ```bash
-   pnpm nx dev backend
-   ```
-   
-   This will:
-   - Build the backend
-   - Start the Docker containers
-   - Make services available at the configured endpoints
+# Start the development environment
+pnpm nx dev omnidata
 
-3. **Stop the backend services**:
-   ```bash
-   pnpm nx stop backend
-   ```
+# Stop the services
+pnpm nx stop omnidata
 
-### Accessing the Services
+# Clean all data and containers
+pnpm nx clean omnidata
+```
 
-Once running, the services are available at:
+### Development Environment
+
+Once running, access the services at:
 
 - **GraphQL API**: http://local.graphql.nhost.run/v1/graphql
 - **Hasura Console**: http://local.hasura.nhost.run
@@ -119,64 +110,166 @@ Once running, the services are available at:
 - **Functions**: http://local.functions.nhost.run
 - **Storage**: http://local.storage.nhost.run
 
-### Developing Functions
+### Creating New Business Functions
 
-1. Create or modify functions in the `functions/` directory
-2. Run `pnpm nx build backend` to compile changes
-3. Test your function at `http://local.functions.nhost.run/[function-name]`
+1. Add a new business operation implementation in `functions/_utils/biz/implementation/`
+2. Create validation rules in `functions/_utils/biz/validation/`
+3. Expose the operation through the action router
+4. Test your implementation via the API
+
+Example business operation:
+
+```typescript
+// Create a new business operation
+export const createMealPlan = async (
+  deps: AppDependencies,
+  request: CreateMealPlanRequest
+): Promise<Result<CreateMealPlanResponse, Error>> => {
+  return using(deps)
+    .validateWith(
+      validateMealPlanRequest,
+      validateUserPermissions
+    )
+    .loadContextWith(async (deps, req) => {
+      // Load necessary context (user, templates, etc.)
+    })
+    .executeWith(async (deps, req, ctx) => {
+      // Create meal plan
+      return { mealPlanId: 'new-id' };
+    })
+    .execute(request);
+};
+```
+
+## Data Flow
+
+1. **Client Request**: Frontend or external client makes a request
+2. **Function Routing**: Request is routed to the appropriate business function
+3. **Business Logic**: The function validates, processes, and executes the operation
+4. **Database Operation**: Data is persisted to the PostgreSQL database
+5. **Response**: A structured response is returned to the client
+
+## Database Schema
+
+The main database entities include:
+
+- **Users**: User accounts and profiles
+- **Categories**: Hierarchical food categories
+- **Recipes**: Recipe definitions with ingredients and instructions
+- **Meal Templates**: Templates for meal planning
+- **Meal Plans**: Generated meal plans for users
+- **Bookings**: Appointment bookings for nutritionist consultations
+- **Shopping Carts**: User shopping carts
+
+## GraphQL Schema Management
+
+```bash
+# Export the current GraphQL schema
+pnpm update-schema
+
+# Generate TypeScript types from the GraphQL schema
+pnpm generate-functions-graphql
+```
+
+## Integration Points
+
+### Frontend Integration
+
+The Omnidata service exposes several integration points for frontend applications:
+
+- **GraphQL API**: For data queries and mutations
+- **Auth API**: For user authentication
+- **Serverless Functions**: For complex business operations
+- **Storage API**: For file uploads and downloads
+
+### External Systems Integration
+
+Omnidata can integrate with external systems through:
+
+- **Webhooks**: Receiving events from external systems
+- **API Calls**: Making requests to external services
+- **Event System**: Publishing and subscribing to events
+
+## Deployment
+
+The service is designed to be deployed to any Docker-compatible environment:
+
+- **Development**: Local Docker Compose setup
+- **Staging**: Containerized deployment with staging data
+- **Production**: Fully containerized production deployment
+
+### Environment Variables
+
+Required environment variables:
+
+- `NHOST_ADMIN_SECRET`: Admin secret for Hasura
+- `NHOST_JWT_SECRET`: JWT secret for authentication
+- `NHOST_POSTGRES_PASSWORD`: PostgreSQL password
+- `NHOST_PROJECT_NAME`: Project name for Docker Compose
+- `ENVIRONMENT`: Environment name (development, staging, production)
+
+## Monitoring and Debugging
+
+- **Logging**: Structured JSON logs using Pino logger
+- **Error Tracking**: Sentry integration for error reporting
+- **Metrics**: Container-level metrics in production
+- **Request Tracing**: Request ID-based tracing for debugging
+
+## Advanced Usage
+
+### Custom SQL Migrations
+
+Add SQL migrations to `nhost/migrations/` and they will be applied on startup.
+
+### Hasura Metadata
+
+Hasura metadata is stored in `nhost/metadata/` and defines:
+
+- GraphQL schema permissions
+- API relationships
+- Event triggers
+- Remote schemas
+
+### Function Development
+
+For complex functions, split logic into modules:
+
+```typescript
+// utils/biz/implementation/meal-planning/generate-meal-plan.ts
+export function generateMealPlan(deps, request) {
+  // Logic for generating meal plans
+}
+
+// utils/biz/implementation/index.ts
+export { generateMealPlan } from './meal-planning/generate-meal-plan';
+```
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Port conflicts**: Ensure no other services are running on the ports required by the Docker containers.
-
-2. **Missing environment files**: If you get errors about missing `.env` or `.secrets`, ensure you've followed the setup steps from the main README.
-
-3. **Docker container issues**: If containers fail to start properly, try:
+1. **Docker Container Conflicts**: 
    ```bash
-   pnpm nx clean backend
-   pnpm nx dev backend
+   # Fix port conflicts
+   sudo lsof -i :<port-number>
+   kill <process-id>
    ```
 
-4. **Nhost configuration errors**: Check that the Nhost configuration templates are properly set up.
+2. **Database Connection Failures**:
+   Check for correct environment variables and postgres service health.
 
-## Advanced Usage
+3. **GraphQL Schema Errors**:
+   Verify Hasura metadata consistency using the Hasura Console.
 
-### GraphQL Schema Management
+4. **Function Deployment Issues**:
+   ```bash
+   # View function logs
+   docker compose logs -f functions
+   ```
 
-To export the current GraphQL schema:
-```bash
-pnpm export-schema
-```
+## References
 
-To generate TypeScript types from the GraphQL schema:
-```bash
-pnpm generate-functions-graphql
-```
-
-### Manual Container Management
-
-You can manage the Docker containers directly:
-
-```bash
-# Start containers
-docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} up --detach
-
-# Stop containers
-docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} down
-
-# View logs
-docker compose --file docker-compose.yaml --file docker-compose.overrides.yaml --project-name ${NHOST_PROJECT_NAME} logs -f
-```
-
-## Integration with Frontend
-
-The backend exposes APIs that are consumed by the frontend applications. The main integration points are:
-
-1. **GraphQL API**: The primary data interface, used for querying and mutating data
-2. **Auth Service**: Handles user authentication and authorization
-3. **Functions**: Custom business logic endpoints
-4. **Storage**: File upload and retrieval
-
-Frontend applications connect to these services using the appropriate client libraries.
+- [Nhost Documentation](https://docs.nhost.io/)
+- [Hasura Documentation](https://hasura.io/docs/)
+- [BizBuilder Pattern](/libs/biz-builder/README.md)
+- [Domain Models](/libs/domain/README.md)
