@@ -1,65 +1,118 @@
-# AI Analysis - Dietizme Root
+# AI Analysis - DietizMe Project
 
 ## Project Overview
-Dietizme is a meal planning system using hierarchical food categories, recipes, and meal templates to generate nutritionally balanced meal plans. It integrates with Omnidata for data access and management.
+DietizMe is a comprehensive meal planning and nutrition management system using TypeScript, Nx monorepo architecture, and a modern tech stack. The application helps users create nutritionally balanced meal plans based on dietary preferences, restrictions, and nutritional goals.
 
-## Repository Structure
-- **Type**: Monorepo using NX
-- **Package Manager**: pnpm with workspace support
+## Repository Architecture
+- **Type**: Nx monorepo with pnpm workspaces
 - **Main Language**: TypeScript
+- **Code Organization**: Domain-driven design with clean architecture principles
+- **Pattern**: BizBuilder fluent API for business operations
+
+## Major Components
+
+### Backend (Omnidata)
+- **Framework**: Nhost (Hasura/PostgreSQL/GraphQL)
+- **Business Logic**: TypeScript serverless functions
+- **Data Storage**: PostgreSQL with ltree extension for hierarchies
+- **API Layer**: GraphQL + REST endpoints
+- **Authentication**: JWT-based auth through Nhost
+
+### Domain Libraries
+- **Domain Models**: Strong type definitions shared across the application
+- **Business Logic**: Encapsulated in domain-specific modules
+- **Validation Rules**: Business rule enforcement
+- **Type Safety**: End-to-end type checking
+
+### Utility Libraries
+- **Common Utils**: General-purpose functions
+- **GraphQL Utils**: GraphQL client and helpers
+- **Logging**: Structured logging system
+- **Test Utilities**: Integration test infrastructure
 
 ## Key Directories
-- `/apps` - Application projects
-- `/libs` - Shared libraries
-  - `/libs/biz-builder` - Business logic components using a fluent API pattern
-  - `/libs/domain` - Core domain models
-    - `/libs/domain/bookings` - Booking-related domain models
-    - `/libs/domain/booking-questions` - Booking question domain models
-    - `/libs/domain/data-types` - Common data type definitions
-    - `/libs/domain/omnidata-types` - Types generated from Omnidata GraphQL schema
-    - `/libs/domain/rates` - Rate and pricing domain models
-    - `/libs/domain/search` - Search functionality domain models
-    - `/libs/domain/shopping-cart` - Shopping cart domain models
-    - `/libs/domain/templates` - Template domain models
-  - `/libs/integration-tests` - Integration test utilities
-  - `/libs/utils` - Various utilities
-    - `/libs/utils/common` - Common utilities
-    - `/libs/utils/graphql` - GraphQL utilities
-    - `/libs/utils/logging` - Logging utilities
+- `/apps/omnidata`: Backend service implementation
+- `/libs/biz-builder`: Business operation pattern library
+- `/libs/domain`: Domain models and business logic
+- `/libs/utils`: Shared utility functions
+- `/libs/integration-tests`: Test infrastructure
 
-## Main Dependencies
-- NX: Monorepo build system
-- TypeScript: Programming language
-- Vitest: Testing framework (replaced Jest)
-- GraphQL: For API communication with Omnidata
-- Various other utilities
+## Technology Stack
+- **Build System**: Nx + pnpm
+- **Backend**: Nhost (Hasura/PostgreSQL)
+- **API**: GraphQL + REST endpoints
+- **Testing**: Vitest
+- **Containerization**: Docker & Docker Compose
+- **CI/CD**: GitHub Actions
+- **Error Tracking**: Sentry
+- **Logging**: Pino with structured JSON output
 
-## Build System
-- NX for task running and dependency management
-- Commands in package.json:
-  - `build`: `nx build`
-  - `build-all`: `nx run-many --target=build --all`
-  - `test-all`: `nx run-many --target=test --all`
+## Main Domain Concepts
+- **Food Categories**: Hierarchical food classification system
+- **Recipes**: Food preparations with ingredients and instructions
+- **Meal Templates**: Reusable patterns for meal plans
+- **Nutritional Profiles**: User dietary needs and restrictions
+- **Meal Plans**: Generated plans tailored to user needs
+- **Bookings**: Consultation appointments
+- **Rates**: Pricing and discount rules
 
-## Database Design
-The system uses PostgreSQL with:
-- ltree extension for hierarchical categories
-- pgcrypto for UUID generation
-- Core tables: categories, recipes, meal_templates, meal_plans
-
-## Omnidata Integration
-- The project integrates with Omnidata as a data source
-- GraphQL schema from Omnidata is used to generate TypeScript types
-- Located in `libs/domain/omnidata-types`
+## Data Flow
+1. **User Input**: Dietary preferences and nutritional goals
+2. **Template Selection**: Based on user requirements
+3. **Meal Plan Generation**: Using templates and recipe database
+4. **Customization**: User adjustments to proposed plans
+5. **Shopping List**: Generation of required ingredients
+6. **Nutritionist Review**: Optional professional consultation
 
 ## Development Workflow
-1. Run `pnpm nx run-many --target build --all` to build all projects
-2. For specific projects, use `pnpm nx build [project-name]`
-3. For testing, use `pnpm nx test [project-name]`
-4. For Omnidata backend: `pnpm nx dev omnidata` (to start) and `pnpm nx stop omnidata` (to stop)
+- Uses Conventional Commits (feat, fix, chore, etc.)
+- Feature branching workflow
+- Pull request reviews
+- Automated testing on CI
+- Dependabot for dependency updates
+
+## Documentation Strategy
+- README files for each module
+- JSDoc comments in code
+- AI-analysis files for AI tools
+- Comprehensive API documentation
+- Usage examples
+
+## Code Quality Measures
+- ESLint for static analysis
+- TypeScript for type safety
+- Vitest for unit and integration testing
+- Strict typing across boundaries
+- Immutable patterns where appropriate
+
+## Integration Points
+- **GraphQL API**: Main data interface
+- **Auth Service**: Authentication and authorization
+- **Function Endpoints**: Business operations
+- **Storage API**: File management
+
+## Deployment Architecture
+- Containerized services
+- Environment-based configuration
+- Secrets management
+- Horizontal scaling capability
+
+## Performance Considerations
+- GraphQL query optimization
+- React component optimization
+- Database query optimization
+- Caching strategies
+
+## Security Practices
+- Input validation
+- Authentication with JWT
+- Row-level security in database
+- CSRF protection
+- API rate limiting
 
 ## Notes for AI Assistants
-- Check individual project ai-analysis.md files for specific details
-- This is a relatively new project (created March 2025)
-- Uses conventional commits (feat, fix, chore, etc.) and standard branch naming
-- Has Dependabot configured for automated dependency updates
+- Project uses a monorepo structure, with clear separation of concerns
+- Business logic is primarily in domain modules, executed by Omnidata
+- When generating code, follow the BizBuilder pattern for business operations
+- Reference the appropriate type definitions from domain-omnidata-types
+- Follow the established naming conventions and code style
