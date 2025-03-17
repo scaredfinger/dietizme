@@ -6,27 +6,43 @@ The domain library contains the core domain models and types for the meal planni
 ## Package Details
 - **Name**: @dietizme/domain
 - **Type**: Library package
-- **Current Status**: Early development (contains mostly .gitkeep files)
+- **Status**: Active development
 
 ## Key Concepts
 - Food category definitions
 - Recipe models
 - Meal template structures
 - Meal plan domain entities
+- Booking and rate management
+- Shopping cart functionality
+- Integration with Omnidata
 
-## Planned Structure
-- `/categories` - Food category definitions and hierarchies
-- `/recipes` - Recipe domain models
-- `/templates` - Meal template structures
-- `/plans` - Meal plan entities
+## Structure
+- `/booking-questions` - Booking question domain models and logic
+- `/bookings` - Booking domain models and management
+- `/data-types` - Common data type definitions
+- `/omnidata-types` - Generated TypeScript types from Omnidata GraphQL schema
+- `/rates` - Rate and pricing domain models
+- `/search` - Search functionality domain models
+- `/shopping-cart` - Shopping cart domain models and operations
+- `/templates` - Meal template structures and operations
 
 ## Database Mapping
-This library is expected to contain the TypeScript representations of the PostgreSQL database schema:
+This library contains the TypeScript representations of the PostgreSQL database schema:
 
 - Categories with hierarchical paths (e.g., "CUISINE.MEDITERRANEAN.SPAIN")
 - Recipes with their associated categories
 - Meal templates with component requirements
 - Meal plans with assigned recipes
+- Booking and scheduling data structures
+- Shopping cart and order models
+
+## Omnidata Integration
+The `/omnidata-types` subdirectory is a critical component that:
+- Contains auto-generated TypeScript types from the Omnidata GraphQL schema
+- Provides type-safe interfaces for API interactions
+- Enables IDE autocompletion and type checking for Omnidata operations
+- Serves as the contract between the application and the Omnidata backend
 
 ## Usage
 This library serves as the foundation for the entire application by providing:
@@ -38,4 +54,5 @@ This library serves as the foundation for the entire application by providing:
 ## Integration Points
 - Used by biz-builder for business logic implementation
 - Used by applications for type safety
-- May be used by API layers for data validation
+- Used by API layers for data validation
+- Provides the interface for Omnidata service integration
