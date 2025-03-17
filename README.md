@@ -20,7 +20,15 @@ dietizme/
 ├── libs/                # Shared libraries
 │   ├── biz-builder/     # Business operation builder pattern utility
 │   ├── domain/          # Domain-specific modules
-│   │   └── shopping-cart/ # Shopping cart domain logic
+│   │   ├── booking-questions/ # Booking questions domain logic
+│   │   ├── bookings/    # Bookings domain logic
+│   │   ├── data-types/  # Common data type definitions
+│   │   ├── omnidata-types/ # Types generated from Omnidata GraphQL schema
+│   │   ├── rates/       # Rates and pricing domain logic
+│   │   ├── search/      # Search functionality domain logic
+│   │   ├── shopping-cart/ # Shopping cart domain logic
+│   │   └── templates/   # Templates domain logic
+│   ├── integration-tests/ # Integration test utilities
 │   └── utils/           # Utility libraries
 │       ├── common/      # Common utilities
 │       ├── graphql/     # GraphQL-related utilities
@@ -35,6 +43,7 @@ dietizme/
 - **Package Manager**: [pnpm](https://pnpm.io/)
 - **Language**: TypeScript
 - **Backend**: [Nhost](https://nhost.io/) (Hasura/GraphQL/PostgreSQL)
+- **Data Source**: Omnidata (via GraphQL)
 - **Testing**: Vitest
 - **Containerization**: Docker
 
@@ -157,7 +166,7 @@ const result = await using<RequestType, SdkType>(sdk, logger)
 
 ### Domain Modules
 
-Domain modules encapsulate business logic for specific features such as the shopping cart. These are organized in the `libs/domain/` directory.
+Domain modules encapsulate business logic for specific features such as the shopping cart, bookings, and rates. These are organized in the `libs/domain/` directory.
 
 ### Backend
 
@@ -167,6 +176,13 @@ The backend is built using Nhost, which provides:
 - Storage
 - Authentication
 - Serverless functions
+
+### Omnidata Integration
+
+The project integrates with Omnidata as a data source:
+- GraphQL schema from Omnidata is used to generate TypeScript types in `libs/domain/omnidata-types`
+- The generated types provide strongly-typed interfaces for API calls
+- Integration with the backend is handled through the GraphQL utilities
 
 ## Sample Data Generation
 
