@@ -1,0 +1,26 @@
+fragment rate_full on rate {
+  id
+  product_id
+  configuration
+  price_rules
+  availability_rules
+  name {
+    en
+    es
+    fr
+    de
+  }
+  headline {
+    en
+    es
+    fr
+    de
+  }
+  price_calendar {
+    id
+    from
+    to
+    daily
+    hourly
+  }
+}

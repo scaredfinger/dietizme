@@ -1,0 +1,5 @@
+mutation save_booking_questions(
+  $arg: organization_booking_questions_save_input!
+) {
+  organization_booking_questions_save(arg: $arg)
+}

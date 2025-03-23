@@ -1,0 +1,3 @@
+mutation create_product($arg: product_create_input!) {
+  create_product(arg: $arg)
+}

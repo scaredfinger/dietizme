@@ -1,0 +1,19 @@
+query get_my_web_section(
+  $organization_id: uuid!
+  $section_id: String!
+) {
+  my_web_section(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      },
+      section_id: {
+        _eq: $section_id
+      }
+    }
+  ) {
+    organization_id
+    section_id
+    value
+  }
+}

@@ -1,0 +1,20 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import _ from 'lodash'
+import { faker } from '@faker-js/faker'
+
+import DatePicker from 'react-date-picker'
+
+export default {
+  component: DatePicker,
+  title: 'Date picker',
+  argTypes: {
+    onChange: { action: 'onChange executed!' },
+  },
+} as ComponentMeta<typeof DatePicker>
+
+const Template: ComponentStory<typeof DatePicker> = (args) => 
+  <DatePicker {...args} />
+
+export const Dates = Template.bind({})
+Dates.args = {
+}

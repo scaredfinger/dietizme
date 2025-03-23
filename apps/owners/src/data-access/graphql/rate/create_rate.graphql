@@ -1,0 +1,3 @@
+mutation create_rate($arg: rate_create_input!) {
+  create_rate(arg: $arg)
+}

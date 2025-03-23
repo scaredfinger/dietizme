@@ -1,0 +1,55 @@
+ol.image-gallery-edit {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol.image-gallery-edit li {
+  height: $list-item-height;
+  max-width: 100%;
+  
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  align-items: start;
+  gap: 25%;
+  
+  margin-bottom: 1.5rem;
+  margin: 0 0.5rem 0.5rem 0;
+
+  background-color: $white;
+  border: 1px solid $gray-light;
+  border-radius: 10px 10px 10px 10px;
+}
+
+ol.image-gallery-edit img {
+  object-fit: contain;
+  order: 1;
+  height: 149px;
+  width: 213px;
+  flex-basis: 25%;
+  background-color: $gray-light;
+  border-radius: 10px 0px 0px 10px;
+}
+
+ol.image-gallery-edit .image-gallery-grip {
+  display: none;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  background-color: $white;
+  border-color: $gray-light;
+  border: 1px 0 0 0;
+  cursor: grab; 
+}
+
+ol.image-gallery-edit .image-gallery-actions {
+  order: 2;
+  flex-basis: 50%;
+  text-align: end;
+  padding: 0.5rem 0.5rem 0 0;
+  // grid-column: 3 / 5;
+  // grid-row: 1 / 1;
+  align-items: end;
+}

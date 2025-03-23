@@ -1,0 +1,46 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { useState } from 'react'
+import _ from 'lodash'
+
+import { faker } from '@faker-js/faker'
+
+import { Gallery, GalleryEditor } from './gallery-editor'
+
+import 'react-quill/dist/quill.snow.css'
+
+export default {
+  component: GalleryEditor,
+  title: 'GalleryEditorImageList',
+  argTypes: {
+    onChange: { action: 'onChange executed!' },
+  },
+} as ComponentMeta<typeof GalleryEditor>
+
+const TemplateWithState: ComponentStory<typeof GalleryEditor> = (args) => {
+  const [state, setState] = useState({
+    images: [
+      { file_id: faker.image.imageUrl(480, 320, 'cat', true) },
+      { file_id: faker.image.imageUrl(480, 320, 'bird', true) },
+      { file_id: faker.image.imageUrl(480, 320, 'dog', true) },
+      { file_id: faker.image.imageUrl(480, 320, 'elefant', true) }
+    ],
+  })
+
+  function onChange(g: Gallery) {
+    setState(g as any)
+  }
+
+  return (
+    <GalleryEditor
+      {...args}
+      formData={state}
+      onChange={onChange}
+      getFileUrl={s => s}
+    />
+  )
+}
+
+export const Primary = TemplateWithState.bind({})
+Primary.args = {
+
+}

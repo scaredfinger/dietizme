@@ -1,0 +1,3 @@
+mutation rate_save($rate: rate_save_input!) {
+  rate_save(arg: $rate)
+}

@@ -1,0 +1,32 @@
+fragment organization_full on organization {
+  id
+  name
+  email
+  phone_number
+  currency
+  language
+  business_model {
+    rate_type
+    unit_management
+  }
+  headline {
+    en
+    es
+    de
+    fr
+  }
+  sites {
+    url
+  }
+  branding {
+    favicon_id
+    logo_id
+    logo_light_id
+    meta_title {
+      en
+      es
+      de
+      fr
+    }
+  }
+}

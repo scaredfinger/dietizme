@@ -1,0 +1,18 @@
+query get_booking_questions(
+  $organization_id: uuid!) {
+	organization_by_pk(id: $organization_id) {
+    booking_questions(
+      order_by: {
+        position: asc
+      }
+    ) {
+      id
+      type
+      scope
+      value
+      text {
+        ...translated_text
+      }
+    }
+  }    
+}

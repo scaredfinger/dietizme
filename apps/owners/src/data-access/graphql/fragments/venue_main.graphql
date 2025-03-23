@@ -1,0 +1,22 @@
+fragment venue_main on venue {
+    id
+    description {
+      en
+      es
+      de
+      fr
+    }
+    good_to_know {
+      en
+      es
+      de
+      fr
+    }
+    usps_id
+    gallery_id
+    place {
+      name
+      latitude
+      longitude
+    }
+}

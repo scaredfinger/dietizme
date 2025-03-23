@@ -1,0 +1,26 @@
+.uppy-DragDrop-label {
+  @apply border-dashed border-1 rounded-lg;
+  @apply text-dark dark:text-white/[.87];
+  @apply border-gray-300 dark:border-gray-700;
+  @apply bg-gray-100 dark:bg-gray-800;
+  @apply p-10 mb-2;
+}
+
+svg.uppy-c-icon {
+  display: none;
+}
+
+.uploader h4 {
+  font-weight: 400;
+  font-size: 14px;
+  padding: 8px 0 16px 0;
+}
+
+div .preview {
+  @apply flex items-center;
+}
+
+.preview img {
+  display: block;
+  @apply w-32 rounded-md mr-2;
+}

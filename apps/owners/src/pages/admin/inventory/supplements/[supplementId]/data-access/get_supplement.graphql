@@ -1,0 +1,20 @@
+query get_supplement($id: uuid!) {
+  supplement: supplement_by_pk(id: $id) {
+    id
+    name {
+      ...translated_text
+    }
+    headline {
+      ...translated_text
+    }
+    description {
+      ...translated_text
+    }
+    type
+    price
+    image_id
+    products {
+      value: product_id
+    }
+  }
+}

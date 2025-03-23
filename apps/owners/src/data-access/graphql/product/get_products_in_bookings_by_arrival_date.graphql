@@ -1,0 +1,25 @@
+query get_products_in_bookings_by_arrival_date($id: uuid!, $today: timestamp!) {
+  booking_product(where: {booking: {organization_id: {_eq: $id}, state: {_eq: ACCEPTED}}, starts_on: {_gte: $today}}, order_by: {starts_on: asc}, limit:10) {
+    starts_on
+    booking{
+      id
+      friendly_id
+    }
+    rate {
+      product {
+        price_from
+        gallery {
+          items {
+            file_id
+          }
+        }
+        name {
+          es
+          de
+          en
+          fr
+        }
+      }
+    }
+  }
+}

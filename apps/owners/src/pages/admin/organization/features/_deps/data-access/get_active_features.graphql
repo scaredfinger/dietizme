@@ -1,0 +1,28 @@
+query get_active_features(
+  $organization_id: uuid!) {
+  feature(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    id
+    name {
+      en
+      es
+      de
+      fr
+    }
+    headline {
+      en
+      es
+      de
+      fr
+    }
+    symbol
+    categories {
+      category_id
+    }
+  }
+}

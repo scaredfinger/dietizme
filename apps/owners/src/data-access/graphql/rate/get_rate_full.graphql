@@ -1,0 +1,5 @@
+query get_rate_full($id: uuid!) {
+  rate_by_pk(id: $id) {
+    ...rate_full
+  }
+}

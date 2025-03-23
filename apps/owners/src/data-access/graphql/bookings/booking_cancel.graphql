@@ -1,0 +1,3 @@
+mutation booking_cancel($arg: booking_cancel_input!) {
+  booking_cancel(arg: $arg)
+}

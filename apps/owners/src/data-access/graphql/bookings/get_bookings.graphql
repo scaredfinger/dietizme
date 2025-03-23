@@ -1,0 +1,43 @@
+query get_bookings($from: timestamp!, $to: timestamp!) {
+  booking(
+    where: {
+      _and: [{
+        products: {
+          starts_on: {
+            _gte: $from
+          }
+        }
+      },
+      {
+      	products: {
+          ends_on: {
+            _lte: $to
+          }
+        }   
+      }]
+    }) {
+    id
+    friendly_id
+    state
+    amount
+    created_on
+    last_modified_on
+    contact {
+      id
+      email
+      name
+    }
+    products {
+      id
+      price
+      rate_id
+      search_params
+      explained_search_params
+    }
+    history_entries {
+      timestamp
+      type
+      value
+    }
+  }
+}

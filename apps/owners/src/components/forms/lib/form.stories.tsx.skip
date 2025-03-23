@@ -1,0 +1,95 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import _ from 'lodash'
+import {
+  Form,
+  MultilanguageTextAreaEditor,
+  MultilanguageTextEditor,
+} from './form'
+
+import {
+  MultilanguageRichTextEditor,
+  RichTextEditor,
+} from './ritch-text-editor'
+
+import 'react-quill/dist/quill.snow.css'
+
+export default {
+  component: Form,
+  title: 'Form',
+  argTypes: {
+    onSubmit: { action: 'onSubmit executed!' },
+  },
+} as ComponentMeta<typeof Form>
+
+const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />
+
+export const MultilanguageTextEditorStory = Template.bind({})
+MultilanguageTextEditorStory.args = {
+  schema: {
+    type: 'object',
+    title: 'Lorem ipsum',
+    editor: MultilanguageTextEditor,
+    properties: {
+      en: { type: 'string' },
+      es: { type: 'string' },
+      de: { type: 'string' },
+      fr: { type: 'string' },
+    },
+  },
+  value: {
+    en: 'English',
+    es: 'Spanish',
+    de: 'German',
+    fr: 'French',
+  },
+  t: _.identity,
+}
+
+export const MultilanguageTextAreaEditorStory = Template.bind({})
+MultilanguageTextAreaEditorStory.args = {
+  schema: {
+    type: 'object',
+    title: 'Lorem ipsum',
+    editor: MultilanguageTextAreaEditor,
+    properties: {
+      en: { type: 'string' },
+      es: { type: 'string' },
+      de: { type: 'string' },
+      fr: { type: 'string' },
+    },
+  },
+  value: {
+    en: 'English',
+    es: 'Spanish',
+    de: 'German',
+    fr: 'French',
+  },
+  t: _.identity,
+}
+
+export const RichTextEditorStory = Template.bind({})
+RichTextEditorStory.args = {
+  schema: {
+    type: 'string',
+    title: 'Lorem ipsum',
+    editor: RichTextEditor,
+  },
+  value: 'Lorem ipsum',
+  t: _.identity,
+}
+
+export const MultilanguageRichTextEditorStory = Template.bind({})
+MultilanguageRichTextEditorStory.args = {
+  schema: {
+    type: 'string',
+    title: 'Lorem ipsum',
+    editor: MultilanguageRichTextEditor,
+  },
+  value: {
+    en: 'EN Lorem',
+    es: 'ES Lorem',
+    de: 'DE Lorem',
+    fr: 'FR Lorem',
+  },
+  t: _.identity,
+}

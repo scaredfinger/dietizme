@@ -1,0 +1,5 @@
+mutation organization_create(
+	$organization: organization_create_input!
+) {
+	organization_create(arg: $organization)
+}

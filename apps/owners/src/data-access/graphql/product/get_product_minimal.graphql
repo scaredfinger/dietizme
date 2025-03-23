@@ -1,0 +1,5 @@
+query get_product_minimal($id: uuid!) {
+  product_by_pk(id: $id) {
+    ...product_minimal
+  }
+}

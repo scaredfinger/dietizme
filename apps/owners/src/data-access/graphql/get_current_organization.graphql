@@ -1,0 +1,13 @@
+query get_current_organization($url: String!) {
+  organization(
+    where: {
+      sites: {
+        url: {
+          _eq: $url
+        }
+      }
+    }
+  ) {
+    id
+  }
+}

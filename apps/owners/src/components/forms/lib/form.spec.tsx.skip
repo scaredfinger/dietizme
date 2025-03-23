@@ -1,0 +1,87 @@
+import { render } from '@testing-library/react'
+
+import {
+  extractUiSchema,
+  Form,
+  JSONSchema,
+  MultilanguageTextEditor,
+} from './form'
+
+describe.skip('SharedFormsGenerator', () => {
+  interface Entity {
+    key: string
+    value: number
+  }
+
+  const value: Entity = {
+    key: 'key',
+    value: 123,
+  }
+
+  const schema: JSONSchema = {
+    type: 'object',
+  }
+
+  it('should render successfully', () => {
+    const { baseElement } = render(
+      <Form value={value} schema={schema} t={(s) => s} />
+    )
+    expect(baseElement).toBeTruthy()
+  })
+})
+
+describe.skip('extractUiSchema', () => {
+  it('is defined', () => {
+    expect(extractUiSchema).toBeDefined()
+  })
+
+  it('creates ', () => {
+    const actual = extractUiSchema((t) => t, {
+      type: 'object',
+    })
+
+    expect(actual).toEqual({})
+  })
+
+  it('creates ui:field if editor is present', () => {
+    const actual = extractUiSchema((t) => t, {
+      type: 'object',
+      editor: MultilanguageTextEditor,
+    })
+
+    expect(actual['ui:field']).toBeDefined()
+    expect(actual['ui:field'].displayName).toContain('withTranslations')
+  })
+
+  it('creates ui:fields for nested properties', () => {
+    const actual = extractUiSchema((t) => t, {
+      type: 'object',
+      properties: {
+        inner1: {
+          type: 'object',
+          editor: MultilanguageTextEditor,
+        },
+      },
+    })
+
+    expect(actual['inner1']['ui:field']).toBeDefined()
+    expect(actual['inner1']['ui:field'].displayName).toContain(
+      'withTranslations'
+    )
+  })
+
+  it('creates ui:fields for nested items', () => {
+    const actual = extractUiSchema((t) => t, {
+      type: 'array',
+      items: {
+        type: 'object',
+        editor: MultilanguageTextEditor,
+      },
+    })
+
+    expect(actual['items']['ui:field']).toBeDefined()
+    expect(actual['items']['ui:field'].displayName).toContain(
+      'withTranslations'
+    )
+  })
+})

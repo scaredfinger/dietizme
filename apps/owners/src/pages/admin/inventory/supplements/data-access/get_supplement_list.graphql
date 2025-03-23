@@ -1,0 +1,20 @@
+query get_supplement_list(
+  $organization_id: uuid!
+) {
+  supplements:supplement(
+    where: {
+      organization_id: {
+        _eq: $organization_id
+      }
+    }
+  ) {
+    id
+    name {
+      ...translated_text
+    }
+    headline {
+      ...translated_text
+    }
+    image_id
+  }
+}

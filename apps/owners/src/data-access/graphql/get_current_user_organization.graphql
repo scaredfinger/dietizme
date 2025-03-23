@@ -1,0 +1,14 @@
+query get_current_user_organization($user_id: uuid!) {
+  organization(
+    where: {
+      members: {
+        user_id: {
+       		_eq: $user_id
+      	}
+    	}
+    }
+  ) {
+    id
+    name
+  }
+}

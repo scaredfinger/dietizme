@@ -1,0 +1,3 @@
+mutation save_product_features($arg: save_product_features_input!) {
+  save_product_features(arg: $arg)
+}

@@ -1,0 +1,10 @@
+fragment rate_minimal on rate {
+  id
+  product_id
+  name {
+    en
+    es
+    fr
+    de
+  }
+}

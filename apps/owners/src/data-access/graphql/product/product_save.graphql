@@ -1,0 +1,3 @@
+mutation product_save($product: product_save_input!) {
+  product_save(arg: $product)
+}

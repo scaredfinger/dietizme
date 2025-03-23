@@ -1,0 +1,5 @@
+query get_rate_minimal($id: uuid!) {
+  rate_by_pk(id: $id) {
+    ...rate_minimal
+  }
+}

@@ -1,0 +1,33 @@
+fragment product_full on product {
+  id
+  price_from
+  published
+  business_model {
+    time_management
+    unit_management
+  }
+  name {
+    en
+    es
+    fr
+    de
+  }
+  headline {
+    en
+    es
+    fr
+    de
+  }
+  description {
+    en
+    es
+    fr
+    de
+  }
+  gallery {
+    ...media_gallery
+  }
+  place {
+    ...place
+  }
+}

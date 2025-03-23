@@ -1,0 +1,5 @@
+query get_product_list($organization_id: uuid!) {
+  product(where: { organization_id: { _eq: $organization_id } }) {
+    ...product_full
+  }
+}

@@ -1,0 +1,521 @@
+{
+  "actions": {
+    "accept": {
+      "description": "Accepter les modifications",
+      "title": "Accepter"
+    },
+    "add-media": {
+      "description": "Télécharger une nouvelle image",
+      "title": "Ajouter une image"
+    },
+    "cancel": {
+      "description": "Annuler les modifications",
+      "title": "Annuler"
+    },
+    "create-new": {
+      "title": "Créer nouveau"
+    },
+    "reject": {
+      "description": "Rejeter les modifications",
+      "title": "Rejeter"
+    },
+    "save": {
+      "description": "Sauvegarder les modifications",
+      "title": "Sauvegarder"
+    },
+    "sign-out": {
+      "description": "Se déconnecter",
+      "title": "Se déconnecter"
+    }
+  },
+  "dashboards": {
+    "topSellingProducts": {
+      "numberOfBookings": "Nombre de réservations",
+      "productName": "Nom du produit",
+      "title": "Produits les plus vendus"
+    },
+    "bookingsByArrivalDate":{
+      "title": "Réservations à venir",
+      "productName": "Nom du produit",
+      "bookingId": "Id reserva",
+      "date": "Date"
+    }
+  },
+  "entities": {
+    "adult": {
+      "title": "Adulte"
+    },
+    "adults": {
+      "format": "{value} adultes",
+      "title": "Adultes",
+      "withCount_one": "1 adulte",
+      "withCount_other": "{{count}} adultes",
+      "withIndex": "Adulte {{index}}",
+      "zero": "Aucun adulte"
+    },
+    "booking": {
+      "title": "Réservation"
+    },
+    "child": {
+      "title": "Enfant"
+    },
+    "children": {
+      "format": "{value} enfants",
+      "title": "Enfants",
+      "withCount_one": "1 enfant",
+      "withCount_other": "{{count}} enfants",
+      "withIndex": "Enfant {{index}}"
+    },
+    "customer": {
+      "title": "Client"
+    },
+    "features": {
+      "product-types": {
+        "accommodations": {
+          "title": "Hébergements"
+        },
+        "activities": {
+          "title": "Activités"
+        },
+        "generic-products": {
+          "title": "Général"
+        }
+      }
+    },
+    "infant": {
+      "title": "Bébé",
+      "value": "{value} bébés"
+    },
+    "infants": {
+      "title": "Bébés",
+      "withCount_one": "1 bébé",
+      "withCount_other": "{{count}} bébés",
+      "withIndex": "Bébé {{index}}"
+    },
+    "pax": {
+      "title": "Passager"
+    },
+    "product": {
+      "title": "Produit"
+    },
+    "supplement": {
+      "title": "Supplément"
+    }
+  },
+  "enums": {
+    "question-scope": {
+      "per-booking": {
+        "title": "Par réservation"
+      },
+      "per-pax": {
+        "title": "Par passager"
+      },
+      "per-product": {
+        "title": "Par produit"
+      }
+    },
+    "question-type": {
+      "free-text": {
+        "title": "Texte libre"
+      },
+      "numeric": {
+        "title": "Numérique"
+      },
+      "select": {
+        "title": "Sélection"
+      }
+    },
+    "supplement-type": {
+      "per-pax": {
+        "title": "Par passager"
+      },
+      "per-pax-per-day": {
+        "title": "Par passager par jour"
+      },
+      "per-pax-per-hour": {
+        "title": "Par passager par heure"
+      },
+      "per-unit": {
+        "title": "Par unité"
+      },
+      "per-unit-per-day": {
+        "title": "Par unité par jour"
+      }
+    },
+    "time-management": {
+      "daily": {
+        "description": "Jours entiers",
+        "title": "Quotidien"
+      },
+      "taximeter": {
+        "description": "Départ et durée flexibles",
+        "title": "Taximètre"
+      },
+      "time-slots": {
+        "description": "Départ et durée fixes",
+        "title": "Créneaux horaires"
+      }
+    },
+    "unit-management": {
+      "per-pax": {
+        "description": "Le prix unitaire est affecté par le nombre de passagers",
+        "title": "Par passager"
+      },
+      "per-resource": {
+        "description": "Le prix unitaire est indépendant du nombre de passagers",
+        "title": "Par ressource"
+      }
+    }
+  },
+  "fields": {
+    "address": {
+      "description": "L'adresse complète.",
+      "title": "Adresse"
+    },
+    "amount": {
+      "title": "Montant"
+    },
+    "booking-code": {
+      "title": "Code de réservation"
+    },
+    "booking-questions": {
+      "title": "Questions de réservation"
+    },
+    "booking-state": {
+      "title": "État de la réservation"
+    },
+    "business-model": {
+      "title": "Modèle commercial"
+    },
+    "business-model-with-warning": {
+      "title": "Modèle commercial. ATTENTION : Toutes les valeurs ne sont pas encore prises en charge."
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "contact-email": {
+      "title": "Email de contact"
+    },
+    "contact-name": {
+      "title": "Nom du contact"
+    },
+    "created-on": {
+      "description": "La date de création de l'enregistrement.",
+      "title": "Créé le"
+    },
+    "date": {
+      "title": "Date"
+    },
+    "description": {
+      "description": "Une longue description. Généralement un ou deux paragraphes.",
+      "title": "Description"
+    },
+    "email": {
+      "description": "L'adresse email.",
+      "title": "Email"
+    },
+    "facebook": {
+      "description": "URL de la page Facebook",
+      "title": "Facebook"
+    },
+    "favicon": {
+      "description": "L'icône affichée dans l'onglet du navigateur et la barre d'adresse",
+      "title": "Favicon"
+    },
+    "from": {
+      "description": "La date de début.",
+      "title": "De"
+    },
+    "gallery": {
+      "description": "Galerie photo, l'ordre compte.",
+      "title": "Galerie"
+    },
+    "good_to_know": {
+      "description": "Informations pratiques. Comme les instructions d'enregistrement.",
+      "title": "Bon à savoir"
+    },
+    "headline": {
+      "description": "Une courte description. Généralement une ou deux phrases.",
+      "title": "Titre"
+    },
+    "hero_image": {
+      "description": "En attente",
+      "title": "Image principale"
+    },
+    "history-entries": {
+      "title": "Entrées historiques"
+    },
+    "id": {
+      "description": "Valeur utilisée pour identifier l'enregistrement et qui ne peut pas être modifiée",
+      "title": "Identifiant unique"
+    },
+    "image": {
+      "title": "Image"
+    },
+    "instagram": {
+      "description": "URL de la page Instagram",
+      "title": "Instagram"
+    },
+    "last-modified-on": {
+      "description": "La date de dernière modification de l'enregistrement.",
+      "title": "Modifié le"
+    },
+    "links": {
+      "description": "Liens vers d'autres sites web.",
+      "title": "Liens"
+    },
+    "logo": {
+      "description": "Ceci est le logo utilisé en mode normal",
+      "title": "Logo"
+    },
+    "logo_light": {
+      "description": "Ceci est le logo utilisé lorsque le mode nuit est activé",
+      "title": "Logo clair"
+    },
+    "max": {
+      "title": "Maximum"
+    },
+    "meta_description": {
+      "description": "Très important pour le SEO",
+      "title": "Méta description"
+    },
+    "meta_title": {
+      "description": "Le texte affiché dans l'onglet du navigateur",
+      "title": "Méta titre"
+    },
+    "min": {
+      "title": "Minimum"
+    },
+    "name": {
+      "description": "Le nom. Généralement un mot ou une courte phrase.",
+      "title": "Nom"
+    },
+    "options": {
+      "title": "Options"
+    },
+    "phone_number": {
+      "description": "Le numéro de téléphone.",
+      "title": "Numéro de téléphone"
+    },
+    "price": {
+      "title": "Prix"
+    },
+    "price_from": {
+      "description": "Le prix le plus bas.",
+      "title": "Prix à partir de"
+    },
+    "prices": {
+      "description": "Les prix.",
+      "title": "Prix"
+    },
+    "products": {
+      "title": "Produits"
+    },
+    "published": {
+      "title": "Publié"
+    },
+    "quantity": {
+      "title": "Quantité"
+    },
+    "question-scope": {
+      "title": "Portée"
+    },
+    "question-type": {
+      "title": "Type de question"
+    },
+    "rate-configuration": {
+      "duration": {
+        "description": "Durée de chaque créneau horaire",
+        "title": "Durée (heures)"
+      },
+      "max-resources": {
+        "description": "Nombre maximum de ressources",
+        "title": "Ressources maximales"
+      },
+      "price-per-adult": {
+        "description": "Prix par adulte",
+        "format": "Prix par adulte ({{ currency }})",
+        "title": "Prix par adulte"
+      },
+      "price-per-child": {
+        "description": "Prix par enfant",
+        "format": "Prix par enfant ({{ currency }})",
+        "title": "Prix par enfant"
+      },
+      "price-per-person": {
+        "description": "Prix par personne",
+        "format": "Prix par personne ({{ currency }})",
+        "title": "Prix par personne"
+      },
+      "price-per-resource": {
+        "description": "Prix par ressource",
+        "format": "Prix par ressource ({{ currency }})",
+        "title": "Prix par ressource"
+      },
+      "starting-hours": {
+        "description": "Heures de début",
+        "title": "Heures de début"
+      },
+      "types": {
+        "daily-per-pax": {
+          "description": "Le produit est vendu par intervalles journaliers. Le prix est par passager.",
+          "title": "Quotidien par passager"
+        },
+        "daily-per-resource": {
+          "description": "Le produit est vendu par intervalles journaliers. Le prix est par ressource.",
+          "title": "Quotidien par ressource"
+        },
+        "time-slots-per-pax": {
+          "description": "Les créneaux horaires ont des heures de début et de fin fixes. Ils ont tous la même durée. Par passager signifie que le prix est multiplié par le nombre de passagers.",
+          "title": "Créneaux horaires par personne"
+        },
+        "time-slots-per-resource": {
+          "description": "Créneaux horaires par ressource",
+          "title": "Créneaux horaires par ressource"
+        }
+      }
+    },
+    "sites": {
+      "description": "Chacun représente un site qui sera disponible pour cette organisation.",
+      "title": "Sites"
+    },
+    "step": {
+      "title": "Étape"
+    },
+    "subtitle": {
+      "description": "Le sous-titre. Généralement une ou deux phrases.",
+      "title": "Sous-titre"
+    },
+    "text": {
+      "title": "Texte"
+    },
+    "time-management": {
+      "title": "Gestion du temps"
+    },
+    "time-slot": {
+      "title": "Créneau horaire"
+    },
+    "title": {
+      "description": "Le titre. Généralement un mot ou une courte phrase.",
+      "title": "Titre"
+    },
+    "to": {
+      "description": "La date de fin.",
+      "title": "Jusqu'à"
+    },
+    "total": {
+      "title": "Total"
+    },
+    "twitter": {
+      "description": "URL de la page Twitter",
+      "title": "Twitter"
+    },
+    "type": {
+      "title": "Type"
+    },
+    "unit-management": {
+      "title": "Gestion des unités"
+    },
+    "user": {
+      "title": "Utilisateur"
+    },
+    "use-address": {
+      "title": "Utiliser l'adresse"
+    },
+    "value": {
+      "description": "La valeur.",
+      "title": "Valeur"
+    },
+    "youtube": {
+      "description": "URL de la page YouTube",
+      "title": "YouTube"
+    }
+  },
+  "languages": {
+    "de": "Allemand",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français"
+  },
+  "pages": {
+    "admin": {
+      "title": "Accueil"
+    },
+    "booking": {
+      "title": "Réservation"
+    },
+    "booking-questions": {
+      "title": "Questions de réservation"
+    },
+    "bookings": {
+      "title": "Réservations"
+    },
+    "branding": {
+      "title": "Marque"
+    },
+    "facilities": {
+      "title": "Installations"
+    },
+    "features": {
+      "title": "Caractéristiques"
+    },
+    "gallery": {
+      "title": "Galerie"
+    },
+    "highlights": {
+      "title": "Points forts"
+    },
+    "home": {
+      "title": "Accueil"
+    },
+    "organization": {
+      "title": "Organisation"
+    },
+    "prices": {
+      "title": "Prix"
+    },
+    "product": {
+      "title": "Produit"
+    },
+    "product-group-add": {
+      "title": "Ajouter un groupe de produits"
+    },
+    "product-group-edit": {
+      "title": "Modifier un groupe de produits"
+    },
+    "product-groups": {
+      "title": "Groupes de produits"
+    },
+    "products": {
+      "title": "Produits"
+    },
+    "settings": {
+      "title": "Paramètres"
+    },
+    "supplement": {
+      "title": "Supplément"
+    },
+    "supplements": {
+      "title": "Suppléments"
+    },
+    "venue": {
+      "title": "Lieu"
+    }
+  },
+  "placeholders": {
+    "question": {
+      "title": "Tapez votre question"
+    }
+  },
+  "sections": {
+    "inventory": {
+      "title": "Inventaire"
+    },
+    "my-web": {
+      "title": "Mon Web"
+    },
+    "organization": {
+      "title": "Organisation"
+    }
+  }
+}

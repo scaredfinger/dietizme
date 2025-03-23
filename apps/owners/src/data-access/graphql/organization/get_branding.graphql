@@ -1,0 +1,28 @@
+query get_organization_branding($organization_id: uuid!) {
+  organization_branding(
+    where: {
+      organization: {
+        id: {
+          _eq: $organization_id
+        }
+      }
+    }) {
+    favicon_id
+    logo_id
+    logo_light_id
+    meta_title {
+      id
+      en
+      es
+      de
+      fr
+    }
+    meta_description {
+      id
+      en
+      es
+      de
+      fr
+    }
+  }
+}

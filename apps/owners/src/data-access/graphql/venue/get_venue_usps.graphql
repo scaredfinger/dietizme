@@ -1,0 +1,35 @@
+query get_venue_usps($organization_id: uuid!) {
+  venue(
+    where: { 
+      organization_id: { 
+        _eq: $organization_id 
+      } 
+    }
+  ) {
+    id
+    usps {
+      id
+      image_id
+      lines(
+        order_by: {
+          position:asc
+        }
+      ) {
+        id
+        position
+        name {
+          en
+          es
+          fr
+          de
+        }
+        headline {
+          en
+          es
+          fr
+          de
+        }  
+      } 
+    }
+  }
+}

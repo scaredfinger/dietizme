@@ -1,0 +1,23 @@
+.body {
+  background-color: #f9fafb;
+  color: #111827;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+.header {
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+.content {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+}
+.footer {
+  background-color: #f3f4f6;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}

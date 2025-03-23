@@ -1,0 +1,13 @@
+query get_product($id: uuid!) {
+  product_by_pk(id: $id) {
+    ...product_full
+
+    organization {
+      currency
+      business_model {
+        rate_type
+        unit_management
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+query get_organization($id: uuid!) {
+  organization_by_pk(id: $id) {
+    organization_id: id
+    ...organization_full
+  }
+}

@@ -1,0 +1,68 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import _ from 'lodash'
+import { faker } from '@faker-js/faker'
+
+import {
+  Form,
+} from '../form'
+
+export default {
+  component: Form,
+  title: 'Dates',
+  argTypes: {
+    onSubmit: { action: 'onSubmit executed!' },
+  },
+} as ComponentMeta<typeof Form>
+
+const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />
+
+export const Dates = Template.bind({})
+Dates.args = {
+  t: _.identity,
+  schema: {
+    type: 'object',
+    title: faker.lorem.sentence(),
+    description: faker.lorem.sentences(3),
+    properties: {
+      dateOnly: {
+        type: 'string',
+        title: faker.lorem.sentence(),
+        description: faker.lorem.sentences(3),
+      },
+      dateOnlyWithDateTimeValue: {
+        type: 'string',
+        title: faker.lorem.sentence(),
+        description: faker.lorem.sentences(3),
+      },
+      dateTime: {
+        type: 'string',
+        title: faker.lorem.sentence(),
+        description: faker.lorem.sentences(3),
+      },
+    },
+  },
+  value: {
+    dateOnly: faker.date.soon().toISOString(),
+    dateOnlyWithDateTimeValue: faker.date.soon().toISOString(),
+    dateTime: faker.date.soon().toISOString(),
+  },
+}
+
+export const DateRangeWithValueWidget = Template.bind({})
+DateRangeWithValueWidget.args = {
+  t: _.identity,
+  schema: {
+    type: 'object',
+    title: 'Lorem ipsum',
+    properties: {
+      from: { type: 'string' },
+      to: { type: 'string' },
+      value: { type: 'number' },
+    },
+  },
+  value: {
+    from: '2022-09-09',
+    to: '2022-09-09',
+    value: 23.12,
+  },
+}

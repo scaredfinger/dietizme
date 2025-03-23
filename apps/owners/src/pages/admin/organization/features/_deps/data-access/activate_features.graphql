@@ -1,0 +1,8 @@
+mutation activate_features(
+  $organization_id: uuid!
+  $category: String!) {
+  activate_organization_features(arg: {
+    organization_id: $organization_id
+    category_ids: [$category]
+  })
+}

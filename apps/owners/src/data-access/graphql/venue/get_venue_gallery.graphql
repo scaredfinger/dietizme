@@ -1,0 +1,15 @@
+query get_venue_gallery($organization_id: uuid!) {
+  venue(
+    where: { 
+      organization_id: { 
+        _eq: $organization_id 
+      } 
+    }
+    limit: 1
+  ) {
+    id
+    gallery {
+      ...media_gallery
+    }
+  }
+}

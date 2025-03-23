@@ -1,0 +1,3 @@
+mutation my_web_section_save($section: my_web_section_save_input!) {
+  my_web_section_save(arg: $section)
+}

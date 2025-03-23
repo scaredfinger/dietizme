@@ -1,0 +1,9 @@
+fragment product_minimal on product {
+  id
+  name {
+    en
+    es
+    fr
+    de
+  }
+}

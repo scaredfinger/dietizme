@@ -1,0 +1,21 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Widgets } from '@rjsf/bootstrap-4'
+
+const { DateWidget } = Widgets
+
+export default {
+  component: DateWidget,
+  title: 'Widgets',
+  argTypes: {
+    onSubmit: { action: 'onSubmit executed!' },
+  },
+} as ComponentMeta<typeof DateWidget>
+
+const Template: ComponentStory<typeof DateWidget> = (args) => (
+  <DateWidget {...args} />
+)
+
+export const Start = Template.bind({})
+Start.args = {
+  formData: '2020-01-01',
+}

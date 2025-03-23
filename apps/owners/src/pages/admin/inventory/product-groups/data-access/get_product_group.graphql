@@ -1,0 +1,19 @@
+query get_product_group($id: uuid!) {
+  product_group_by_pk(id: $id) {
+    id
+    organization_id
+    name {
+      ...translated_text
+    }
+    headline {
+      ...translated_text
+    }
+    description {
+      ...translated_text
+    }
+    image_id
+    products {
+      value: product_id
+    }
+  }
+}

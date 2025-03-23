@@ -9,19 +9,18 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.2.1",
-    "http-server": "^14.1.1",
     "@types/node": "^22.13.10",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "@vitest/coverage-v8": "^3.0.8",
     "eslint": "^9.22.0",
+    "http-server": "^14.1.1",
     "nx": "^20.5.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
   },
-  
   "scripts": {
     "build": "nx build",
     "build-all": "nx run-many --target=build --all",
@@ -36,5 +35,11 @@
     "test-all": "nx run-many --target=test --all",
     "lint": "nx lint",
     "lint-all": "nx run-many --target=lint --all"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sentry/cli",
+      "core-js"
+    ]
   }
 }

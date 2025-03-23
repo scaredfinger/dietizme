@@ -1,0 +1,66 @@
+query get_booking($id: uuid!) {
+  booking_by_pk(id: $id) {
+    amount
+    state
+    version
+    friendly_id
+    last_modified_on
+    booking_answers_by_id
+    contact {
+      email
+      name
+    }
+    created_on
+    history_entries {
+      type
+      timestamp
+      value
+      user{
+        displayName
+      }
+    }
+    products {
+      price
+      explained_search_params
+      pax_answers_by_pax_type_by_index_by_id
+      product_answers_by_id
+      ends_on
+      starts_on
+      quantity
+      rate {
+        product {
+          headline {
+            es
+            en
+            de
+            fr
+          }
+          name {
+            es
+            en
+            de
+            fr
+          }
+          gallery {
+            items {
+              file_id
+            }
+          }
+        }
+      }
+    }
+    organization {
+      booking_questions {
+        id
+        text {
+          en
+          es
+          fr
+          de
+        }
+        type
+        value
+      }
+    }
+  }
+}

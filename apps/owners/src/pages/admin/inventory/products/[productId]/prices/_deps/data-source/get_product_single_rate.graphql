@@ -1,0 +1,18 @@
+query get_product_single_rate($product_id: uuid!) {
+  rate(where: {
+    product_id: {
+      _eq: $product_id
+    }
+  }, limit: 1) {
+    ...rate_full
+  }
+
+  product: product_by_pk(
+    id: $product_id
+  ) {
+    business_model {
+      time_management
+      unit_management
+    }
+  }
+}

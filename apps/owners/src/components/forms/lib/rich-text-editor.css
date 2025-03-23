@@ -1,0 +1,3 @@
+.field:has(.ql-container) {
+    @apply mt-4;
+}

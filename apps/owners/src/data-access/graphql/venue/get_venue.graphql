@@ -1,0 +1,22 @@
+query get_venue($id: uuid!) {
+  venue_by_pk(id: $id) {
+    id
+    description {
+      en
+      es
+      de
+      fr
+    }
+    good_to_know {
+      en
+      es
+      de
+      fr
+    }
+    place {
+      name
+      latitude
+      longitude
+    }
+  }
+}

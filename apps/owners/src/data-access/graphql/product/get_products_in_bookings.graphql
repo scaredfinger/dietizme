@@ -1,0 +1,27 @@
+query get_products_in_bookings($id: uuid) {
+  booking(
+    order_by: {amount: desc}
+    where: { 
+    organization_id: { _eq: $id }
+  }) {
+  	amount
+    products{
+      rate{
+        product{
+          price_from
+          gallery{
+            items{
+              file_id
+            }
+          }
+          name{
+            es
+            de
+            en
+            fr
+          }
+        }
+      }
+    }
+  }
+}

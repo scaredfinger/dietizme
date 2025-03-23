@@ -1,0 +1,3 @@
+mutation supplement_save($arg: supplement_save_input!) {
+  supplement_save(arg: $arg)
+}

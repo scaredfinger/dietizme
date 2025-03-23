@@ -1,0 +1,16 @@
+schema: ../../schema.graphql
+overwrite: true
+documents:
+  - src/**/*.graphql
+  # - graphql/get_current_organization.graphql
+config:
+  scalars:
+    DateTime: Date
+    JSON: '{ [key: string]: any }'
+    numeric: number
+generates:
+  src/data-access/generated.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo

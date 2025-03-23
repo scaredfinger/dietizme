@@ -1,0 +1,18 @@
+fragment media_gallery on media_gallery {
+  id
+  name {
+    en
+    es
+    fr
+    de
+  }
+  headline {
+    en
+    es
+    fr
+    de
+  }
+  items(order_by: { position: asc }) {
+    file_id
+  }
+}

@@ -1,0 +1,5 @@
+query get_organization_settings($id: uuid!) {
+  organization_by_pk(id: $id) {
+    ...organization_settings
+  }
+}

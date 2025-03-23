@@ -1,0 +1,37 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { DefaultUploadEditor as UploadEditor } from './upload-editor'
+
+import { identity } from 'lodash'
+import { NhostClient, NhostProvider } from '@nhost/nextjs'
+
+export default {
+  component: UploadEditor,
+  title: 'Upload editor',
+  argTypes: {
+    schema: { title: 'title' },
+    formData: { path: 'unknown' },
+    onChange: { action: 'onSubmit executed!' },
+  },
+} as ComponentMeta<typeof UploadEditor>
+
+const nhost = new NhostClient({
+})
+
+const Template: ComponentStory<typeof UploadEditor> = (args) => (
+  <NhostProvider nhost={nhost}>
+    <UploadEditor {...args} />
+  </NhostProvider>
+)
+
+export const Simple = Template.bind({})
+Simple.args = {
+  schema: { title: 'title', description: 'description' },
+  formData: 'unknown',
+  t: identity,
+}
+
+export const WithValue = Template.bind({})
+WithValue.args = {
+  formData: 'public/lorem-ipsum/upload-editor-form-l12yIq',
+  t: identity,
+}

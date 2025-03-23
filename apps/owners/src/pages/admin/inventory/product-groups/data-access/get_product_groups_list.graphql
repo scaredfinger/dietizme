@@ -1,0 +1,8 @@
+query get_product_groups_list {
+  product_group {
+    id
+    name {
+      ...translated_text
+    }
+  }
+}

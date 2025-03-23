@@ -1,0 +1,3 @@
+mutation product_group_save($product_group: product_group_save_input!) {
+  product_group_save(arg: $product_group)
+}

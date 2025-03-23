@@ -22,7 +22,10 @@
 
   "customizations": {
     "vscode": {
-      "extensions": ["vitest.explorer"],
+      "extensions": [
+        "vitest.explorer", 
+        "esbenp.prettier-vscode"
+      ],
       "settings": {
         "security.workspace.trust.enabled": false
       }

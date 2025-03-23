@@ -1,0 +1,24 @@
+fragment organization_settings on organization {
+  id
+  name
+  email
+  phone_number
+  headline {
+    id
+    en
+    es
+    de
+    fr
+  }
+  socials {
+    id
+    facebook
+    twitter
+    instagram
+    youtube   
+  }
+  sites {
+    id
+    url
+  }
+}
