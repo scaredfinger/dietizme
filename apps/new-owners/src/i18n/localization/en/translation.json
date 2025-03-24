@@ -1,0 +1,521 @@
+{
+  "actions": {
+    "accept": {
+      "description": "Accept the changes",
+      "title": "Accept"
+    },
+    "add-media": {
+      "description": "Upload a new image",
+      "title": "Add Image"
+    },
+    "cancel": {
+      "description": "Cancel the changes",
+      "title": "Cancel"
+    },
+    "create-new": {
+      "title": "Create new"
+    },
+    "reject": {
+      "description": "Reject the changes",
+      "title": "Reject"
+    },
+    "save": {
+      "description": "Save the changes",
+      "title": "Save"
+    }
+  },
+  "dashboards": {
+    "topSellingProducts": {
+      "numberOfBookings": "Number of Bookings",
+      "productName": "Product Name",
+      "title": "Top Selling Products"
+    },
+    "bookingsByArrivalDate":{
+      "title": "Upcoming bookings",
+      "productName": "Product name",
+      "bookingId": "Booking Id",
+      "date": "Date"
+    }
+  },
+  "entities": {
+    "adult": {
+      "title": "Adult"
+    },
+    "adults": {
+      "format": "{value} adults",
+      "title": "Adults",
+      "withCount_one": "1 Adult",
+      "withCount_other": "{{count}} Adults",
+      "withIndex": "Adult {{index}}",
+      "zero": "No Adults"
+    },
+    "booking": {
+      "title": "Booking"
+    },
+    "child": {
+      "title": "Child"
+    },
+    "children": {
+      "format": "{value} children",
+      "title": "Children",
+      "withCount_one": "1 Child",
+      "withCount_other": "{{count}} Children",
+      "withIndex": "Child {{index}}"
+    },
+    "customer": {
+      "title": "Customer"
+    },
+    "features": {
+      "product-types": {
+        "accommodations": {
+          "title": "Accommodations"
+        },
+        "activities": {
+          "title": "Activities"
+        },
+        "generic-products": {
+          "title": "Generic"
+        }
+      }
+    },
+    "infant": {
+      "title": "Infant",
+      "value": "{value} infants"
+    },
+    "infants": {
+      "title": "Infants",
+      "withCount_one": "1 Infant",
+      "withCount_other": "{{count}} Infants",
+      "withIndex": "Infant {{index}}"
+    },
+    "pax": {
+      "title": "Pax"
+    },
+    "product": {
+      "title": "Product"
+    },
+    "supplement": {
+      "title": "Supplement"
+    }
+  },
+  "enums": {
+    "question-scope": {
+      "per-booking": {
+        "title": "Per booking"
+      },
+      "per-pax": {
+        "title": "Per pax"
+      },
+      "per-product": {
+        "title": "Per product"
+      }
+    },
+    "question-type": {
+      "free-text": {
+        "title": "Free text"
+      },
+      "numeric": {
+        "title": "Numeric"
+      },
+      "select": {
+        "title": "Select"
+      }
+    },
+    "supplement-type": {
+      "per-pax": {
+        "title": "Per pax"
+      },
+      "per-pax-per-day": {
+        "title": "Per pax per day"
+      },
+      "per-pax-per-hour": {
+        "title": "Per pax per hour"
+      },
+      "per-unit": {
+        "title": "Per unit"
+      },
+      "per-unit-per-day": {
+        "title": "Per unit per day"
+      }
+    },
+    "time-management": {
+      "daily": {
+        "description": "Full days",
+        "title": "Daily"
+      },
+      "taximeter": {
+        "description": "Flexible start and length",
+        "title": "Taximeter"
+      },
+      "time-slots": {
+        "description": "Fixed start and length",
+        "title": "Time slots"
+      }
+    },
+    "unit-management": {
+      "per-pax": {
+        "description": "Unit price is affected by pax",
+        "title": "Per pax"
+      },
+      "per-resource": {
+        "description": "Unit price is independent to pax",
+        "title": "Per resouce"
+      }
+    }
+  },
+  "fields": {
+    "address": {
+      "description": "The full address.",
+      "title": "Address"
+    },
+    "amount": {
+      "title": "Amount"
+    },
+    "booking-code": {
+      "title": "Booking code"
+    },
+    "booking-questions": {
+      "title": "Booking Questions"
+    },
+    "booking-state": {
+      "title": "Booking state"
+    },
+    "business-model": {
+      "title": "Business model"
+    },
+    "business-model-with-warning": {
+      "title": "Business model. WARNING: Not all values are supported yet."
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "contact-email": {
+      "title": "Contact email"
+    },
+    "contact-name": {
+      "title": "Contact name"
+    },
+    "created-on": {
+      "description": "The date when the record was created.",
+      "title": "Created on"
+    },
+    "date": {
+      "title": "Date"
+    },
+    "description": {
+      "description": "A long description. Usually a paragraph or two.",
+      "title": "Description"
+    },
+    "email": {
+      "description": "The email address.",
+      "title": "Email"
+    },
+    "facebook": {
+      "description": "Facebook page URL",
+      "title": "Facebook"
+    },
+    "favicon": {
+      "description": "The icon shown in the browser tab and address bar",
+      "title": "Favicon"
+    },
+    "feature": {
+      "title": "Feature"
+    },
+    "from": {
+      "description": "The start date.",
+      "title": "From"
+    },
+    "gallery": {
+      "description": "Photo gallery, order matters.",
+      "title": "Gallery"
+    },
+    "good_to_know": {
+      "description": "Practical information. Like check-in instructions.",
+      "title": "Good to know"
+    },
+    "headline": {
+      "description": "A short description. Usually a sentence or two.",
+      "title": "Headline"
+    },
+    "hero_image": {
+      "description": "Pending",
+      "title": "Hero image"
+    },
+    "history-entries": {
+      "title": "History entries"
+    },
+    "id": {
+      "description": "Value is used to identify the record and cannot be modified",
+      "title": "Unique identifier"
+    },
+    "image": {
+      "title": "Image"
+    },
+    "instagram": {
+      "description": "Instagram page URL",
+      "title": "Instagram"
+    },
+    "last-modified-on": {
+      "description": "The date when the record was last modified.",
+      "title": "Last modified on"
+    },
+    "links": {
+      "description": "Links to other websites.",
+      "title": "Links"
+    },
+    "logo": {
+      "description": "This is the logo used in normal mode",
+      "title": "Logo"
+    },
+    "logo_light": {
+      "description": "This is the logo used when the night mode is enabled",
+      "title": "Logo light"
+    },
+    "max": {
+      "title": "Maximum"
+    },
+    "meta_description": {
+      "description": "Very important for SEO",
+      "title": "Meta description"
+    },
+    "meta_title": {
+      "description": "The text shown in the browser tab",
+      "title": "Meta title"
+    },
+    "min": {
+      "title": "Minimum"
+    },
+    "name": {
+      "description": "The name. Usually a word or short sentence.",
+      "title": "Name"
+    },
+    "options": {
+      "title": "Options"
+    },
+    "phone_number": {
+      "description": "The phone number.",
+      "title": "Phone number"
+    },
+    "price": {
+      "title": "Price"
+    },
+    "price_from": {
+      "description": "The lowest price.",
+      "title": "Price from"
+    },
+    "prices": {
+      "description": "The prices.",
+      "title": "Prices"
+    },
+    "products": {
+      "title": "Products"
+    },
+    "published": {
+      "description": "If the record is published or not.",
+      "title": "Published"
+    },
+    "quantity": {
+      "title": "Quantity"
+    },
+    "question-scope": {
+      "title": "Scope"
+    },
+    "question-type": {
+      "title": "Question type"
+    },
+    "rate-configuration": {
+      "duration": {
+        "description": "Duration of each time slot",
+        "title": "Duration (hours)"
+      },
+      "max-resources": {
+        "description": "Maximum number of resources",
+        "title": "Max resources"
+      },
+      "price-per-adult": {
+        "description": "Price per adult",
+        "format": "Price per adult ({{ currency }})",
+        "title": "Price per adult"
+      },
+      "price-per-child": {
+        "description": "Price per child",
+        "format": "Price per child ({{ currency }})",
+        "title": "Price per child"
+      },
+      "price-per-person": {
+        "description": "Price per person",
+        "format": "Price per person ({{ currency }})",
+        "title": "Price per person"
+      },
+      "price-per-resource": {
+        "description": "Price per resource",
+        "format": "Price per resource ({{ currency }})",
+        "title": "Price per resource"
+      },
+      "starting-hours": {
+        "description": "Starting hours",
+        "title": "Starting hours"
+      },
+      "types": {
+        "daily-per-pax": {
+          "description": "Product is sold in day intervals. Price is per pax.",
+          "title": "Daily per pax"
+        },
+        "daily-per-resource": {
+          "description": "Product is sold in day intervals. Price is per resource.",
+          "title": "Daily per resource"
+        },
+        "time-slots-per-pax": {
+          "description": "Time slots are fixed starting and ending times. They all have the same duration. Per pax means price is multiplied by the number of pax.",
+          "title": "Time slots per person"
+        },
+        "time-slots-per-resource": {
+          "description": "Time slots per resource",
+          "title": "Time slots per resource"
+        }
+      }
+    },
+    "sites": {
+      "description": "Each one represents a site that will be available for this organization.",
+      "title": "Sites"
+    },
+    "step": {
+      "title": "Step"
+    },
+    "subtitle": {
+      "description": "The subtitle. Usually a sentence or two.",
+      "title": "Subtitle"
+    },
+    "text": {
+      "title": "Text"
+    },
+    "time-management": {
+      "title": "Time management"
+    },
+    "time-slot": {
+      "title": "Time slot"
+    },
+    "title": {
+      "description": "The title. Usually a word or short sentence.",
+      "title": "Title"
+    },
+    "to": {
+      "description": "The end date.",
+      "title": "To"
+    },
+    "total": {
+      "title": "Total"
+    },
+    "twitter": {
+      "description": "Twitter page URL",
+      "title": "Twitter"
+    },
+    "type": {
+      "title": "Type"
+    },
+    "unit-management": {
+      "title": "Unit management"
+    },
+    "user": {
+      "title": "User"
+    },
+    "use-address": {
+      "title": "Use address"
+    },
+    "value": {
+      "description": "The value.",
+      "title": "Value"
+    },
+    "youtube": {
+      "description": "Youtube page URL",
+      "title": "Youtube"
+    }
+  },
+  "languages": {
+    "de": "German",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French"
+  },
+  "pages": {
+    "admin": {
+      "title": "Home"
+    },
+    "booking": {
+      "title": "Booking"
+    },
+    "booking-questions": {
+      "title": "Booking Questions"
+    },
+    "bookings": {
+      "title": "Bookings"
+    },
+    "branding": {
+      "title": "Branding"
+    },
+    "facilities": {
+      "title": "Facilities"
+    },
+    "features": {
+      "title": "Features"
+    },
+    "gallery": {
+      "title": "Gallery"
+    },
+    "highlights": {
+      "title": "Highlights"
+    },
+    "home": {
+      "title": "Home"
+    },
+    "organization": {
+      "title": "Organization"
+    },
+    "prices": {
+      "title": "Prices"
+    },
+    "product": {
+      "title": "Product"
+    },
+    "product-group-add": {
+      "title": "Add Product Group"
+    },
+    "product-group-edit": {
+      "title": "Edit Product Group"
+    },
+    "product-groups": {
+      "title": "Product Groups"
+    },
+    "products": {
+      "title": "Products"
+    },
+    "settings": {
+      "title": "Settings"
+    },
+    "supplement": {
+      "title": "Supplement"
+    },
+    "supplements": {
+      "title": "Supplements"
+    },
+    "venue": {
+      "title": "Venue"
+    }
+  },
+  "placeholders": {
+    "question": {
+      "title": "Type your question"
+    }
+  },
+  "sections": {
+    "inventory": {
+      "title": "Inventory"
+    },
+    "my-web": {
+      "title": "My Web"
+    },
+    "organization": {
+      "title": "Organization"
+    }
+  }
+}

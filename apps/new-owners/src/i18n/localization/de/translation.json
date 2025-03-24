@@ -1,0 +1,521 @@
+{
+  "actions": {
+    "accept": {
+      "description": "Änderungen akzeptieren",
+      "title": "Akzeptieren"
+    },
+    "add-media": {
+      "description": "Ein neues Bild hochladen",
+      "title": "Bild hinzufügen"
+    },
+    "cancel": {
+      "description": "Änderungen abbrechen",
+      "title": "Abbrechen"
+    },
+    "create-new": {
+      "title": "Neu erstellen"
+    },
+    "reject": {
+      "description": "Änderungen ablehnen",
+      "title": "Ablehnen"
+    },
+    "save": {
+      "description": "Änderungen speichern",
+      "title": "Speichern"
+    },
+    "sign-out": {
+      "description": "Abmelden",
+      "title": "Abmelden"
+    }
+  },
+  "dashboards": {
+    "topSellingProducts": {
+      "numberOfBookings": "Anzahl der Buchungen",
+      "productName": "Produktname",
+      "title": "Meistverkaufte Produkte"
+    },
+    "bookingsByArrivalDate":{
+      "title": "Kommende Buchungen",
+      "productName": "Produktname",
+      "bookingId": "Id-Reservat",
+      "date": "Datum"
+    }
+  },
+  "entities": {
+    "adult": {
+      "title": "Erwachsener"
+    },
+    "adults": {
+      "format": "{value} Erwachsene",
+      "title": "Erwachsene",
+      "withCount_one": "1 Erwachsener",
+      "withCount_other": "{{count}} Erwachsene",
+      "withIndex": "Erwachsener {{index}}",
+      "zero": "Keine Erwachsenen"
+    },
+    "booking": {
+      "title": "Buchung"
+    },
+    "child": {
+      "title": "Kind"
+    },
+    "children": {
+      "format": "{value} Kinder",
+      "title": "Kinder",
+      "withCount_one": "1 Kind",
+      "withCount_other": "{{count}} Kinder",
+      "withIndex": "Kind {{index}}"
+    },
+    "customer": {
+      "title": "Kunde"
+    },
+    "features": {
+      "product-types": {
+        "accommodations": {
+          "title": "Unterkünfte"
+        },
+        "activities": {
+          "title": "Aktivitäten"
+        },
+        "generic-products": {
+          "title": "Generisch"
+        }
+      }
+    },
+    "infant": {
+      "title": "Säugling",
+      "value": "{value} Säuglinge"
+    },
+    "infants": {
+      "title": "Säuglinge",
+      "withCount_one": "1 Säugling",
+      "withCount_other": "{{count}} Säuglinge",
+      "withIndex": "Säugling {{index}}"
+    },
+    "pax": {
+      "title": "Passagier"
+    },
+    "product": {
+      "title": "Produkt"
+    },
+    "supplement": {
+      "title": "Zusatz"
+    }
+  },
+  "enums": {
+    "question-scope": {
+      "per-booking": {
+        "title": "Pro Buchung"
+      },
+      "per-pax": {
+        "title": "Pro Passagier"
+      },
+      "per-product": {
+        "title": "Pro Produkt"
+      }
+    },
+    "question-type": {
+      "free-text": {
+        "title": "Freitext"
+      },
+      "numeric": {
+        "title": "Numerisch"
+      },
+      "select": {
+        "title": "Auswählen"
+      }
+    },
+    "supplement-type": {
+      "per-pax": {
+        "title": "Pro Passagier"
+      },
+      "per-pax-per-day": {
+        "title": "Pro Passagier pro Tag"
+      },
+      "per-pax-per-hour": {
+        "title": "Pro Passagier pro Stunde"
+      },
+      "per-unit": {
+        "title": "Pro Einheit"
+      },
+      "per-unit-per-day": {
+        "title": "Pro Einheit pro Tag"
+      }
+    },
+    "time-management": {
+      "daily": {
+        "description": "Ganze Tage",
+        "title": "Täglich"
+      },
+      "taximeter": {
+        "description": "Flexibler Start und Dauer",
+        "title": "Taxameter"
+      },
+      "time-slots": {
+        "description": "Fester Start und Dauer",
+        "title": "Zeitschlitze"
+      }
+    },
+    "unit-management": {
+      "per-pax": {
+        "description": "Einheitspreis ist abhängig von der Personenzahl",
+        "title": "Pro Passagier"
+      },
+      "per-resource": {
+        "description": "Einheitspreis ist unabhängig von der Personenzahl",
+        "title": "Pro Ressource"
+      }
+    }
+  },
+  "fields": {
+    "address": {
+      "description": "Die vollständige Adresse.",
+      "title": "Adresse"
+    },
+    "amount": {
+      "title": "Betrag"
+    },
+    "booking-code": {
+      "title": "Buchungscode"
+    },
+    "booking-questions": {
+      "title": "Buchungsfragen"
+    },
+    "booking-state": {
+      "title": "Buchungsstatus"
+    },
+    "business-model": {
+      "title": "Geschäftsmodell"
+    },
+    "business-model-with-warning": {
+      "title": "Geschäftsmodell. WARNUNG: Noch nicht alle Werte werden unterstützt."
+    },
+    "contact": {
+      "title": "Kontakt"
+    },
+    "contact-email": {
+      "title": "Kontakt-E-Mail"
+    },
+    "contact-name": {
+      "title": "Kontaktname"
+    },
+    "created-on": {
+      "description": "Das Erstellungsdatum des Eintrags.",
+      "title": "Erstellt am"
+    },
+    "date": {
+      "title": "Datum"
+    },
+    "description": {
+      "description": "Eine lange Beschreibung. Üblicherweise ein oder zwei Absätze.",
+      "title": "Beschreibung"
+    },
+    "email": {
+      "description": "Die E-Mail-Adresse.",
+      "title": "E-Mail"
+    },
+    "facebook": {
+      "description": "URL der Facebook-Seite",
+      "title": "Facebook"
+    },
+    "favicon": {
+      "description": "Das Symbol, das in der Browser-Tab und der Adressleiste angezeigt wird",
+      "title": "Favicon"
+    },
+    "from": {
+      "description": "Das Startdatum.",
+      "title": "Von"
+    },
+    "gallery": {
+      "description": "Fotogalerie, Reihenfolge ist wichtig.",
+      "title": "Galerie"
+    },
+    "good_to_know": {
+      "description": "Praktische Informationen. Wie Check-in-Anweisungen.",
+      "title": "Gut zu wissen"
+    },
+    "headline": {
+      "description": "Eine kurze Beschreibung. Üblicherweise ein oder zwei Sätze.",
+      "title": "Überschrift"
+    },
+    "hero_image": {
+      "description": "Ausstehend",
+      "title": "Hauptbild"
+    },
+    "history-entries": {
+      "title": "Einträge zur Geschichte"
+    },
+    "id": {
+      "description": "Wird verwendet, um den Eintrag zu identifizieren und kann nicht geändert werden",
+      "title": "Eindeutiger Bezeichner"
+    },
+    "image": {
+      "title": "Bild"
+    },
+    "instagram": {
+      "description": "URL der Instagram-Seite",
+      "title": "Instagram"
+    },
+    "last-modified-on": {
+      "description": "Das Datum, an dem der Eintrag zuletzt geändert wurde.",
+      "title": "Zuletzt geändert am"
+    },
+    "links": {
+      "description": "Links zu anderen Websites.",
+      "title": "Links"
+    },
+    "logo": {
+      "description": "Dies ist das Logo im Normalmodus",
+      "title": "Logo"
+    },
+    "logo_light": {
+      "description": "Dies ist das Logo, wenn der Nachtmodus aktiviert ist",
+      "title": "Helles Logo"
+    },
+    "max": {
+      "title": "Maximal"
+    },
+    "meta_description": {
+      "description": "Sehr wichtig für SEO",
+      "title": "Meta-Beschreibung"
+    },
+    "meta_title": {
+      "description": "Der Text, der in der Browser-Tab angezeigt wird",
+      "title": "Meta-Titel"
+    },
+    "min": {
+      "title": "Minimal"
+    },
+    "name": {
+      "description": "Der Name. Üblicherweise ein Wort oder ein kurzer Satz.",
+      "title": "Name"
+    },
+    "options": {
+      "title": "Optionen"
+    },
+    "phone_number": {
+      "description": "Die Telefonnummer.",
+      "title": "Telefonnummer"
+    },
+    "price": {
+      "title": "Preis"
+    },
+    "price_from": {
+      "description": "Der niedrigste Preis.",
+      "title": "Preis ab"
+    },
+    "prices": {
+      "description": "Die Preise.",
+      "title": "Preise"
+    },
+    "products": {
+      "title": "Produkte"
+    },
+    "published": {
+      "title": "Veröffentlicht"
+    },
+    "quantity": {
+      "title": "Menge"
+    },
+    "question-scope": {
+      "title": "Umfang"
+    },
+    "question-type": {
+      "title": "Fragetyp"
+    },
+    "rate-configuration": {
+      "duration": {
+        "description": "Dauer jedes Zeitfensters",
+        "title": "Dauer (Stunden)"
+      },
+      "max-resources": {
+        "description": "Maximale Anzahl an Ressourcen",
+        "title": "Maximale Ressourcen"
+      },
+      "price-per-adult": {
+        "description": "Preis pro Erwachsener",
+        "format": "Preis pro Erwachsener ({{ currency }})",
+        "title": "Preis pro Erwachsener"
+      },
+      "price-per-child": {
+        "description": "Preis pro Kind",
+        "format": "Preis pro Kind ({{ currency }})",
+        "title": "Preis pro Kind"
+      },
+      "price-per-person": {
+        "description": "Preis pro Person",
+        "format": "Preis pro Person ({{ currency }})",
+        "title": "Preis pro Person"
+      },
+      "price-per-resource": {
+        "description": "Preis pro Ressource",
+        "format": "Preis pro Ressource ({{ currency }})",
+        "title": "Preis pro Ressource"
+      },
+      "starting-hours": {
+        "description": "Startzeiten",
+        "title": "Startzeiten"
+      },
+      "types": {
+        "daily-per-pax": {
+          "description": "Das Produkt wird in täglichen Intervallen verkauft. Der Preis ist pro Passagier.",
+          "title": "Täglich pro Passagier"
+        },
+        "daily-per-resource": {
+          "description": "Das Produkt wird in täglichen Intervallen verkauft. Der Preis ist pro Ressource.",
+          "title": "Täglich pro Ressource"
+        },
+        "time-slots-per-pax": {
+          "description": "Zeitschlitze haben feste Start- und Endzeiten. Sie haben alle dieselbe Dauer. Pro Passagier bedeutet, dass der Preis mit der Anzahl der Passagiere multipliziert wird.",
+          "title": "Zeitschlitze pro Person"
+        },
+        "time-slots-per-resource": {
+          "description": "Zeitschlitze pro Ressource",
+          "title": "Zeitschlitze pro Ressource"
+        }
+      }
+    },
+    "sites": {
+      "description": "Jeder repräsentiert einen Standort, der für diese Organisation verfügbar sein wird.",
+      "title": "Standorte"
+    },
+    "step": {
+      "title": "Schritt"
+    },
+    "subtitle": {
+      "description": "Der Untertitel. Üblicherweise ein oder zwei Sätze.",
+      "title": "Untertitel"
+    },
+    "text": {
+      "title": "Text"
+    },
+    "time-management": {
+      "title": "Zeitmanagement"
+    },
+    "time-slot": {
+      "title": "Zeitschlitz"
+    },
+    "title": {
+      "description": "Der Titel. Üblicherweise ein Wort oder ein kurzer Satz.",
+      "title": "Titel"
+    },
+    "to": {
+      "description": "Das Enddatum.",
+      "title": "Bis"
+    },
+    "total": {
+      "title": "Gesamt"
+    },
+    "twitter": {
+      "description": "URL der Twitter-Seite",
+      "title": "Twitter"
+    },
+    "type": {
+      "title": "Typ"
+    },
+    "unit-management": {
+      "title": "Einheitenverwaltung"
+    },
+    "user": {
+      "title": "Benutzer"
+    },
+    "use-address": {
+      "title": "Adresse verwenden"
+    },
+    "value": {
+      "description": "Der Wert.",
+      "title": "Wert"
+    },
+    "youtube": {
+      "description": "URL der YouTube-Seite",
+      "title": "YouTube"
+    }
+  },
+  "languages": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch"
+  },
+  "pages": {
+    "admin": {
+      "title": "Startseite"
+    },
+    "booking": {
+      "title": "Buchung"
+    },
+    "booking-questions": {
+      "title": "Buchungsfragen"
+    },
+    "bookings": {
+      "title": "Buchungen"
+    },
+    "branding": {
+      "title": "Markenbildung"
+    },
+    "facilities": {
+      "title": "Einrichtungen"
+    },
+    "features": {
+      "title": "Funktionen"
+    },
+    "gallery": {
+      "title": "Galerie"
+    },
+    "highlights": {
+      "title": "Höhepunkte"
+    },
+    "home": {
+      "title": "Startseite"
+    },
+    "organization": {
+      "title": "Organisation"
+    },
+    "prices": {
+      "title": "Preise"
+    },
+    "product": {
+      "title": "Produkt"
+    },
+    "product-group-add": {
+      "title": "Produktgruppe hinzufügen"
+    },
+    "product-group-edit": {
+      "title": "Produktgruppe bearbeiten"
+    },
+    "product-groups": {
+      "title": "Produktgruppen"
+    },
+    "products": {
+      "title": "Produkte"
+    },
+    "settings": {
+      "title": "Einstellungen"
+    },
+    "supplement": {
+      "title": "Zusatz"
+    },
+    "supplements": {
+      "title": "Zusätze"
+    },
+    "venue": {
+      "title": "Veranstaltungsort"
+    }
+  },
+  "placeholders": {
+    "question": {
+      "title": "Ihre Frage eingeben"
+    }
+  },
+  "sections": {
+    "inventory": {
+      "title": "Inventar"
+    },
+    "my-web": {
+      "title": "Meine Webseite"
+    },
+    "organization": {
+      "title": "Organisation"
+    }
+  }
+}

@@ -28,7 +28,7 @@ export default function AdminDashboard() {
             <CardTitle>Dashboard</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Welcome, {user?.name || 'User'}! This is your admin dashboard.</p>
+            <p>Welcome, {user?.displayName || 'User'}! This is your admin dashboard.</p>
           </CardContent>
         </Card>
         
