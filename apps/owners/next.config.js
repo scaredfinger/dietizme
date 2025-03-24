@@ -1,3 +1,9 @@
+//@ts-check
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.BUNDLE_ANALYZE === 'true',
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // distDir: '../../dist/apps/owners/.next',
@@ -6,7 +12,7 @@ const nextConfig = {
     return [
     ]
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ['en', 'es', 'fr', 'de'],
     defaultLocale: 'en',
@@ -25,10 +31,26 @@ const nextConfig = {
   transpilePackages: [
     '@otiuming/utils-logging',
     '@otiuming/domain-shopping-cart',
+    '@otiuming/ui-i18n',
+    '@otiuming/ui-common',
     'lodash-es',
     '@otiuming/ui-text-formatting',
     '@otiuming/ui-white-labels-view-models'
   ],
+  experimental: {
+    esmExternals: 'loose', // Changed to 'loose' which often works better with mixed module types
+    optimizePackageImports: [
+      "lodash",
+      "lodash-es",
+      "joi",
+      "@otiuming/utils-logging",
+      "@otiuming/domain-shopping-cart",
+      "@otiuming/ui-i18n",
+      "@otiuming/ui-common",
+      "@otiuming/ui-text-formatting",
+      "@otiuming/ui-white-labels-view-models"
+    ]
+  },
   webpack: (config, { isServer }) => {
     // This ensures the files from these local libraries are processed correctly as ES modules
     config.module.rules.push({
@@ -38,7 +60,9 @@ const nextConfig = {
         /libs\/ui\/white-labels-view-models\/dist/,
         /libs\/ui\/common\/dist/,
         /libs\/ui\/i18n\/dist/,
-        /libs\/ui\/shopping-cart\/dist/
+        /libs\/ui\/shopping-cart\/dist/,
+        /node_modules\/@otiuming\/utils-logging/,
+        /node_modules\/@otiuming\/ui-i18n/
       ],
       type: 'javascript/auto',
       resolve: {
@@ -61,4 +85,6 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+module.exports = process.env.BUNDLE_ANALYZE === 'true' 
+  ? withBundleAnalyzer(nextConfig)
+  : nextConfig

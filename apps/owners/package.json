@@ -39,6 +39,7 @@
     "autoprefixer": "10.4.15",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
+    "cross-fetch": "4.0.0",
     "dayjs": "^1.11.9",
     "emoji-picker-react": "^4.4.11",
     "eslint": "^8.48.0",
@@ -54,7 +55,7 @@
     "lodash": "^4.14.202",
     "mapbox-gl": "^2.15.0",
     "moment": "^2.29.4",
-    "next": "13.4.1",
+    "next": "13.5.4",
     "next-redux-wrapper": "^8.1.0",
     "peity-react": "^0.0.7",
     "postcss": "8.4.28",
@@ -123,7 +124,9 @@
     "@types/react-tagsinput": "^3.20.0",
     "@types/uuid": "^9.0.7",
     "@welldone-software/why-did-you-render": "^7.0.1",
-    "storybook": "^7.5.3"
+    "@next/bundle-analyzer": "^13.5.4",
+    "storybook": "^7.5.3",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   },
   "engines": {
     "node": ">=16.8.0"
@@ -139,10 +142,10 @@
   "private": true,
   "scripts": {
     "build": "rm -rf dist/apps/owners && next build",
-    "dev": "next dev --port 4200",
+    "dev": "next dev --port 4200 --hostname 0.0.0.0",
     "lint": "next lint",
     "next:start": "next start --port 4200",
-    "serve": "next dev --port 4200",
+    "serve": "next dev --port 4200 --hostname 0.0.0.0",
     "start": "next start",
     "storybook": "storybook dev --port 4400",
     "update-schema": "graphql-codegen --config src/data-access/config.yaml"

@@ -4,26 +4,42 @@
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
   ],
-
   "dockerComposeFile": "docker-compose.yaml",
   "service": "dev",
   "workspaceFolder": "/workspace",
-
   "postCreateCommand": "pnpm install",
-
   "remoteEnv": {
     "HOST_WORKSPACE": "${localWorkspaceFolder}",
     "NHOST_PROJECT_NAME": "omnidata",
     "NHOST_PROJECT_DIR": "apps/omnidata",
     "NHOST_EXECUTION_FOLDER": "apps/omnidata/dist",
     "NHOST_EXECUTION_SOURCE": "apps/omnidata/nhost",
-    "NHOST_DATA_FOLDER": "apps/omnidata/dist/.nhost/data"
+    "NHOST_DATA_FOLDER": "apps/omnidata/dist/.nhost/data",
+    "NEXT_WEBPACK_USEPOLLING": "1",
+    "NEXT_HMR_PORT": "8097",
+    "NEXT_PUBLIC_HOST": "0.0.0.0",
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "WATCHPACK_POLLING": "true"
   },
-
+  // Forward the ports that Next.js uses
+  "forwardPorts": [
+    // Your existing forwarded ports
+    4200, // Next.js dev server
+    4400, // Storybook
+    4700, // white-labels dev server
+    8097, // Fixed HMR websocket port
+    41621,  // CSS processing port
+    32927,
+    // Add specific ports that Next.js might dynamically use for HMR
+    45509, // The port mentioned in your error
+    45510,
+    45511,
+    45512
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
-        "vitest.explorer", 
+        "vitest.explorer",
         "esbenp.prettier-vscode"
       ],
       "settings": {
