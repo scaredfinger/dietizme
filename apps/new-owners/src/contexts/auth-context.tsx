@@ -1,10 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type User = {
-  id: string;
-  email: string;
-  name?: string;
-};
+import { useNhostClient, User } from '@nhost/react';
 
 interface AuthContextType {
   user: User | null;
@@ -23,6 +19,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { auth } = useNhostClient();
+
   useEffect(() => {
     // Check if user is stored in localStorage
     const storedUser = localStorage.getItem('user');
@@ -37,15 +35,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setError(null);
     
     try {
-      // In a real app, this would be an API call
-      // For now, we'll simulate a successful login for the demo credentials
-      if (email === 'demo@example.com' && password === 'password') {
-        const user = { id: '1', email: email, name: 'Demo User' };
+        const signInResponse = await auth.signIn({
+          email,
+          password,
+        })
+
+        if (signInResponse.error) {
+          throw new Error(signInResponse.error.message);
+        }
+
+        const user = auth.getUser()
+        if (! user) {
+          throw new Error('No user returned from authentication');
+        }
+
         setUser(user);
         localStorage.setItem('user', JSON.stringify(user));
-      } else {
-        throw new Error('Invalid email or password');
-      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred during login');
       throw err;
@@ -55,24 +60,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const signUp = async (email: string, password: string, name: string) => {
-    setIsLoading(true);
-    setError(null);
+    // setIsLoading(true);
+    // setError(null);
     
-    try {
-      // In a real app, this would be an API call
-      // For this demo, simulate a successful registration
-      const user = { id: '1', email, name };
-      setUser(user);
-      localStorage.setItem('user', JSON.stringify(user));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred during registration');
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
+    // try {
+    //   // In a real app, this would be an API call
+    //   // For this demo, simulate a successful registration
+    //   const user = { id: '1', email, name };
+    //   setUser(user);
+    //   localStorage.setItem('user', JSON.stringify(user));
+    // } catch (err) {
+    //   setError(err instanceof Error ? err.message : 'An error occurred during registration');
+    //   throw err;
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   const logout = () => {
+    auth.signOut();
     setUser(null);
     localStorage.removeItem('user');
   };
