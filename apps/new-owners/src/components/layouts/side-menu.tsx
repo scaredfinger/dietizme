@@ -145,9 +145,16 @@ interface MenuItemProps {
   level?: number;
   isOpen?: Record<string, boolean>;
   toggleOpen?: (id: string) => void;
+  isCollapsed?: boolean;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, isOpen = {}, toggleOpen = () => {} }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ 
+  item, 
+  level = 0, 
+  isOpen = {}, 
+  toggleOpen = () => {},
+  isCollapsed = false
+}) => {
   const router = useRouter();
   const hasChildren = item.children && item.children.length > 0;
   const isActive = item.href ? router.pathname === item.href : false;
@@ -161,6 +168,63 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, isOpen = {}, toggl
     }
   };
 
+  // If collapsed and this is a top-level item with children, don't render children
+  if (isCollapsed && level === 0 && hasChildren) {
+    return (
+      <li className="w-full tooltip-container">
+        <button
+          onClick={toggleItem}
+          className={cn(
+            "flex items-center justify-center w-full p-2 rounded-md",
+            "hover:bg-gray-200 dark:hover:bg-gray-700",
+            (isChildActive) ? "bg-gray-100 dark:bg-gray-800" : "",
+            "transition-colors duration-150"
+          )}
+        >
+          {item.icon && (
+            <FontAwesomeIcon 
+              icon={item.icon} 
+              className={cn(
+                "w-5 h-5",
+                isChildActive ? "text-indigo-600 dark:text-indigo-400" : "text-gray-500 dark:text-gray-400"
+              )}
+            />
+          )}
+        </button>
+        <div className="tooltip">{item.label}</div>
+      </li>
+    );
+  }
+
+  // If collapsed and this is a top-level item without children
+  if (isCollapsed && level === 0 && !hasChildren) {
+    return (
+      <li className="w-full tooltip-container">
+        <Link
+          href={item.href || '#'}
+          className={cn(
+            "flex items-center justify-center w-full p-2 rounded-md",
+            "hover:bg-gray-200 dark:hover:bg-gray-700",
+            isActive ? "bg-gray-200 dark:bg-gray-700" : "",
+            "transition-colors duration-150"
+          )}
+        >
+          {item.icon && (
+            <FontAwesomeIcon 
+              icon={item.icon} 
+              className={cn(
+                "w-5 h-5",
+                isActive ? "text-indigo-600 dark:text-indigo-400" : "text-gray-500 dark:text-gray-400"
+              )}
+            />
+          )}
+        </Link>
+        <div className="tooltip">{item.label}</div>
+      </li>
+    );
+  }
+
+  // Normal rendering for expanded menu or child items
   return (
     <li className="w-full">
       {hasChildren ? (
@@ -197,6 +261,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, isOpen = {}, toggl
                   level={level + 1}
                   isOpen={isOpen}
                   toggleOpen={toggleOpen}
+                  isCollapsed={isCollapsed}
                 />
               ))}
             </ul>
@@ -231,9 +296,10 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, level = 0, isOpen = {}, toggl
 
 interface SideMenuProps {
   className?: string;
+  isCollapsed?: boolean;
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({ className }) => {
+const SideMenu: React.FC<SideMenuProps> = ({ className, isCollapsed = false }) => {
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
   const toggleOpen = (id: string) => {
@@ -244,9 +310,20 @@ const SideMenu: React.FC<SideMenuProps> = ({ className }) => {
   };
 
   return (
-    <div className={cn("w-64 h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800", className)}>
-      <div className="p-4 border-b border-gray-200 dark:border-gray-800">
-        <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Admin Panel</h2>
+    <div className={cn(
+      "h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800",
+      isCollapsed ? "w-16" : "w-64",
+      className
+    )}>
+      <div className={cn(
+        "border-b border-gray-200 dark:border-gray-800",
+        isCollapsed ? "p-3 flex justify-center" : "p-4"
+      )}>
+        {isCollapsed ? (
+          <span className="text-lg font-bold text-gray-800 dark:text-white">NO</span>
+        ) : (
+          <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Admin Panel</h2>
+        )}
       </div>
       <nav className="py-4">
         <ul className="space-y-1">
@@ -256,6 +333,7 @@ const SideMenu: React.FC<SideMenuProps> = ({ className }) => {
               item={item}
               isOpen={openItems}
               toggleOpen={toggleOpen}
+              isCollapsed={isCollapsed}
             />
           ))}
         </ul>
