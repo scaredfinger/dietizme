@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/contexts/auth-context';
-import AdminLayout from '@/components/layouts/admin-layout';
+import SideMenuLayout from '@/components/layouts/side-menu-layout';
 import TopSellingProducts from '@/components/dashboard/top-selling-products';
 import BookingsByDate from '@/components/dashboard/bookings-by-date';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -21,20 +23,28 @@ export default function AdminDashboard() {
   }
 
   return (
-    <AdminLayout>
+    <SideMenuLayout>
       <div className="space-y-4">
+        <div className="flex items-center mb-6">
+          <FontAwesomeIcon 
+            icon={faTachometerAlt} 
+            className="h-5 w-5 text-indigo-600 mr-2" 
+          />
+          <h1 className="text-2xl font-bold">Dashboard</h1>
+        </div>
+        
         <Card>
           <CardHeader>
-            <CardTitle>Dashboard</CardTitle>
+            <CardTitle>Welcome</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Welcome, {user?.displayName || 'User'}! This is your admin dashboard.</p>
+            <p>Hello, {user?.displayName || 'User'}! This is your admin dashboard.</p>
           </CardContent>
         </Card>
         
         <TopSellingProducts />
         <BookingsByDate />
       </div>
-    </AdminLayout>
+    </SideMenuLayout>
   );
 }
