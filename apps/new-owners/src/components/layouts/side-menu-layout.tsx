@@ -50,16 +50,56 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
     }
   };
 
+  // Add some styles for tooltips
+  const tooltipStyles = `
+    .tooltip-container {
+      position: relative;
+    }
+    .tooltip-container .tooltip {
+      visibility: hidden;
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+      margin-left: 10px;
+    }
+    .tooltip-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    .tooltip:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+    }
+  `;
+
   return (
     <div className={cn(
       "min-h-screen flex bg-gray-50 dark:bg-gray-900 transition-colors duration-200",
       darkMode ? 'dark' : ''
     )}>
+      <style>{tooltipStyles}</style>
+
       {/* Sidebar - Mobile */}
       <div className={cn(
         "fixed inset-y-0 left-0 z-50 transition-transform duration-300 transform lg:hidden",
         mobileOpen ? "translate-x-0" : "-translate-x-full",
-        "w-64 bg-white dark:bg-gray-900 shadow-lg"
+        "bg-white dark:bg-gray-900 shadow-lg"
       )}>
         <SideMenu isCollapsed={false} />
       </div>
@@ -75,7 +115,7 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
       {/* Sidebar - Desktop */}
       <div className={cn(
         "hidden lg:block transition-all duration-300 ease-in-out",
-        collapsed ? "w-20" : "w-64"
+        collapsed ? "w-16" : "w-64"
       )}>
         <div className="relative h-full">
           <SideMenu isCollapsed={collapsed} />
@@ -83,7 +123,7 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
           {/* Collapse toggle button */}
           <button 
             onClick={toggleCollapsed}
-            className="absolute -right-3 top-20 bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+            className="absolute -right-3 top-20 bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none z-10"
           >
             <FontAwesomeIcon icon={collapsed ? faChevronRight : faChevronLeft} className="h-3 w-3" />
           </button>
