@@ -1,0 +1,59 @@
+/* Side Menu - Tooltip styles */
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-container .tooltip {
+  visibility: hidden;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 100;
+  margin-left: 10px;
+  pointer-events: none;
+}
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+}
+
+/* Collapsed state transitions */
+.side-menu-container {
+  transition: width 0.3s ease-in-out;
+}
+
+.side-menu-content {
+  width: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Dark mode adjustments */
+.dark .tooltip {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+
+.dark .tooltip:before {
+  border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
+}
