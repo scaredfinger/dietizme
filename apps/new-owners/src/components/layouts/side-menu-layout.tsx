@@ -12,7 +12,7 @@ import {
   faChevronLeft,
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
-import { Button } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import SideMenu from './side-menu';
 import { cn } from '@/lib/utils';
 
