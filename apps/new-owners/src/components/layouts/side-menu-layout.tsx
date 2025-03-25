@@ -120,10 +120,10 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
         <div className="relative h-full">
           <SideMenu isCollapsed={collapsed} />
           
-          {/* Collapse toggle button */}
+          {/* Collapse toggle button - now in the middle, as a perfect circle */}
           <button 
             onClick={toggleCollapsed}
-            className="absolute -right-3 top-20 bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none z-10"
+            className="absolute -right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none z-10 w-8 h-8 flex items-center justify-center"
           >
             <FontAwesomeIcon icon={collapsed ? faChevronRight : faChevronLeft} className="h-3 w-3" />
           </button>
