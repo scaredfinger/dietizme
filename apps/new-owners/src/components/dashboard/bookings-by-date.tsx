@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Table, { TableColumn } from '@/components/ui/table';
 
 type Booking = {
   id: number;
@@ -7,6 +8,15 @@ type Booking = {
   customer: string;
   status: 'Confirmed' | 'Pending' | 'Cancelled';
   amount: number;
+};
+
+type DateStat = {
+  date: string;
+  confirmed: number;
+  pending: number;
+  cancelled: number;
+  total: number;
+  totalAmount: number;
 };
 
 const mockBookings: Booking[] = [
@@ -45,38 +55,59 @@ export default function BookingsByDate() {
     };
   }).sort((a, b) => a.date.localeCompare(b.date));
 
+  // Define columns for the Table component
+  const columns: TableColumn<DateStat>[] = [
+    {
+      key: 'date',
+      header: 'Date',
+    },
+    {
+      key: 'confirmed',
+      header: 'Confirmed',
+      className: 'py-3 px-4 text-right',
+      cell: (stat) => stat.confirmed.toString(),
+    },
+    {
+      key: 'pending',
+      header: 'Pending',
+      className: 'py-3 px-4 text-right',
+      cell: (stat) => stat.pending.toString(),
+    },
+    {
+      key: 'cancelled',
+      header: 'Cancelled',
+      className: 'py-3 px-4 text-right',
+      cell: (stat) => stat.cancelled.toString(),
+    },
+    {
+      key: 'total',
+      header: 'Total',
+      className: 'py-3 px-4 text-right',
+      cell: (stat) => stat.total.toString(),
+    },
+    {
+      key: 'totalAmount',
+      header: 'Amount',
+      className: 'py-3 px-4 text-right',
+      cell: (stat) => `$${stat.totalAmount.toFixed(2)}`,
+    },
+  ];
+
   return (
     <Card className="mt-6">
       <CardHeader>
         <CardTitle>Bookings by Arrival Date</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left py-3 px-4 font-medium">Date</th>
-                <th className="text-right py-3 px-4 font-medium">Confirmed</th>
-                <th className="text-right py-3 px-4 font-medium">Pending</th>
-                <th className="text-right py-3 px-4 font-medium">Cancelled</th>
-                <th className="text-right py-3 px-4 font-medium">Total</th>
-                <th className="text-right py-3 px-4 font-medium">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dateStats.map((stat) => (
-                <tr key={stat.date} className="border-b hover:bg-muted/50">
-                  <td className="py-3 px-4">{stat.date}</td>
-                  <td className="py-3 px-4 text-right">{stat.confirmed}</td>
-                  <td className="py-3 px-4 text-right">{stat.pending}</td>
-                  <td className="py-3 px-4 text-right">{stat.cancelled}</td>
-                  <td className="py-3 px-4 text-right">{stat.total}</td>
-                  <td className="py-3 px-4 text-right">${stat.totalAmount.toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Table
+          data={dateStats}
+          columns={columns}
+          tableClassName="w-full text-sm"
+          theadClassName="border-b"
+          trClassName="border-b hover:bg-muted/50"
+          thClassName="py-3 px-4 font-medium text-left"
+          emptyState={<p className="text-center py-4">No bookings found</p>}
+        />
       </CardContent>
     </Card>
   );
