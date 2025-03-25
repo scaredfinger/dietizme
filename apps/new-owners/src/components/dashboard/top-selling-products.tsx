@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Table, { TableColumn } from '@/components/ui/table';
 
 type Product = {
   id: number;
@@ -19,36 +20,51 @@ const mockProducts: Product[] = [
 ];
 
 export default function TopSellingProducts() {
+  // Define columns for the Table component
+  const columns: TableColumn<Product>[] = [
+    {
+      key: 'name',
+      header: 'Name',
+    },
+    {
+      key: 'category',
+      header: 'Category',
+    },
+    {
+      key: 'price',
+      header: 'Price',
+      className: 'py-3 px-4 text-right',
+      cell: (product) => `$${product.price.toFixed(2)}`,
+    },
+    {
+      key: 'sales',
+      header: 'Sales',
+      className: 'py-3 px-4 text-right',
+      cell: (product) => product.sales.toString(),
+    },
+    {
+      key: 'revenue',
+      header: 'Revenue',
+      className: 'py-3 px-4 text-right',
+      cell: (product) => `$${product.revenue.toFixed(2)}`,
+    },
+  ];
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Top Selling Products</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b">
-                <th className="text-left py-3 px-4 font-medium">Name</th>
-                <th className="text-left py-3 px-4 font-medium">Category</th>
-                <th className="text-right py-3 px-4 font-medium">Price</th>
-                <th className="text-right py-3 px-4 font-medium">Sales</th>
-                <th className="text-right py-3 px-4 font-medium">Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mockProducts.map((product) => (
-                <tr key={product.id} className="border-b hover:bg-muted/50">
-                  <td className="py-3 px-4">{product.name}</td>
-                  <td className="py-3 px-4">{product.category}</td>
-                  <td className="py-3 px-4 text-right">${product.price.toFixed(2)}</td>
-                  <td className="py-3 px-4 text-right">{product.sales}</td>
-                  <td className="py-3 px-4 text-right">${product.revenue.toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Table
+          data={mockProducts}
+          columns={columns}
+          tableClassName="w-full text-sm"
+          theadClassName="border-b"
+          trClassName="border-b hover:bg-muted/50"
+          thClassName="py-3 px-4 font-medium text-left"
+          emptyState={<p className="text-center py-4">No products found</p>}
+        />
       </CardContent>
     </Card>
   );
