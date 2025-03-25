@@ -8,9 +8,11 @@ import {
   faSignOutAlt, 
   faBell, 
   faMoon, 
-  faSun 
+  faSun,
+  faChevronLeft,
+  faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/card';
 import SideMenu from './side-menu';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +24,7 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
   const { logout } = useAuth();
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
   const handleLogout = () => {
@@ -29,8 +32,12 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
     router.push('/login');
   };
 
-  const toggleSidebar = () => {
+  const toggleCollapsed = () => {
     setCollapsed(!collapsed);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const toggleDarkMode = () => {
@@ -48,13 +55,39 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
       "min-h-screen flex bg-gray-50 dark:bg-gray-900 transition-colors duration-200",
       darkMode ? 'dark' : ''
     )}>
-      {/* Sidebar */}
+      {/* Sidebar - Mobile */}
       <div className={cn(
-        "fixed inset-y-0 left-0 z-40 transition-transform duration-300 transform",
-        collapsed ? "-translate-x-full" : "translate-x-0",
-        "md:relative md:translate-x-0"
+        "fixed inset-y-0 left-0 z-50 transition-transform duration-300 transform lg:hidden",
+        mobileOpen ? "translate-x-0" : "-translate-x-full",
+        "w-64 bg-white dark:bg-gray-900 shadow-lg"
       )}>
-        <SideMenu className="h-full" />
+        <SideMenu isCollapsed={false} />
+      </div>
+
+      {/* Overlay for mobile menu */}
+      {mobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden" 
+          onClick={toggleMobileMenu}
+        ></div>
+      )}
+
+      {/* Sidebar - Desktop */}
+      <div className={cn(
+        "hidden lg:block transition-all duration-300 ease-in-out",
+        collapsed ? "w-20" : "w-64"
+      )}>
+        <div className="relative h-full">
+          <SideMenu isCollapsed={collapsed} />
+          
+          {/* Collapse toggle button */}
+          <button 
+            onClick={toggleCollapsed}
+            className="absolute -right-3 top-20 bg-white dark:bg-gray-800 p-1.5 rounded-full shadow-md border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+          >
+            <FontAwesomeIcon icon={collapsed ? faChevronRight : faChevronLeft} className="h-3 w-3" />
+          </button>
+        </div>
       </div>
 
       {/* Content area */}
@@ -63,8 +96,8 @@ export default function SideMenuLayout({ children }: SideMenuLayoutProps) {
           <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center">
               <button 
-                onClick={toggleSidebar} 
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none"
+                onClick={toggleMobileMenu} 
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none lg:hidden"
               >
                 <FontAwesomeIcon icon={faBars} className="h-5 w-5" />
               </button>
