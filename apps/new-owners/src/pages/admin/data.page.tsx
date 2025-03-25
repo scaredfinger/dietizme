@@ -10,16 +10,18 @@ import AdminLayout from '@/components/layouts/admin-layout'
 import { useQuery } from '@/data-access/use-query'
 
 const ProductGroups: React.FC = () => {
+  const { t } = useTranslation()
+  const { locale, push } = useRouter()
+
   const { data, loading, error } = useQuery<
     Get_Product_Groups_ListQuery,
     Get_Product_Groups_ListQueryVariables
   >({
-    query: Get_Product_Groups_ListDocument
+    query: Get_Product_Groups_ListDocument,
+    language: locale,
   })
 
   // const { data, loading, error } = useGet_Product_Groups_ListQuery()
-  const { t } = useTranslation()
-  const { locale, push } = useRouter()
 
   return (
     <AdminLayout>
