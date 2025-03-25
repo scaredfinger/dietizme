@@ -11,9 +11,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@apollo/client": "3.13.4",
+    "@apollo/client": "^3.13.5",
     "@swan-io/boxed": "^3.2.0",
-    "graphql": "16.10.0"
+    "graphql": "^16.10.0"
   },
   "devDependencies": {
     "@otiuming/base": "workspace:*",

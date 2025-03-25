@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@apollo/client": "3.13.4",
+    "@apollo/client": "^3.13.5",
     "@glidejs/glide": "3.4.1",
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.0.10",
@@ -31,7 +31,7 @@
     "@uppy/react": "2.2.2",
     "cross-fetch": "4.0.0",
     "form-data": "4.0.0",
-    "graphql": "16.10.0",
+    "graphql": "^16.10.0",
     "graphql-codegen-hasura-core": "^4.10.0",
     "graphql-request": "6.1.0",
     "joi": "^17.13.3",
