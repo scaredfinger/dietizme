@@ -9,7 +9,7 @@
     "graphql": "^16.10.0",
     "graphql-request": "^7.1.2",
     "lodash-es": "^4.17.0",
-    "short-unique-id": "^5.2.0",
+    "short-unique-id": "^5.2.2",
     "pino": "^9.6.0",
     "@swan-io/boxed": "^3.2.0"
   },
@@ -19,8 +19,8 @@
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@types/express": "^5.0.0",
-    "rollup": "^4.36.0",
+    "@types/express": "^5.0.1",
+    "rollup": "^4.38.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
     "typescript": "^5.8.2"
   },
