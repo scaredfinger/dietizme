@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@swan-io/boxed": "^3.2.1",
-    "lodash-es": "^4.17.22"
+    "lodash-es": "^4.17.23"
   },
   "type": "commonjs",
   "main": "./dist/index.js",
